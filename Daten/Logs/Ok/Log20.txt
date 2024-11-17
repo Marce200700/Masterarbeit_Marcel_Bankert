@@ -1,0 +1,12 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/Hybrid_Images$ ./setup_shell_script.sh
+Defaulting to user installation because normal site-packages is not writeable
+Collecting numpy
+  Downloading numpy-2.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.3/16.3 MB 3.5 MB/s eta 0:00:00
+Collecting opencv-python
+  Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (62.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.5/62.5 MB 4.8 MB/s eta 0:00:00
+Installing collected packages: numpy, opencv-python
+  WARNING: The scripts f2py and numpy-config are installed in '/home/marcel/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed numpy-2.1.1 opencv-python-4.10.0.84

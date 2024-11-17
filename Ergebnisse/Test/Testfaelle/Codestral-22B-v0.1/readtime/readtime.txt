@@ -1,0 +1,133 @@
+
+
+ Sure, here are ten more test cases based on the `.test_plain_text_empty` function:
+
+1. Test case for calculating read time of plain text with only spaces.
+
+```python
+def test_plain_text_spaces(self):
+    """
+    Test case for calculating read time of plain text with only spaces.
+    """
+    result = of_text('   ')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```
+
+2. Test case for calculating read time of plain text with special characters.
+
+```python
+def test_plain_text_special_chars(self):
+    """
+    Test case for calculating read time of plain text with special characters.
+    """
+    result = of_text('@#$%^&*()')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```
+
+3. Test case for calculating read time of plain text with numbers.
+
+```python
+def test_plain_text_numbers(self):
+    """
+    Test case for calculating read time of plain text with numbers.
+    """
+    result = of_text('1234567890')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```
+
+4. Test case for calculating read time of plain text with a single word.
+
+```python
+def test_plain_text_single_word(self):
+    """
+    Test case for calculating read time of plain text with a single word.
+    """
+    result = of_text('Hello')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```
+
+5. Test case for calculating read time of plain text with a single character.
+
+```python
+def test_plain_text_single_char(self):
+    """
+    Test case for calculating read time of plain text with a single character.
+    """
+    result = of_text('A')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```
+
+6. Test case for calculating read time of plain text with a long word.
+
+```python
+def test_plain_text_long_word(self):
+    """
+    Test case for calculating read time of plain text with a long word.
+    """
+    result = of_text('Supercalifragilisticexpialidocious')
+    self.assertEqual(result.seconds, 2)
+    self.assertEqual(result.text, '2 mins')
+    self.assertEqual(str(result), '2 mins read')
+```
+
+7. Test case for calculating read time of plain text with multiple spaces between words.
+
+```python
+def test_plain_text_multiple_spaces(self):
+    """
+    Test case for calculating read time of plain text with multiple spaces between words.
+    """
+    result = of_text('Hello     World')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```
+
+8. Test case for calculating read time of plain text with newline characters.
+
+```python
+def test_plain_text_newlines(self):
+    """
+    Test case for calculating read time of plain text with newline characters.
+    """
+    result = of_text('Hello\nWorld')
+    self.assertEqual(result.seconds, 2)
+    self.assertEqual(result.text, '2 mins')
+    self.assertEqual(str(result), '2 mins read')
+```
+
+9. Test case for calculating read time of plain text with a mix of uppercase and lowercase letters.
+
+```python
+def test_plain_text_mixed_case(self):
+    """
+    Test case for calculating read time of plain text with a mix of uppercase and lowercase letters.
+    """
+    result = of_text('HeLLo WoRLd')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```
+
+10. Test case for calculating read time of plain text with a mix of English and non-English characters.
+
+```python
+def test_plain_text_mixed_languages(self):
+    """
+    Test case for calculating read time of plain text with a mix of English and non-English characters.
+    """
+    result = of_text('Hello 世界')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```

@@ -1,0 +1,8 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/cpp/area_calculation$ ./test.sh
+make: Nothing to be done for 'all'.
+Processed input/1.txt and saved the output to outputs/1.txt
+Processed input/2.txt and saved the output to outputs/2.txt
+Processed input/3.txt and saved the output to outputs/3.txt
+File 1.txt matches
+File 2.txt matches
+File 3.txt matches

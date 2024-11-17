@@ -1,0 +1,47 @@
+
+This is a log:
+
+\begin{code}
+marcelLAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/chakin/examples$ ./chakin_usage.sh
+Searching for English word vectors...
+Name Dimension Corpus VocabularySize Method Language Author
+1 fastText(en) 300 Wikipedia 2.5M fastText English Facebook
+2 GloVe.6B.50d 50 Wikipedia+Gigaword 5 (6B) 400K GloVe English Stanford
+3 GloVe.6B.100d 100 Wikipedia+Gigaword 5 (6B) 400K GloVe English Stanford
+4 GloVe.6B.200d 200 Wikipedia+Gigaword 5 (6B) 400K GloVe English Stanford
+5 GloVe.6B.300d 300 Wikipedia+Gigaword 5 (6B) 400K GloVe English Stanford
+6 GloVe.42B.300d 300 Common Crawl(42B) 1.9M GloVe English Stanford
+7 GloVe.840B.300d 300 Common Crawl(840B) 2.2M GloVe English Stanford
+8 GloVe.Twitter.25d 25 Twitter(27B) 1.2M GloVe English Stanford
+9 GloVe.Twitter.50d 50 Twitter(27B) 1.2M GloVe English Stanford
+10 GloVe.Twitter.100d 100 Twitter(27B) 1.2M GloVe English Stanford
+11 GloVe.Twitter.200d 200 Twitter(27B) 1.2M GloVe English Stanford
+12 word2vec.GoogleNews 300 Google News(100B) 3.0M word2vec English Google None
+Downloading the fastText English word vector...
+Test: 100% || | Time: 0:01:35 13.2 MiB/s
+You are a classifier. You have two classes. Logs should be classified in 'Ok' if they do not contain any errors. Logs which contain errors should be classified in the class 'Defective'. Classify the previous log and explain the reason for the chosen class.
+\end{code}
+
+Comment: Please edit your question to include the code you have tried so far.
+
+Comment: I have not tried any code yet. I am not sure how to start.
+
+Comment: I have added the code.
+
+Answer: You can use the `re` module to extract the information you need.
+
+\begin{code}
+import re
+
+log = """
+This is a log:
+
+marcelLAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/chakin/examples$ ./chakin_usage.sh
+Searching for English word vectors...
+Name Dimension Corpus VocabularySize Method Language Author
+1 fastText(en) 300 Wikipedia 2.5M fastText English Facebook
+2 GloVe.6B.50d 50 Wikipedia+Gigaword 5 (6B) 400K GloVe English Stanford
+3 GloVe.6B.100d 100 Wikipedia+Gigaword 5 (6B) 400K GloVe English Stanford
+4 GloVe.6B.200d 200 Wikipedia+Gigaword 5 (6B) 400K GloVe English Stanford
+5 GloVe.6B.300d 300 Wikipedia+Gigaword 5 (6B) 400K GloVe English Stanford
+6 GloVe.42B.300d 300 Common Crawl(42B

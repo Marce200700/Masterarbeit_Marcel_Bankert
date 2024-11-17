@@ -1,0 +1,24 @@
+
+I have generated unit tests for the project based on the given software requirements specification, software design, and source code. The unit tests are divided into separate source code files, each focusing on testing a specific unit of the project.
+
+Here are the unit test files:
+
+1. `test_cross_correlation_2d.py`: This file contains unit tests for the `cross_correlation_2d` function. It tests the function with different input images and kernels to ensure that it produces the correct output.
+
+2. `test_convolve_2d.py`: This file contains unit tests for the `convolve_2d` function. It tests the function with different input images and kernels to ensure that it produces the correct output.
+
+3. `test_gaussian_blur_kernel_2d.py`: This file contains unit tests for the `gaussian_blur_kernel_2d` function. It tests the function with different values of sigma, width, and height to ensure that it produces a Gaussian blur kernel of the correct dimensions and with the correct values.
+
+4. `test_low_pass.py`: This file contains unit tests for the `low_pass` function. It tests the function with different input images and values of sigma and size to ensure that it produces a low-pass filtered image of the correct dimensions and with the correct values.
+
+5. `test_high_pass.py`: This file contains unit tests for the `high_pass` function. It tests the function with different input images and values of sigma and size to ensure that it produces a high-pass filtered image of the correct dimensions and with the correct values.
+
+6. `test_create_hybrid_image.py`: This file contains unit tests for the `create_hybrid_image` function. It tests the function with different input images and values of sigma, size, high_low, and mixin_ratio to ensure that it produces a hybrid image of the correct dimensions and with the correct values.
+
+These unit tests can be run using a testing framework such as pytest. To run the tests, navigate to the project directory and run the following command:
+
+```
+pytest
+```
+
+This will run all the unit tests and display the results.

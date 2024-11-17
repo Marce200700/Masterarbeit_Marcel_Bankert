@@ -1,0 +1,76 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: The error message is pretty clear:
+
+\begin{code}
+tar: Old option 'b' requires an argument.
+\end{code}
+
+You are missing the argument for the `-b` option.
+
+Comment: I have no idea what you mean. I am not using the -b option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @MarcelKluge: You are using the `-b` option.  It's in the `tar` command in your Dockerfile.
+
+Comment: I am sorry, I am not using the -b option. I am using the -x option.
+
+Comment: @

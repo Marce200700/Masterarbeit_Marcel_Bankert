@@ -1,0 +1,4 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/cpp/xlsx2csv$ ./run.sh
+mkdir: cannot create directory ‘./outputs’: File exists
+mkdir: cannot create directory ‘./outputs/test001’: File exists
+Conversion successful. CSV files generated.

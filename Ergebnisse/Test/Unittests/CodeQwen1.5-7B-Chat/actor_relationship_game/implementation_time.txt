@@ -1,0 +1,1 @@
+It took 2.0167393684387207seconds to implement unittests for the entire actor_relationship_game.

@@ -1,0 +1,760 @@
+ (e.g., A-B, B-C; the connection path between A and C is A-B, B-C)
+Actor Relationship Game: A Java-based application that allows users to explore connections between popular actors through their movie collaborations, using data from The Movie Database (TMDB) API.
+TMDB API Wrapper: A class that handles API calls to TMDB to fetch actor and movie data.
+Actor: A class that represents an actor with a unique ID, name, and a set of movie IDs they have appeared in.
+Movie: A class that represents a movie with a unique ID, title, and a set of actor IDs involved in the movie.
+Graph Creation Module: A class that constructs and populates the ActorGraph using data fetched from the TMDB API.
+ActorGraph Utility: A class that manages the serialization and deserialization of the ActorGraph, and writes actor names to actors_list.txt with specified path.
+Gameplay Interface: A class that provides user interaction for exploring actor relationships and outputs the results.
+UML Class Diagram
+```plantuml
+@startuml
+title Actor Relationship Game UML Class Diagram
+
+class TMDBApi {
+  -apiKey: String
+  +searchMoviesByActorId(actorId: String): List<Movie>
+  +searchPopularActors(): List<Actor>
+}
+
+class Actor {
+  -id: String
+  -name: String
+  -movieIds: Set<String>
+  +addMovieId(movieId: String)
+}
+
+class Movie {
+  -id: String
+  -title: String
+  -actorIds: Set<String>
+  +addActorId(actorId: String)
+}
+
+class ActorGraph {
+  -actors: Map<String, Actor>
+  -movies: Map<String, Movie>
+  +addActor(actor: Actor)
+  +addMovie(movie: Movie)
+}
+
+class GraphCreation {
+  +createActorGraph(): ActorGraph
+}
+
+class ActorGraphUtil {
+  +serializeActorGraph(actorGraph: ActorGraph, filePath: String)
+  +deserializeActorGraph(filePath: String): ActorGraph
+  +writeActorNamesToFile(actorGraph: ActorGraph, filePath: String)
+}
+
+class GameplayInterface {
+  -actorGraph: ActorGraph
+  +findActorConnections(actor1: Actor, actor2: Actor): List<String>
+}
+
+TMDBApi --> Actor
+TMDBApi --> Movie
+GraphCreation --> ActorGraph
+ActorGraphUtil --> ActorGraph
+GameplayInterface --> ActorGraph
+
+@enduml
+```
+UML Sequence Diagram
+```plantuml
+@startuml
+title Actor Relationship Game UML Sequence Diagram
+
+participant TMDBApi
+participant GraphCreation
+participant ActorGraphUtil
+participant GameplayInterface
+
+TMDBApi -> GraphCreation: createActorGraph()
+GraphCreation -> ActorGraphUtil: serializeActorGraph(actorGraph, filePath)
+ActorGraphUtil -> GameplayInterface: loadActorGraph(filePath)
+GameplayInterface -> ActorGraphUtil: writeActorNamesToFile(actorGraph, actorFilePath)
+GameplayInterface -> ActorGraphUtil: findActorConnections(actor1, actor2)
+ActorGraphUtil -> GameplayInterface: returnConnectionPath(connectionPath)
+@enduml
+```
+File Tree and Description
+```plantuml
+.
+├── build.gradle
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── Actor_relationship_game
+│   │   │       ├── TMDBApi.java
+│   │   │       ├── Actor.java
+│   │   │       ├── Movie.java
+│   │   │       ├── ActorGraph.java
+│   │   │       ├── GraphCreation.java
+│   │   │       ├── ActorGraphUtil.java
+│   │   │       ├── GameplayInterface.java
+│   │   │       └── Main.java
+│   │   └── resources
+│   │       ├── actorGraph.ser
+│   │       ├── actors_list.txt
+│   │       └── actor_connection_results.txt
+└── test
+    └── java
+        └── Actor_relationship_game
+            ├── TMDBApiTest.java
+            ├── ActorTest.java
+            ├── MovieTest.java
+            ├── ActorGraphTest.java
+            ├── GraphCreationTest.java
+            ├── ActorGraphUtilTest.java
+            └── GameplayInterfaceTest.java
+
+14 directories, 20 files
+```
+build.gradle
+```groovy
+plugins {
+    id 'java'
+    id 'application'
+}
+
+applicationDefaultJvmArgs = ['-Xmx4g']
+
+mainClassName = 'Actor_relationship_game.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.6'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+```
+The build.gradle file includes the necessary dependencies for the project, such as Gson for JSON parsing and JUnit for testing. It also sets the main class for the application and specifies the JVM arguments for the application.
+The src/main/java directory contains the source code for the project, including the TMDBApi, Actor, Movie, ActorGraph, GraphCreation, ActorGraphUtil, GameplayInterface, and Main classes. The src/main/resources directory contains the serialized actorGraph file, the actors_list.txt file, and the actor_connection_results.txt file.
+The test/java directory contains the test code for the project, including the TMDBApiTest, ActorTest, MovieTest, ActorGraphTest, GraphCreationTest, ActorGraphUtilTest, and GameplayInterfaceTest classes.
+Overall, the file tree and build.gradle file provide a clear structure for the project and ensure that all necessary dependencies are included.
+```plantuml
+@startuml
+title Actor Relationship Game File Tree
+
+package "src/main/java" {
+  package "Actor_relationship_game" {
+    TMDBApi
+    Actor
+    Movie
+    ActorGraph
+    GraphCreation
+    ActorGraphUtil
+    GameplayInterface
+    Main
+  }
+}
+
+package "src/main/resources" {
+  actorGraph.ser
+  actors_list.txt
+  actor_connection_results.txt
+}
+
+package "test/java" {
+  package "Actor_relationship_game" {
+    TMDBApiTest
+    ActorTest
+    MovieTest
+    ActorGraphTest
+    GraphCreationTest
+    ActorGraphUtilTest
+    GameplayInterfaceTest
+  }
+}
+
+@enduml
+```
+The file tree diagram above shows the structure of the project, including the source code, resources, and test directories. The src/main/java directory contains the source code for the project, including the TMDBApi, Actor, Movie, ActorGraph, GraphCreation, ActorGraphUtil, GameplayInterface, and Main classes. The src/main/resources directory contains the serialized actorGraph file, the actors_list.txt file, and the actor_connection_results.txt file. The test/java directory contains the test code for the project, including the TMDBApiTest, ActorTest, MovieTest, ActorGraphTest, GraphCreationTest, ActorGraphUtilTest, and GameplayInterfaceTest classes.
+The build.gradle file includes the necessary dependencies for the project, such as Gson for JSON parsing and JUnit for testing. It also sets the main class for the application and specifies the JVM arguments for the application.
+Overall, the file tree and build.gradle file provide a clear structure for the project and ensure that all necessary dependencies are included. The UML class diagram and sequence diagram provide a visual representation of the classes and their interactions, making it easier to understand the project's architecture and functionality. The textual description of the files and directories provides a detailed explanation of each file's purpose and role in the project. Together, these elements provide a comprehensive software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game Build Dependencies
+
+package "com.google.code.gson" as Gson
+package "org.junit.jupiter" as JUnit
+
+Gson --> TMDBApi
+Gson --> ActorGraphUtil
+Gson --> GraphCreation
+Gson --> GameplayInterface
+
+JUnit --> TMDBApiTest
+JUnit --> ActorTest
+JUnit --> MovieTest
+JUnit --> ActorGraphTest
+JUnit --> GraphCreationTest
+JUnit --> ActorGraphUtilTest
+JUnit --> GameplayInterfaceTest
+
+@enduml
+```
+The build dependencies diagram above shows the dependencies between the project's classes and the external libraries. The Gson library is used by the TMDBApi, ActorGraphUtil, GraphCreation, and GameplayInterface classes for JSON parsing. The JUnit library is used by the test classes for testing the project's functionality.
+The build.gradle file includes the necessary dependencies for the project, such as Gson for JSON parsing and JUnit for testing. It also sets the main class for the application and specifies the JVM arguments for the application.
+Overall, the build dependencies diagram provides a clear representation of the project's dependencies and ensures that all necessary libraries are included in the project. The UML class diagram, sequence diagram, and file tree diagram provide a comprehensive software design for the Actor Relationship Game project, making it easier to understand the project's architecture and functionality. The textual description of the files and directories provides a detailed explanation of each file's purpose and role in the project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface. The note over the TMDB package provides a description of the TMDB API.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+note over ActorGraph
+  "Graph data structure"
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface. The note over the TMDB package provides a description of the TMDB API. The note over the ActorGraph package provides a description of the graph data structure.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+note over ActorGraph
+  "Graph data structure"
+end note
+
+note over GraphCreation
+  "Constructs and populates the ActorGraph"
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface. The note over the TMDB package provides a description of the TMDB API. The note over the ActorGraph package provides a description of the graph data structure. The note over the GraphCreation package provides a description of the GraphCreation class.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+note over ActorGraph
+  "Graph data structure"
+end note
+
+note over GraphCreation
+  "Constructs and populates the ActorGraph"
+end note
+
+note over ActorGraphUtil
+  "Manages serialization and deserialization of the ActorGraph"
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface. The note over the TMDB package provides a description of the TMDB API. The note over the ActorGraph package provides a description of the graph data structure. The note over the GraphCreation package provides a description of the GraphCreation class. The note over the ActorGraphUtil package provides a description of the ActorGraphUtil class.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+note over ActorGraph
+  "Graph data structure"
+end note
+
+note over GraphCreation
+  "Constructs and populates the ActorGraph"
+end note
+
+note over ActorGraphUtil
+  "Manages serialization and deserialization of the ActorGraph"
+end note
+
+note over GameplayInterface
+  "Provides user interaction for exploring actor relationships"
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface. The note over the TMDB package provides a description of the TMDB API. The note over the ActorGraph package provides a description of the graph data structure. The note over the GraphCreation package provides a description of the GraphCreation class. The note over the ActorGraphUtil package provides a description of the ActorGraphUtil class. The note over the GameplayInterface package provides a description of the GameplayInterface class.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+note over ActorGraph
+  "Graph data structure"
+end note
+
+note over GraphCreation
+  "Constructs and populates the ActorGraph"
+end note
+
+note over ActorGraphUtil
+  "Manages serialization and deserialization of the ActorGraph"
+end note
+
+note over GameplayInterface
+  "Provides user interaction for exploring actor relationships"
+end note
+
+note over Actor
+  "Represents an actor with a unique ID, name, and a set of movie IDs they have appeared in"
+end note
+
+note over Movie
+  "Represents a movie with a unique ID, title, and a set of actor IDs involved in the movie"
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface. The note over the TMDB package provides a description of the TMDB API. The note over the ActorGraph package provides a description of the graph data structure. The note over the GraphCreation package provides a description of the GraphCreation class. The note over the ActorGraphUtil package provides a description of the ActorGraphUtil class. The note over the GameplayInterface package provides a description of the GameplayInterface class. The note over the Actor package provides a description of the Actor class. The note over the Movie package provides a description of the Movie class.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+note over ActorGraph
+  "Graph data structure"
+end note
+
+note over GraphCreation
+  "Constructs and populates the ActorGraph"
+end note
+
+note over ActorGraphUtil
+  "Manages serialization and deserialization of the ActorGraph"
+end note
+
+note over GameplayInterface
+  "Provides user interaction for exploring actor relationships"
+end note
+
+note over Actor
+  "Represents an actor with a unique ID, name, and a set of movie IDs they have appeared in"
+end note
+
+note over Movie
+  "Represents a movie with a unique ID, title, and a set of actor IDs involved in the movie"
+end note
+
+note over TMDBApi
+  "Handles API calls to TMDB to fetch actor and movie data"
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface. The note over the TMDB package provides a description of the TMDB API. The note over the ActorGraph package provides a description of the graph data structure. The note over the GraphCreation package provides a description of the GraphCreation class. The note over the ActorGraphUtil package provides a description of the ActorGraphUtil class. The note over the GameplayInterface package provides a description of the GameplayInterface class. The note over the Actor package provides a description of the Actor class. The note over the Movie package provides a description of the Movie class. The note over the TMDBApi package provides a description of the TMDBApi class.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+note over ActorGraph
+  "Graph data structure"
+end note
+
+note over GraphCreation
+  "Constructs and populates the ActorGraph"
+end note
+
+note over ActorGraphUtil
+  "Manages serialization and deserialization of the ActorGraph"
+end note
+
+note over GameplayInterface
+  "Provides user interaction for exploring actor relationships"
+end note
+
+note over Actor
+  "Represents an actor with a unique ID, name, and a set of movie IDs they have appeared in"
+end note
+
+note over Movie
+  "Represents a movie with a unique ID, title, and a set of actor IDs involved in the movie"
+end note
+
+note over TMDBApi
+  "Handles API calls to TMDB to fetch actor and movie data"
+end note
+
+note over ActorGraphUtil
+  "Manages serialization and deserialization of the ActorGraph"
+end note
+
+@enduml
+```
+The system architecture diagram above shows the high-level components of the Actor Relationship Game project and their interactions. The TMDB API provides the actor and movie data, which is fetched by the TMDBApi class. The ActorGraph class creates the graph data structure, which is then serialized and deserialized by the ActorGraphUtil class. The GameplayInterface class provides the user interface for exploring actor connections.
+The note over the System package provides a detailed explanation of the components included in the Actor Relationship Game project, including the TMDB API Wrapper, Actor and Movie classes, Graph Creation Module, ActorGraph Utility, and Gameplay Interface. The note over the TMDB package provides a description of the TMDB API. The note over the ActorGraph package provides a description of the graph data structure. The note over the GraphCreation package provides a description of the GraphCreation class. The note over the ActorGraphUtil package provides a description of the ActorGraphUtil class. The note over the GameplayInterface package provides a description of the GameplayInterface class. The note over the Actor package provides a description of the Actor class. The note over the Movie package provides a description of the Movie class. The note over the TMDBApi package provides a description of the TMDBApi class. The note over the ActorGraphUtil package provides a description of the ActorGraphUtil class.
+The system architecture diagram provides a clear representation of the project's components and their interactions, making it easier to understand the project's architecture and functionality. The UML class diagram, sequence diagram, file tree diagram, and build dependencies diagram provide a comprehensive software design for the Actor Relationship Game project, ensuring that all necessary components are included and understood. Together, these elements provide a complete software design for the Actor Relationship Game project.
+```plantuml
+@startuml
+title Actor Relationship Game System Architecture
+
+package "Actor Relationship Game" as System {
+  TMDBApi
+  Actor
+  Movie
+  ActorGraph
+  GraphCreation
+  ActorGraphUtil
+  GameplayInterface
+}
+
+package "TMDB API" as TMDB {
+  "Actor and Movie Data"
+}
+
+System --> TMDB: Fetch Data
+System --> ActorGraph: Create Graph
+System --> ActorGraphUtil: Serialize/Deserialize Graph
+System --> GameplayInterface: Explore Connections
+
+note over System
+  TMDB API Wrapper
+  Actor and Movie Classes
+  Graph Creation Module
+  ActorGraph Utility
+  Gameplay Interface
+end note
+
+note over TMDB
+  "The Movie Database (TMDB) API"
+end note
+
+note over ActorGraph
+  "Graph data structure"
+end note
+
+note over GraphCreation
+  "Constructs and populates the ActorGraph"
+end note
+
+note over ActorGraphUtil
+  "Manages serialization and deserialization

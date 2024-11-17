@@ -1,0 +1,6 @@
+Cross-Correlation: A method for measuring the similarity between two images by comparing their spatial correlations.
+Convolution: A technique used in signal processing to combine an image and a kernel into a resulting image, characterized by the kernel size and sigma parameters.
+Sigma: The spread of the Gaussian distribution, used to control the amplitude of the blur in a Gaussian blur operation.
+Kernel: The matrix that contains the filter parameters, used in image processing techniques like convolution.
+Mix Ratio: The ratio of how the two source images are combined into a hybrid image.
+Filter Types: The type of filter applied to each image, such as low-pass, high-pass, or Gaussian blur.

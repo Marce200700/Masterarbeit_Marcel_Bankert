@@ -1,0 +1,6 @@
+wrapper.find('form').trigger('submit.prevent'); await wrapper.vm.$nextTick(); expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+
+Another test case could be to check if the registration form displays error messages when invalid input is entered like this: it('shows error messages for empty required fields', async () => { const wrapper = shallowMount(RegisterPage, { store, localVue }); // Optionally set invalid data or leave fields empty wrapper.setData({
+
+
+    

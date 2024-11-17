@@ -1,0 +1,6 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/python/Hybrid_Images$ python3 acceptance_test.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.853s
+
+OK

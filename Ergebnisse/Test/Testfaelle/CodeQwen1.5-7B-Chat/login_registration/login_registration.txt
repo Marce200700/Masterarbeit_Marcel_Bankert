@@ -1,0 +1,1 @@
+// Trigger form submission wrapper.find('form').trigger('submit.prevent'); // Wait for Vue's nextTick to allow all async updates to finish await wrapper.vm.$nextTick(); await wrapper.vm.$nextTick(); // Now check for the existence of the error feedback expect(wrapper.find('.invalid-feedback').exists()).toBe(true);

@@ -1,0 +1,61 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+<|im_start|>system
+You are a helpful Python programer.<|im_end|>
+
+> The purpose of this project is to develop a Python-based tool that can estimate the reading time for various formats of content. This tool will be able to process plain text and markdown formats, providing users with an approximate reading time based on a standard or user-defined words-per-minute (WPM) rate.
+I want to add a new functionality. The user should be able to use HTML as an input as well. Please tell me which file I need to change to implement this function.
+Here is the filetree:
+
+```bash
+├── examples
+│   ├── demo.py
+│   └── demo.sh
+├── readtime
+│   ├── __about__.py
+│   ├── api.py
+│   ├── __init__.py
+│   ├── result.py
+│   └── utils.py
+```Sure, adding support for HTML as an input requires changes in the 'api.py' file. This file contains the main logic of the tool and is responsible for parsing and processing the input data.
+
+Here is a simplified version of the 'api.py' file with the necessary modifications:
+
+```python
+from .result import Result
+from .utils import calculate_reading_time
+
+def estimate_reading_time(content: str, wpm: int = 200) -> Result:
+    # Process HTML content
+    if content.startswith('<'):
+        # Import BeautifulSoup from bs4
+        from bs4 import BeautifulSoup
+
+        # Parse the HTML content
+        soup = BeautifulSoup(content, 'html.parser')
+
+        # Extract the text from the HTML
+        text = soup.get_text()
+    else:
+        text = content
+
+    # Calculate the reading time
+    reading_time = calculate_reading_time(text, wpm)
+
+    # Return the result
+    return Result(content, reading_time)
+```
+
+This code adds HTML support by checking if the input content starts with the less-than symbol (<). If it does, we use BeautifulSoup, a popular Python library for parsing HTML, to extract the text from the HTML content.
+
+Note that the 'BeautifulSoup' library needs to be installed before using this code. You can install it by running the following command:
+
+```bash
+pip install beautifulsoup4
+```
+
+Please, let me know if this is the functionality that you wanted.

@@ -1,0 +1,59 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+ <|im_start|>system
+You are a helpful Python programer.<|im_end|>
+
+> The purpose of this project is to develop a Python-based tool that can estimate the reading time for various formats of content. This tool will be able to process HTML and plain text, providing users with an approximate reading time based on a standard or user-defined words-per-minute (WPM) rate.
+I want to add a new functionality. The user should be able to use markdown as an input as well. Please tell me which file I need to change to implement this function.
+Here is the filetree:
+
+```bash
+├── examples
+│   ├── demo.py
+│   └── demo.sh
+├── readtime
+│   ├── __about__.py
+│   ├── api.py
+│   ├── __init__.py
+│   ├── result.py
+│   └── utils.py
+```The functionality you're asking for involves handling markdown as input. The file you need to modify is `api.py` as it likely contains the main functions for processing different types of content.
+
+Here's a high-level plan:
+
+1. Import the necessary library to parse markdown. You can use the `mistune` library, which is a fast and powerful markdown parser for Python. You can install it using pip:
+
+```bash
+pip install mistune
+```
+
+2. In `api.py`, add a new function `process_markdown(content)` that uses the `mistune` library to convert the markdown content to plain text.
+
+3. In the existing `estimate_reading_time(content, wpm=200)` function, add a new condition to check if the content starts with the markdown syntax (i.e., if it starts with '# ', '* ', '- ', '1. ', etc.). If it does, call the `process_markdown(content)` function to convert the markdown content to plain text.
+
+4. Finally, modify the existing logic in the `estimate_reading_time(content, wpm=200)` function to calculate the reading time based on the plain text content.
+
+Here's a rough example of how the `est
+>
+imate_reading_time` function might look after the changes:
+
+```python
+import mistune
+
+def process_markdown(content):
+    markdown = mistune.create_markdown(renderer=mistune.HTMLRenderer())
+    return markdown(content)
+
+def estimate_reading_time(content, wpm=200):
+    if content.startswith(('# ', '* ', '- ', '1. ')):
+        content = process_markdown(content)
+    # existing logic to estimate reading time based on plain text content
+```
+
+Note: This is a high-level plan. You may need to modify the code according to the specific requirements and structure of your project.
+
+> Thank you

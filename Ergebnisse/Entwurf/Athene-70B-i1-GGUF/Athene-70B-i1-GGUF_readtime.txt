@@ -1,0 +1,114 @@
+ 
+The tool should pass all test cases in the provided testing scripts.
+
+**UML-Class Diagram**
+```plantuml
+@startuml
+class ReadTimeCalculator {
+  - content: str
+  - wpm: int = 265
+  + __init__(content: str, wpm: int = 265)
+  + calculate_reading_time(): float
+  + _parse_content(): str
+}
+
+class ContentParser {
+  + parse_html(html: str): str
+  + parse_markdown(md: str): str
+  + parse_plain_text(text: str): str
+}
+
+class HTMLParser {
+  - parser: BeautifulSoup
+  + __init__()
+  + parse(html: str): str
+}
+
+class MarkdownParser {
+  - parser: Markdown
+  + __init__()
+  + parse(md: str): str
+}
+
+ReadTimeCalculator --> ContentParser: uses
+ContentParser --> HTMLParser: delegates
+ContentParser --> MarkdownParser: delegates
+HTMLParser --> "BeautifulSoup": uses
+MarkdownParser --> "Markdown": uses
+@enduml
+```
+
+**UML-Sequence Diagram**
+```plantuml
+@startuml
+participant User as U
+participant ReadTimeCalculator as RTC
+participant ContentParser as CP
+participant HTMLParser as HP
+participant MarkdownParser as MP
+
+U ->> RTC: ReadTimeCalculator(content, wpm)
+RTC ->> CP: _parse_content()
+alt content is HTML
+  CP ->> HP: parse(html)
+  HP ->> CP: parsed_text
+else content is Markdown
+  CP ->> MP: parse(md)
+  MP ->> CP: parsed_text
+else content is Plain Text
+  CP ->> CP: parse_plain_text(text)
+  CP ->> RTC: parsed_text
+end
+RTC ->> RTC: calculate_reading_time(parsed_text, wpm)
+RTC ->> U: reading_time
+@enduml
+```
+
+**requirements.txt**
+```
+beautifulsoup4
+lxml
+markdown2
+pytest
+pyquery
+```
+
+**File Tree with Descriptions**
+```
+read_time/
+__init__.py  # Package initialization
+models/
+__init__.py  # Subpackage initialization
+read_time_calculator.py  # Implements ReadTimeCalculator
+content_parser.py  # Implements ContentParser, HTMLParser, and MarkdownParser
+parsers/
+__init__.py  # Subpackage initialization
+html_parser.py  # Implements HTMLParser
+markdown_parser.py  # Implements MarkdownParser
+__main__.py  # Entry point for CLI usage (e.g., python -m read_time)
+tests/
+__init__.py  # Test suite initialization
+test_read_time_calculator.py  # Unit tests for ReadTimeCalculator
+test_content_parser.py  # Unit tests for ContentParser and parsers
+samples/
+html.html  # Sample HTML content for testing
+markdown.md  # Sample Markdown content for testing
+plain_text.txt  # Sample plain text content for testing
+README.md  # Project documentation and usage guide
+requirements.txt  # Dependency specifications
+```
+**Explanation**
+The `read_time` package is structured into logical subpackages and modules:
+
+* `models`: Defines the core business logic:
+	+ `read_time_calculator.py`: Implements `ReadTimeCalculator`, responsible for calculating reading time.
+	+ `content_parser.py`: Provides `ContentParser`, which delegates to specialized parsers, and their implementations (`HTMLParser` and `MarkdownParser`).
+* `parsers`: Contains parser implementations:
+	+ `html_parser.py`: Uses `BeautifulSoup` for HTML parsing.
+	+ `markdown_parser.py`: Utilizes `Markdown` for Markdown parsing.
+* `__main__.py`: Serves as the entry point for command-line interface (CLI) usage.
+* `tests`: Houses unit tests:
+	+ `test_read_time_calculator.py`: Verifies `ReadTimeCalculator` behavior.
+	+ `test_content_parser.py`: Covers `ContentParser` and parser implementations.
+* `samples`: Offers sample content files (HTML, Markdown, and plain text) for testing and validation.
+The `requirements.txt` file specifies the necessary dependencies (`beautifulsoup4`, `lxml`, `markdown2`, `pytest`, and `pyquery`). This design adheres to the single responsibility principle, separates concerns, and facilitates maintainability, testing, and extensibility. It meets the project's requirements, handling different content formats, WPM rates, and error cases, while providing a user-friendly interface.

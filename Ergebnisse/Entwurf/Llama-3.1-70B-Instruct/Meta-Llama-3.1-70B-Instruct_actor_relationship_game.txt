@@ -1,0 +1,167 @@
+ (e.g., A-B, B-C; the connection path between A and C is A-B-C)
+Serialization: The process of converting an object's state to a byte stream in Java.
+Deserialization: The process of reconstructing an object from a byte stream in Java.
+UML-Class Diagram
+```plantuml
+@startuml
+class TMDBApi {
+  - apiKey: String
+  - actorId: int
+  + TMDBApi(apiKey: String)
+  + getActorMovies(actorId: int): List<Movie>
+  + getPopularActors(): List<Actor>
+}
+
+class Actor {
+  - id: int
+  - name: String
+  - movieIds: Set<int>
+  + Actor(id: int, name: String)
+  + addMovieId(movieId: int)
+}
+
+class Movie {
+  - id: int
+  - title: String
+  - actorIds: Set<int>
+  + Movie(id: int, title: String)
+  + addActorId(actorId: int)
+}
+
+class GraphCreation {
+  - graph: ActorGraph
+  + GraphCreation()
+  + createGraph()
+  + serializeGraph()
+}
+
+class ActorGraph {
+  - actors: Map<int, Actor>
+  - movies: Map<int, Movie>
+  + ActorGraph()
+  + addActor(actor: Actor)
+  + addMovie(movie: Movie)
+}
+
+class ActorGraphUtil {
+  - graph: ActorGraph
+  + ActorGraphUtil(graph: ActorGraph)
+  + deserializeGraph()
+  + saveActorNames()
+}
+
+class GameplayInterface {
+  - graph: ActorGraph
+  + GameplayInterface(graph: ActorGraph)
+  + findConnections()
+  + outputResults()
+}
+
+TMDBApi --* Actor
+TMDBApi --* Movie
+Actor --* Movie
+GraphCreation --* ActorGraph
+ActorGraphUtil --* ActorGraph
+GameplayInterface --* ActorGraph
+@enduml
+```
+UML-Sequence Diagram
+```plantuml
+@startuml
+participant TMDBApi as "TMDB API"
+participant GraphCreation as "Graph Creation"
+participant ActorGraph as "Actor Graph"
+participant ActorGraphUtil as "Actor Graph Util"
+participant GameplayInterface as "Gameplay Interface"
+
+GraphCreation->TMDBApi: getPopularActors()
+TMDBApi->GraphCreation: List<Actor>
+GraphCreation->ActorGraph: addActor()
+GraphCreation->ActorGraph: addMovie()
+GraphCreation->ActorGraph: serializeGraph()
+
+ActorGraphUtil->ActorGraph: deserializeGraph()
+ActorGraphUtil->ActorGraph: saveActorNames()
+
+GameplayInterface->ActorGraph: findConnections()
+GameplayInterface->ActorGraph: outputResults()
+@enduml
+```
+File Tree
+```markdown
+Actor_relationship_game/
+src/
+main/
+java/
+Actor_relationship_game/
+TMDBApi.java
+Actor.java
+Movie.java
+GraphCreation.java
+ActorGraph.java
+ActorGraphUtil.java
+GameplayInterface.java
+build.gradle
+test/
+java/
+Actor_relationship_game/
+TMDBApiTest.java
+ActorTest.java
+MovieTest.java
+GraphCreationTest.java
+ActorGraphTest.java
+ActorGraphUtilTest.java
+GameplayInterfaceTest.java
+acceptanceTest/
+java/
+Actor_relationship_game/
+ActorRelationshipGameAcceptanceTest.java
+resources/
+actorGraph.ser
+actors_list.txt
+actor_connection_results.txt
+```
+File Description
+TMDBApi.java: Handles API calls to TMDB to fetch actor and movie data.
+Actor.java: Represents an actor with a unique ID, name, and a set of movie IDs they have appeared in.
+Movie.java: Represents a movie with a unique ID, title, and a set of actor IDs involved in the movie.
+GraphCreation.java: Constructs and populates the ActorGraph using data fetched from the TMDB API.
+ActorGraph.java: A graph data structure that represents actors as nodes and their movie collaborations as edges.
+ActorGraphUtil.java: Manages the serialization and deserialization of the ActorGraph, and writes actor names to actors_list.txt.
+GameplayInterface.java: Provides user interaction for exploring actor relationships and outputs the results.
+build.gradle: Specifies dependencies and configurations for the project.
+TMDBApiTest.java: Tests the TMDB API wrapper.
+ActorTest.java: Tests the Actor class.
+MovieTest.java: Tests the Movie class.
+GraphCreationTest.java: Tests the Graph Creation module.
+ActorGraphTest.java: Tests the ActorGraph class.
+ActorGraphUtilTest.java: Tests the ActorGraph Utility.
+GameplayInterfaceTest.java: Tests the Gameplay Interface.
+ActorRelationshipGameAcceptanceTest.java: Tests the overall functionality of the Actor Relationship Game.
+actorGraph.ser: Serialized ActorGraph data.
+actors_list.txt: List of actor names.
+actor_connection_results.txt: Output file for actor connections.
+build.gradle
+```groovy
+plugins {
+    id 'java'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+```
+Note: The above build.gradle file is a basic example and may need to be modified to fit the specific requirements of your project.

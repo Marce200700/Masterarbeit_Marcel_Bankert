@@ -1,0 +1,32 @@
+npm install
+npm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but package-lock.json was generated for lockfileVersion@2. I'll try to do my best with it!
+
+> deasync@0.1.29 install C:\Windows\System32\workspace\masterarbeit\DevBench\benchmark_data\javascript\login-registration\node_modules\deasync
+> node ./build.js
+
+`win32-x64-node-14` exists; testing
+Binary is fine; exiting
+
+> core-js@2.6.12 postinstall C:\Windows\System32\workspace\masterarbeit\DevBench\benchmark_data\javascript\login-registration\node_modules\core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+Thank you for using core-js ( https://github.com/zloirock/core-js ) for polyfilling JavaScript standard library!
+
+The project needs your help! Please consider supporting of core-js on Open Collective or Patreon:
+> https://opencollective.com/core-js
+> https://www.patreon.com/zloirock
+
+Also, the author of core-js ( https://github.com/zloirock ) is looking for a good job -)
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.3 (node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+added 1367 packages from 697 contributors and audited 1371 packages in 42.055s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+found 119 vulnerabilities (19 low, 46 moderate, 44 high, 10 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details

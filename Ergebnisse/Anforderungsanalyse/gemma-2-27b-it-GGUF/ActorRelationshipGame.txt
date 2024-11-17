@@ -1,0 +1,67 @@
+## Software Requirement Specification: Actor Relationship Game
+
+**1. Introduction**
+
+This document outlines the software requirements for the Actor Relationship Game. The game aims to help users explore connections between actors based on their collaborative film appearances. It leverages data from The Movie Database (TMDB) API to identify and visualize the shortest path between any two chosen actors.
+
+**2. Goals**
+
+* Allow users to search for actors and movies by their respective IDs.
+* Determine and visually represent the shortest path between two actors based on their shared movie appearances.
+* Store shortest path results in a text file for future reference.
+* Adhere to TMDB API usage terms and limits.
+
+**3. Features and Functionalities**
+
+* **Actor Search:** Users can search for actors by their unique TMDB ID.
+* **Movie Search:** Users can search for movies by their unique TMDB ID.
+* **Shortest Path Calculation:** The game calculates the shortest path between two actors based on their shared film appearances.
+* **Path Visualization:** The shortest path is visually represented, potentially using a graph or network visualization.
+* **Result Saving:** Calculated shortest paths are saved to a text file named "actor_connection_results.txt".
+
+**4. Technical Constraints**
+
+* **Programming Language:** Java
+* **Build Tool:** Gradle
+* **API Integration:** The Movie Database (TMDB) API
+* **API Key:** The TMDB API key should be stored in an environment variable named "TMDB_API_KEY".
+* **Libraries:** java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api
+* **Runtime Environment:** Java Runtime Environment (JRE)
+
+**5. Requirements**
+
+* **Functional Requirements:**
+    * **FR1:** The system shall allow users to search for actors by their TMDB ID.
+    * **FR2:** The system shall allow users to search for movies by their TMDB ID.
+    * **FR3:** The system shall calculate the shortest path between two actors based on their shared film appearances.
+    * **FR4:** The system shall visually represent the calculated shortest path.
+    * **FR5:** The system shall save calculated shortest paths to a text file named "actor_connection_results.txt".
+* **Non-Functional Requirements:**
+    * **NFR1:** The system shall adhere to TMDB API usage terms and limits.
+    * **NFR2:** The system shall be responsive and provide timely results.
+    * **NFR3:** The system shall be user-friendly and easy to navigate.
+
+**6. Acceptance Criteria**
+
+* The system successfully retrieves actor and movie data from the TMDB API using the provided API key.
+* The system accurately calculates the shortest path between two actors based on their shared film appearances.
+* The system visually represents the shortest path in a clear and understandable manner.
+* Calculated shortest paths are saved to the "actor_connection_results.txt" file with the correct format.
+* The system adheres to TMDB API usage terms and limits, avoiding rate limiting issues.
+
+**7. Dependencies**
+
+* The Movie Database (TMDB) API and its associated documentation.
+* Java Runtime Environment (JRE) for executing the program.
+
+**8. Terms/Concepts Explanation**
+
+* **TMDB API:** The Movie Database API provides access to a vast repository of movie and actor data.
+
+* **API Key:** A unique identifier used to authenticate requests to the TMDB API.
+
+* **Shortest Path:** The most efficient connection between two actors based on the number of movies they have in common.
+
+* **Graph:** A visual representation of the relationships between actors and movies, where actors are nodes and shared movies are edges.
+
+* **.txt file:** A plain text file format used to store the calculated shortest paths.

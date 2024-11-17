@@ -1,0 +1,76 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+You are a helpful Python programer.
+
+
+> The purpose of this project is to develop a Python-based tool that can estimate the reading time for various formats of content. This tool will be able to process HTML and markdown formats, providing users with an approximate reading time based on a standard or user-defined words-per-minute (WPM) rate.
+I want to add a new functionality. The user should be able to use plain text as an input as well. Please tell me which file I need to change to implement this function.
+Here is the filetree:
+
+```bash
+├── examples
+│   ├── demo.py
+│   └── demo.sh
+├── readtime
+│   ├── __about__.py
+│   ├── api.py
+│   ├── __init__.py
+│   ├── result.py
+│   └── utils.py
+``` To add the functionality to process plain text as input, you need to modify the `utils.py` file. This file is responsible for handling the text processing logic, including reading from various sources like HTML, Markdown, and plain text.
+
+Here's a step-by-step guide on how to implement this:
+
+1. **Modify `utils.py`**: You need to add a function that can read plain text input and return the content. This function should be able to handle the input as a string or a file path.
+
+2. **Update `api.py`**: This file is responsible for the API logic. You need to ensure that the function to estimate reading time accepts plain text as a valid input.
+
+Here's an example of how you can modify `utils.py` to include a function for reading plain text:
+
+```python
+# readtime/utils.py
+
+import os
+
+def read_text_from_file(file_path):
+    """Read text from a file. Supports both file paths and in-memory strings."""
+    if os.path.isfile(file_path):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return file.read()
+    else:
+        return file_path
+
+def read_text_from_plain_text(input_text):
+    """Read text from plain text input. Can handle both strings and file paths."""
+    if isinstance(input_text, str) and os.path.is
+>
+file(input_text):
+        return read_text_from_file(input_text)
+    else:
+        return input_text
+```
+
+Next, update `api.py` to use this function when processing plain text input:
+
+```python
+# readtime/api.py
+
+from .utils import read_text_from_plain_text
+
+def estimate_reading_time(text, wpm=200):
+    """Estimate reading time based on words per minute."""
+    raw_text = read_text_from_plain_text(text)
+    word_count = len(raw_text.split())
+    minutes = word_count / wpm
+    return minutes
+```
+
+With these changes, your tool can now handle plain text input. Users can provide plain text directly or through a file path, and the reading time will be estimated accordingly.
+
+Make sure to test these changes thoroughly to ensure that the tool works as expected with plain text input.
+
+> Thank you

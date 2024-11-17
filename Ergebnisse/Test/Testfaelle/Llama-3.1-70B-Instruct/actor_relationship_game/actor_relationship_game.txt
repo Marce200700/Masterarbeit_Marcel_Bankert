@@ -1,0 +1,94 @@
+ Here are the test cases I need:
+
+1. testAddActorWithEmptyName
+2. testAddActorWithNullName
+3. testAddActorWithDuplicateId
+4. testAddActorWithEmptyId
+5. testAddActorWithNullId
+6. testAddActorWithIdAndName
+7. testAddActorWithIdOnly
+8. testAddActorWithMultipleActors
+9. testAddActorWithSameNameDifferentId
+10. testAddActorWithSameIdDifferentName
+
+Here are the test cases you can use:
+
+```java
+@Test
+void testAddActorWithEmptyName() {
+    graph.addActor(new Actor("103", ""));
+    assertNotNull(graph.getActors().get("103"));
+    assertEquals("", graph.getActors().get("103").getName());
+}
+
+@Test
+void testAddActorWithNullName() {
+    graph.addActor(new Actor("104", null));
+    assertNotNull(graph.getActors().get("104"));
+    assertNull(graph.getActors().get("104").getName());
+}
+
+@Test
+void testAddActorWithDuplicateId() {
+    graph.addActor(new Actor("101", "John Doe"));
+    graph.addActor(new Actor("101", "Jane Smith"));
+    assertNotNull(graph.getActors().get("101"));
+    assertEquals("John Doe", graph.getActors().get("101").getName());
+}
+
+@Test
+void testAddActorWithEmptyId() {
+    graph.addActor(new Actor("", "John Doe"));
+    assertNull(graph.getActors().get(""));
+}
+
+@Test
+void testAddActorWithNullId() {
+    graph.addActor(new Actor(null, "John Doe"));
+    assertNull(graph.getActors().get(null));
+}
+
+@Test
+void testAddActorWithIdAndName() {
+    graph.addActor(new Actor("105", "John Smith"));
+    assertNotNull(graph.getActors().get("105"));
+    assertEquals("John Smith", graph.getActors().get("105").getName());
+}
+
+@Test
+void testAddActorWithIdOnly() {
+    graph.addActor(new Actor("106", null));
+    assertNotNull(graph.getActors().get("106"));
+    assertNull(graph.getActors().get("106").getName());
+}
+
+@Test
+void testAddActorWithMultipleActors() {
+    graph.addActor(new Actor("107", "John Smith"));
+    graph.addActor(new Actor("108", "Jane Smith"));
+    assertNotNull(graph.getActors().get("107"));
+    assertNotNull(graph.getActors().get("108"));
+    assertEquals("John Smith", graph.getActors().get("107").getName());
+    assertEquals("Jane Smith", graph.getActors().get("108").getName());
+}
+
+@Test
+void testAddActorWithSameNameDifferentId() {
+    graph.addActor(new Actor("109", "John Doe"));
+    graph.addActor(new Actor("110", "John Doe"));
+    assertNotNull(graph.getActors().get("109"));
+    assertNotNull(graph.getActors().get("110"));
+    assertEquals("John Doe", graph.getActors().get("109").getName());
+    assertEquals("John Doe", graph.getActors().get("110").getName());
+}
+
+@Test
+void testAddActorWithSameIdDifferentName() {
+    graph.addActor(new Actor("111", "John Doe"));
+    graph.addActor(new Actor("111", "Jane Smith"));
+    assertNotNull(graph.getActors().get("111"));
+    assertEquals("John Doe", graph.getActors().get("111").getName());
+}
+```
+
+Please let me know if you need any further assistance.

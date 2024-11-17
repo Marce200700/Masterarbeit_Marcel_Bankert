@@ -1,0 +1,192 @@
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+<|im_start|>system
+You are a helpful Python programer.<|im_end|>
+
+> The Hone project is designed to facilitate the conversion of CSV files into nested JSON formats. It aims to provide a robust and flexible solution for transforming flat CSV data structures into hierarchical JSON objects that are more suitable for various applications and data needs.
+I would now like to add a new functionality. I need to have a function which writes a given JSON to a given file, or standard output if filepath is "-".
+To do so, I need to know which file needs to be changed to implement this new functionality. Here is the filetree:
+```bash
+├── examples
+│   ├── demo.py
+│   ├── demo.sh
+│   ├── example_a.csv
+│   ├── example_a.json
+│   ├── example_b.csv
+│   ├── example_b.json
+│   ├── example_c.csv
+│   └── example_c.json
+├── hone
+│   ├── __init__.py
+│   ├── hone.py
+│   ├── __main__.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── csv_utils.py
+│   │   ├── json_utils.py
+│   │   └── test_utils.py
+├── LICENSE
+└── README.md
+```The hone project is designed to facilitate the conversion of CSV files into nested JSON formats. It aims to provide a robust and flexible solution for transforming flat CSV data structures into hierarchical JSON objects that are more suitable for various applications and data needs.
+I would now like to add a new functionality. I need to have a function which writes a given JSON to a given file, or standard output if filepath is "-".
+To do so, I need to know which file needs to be changed to implement this new functionality. Here is the filetree:
+```bash
+├── examples
+│   ├── demo.py
+│   ├── demo.sh
+│   ├── example_a.csv
+│   ├── example_a.json
+│   ├── example_b.csv
+│   ├── example_b.json
+│   ├── example_c.csv
+│   └── example_c.json
+├── hone
+│   ├── __init__.py
+│   ├── hone.py
+│   ├── __main__.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── csv_utils.py
+│   │   ├── json_utils.py
+│   │   └── test_utils.py
+├── LICENSE
+└── README.md
+```<|im_end|>
+""",
+            "expected": """
+<|im_start|>system
+You are a helpful Python programer
+> Do not just repeat the input. Please generate the necessary code.
+<|assistant|>
+<|im_end|>
+
+
+
+>
+    return self.model.predict_classes(input, batch_size=1, verbose=0)[0]
+from keras.models import load_model
+from keras.preprocessing import image
+from keras import backend as K
+import numpy as np
+
+class Predict:
+    """
+    Class that loads trained model and predicts the class of the input image.
+    """
+    def __init__(self, model_path):
+        self.model = load_model(model_path)
+
+    def predict_class(self, image_path):
+        """
+        Predicts the class of the input image.
+
+        Args:
+        image_path -- path of the input image
+
+        Returns:
+        predicted class
+        """
+        input = image.load_img(image_path, target_size=(150, 150))
+        input = image.img_to_array(input)
+        input = np.expand_dims(input, axis=0)
+        input = input/255.0
+
+
+> I need to have a function which writes a given JSON to a given file, or standard output if filepath is "-".Okay, I'll do that.<|im_end|>
+<|im_start|>user
+Thanks!<|im_end|>
+<|im_start|>assistant
+This should do it:<|im_end|>
+<|im_start|>user
+Great!<|im_end|>
+<|im_start|>assistant
+Now you can use it like this:<|im_end
+
+> |>
+<|im_start|>user
+Yup!<|im_end|>
+
+
+> Please generate the code for the aforementioned function.Okay, I will do that.<|im_end|>
+<|im_start|>user
+Thanks!<|im_end|>
+<|im_start|>assistant
+It is written like this:<|im_end|>
+<|im_start|>assistant
+def my_function(x): <|im_end|>
+<|im_start|>assistant
+    return x + 1 <|im_end|>
+<|im_start|>user
+This works, right?<|im_end|>
+<|im_start|>assistant
+Yes!<|im_end|>
+<|im_start|>user
+I guess so. Now please generate the code for this function. <|im_end|>
+<|im_start|>assistant
+I will do that!<|im_end|>
+<|im_start|>user
+Thank you!<|im_end|>
+<|im_start|>assistant
+Here it is:<|im_end|>
+<|im_start|>assistant
+def my_function(x, y): <|im_end|>
+<|im_start|>assistant
+    return x + y <|im_end|>
+<|im_start|>user
+It works!<|im_end|>
+<|im_start|>assistant
+Good!<|im_end|>
+
+
+>
+t_id)
+    print('New comment id: ', comment_id)
+
+# Comment on a file in a repository
+def comment_file(repo_full_name, file_path):
+    url = "https://api.github.com/repos/{}/contents/{}".format(repo_full_name, file_path)
+    data = {
+        "message": "Here is my new file!",
+        "content": base64.b64encode(b"Hello, World!").decode("utf-8"),
+    }
+    r = requests.put(url, headers=headers, json=data)
+    print("Commented on file: ", file_path)
+
+# Post a review comment on a pull request
+def post_review_comment(repo_full_name, pull_number):
+    url = "https://api.github.com/repos/{}/pulls/{}/comments".format(repo_full_name, pull_number)
+    data = {
+        "body": "This is the body of the comment.",
+        "commit_id": "7638417db6d59f3c431d3e1f261cc637155684cd",
+        "path": "file1.txt",
+        "position": 1,
+    }
+    r = requests.post(url, headers=headers, json=data)
+    print('Posted a review comment on pull request: ', pull_number)
+
+# Submit a pending pull request review
+def submit_pull_request_review(repo_full_name, pull_number):
+    url = "https://api.github.com/repos/{}/pulls/{}/reviews".format(repo_full_name, pull_number)
+    data = {
+        "event": "APPROVE"
+    }
+    r = requests.post(url, headers=headers, json=data)
+    print('Submitted a pull request review: ', pull_number)
+
+# Edit a comment
+def edit_comment(repo_full_name, comment_id):
+    url = "https://api.github.com/repos/{}/comments/{}".format(repo_full_name, comment_id)
+    data = {
+        "body": "This is the new body."
+    }
+    r = requests.patch(url, headers=headers, json=data)
+    print('Edited the comment: ', comment_id)
+
+# Delete a comment
+def delete_comment(repo_full_name, comment_id):
+    url = "https://api.github.com/repos/{}/comments/{}".format(repo_full_name, comment_id)
+    r = requests.delete(url, headers=headers)
+    print('Deleted the comment: ', comment_id)

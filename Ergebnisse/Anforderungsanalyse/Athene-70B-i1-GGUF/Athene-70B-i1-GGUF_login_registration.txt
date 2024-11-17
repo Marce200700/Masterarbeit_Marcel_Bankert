@@ -1,0 +1,92 @@
+ The backend should be realized using Node.js and Express.js. MongoDB should serve as the database. 
+
+**Software Requirement Specification (SRS) for Login-Registration Program**
+
+### Introduction
+The Login-Registration program is a user management interface that provides secure authentication, registration, and account management features. It consists of three intuitive and responsive pages: login, registration, and dashboard.
+
+### Goals
+* Provide robust user authentication with password hashing and salting.
+* Offer a seamless registration experience with validated input fields.
+* Display a personalized dashboard with a list of registered users, enabling deletion of accounts.
+
+### Features and Functionalities
+
+1. **Login Page**
+	* Username and password input fields (password type: password).
+	* Login and Register buttons.
+2. **Registration Page** (accessible via Register button)
+	* Four input fields: First Name, Last Name, Username, and Password (min. 6 characters).
+	* Cancel button to return to the login page.
+3. **Dashboard Page** (post-login)
+	* Personalized greeting with registered First Name.
+	* List of registered users, displaying:
+		+ First Name
+		+ Last Name
+		+ Delete button for account removal
+
+### Technical Constraints
+* Frontend: JavaScript, Vue 2.x, Babel 6.x, NPM (third-party libraries), and CSS (styling).
+* Backend: Node.js, Express.js.
+* Database: MongoDB.
+
+### Use Cases
+
+1. **Successful Login**
+	* User enters valid credentials on the login page.
+	* System authenticates and redirects to the dashboard page.
+2. **Registration**
+	* User clicks Register on the login page.
+	* Enters complete and valid registration information (password ≥ 6 characters).
+	* System creates a new user account and redirects to the login page.
+3. **Account Deletion** (on dashboard)
+	* Authenticated user clicks Delete for another registered user.
+	* System removes the targeted user account from the database.
+
+### Requirements
+
+1. **Security**
+	* Hash and salt passwords securely using industry-standard algorithms.
+	* Protect against SQL injection and cross-site scripting (XSS) attacks.
+2. **Input Validation**
+	* Registration: Enforce non-empty, valid input for all fields (password ≥ 6 characters).
+	* Login: Validate username and password formats.
+3. **Data Integrity**
+	* Store user data (First Name, Last Name, Username, hashed Password) in MongoDB.
+	* Ensure consistent, atomic updates during registration and deletion.
+
+### Data Requirements
+* **User Schema** (MongoDB)
+	+ `firstName`: String (non-empty)
+	+ `lastName`: String (non-empty)
+	+ `username`: String (unique, non-empty)
+	+ `passwordHash`: String (hashed and salted)
+
+### Design and User Interface
+* Intuitive, responsive design for desktop (Chrome, Firefox, Safari, Edge) and mobile devices (smartphones, tablets).
+* Clear, concise labeling and feedback for input validation and errors.
+
+### Acceptance Criteria
+
+1. **Functional Correctness**
+	* Successful login redirects to the dashboard page.
+	* Registration creates a valid user account with correct data storage.
+	* Account deletion removes targeted users from the database and dashboard list.
+2. **Security and Validation**
+	* Password hashing, salting, and secure storage.
+	* Robust input validation for registration and login (format, non-emptiness).
+3. **Usability and Compatibility**
+	* Responsive design across specified browsers and mobile devices.
+	* Intuitive interface with clear feedback for errors and validation.
+
+### Dependencies
+* Vue 2.x: Frontend framework.
+* Babel 6.x: JavaScript compilation.
+* NPM: Third-party library management.
+* Node.js, Express.js: Backend runtime and framework.
+* MongoDB: NoSQL database.
+
+### Terms/Concepts Explanation
+
+* **Hashing and Salting**: Secure password storage using a salted, iterated hash function (e.g., bcrypt).
+* **Responsive Design**: Adaptable layout and styling for seamless user experience across various devices and browsers.

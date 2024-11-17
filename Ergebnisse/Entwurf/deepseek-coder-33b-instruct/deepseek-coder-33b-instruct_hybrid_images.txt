@@ -1,0 +1,25 @@
+File Tree
+
+/
+├── README.md
+├── requirements.txt
+├── demo.py
+├── examples
+│   ├── example1.jpg
+│   └── example2.jpg
+├── UML
+│   ├── class_diagram.puml
+│   └── sequence_diagram.puml
+└── src
+    └── hybrid_image.py
+
+Each file and directory in the tree has a specific role:
+
+README.md: Provides an overview of the project and instructions for usage.
+requirements.txt: Lists all the dependencies of the program.
+demo.py: A demonstration script showing the usage of the program.
+examples: A directory containing sample images for demonstration purposes.
+UML: A directory containing UML diagrams showing the class structure and sequence of operations.
+src: A directory containing the source code of the program.
+hybrid_image.py: The main Python module implementing the hybrid image creation functionality.
+The structure of the program is designed to be modular, with different modules handling different aspects of the image processing and hybrid image creation.

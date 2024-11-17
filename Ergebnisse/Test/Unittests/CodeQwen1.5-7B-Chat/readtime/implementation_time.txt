@@ -1,0 +1,1 @@
+It took 0.7850337028503418seconds to implement unittests for the entire readtime.

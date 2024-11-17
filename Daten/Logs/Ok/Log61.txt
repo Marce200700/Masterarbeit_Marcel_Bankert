@@ -1,0 +1,10 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/python/Hybrid_Images$ ./setup_shell_script.sh
+Defaulting to user installation because normal site-packages is not writeable
+Collecting numpy
+  Downloading numpy-2.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.3/16.3 MB 25.3 MB/s eta 0:00:00
+Collecting opencv-python
+  Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (62.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.5/62.5 MB 19.6 MB/s eta 0:00:00
+Installing collected packages: numpy, opencv-python
+Successfully installed numpy-2.1.2 opencv-python-4.10.0.84

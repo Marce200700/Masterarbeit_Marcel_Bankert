@@ -1,0 +1,1 @@
+It took 39.98768210411072seconds to implement testcases for actor_relationship_game.

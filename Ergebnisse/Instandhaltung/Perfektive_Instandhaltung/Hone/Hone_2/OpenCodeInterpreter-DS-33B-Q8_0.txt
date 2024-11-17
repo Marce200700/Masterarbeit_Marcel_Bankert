@@ -1,0 +1,62 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+<|im_start|>system
+You are a helpful Python programer.<|im_end|>
+
+> The Hone project is designed to facilitate the conversion of CSV files into nested JSON formats. It aims to provide a robust and flexible solution for transforming flat CSV data structures into hierarchical JSON objects that are more suitable for various applications and data needs.
+I would now like to add a new functionality. I need to have a function which parses a csv file and just returns the data of the input-csv without the first row.
+To do so, I need to know which file needs to be changed to implement this new functionality. Here is the filetree:
+```bash
+├── examples
+│   ├── demo.py
+│   ├── demo.sh
+│   ├── example_a.csv
+│   ├── example_a.json
+│   ├── example_b.csv
+│   ├── example_b.json
+│   ├── example_c.csv
+│   └── example_c.json
+├── hone
+│   ├── __init__.py
+│   ├── hone.py
+│   ├── __main__.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── csv_utils.py
+│   │   ├── json_utils.py
+│   │   └── test_utils.py
+├── LICENSE
+└── README.md
+```The file that needs to be changed to implement this new functionality is `hone/hone.py`.
+
+The new function in `hone/hone.py` could be something like this:
+
+```python
+def parse_csv_data(csv_file_path: str) -> list[dict[str, str]]:
+    with open(csv_file_path, 'r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        data = [row for row in csv_reader]
+    return data[1:]  # Return all rows except the first one.
+```
+
+In this function, we use the `csv.DictReader` function to read the CSV file and store it as a list of dictionaries. We then return all the rows except the first one.
+
+This function can be called with the path to the CSV file as the argument to get the data without the first row.
+
+You can run this function with your desired CSV file in the `examples/demo.py` file. Let's do this.
+```python
+import csv
+
+def parse_csv_data(csv_file_path: str) -> list[dict[str, str]]:
+    with open(csv_file_path, 'r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        data = [row for row in csv_reader]
+    return data[1:]  # Return all rows except the first one.
+
+csv_file_path = 'path_to_your_csv_file'
+data = parse_csv_data(csv_file_path)
+print(data)

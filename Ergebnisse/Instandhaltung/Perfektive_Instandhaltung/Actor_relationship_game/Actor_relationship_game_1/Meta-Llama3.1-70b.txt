@@ -1,0 +1,77 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+system
+
+You are a helpful Java programer.
+
+
+> The Actor Relationship Game is a Java-based application that allows users to explore connections between popular actors through their movie collaborations, using data from The Movie Database (TMDB) API. It constructs an actor graph and identifies the shortest path of relationships between any two actors.
+I would like to add a new functionality. So the connections are generated and written down in a generated text file.
+I now want to document the case that no connections between two actors are found. To do so, I want you to tell me which file has to be changed.
+Here is the file tree of this project:
+
+```bash
+├── .gitignore
+├── src
+│   ├── acceptanceTest
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   └── ActorRelationshipAcceptanceTest.java
+│   ├── main
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   ├── Actor.java
+│   │   │   │   ├── Movie.java
+│   │   │   │   ├── ActorGraph.java
+│   │   │   │   ├── ActorGraphUtil.java
+│   │   │   │   ├── GameplayInterface.java
+│   │   │   │   ├── GraphCreation.java
+│   │   │   │   └── TMDBApi.java
+│   ├── test
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   ├── ActorTest.java
+│   │   │   │   ├── MovieTest.java
+│   │   │   │   ├── ActorGraphTest.java
+│   │   │   │   ├── ActorGraphUtilTest.java
+│   │   │   │   ├── GameplayInterfaceTest.java
+│   │   │   │   ├── GraphCreationTest.java
+│   │   │   │   └── TMDBApiTest.java
+├── build.gradle
+└── README.md
+```A new feature!
+
+To document the case where no connections are found between two actors, I would recommend modifying the `GameplayInterface.java` file.
+
+This file likely contains the logic for handling user input, searching for connections between actors, and displaying the results. By modifying this file, you can add a check to see if no connections are found and then write a message to the generated text
+>
+ file indicating that no connections were found.
+
+Specifically, you might want to look for the method that handles the search for connections between actors and add a conditional statement to check if the result is empty or null. If it is, you can write a message to the text file indicating that no connections were found.
+
+Here's a rough idea of what the modified code might look like:
+```java
+// in GameplayInterface.java
+
+public void searchForConnections(Actor actor1, Actor actor2) {
+    // existing code to search for connections...
+
+    if (connections.isEmpty()) {
+        // write to text file indicating no connections found
+        try (FileWriter writer = new FileWriter("connections.txt", true)) {
+            writer.write("No connections found between " + actor1.getName() + " and " + actor2.getName() + "\n");
+        } catch (IOException e) {
+            // handle exception
+        }
+    } else {
+        // existing code to write connections to text file...
+    }
+}
+```
+Of course, this is just a rough idea, and you'll need to modify the code to fit your specific implementation. But hopefully, this gives you a good starting point!
+
+> Thank you

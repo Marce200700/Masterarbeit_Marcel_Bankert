@@ -1,0 +1,56 @@
+# test_api.py
+import readtime
+
+def test_of_text():
+    content = "This is a sample text"
+    result = readtime.api.of_text(content, wpm=265)
+    assert result.minutes() == 1.0
+    assert result.seconds() == 60
+
+def test_of_html():
+    html = "<div><h1>Sample HTML</h1><p>This is a sample paragraph</p></div>"
+    result = readtime.api.of_html(html, wpm=265)
+    assert result.minutes() == 1.0
+    assert result.seconds() == 60
+
+def test_of_markdown():
+    content = "# Sample Markdown\nThis is a sample paragraph"
+    result = readtime.api.of_markdown(content, wpm=265)
+    assert result.minutes() == 1.0
+    assert result.seconds() == 60
+
+# test_utils.py
+import readtime
+
+def test_read_time():
+    text = "This is a sample text"
+    result = readtime.utils.read_time(text, format='text', wpm=265)
+    assert result.minutes() == 1.0
+    assert result.seconds() == 60
+
+def test_parse_html():
+    html = "<div><h1>Sample HTML</h1><p>This is a sample paragraph</p></div>"
+    plain_text, image_count = readtime.utils.parse_html(pq(html))
+    assert plain_text == "Sample HTML This is a sample paragraph"
+    assert image_count == 0
+
+# test_result.py
+import readtime
+
+def test_init():
+    seconds = 60
+    wpm = 265
+    result = readtime.result.Result(seconds=seconds, wpm=wpm)
+    assert result.minutes() == 1.0
+    assert result.seconds() == seconds
+
+def test_text():
+    seconds = 60
+    wpm = 265
+    result = readtime.result.Result(seconds=seconds, wpm=wpm)
+    assert result.text().startswith("1 minute")
+
+# run the tests
+if __name__ == '__main__':
+    import pytest
+    pytest.main()

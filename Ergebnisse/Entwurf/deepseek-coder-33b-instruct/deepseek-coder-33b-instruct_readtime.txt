@@ -1,0 +1,118 @@
+```plantuml
+@startuml
+class ReadTime {
+    - content: str
+    - content_type: str
+    - wpm: int
+    + __init__(content: str, content_type: str = "plain", wpm: int = 265)
+    + estimate_reading_time()
+    + parse_content()
+    + calculate_reading_time()
+}
+
+@enduml
+
+```
+
+
+
+```plantuml
+@startuml
+actor User
+participant "ReadTime" as RT
+participant "HTML Content" as HTML
+participant "Markdown Content" as MD
+participant "Plain Text Content" as PT
+User -> RT: Instantiate with content and content type
+RT -> RT: Parse content
+RT -> RT: Calculate reading time
+RT --> User: Return reading time
+@enduml
+```
+
+
+
+```python
+# requirements.txt
+
+beautifulsoup4==4.9.3
+lxml==4.6.3
+markdown2==2.4.2
+pyquery==1.4.3
+pytest==6.2.5
+```
+
+
+
+```txt
+/
+|--- README.md
+|--- requirements.txt
+|--- .gitignore
+|--- examples/
+|    |--- demo.py
+|--- src/
+|    |--- readtime.py
+|--- tests/
+|    |--- test_readtime.py
+|--- samples/
+|    |--- html.html
+|    |--- markdown.md
+|    |--- plain_text.txt
+|--- docs/
+|    |--- uml/
+|    |    |--- class_diagram.puml
+|    |    |--- sequence_diagram.puml
+```
+
+```plantuml
+@startuml
+package "." <<Folder>> {
+  "README.md" as readme
+  "requirements.txt" as req
+  ".gitignore" as gitignore
+  "examples/" as examples
+  "src/" as src
+  "tests/" as tests
+  "samples/" as samples
+  "docs/" as docs
+}
+
+package "examples/" as examples {
+  "demo.py" as demo
+}
+
+package "src/" as src {
+  "readtime.py" as readtime
+}
+
+package "tests/" as tests {
+  "test_readtime.py" as test_readtime
+}
+
+package "samples/" as samples {
+  "html.html" as html
+  "markdown.md" as markdown
+  "plain_text.txt" as plain
+}
+
+package "docs/" as docs {
+  "uml/" as uml
+}
+
+package "uml/" as uml {
+  "class_diagram.puml" as class_diagram
+  "sequence_diagram.puml" as seq_diagram
+}
+
+readme -- src
+readme -- tests
+readme -- samples
+readme -- docs
+req -- src
+examples -- src
+src -- tests
+samples -- tests
+docs -- uml
+@enduml
+```

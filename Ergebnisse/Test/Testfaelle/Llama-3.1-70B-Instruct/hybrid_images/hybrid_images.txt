@@ -1,0 +1,77 @@
+ 
+
+Here are ten more test cases for the `test_mean_filter_RGB` function:
+
+```python
+def test_mean_filter_RGB_1(self):
+    mean = np.ones((5,5))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 5x5 mean filter")
+
+def test_mean_filter_RGB_2(self):
+    mean = np.ones((7,3))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 7x3 mean filter")
+
+def test_mean_filter_RGB_3(self):
+    mean = np.ones((9,9))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 9x9 mean filter")
+
+def test_mean_filter_RGB_4(self):
+    mean = np.ones((11,5))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 11x5 mean filter")
+
+def test_mean_filter_RGB_5(self):
+    mean = np.ones((13,7))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 13x7 mean filter")
+
+def test_mean_filter_RGB_6(self):
+    mean = np.ones((15,9))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 15x9 mean filter")
+
+def test_mean_filter_RGB_7(self):
+    mean = np.ones((17,11))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 17x11 mean filter")
+
+def test_mean_filter_RGB_8(self):
+    mean = np.ones((19,13))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 19x13 mean filter")
+
+def test_mean_filter_RGB_9(self):
+    mean = np.ones((21,15))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 21x15 mean filter")
+
+def test_mean_filter_RGB_10(self):
+    mean = np.ones((23,17))
+    student = hybrid.cross_correlation_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), 
+        msg="Incorrect cross-correlation of RGB image using 23x17 mean filter")
+```
+
+These test cases cover a range of filter sizes from 5x5 to 23x17, and test the `cross_correlation_2d` function with different mean filters. Each test case checks whether the output of the `cross_correlation_2d` function is close to the output of the `cv2.filter2D` function, which is used as a reference implementation.

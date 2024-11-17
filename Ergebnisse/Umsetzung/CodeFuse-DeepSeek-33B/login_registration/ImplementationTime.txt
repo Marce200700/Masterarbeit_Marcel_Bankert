@@ -1,0 +1,1 @@
+It took 1454.6333963871002seconds to implement the entire login_registration.

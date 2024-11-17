@@ -1,0 +1,108 @@
+ Here are the test cases I want to generate:
+
+1. test_plain_text_single_word
+2. test_plain_text_single_sentence
+3. test_plain_text_multiple_sentences
+4. test_plain_text_long_text
+5. test_plain_text_html
+6. test_plain_text_markdown
+7. test_plain_text_json
+8. test_plain_text_xml
+9. test_plain_text_csv
+10. test_plain_text_tsv
+
+Here are the test cases:
+
+```
+def test_plain_text_single_word(self):
+    """
+    Test case for calculating read time of a single word.
+    """
+    result = of_text('Hello')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+
+def test_plain_text_single_sentence(self):
+    """
+    Test case for calculating read time of a single sentence.
+    """
+    result = of_text('This is a single sentence.')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+
+def test_plain_text_multiple_sentences(self):
+    """
+    Test case for calculating read time of multiple sentences.
+    """
+    result = of_text('This is a single sentence. This is another sentence.')
+    self.assertEqual(result.seconds, 2)
+    self.assertEqual(result.text, '2 mins')
+    self.assertEqual(str(result), '2 mins read')
+
+def test_plain_text_long_text(self):
+    """
+    Test case for calculating read time of a long text.
+    """
+    result = of_text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.')
+    self.assertEqual(result.seconds, 10)
+    self.assertEqual(result.text, '10 mins')
+    self.assertEqual(str(result), '10 mins read')
+
+def test_plain_text_html(self):
+    """
+    Test case for calculating read time of HTML text.
+    """
+    result = of_text('<p>This is a paragraph of text.</p>')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+
+def test_plain_text_markdown(self):
+    """
+    Test case for calculating read time of Markdown text.
+    """
+    result = of_text('# This is a heading\n\nThis is a paragraph of text.')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+
+def test_plain_text_json(self):
+    """
+    Test case for calculating read time of JSON text.
+    """
+    result = of_text('{"key": "value"}')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+
+def test_plain_text_xml(self):
+    """
+    Test case for calculating read time of XML text.
+    """
+    result = of_text('<root><key>value</key></root>')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+
+def test_plain_text_csv(self):
+    """
+    Test case for calculating read time of CSV text.
+    """
+    result = of_text('key,value')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+
+def test_plain_text_tsv(self):
+    """
+    Test case for calculating read time of TSV text.
+    """
+    result = of_text('key\tvalue')
+    self.assertEqual(result.seconds, 1)
+    self.assertEqual(result.text, '1 min')
+    self.assertEqual(str(result), '1 min read')
+```
+
+Note that the expected results (e.g. `self.assertEqual(result.seconds, 1)`) are just examples and may need to be adjusted based on the actual implementation of the `of_text` function.

@@ -1,0 +1,24 @@
+
+The goal of this project is to create a hybrid image generator using different image processing techniques. The program should be able to generate a visually coherent hybrid image from two input images.
+Features and Functionalities:
+The program should have the following features:
+- Cross-correlation
+- Convolution
+- Gaussian blur
+- High-pass filter
+- Low-pass filter
+- Hybrid image generation
+Technical Requirements:
+The program should be implemented in Python. The following external libraries can be used for image processing tasks: NumPy and OpenCV.
+Requirements:
+The program should have the following requirements:
+- The input images should be of the same size.
+- The output image should be visually coherent to the two input images.
+Usage:
+The program should be able to generate a hybrid image from two input images. The user should be able to choose which technique is used for the generation of the hybrid image.
+Acceptance Criteria:
+The program should meet the following acceptance criteria:
+- The output image should be visually coherent to the two input images.
+- The program should be able to generate a hybrid image from two input images using different techniques.
+- The program should be implemented in Python.
+- The program should use NumPy and OpenCV for image processing tasks.

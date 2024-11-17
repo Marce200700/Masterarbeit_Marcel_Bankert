@@ -1,0 +1,158 @@
+'package.json' Setting: A file that contains metadata and dependency information for a Node.js project.
+'index.html' File: The entry point of a web page that is loaded in a user's browser.
+'main.js' File: The main entry point for the application's JavaScript code.
+'Vue.js' File: The main entry point for the Vue 2.x framework.
+'VueRouter.js' File: The main entry point for the Vue Router plugin.
+'App.vue' Component: The main component of the application.
+'Home.vue' Component: The home page component.
+'Login.vue' Component: The login page component.
+'Register.vue' Component: The registration page component.
+'users.service.js' File: A service file to interact with the backend.
+'store/index.js' File: The main store file for the application.
+'store/actions.js' File: The main actions file for the application.
+'store/mutations.js' File: The main mutations file for the application.
+'store/getters.js' File: The main getters file for the application.
+'store/modules/users.js' File: A module for managing user-related information.
+'store/modules/auth.js' File: A module for managing user authentication-related information.
+'store/state.js' File: The main state file for the application.
+'router/index.js' File: The main file for the application's routes.
+'views/Home.vue' File: The home page view.
+'views/Login.vue' File: The login page view.
+'views/Register.vue' File: The registration page view.
+'components/UserList.vue' Component: A component for displaying a list of users.
+'components/LoginForm.vue' Component: A component for displaying a login form.
+'components/RegisterForm.vue' Component: A component for displaying a registration form.
+'api/users.js' File: An API service for interacting with the backend's user-related endpoints.
+'api/auth.js' File: An API service for interacting with the backend's authentication-related endpoints.
+'api/index.js' File: The main API service file.
+'server.js' File: The main file for the backend.
+'routes/users.js' File: The main route file for the backend's user-related endpoints.
+'routes/auth.js' File: The main route file for the backend's authentication-related endpoints.
+'middleware/auth.js' File: Middleware for authenticating requests.
+'middleware/index.js' File: The main middleware file.
+'models/User.js' File: A model for interacting with the backend's database user schema.
+'models/index.js' File: The main models file.
+'seed.js' File: A script for populating the database with sample data.
+'config/config.js' File: A configuration file for the backend.
+'config/index.js' File: The main configuration file.
+'config/database.js' File: A configuration file for the backend's database.
+'config/auth.js' File: A configuration file for the backend's authentication.
+'config/server.js' File: A configuration file for the backend's server.
+'helpers/auth.js' File: A helper file for the backend's authentication.
+'helpers/index.js' File: The main helper file.
+'helpers/pagination.js' File: A helper file for the backend's pagination.
+'helpers/users.js' File: A helper file for the backend's user-related endpoints.
+'helpers/validation.js' File: A helper file for the backend's validation.
+'public/index.html' File: The entry point for the web page.
+'public/js/app.js' File: The main JavaScript file for the application.
+'public/js/chunk-vendors.js' File: The main vendor JavaScript file for the application.
+'public/css/app.css' File: The main CSS file for the application.
+'public/css/chunk-vendors.css' File: The main vendor CSS file for the application.
+'public/favicon.ico' File: The favicon for the web page.
+'public/img' Directory: A directory for images used by the application.
+'public/index.template.html' File: The main template file for the application.
+'src/main.js' File: The main JavaScript file for the application.
+'src/App.vue' File: The main component file for the application.
+'src/assets' Directory: A directory for assets used by the application.
+'src/components' Directory: A directory for Vue components used by the application.
+'src/router' Directory: A directory for the application's routing configuration.
+'src/store' Directory: A directory for the application's state management configuration.
+'src/views' Directory: A directory for the application's views.
+'src/helpers' Directory: A directory for helper functions used by the application.
+'src/models' Directory: A directory for models used by the application.
+'src/pages' Directory: A directory for pages used by the application.
+'src/routes' Directory: A directory for routes used by the application.
+'src/api' Directory: A directory for API services used by the application.
+'src/mixins' Directory: A directory for mixins used by the application.
+'src/middleware' Directory: A directory for middleware used by the application.
+'src/plugins' Directory: A directory for plugins used by the application.
+'src/assets/App.vue' File: The main component file for the application.
+'src/assets/scss/style.scss' File: The main SCSS file for the application.
+'src/assets/scss/variables.scss' File: A file for SCSS variables used by the application.
+'src/assets/scss/helpers.scss' File: A file for SCSS helpers used by the application.
+'src/assets/scss/components.scss' File: A file for SCSS components used by the application.
+'src/assets/scss/pages.scss' File: A file for SCSS pages used by the application.
+'src/assets/scss/base.scss' File: A file for SCSS base styles used by the application.
+'src/assets/scss/mixins.scss' File: A file for SCSS mixins used by the application.
+'src/assets/js/App.vue' File: The main JavaScript file for the application.
+'src/assets/js/main.js' File: The main JavaScript file for the application.
+'src/assets/js/bootstrap.js' File: The main JavaScript file for the application's bootstrap process.
+'src/assets/js/plugins.js' File: A file for JavaScript plugins used by the application.
+'src/assets/js/mixins.js' File: A file for JavaScript mixins used by the application.
+'src/assets/js/helpers.js' File: A file for JavaScript helpers used by the application.
+'src/assets/js/middleware.js' File: A file for JavaScript middleware used by the application.
+'src/assets/js/components.js' File: A file for JavaScript components used by the application.
+'src/assets/js/pages.js' File: A file for JavaScript pages used by the application.
+'src/assets/js/routes.js' File: A file for JavaScript routes used by the application.
+'src/assets/js/store.js' File: A file for JavaScript store used by the application.
+'src/assets/js/models.js' File: A file for JavaScript models used by the application.
+'src/assets/js/services.js' File: A file for JavaScript services used by the application.
+'src/components/Home.vue' File: The home page component.
+'src/components/Login.vue' File: The login page component.
+'src/components/Register.vue' File: The registration page component.
+'src/components/UserList.vue' File: A component for displaying a list of users.
+'src/components/LoginForm.vue' File: A component for displaying a login form.
+'src/components/RegisterForm.vue' File: A component for displaying a registration form.
+'src/components/User.vue' File: A component for displaying a user's information.
+'src/components/Pagination.vue' File: A component for displaying pagination.
+'src/components/UserTable.vue' File: A component for displaying a user table.
+'src/components/UserCard.vue' File: A component for displaying a user card.
+'src/components/Alert.vue' File: A component for displaying an alert.
+'src/components/Spinner.vue' File: A component for displaying a loading spinner.
+'src/components/Button.vue' File: A component for displaying a button.
+'src/components/Navbar.vue' File: A component for displaying a navigation bar.
+'src/components/Sidebar.vue' File: A component for displaying a sidebar.
+'src/components/Footer.vue' File: A component for displaying a footer.
+'src/components/Icon.vue' File: A component for displaying an icon.
+'src/components/Input.vue' File: A component for displaying an input field.
+'src/components/Modal.vue' File: A component for displaying a modal.
+'src/components/Form.vue' File: A component for displaying a form.
+'src/components/Progress.vue' File: A component for displaying progress.
+'src/components/Card.vue' File: A component for displaying a card.
+'src/components/Table.vue' File: A component for displaying a table.
+'src/components/Header.vue' File: A component for displaying a header.
+'src/components/Dropdown.vue' File: A component for displaying a dropdown.
+'src/components/Menu.vue' File: A component for displaying a menu.
+'src/components/Avatar.vue' File: A component for displaying an avatar.
+'src/components/Badge.vue' File: A component for displaying a badge.
+'src/components/Tooltip.vue' File: A component for displaying a tooltip.
+'src/components/Pagination.vue' File: A component for displaying pagination.
+'src/components/Alert.vue' File: A component for displaying an alert.
+'src/components/Spinner.vue' File: A component for displaying a loading spinner.
+'src/components/Button.vue' File: A component for displaying a button.
+'src/components/Navbar.vue' File: A component for displaying a navigation bar.
+'src/components/Sidebar.vue' File: A component for displaying a sidebar.
+'src/components/Footer.vue' File: A component for displaying a footer.
+'src/components/Icon.vue' File: A component for displaying an icon.
+'src/components/Input.vue' File: A component for displaying an input field.
+'src/components/Modal.vue' File: A component for displaying a modal.
+'src/components/Form.vue' File: A component for displaying a form.
+'src/components/Progress.vue' File: A component for displaying progress.
+'src/components/Card.vue' File: A component for displaying a card.
+'src/components/Table.vue' File: A component for displaying a table.
+'src/components/Header.vue' File: A component for displaying a header.
+'src/components/Dropdown.vue' File: A component for displaying a dropdown.
+'src/components/Menu.vue' File: A component for displaying a menu.
+'src/components/Avatar.vue' File: A component for displaying an avatar.
+'src/components/Badge.vue' File: A component for displaying a badge.
+'src/components/Tooltip.vue' File: A component for displaying a tooltip.
+'src/components/Pagination.vue' File: A component for displaying pagination.
+'src/components/Alert.vue' File: A component for displaying an alert.
+'src/components/Spinner.vue' File: A component for displaying a loading spinner.
+'src/components/Button.vue' File: A component for displaying a button.
+'src/components/Navbar.vue' File: A component for displaying a navigation bar.
+'src/components/Sidebar.vue' File: A component for displaying a sidebar.
+'src/components/Footer.vue' File: A component for displaying a footer.
+'src/components/Icon.vue' File: A component for displaying an icon.
+'src/components/Input.vue' File: A component for displaying an input field.
+'src/components/Modal.vue' File: A component for displaying a modal.
+'src/components/Form.vue' File: A component for displaying a form.
+'src/components/Progress.vue' File: A component for displaying progress.
+'src/components/Card.vue' File: A component for displaying a card.
+'src/components/Table.vue' File: A component for displaying a table.
+'src/components/Header.vue' File: A component for displaying a header.
+'src/components/Dropdown.vue' File: A component for displaying a dropdown.
+'src/components/Menu.vue' File: A component for displaying a menu.
+'src/components/Avatar.vue' File: A component for displaying an avatar.
+'src/components/Badge.vue' File: A component for displaying a badge.
+'src/components/Tooltip.vue' File: A component for displaying a tooltip.

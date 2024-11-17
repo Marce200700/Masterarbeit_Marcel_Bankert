@@ -1,0 +1,57 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/docker/base$ docker build -t deleteimageafterdone .
+[+] Building 822.3s (46/46) FINISHED                                                                                                                                        docker:default
+ => [internal] load build definition from dockerfile                                                                                                                                  0.0s
+ => => transferring dockerfile: 2.91kB                                                                                                                                                0.0s
+ => [internal] load .dockerignore                                                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                                                      0.8s
+ => [internal] load build context                                                                                                                                                     0.0s
+ => => transferring context: 46B                                                                                                                                                      0.0s
+ => [ 1/41] FROM docker.io/library/ubuntu:latest@sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5dc1ef9006b                                                              0.0s
+ => CACHED [ 2/41] RUN apt-get update                                                                                                                                                 0.0s
+ => CACHED [ 3/41] RUN mkdir ~/libraries                                                                                                                                              0.0s
+ => CACHED [ 4/41] RUN apt-get install -y g++-11 gcc-11 git build-essential wget libtool autoconf unzip libssl-dev libnss3 xvfb lsb-release curl gpg libatlas-base-dev                0.0s
+ => CACHED [ 5/41] RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11                                                     0.0s
+ => CACHED [ 6/41] WORKDIR /root/libraries                                                                                                                                            0.0s
+ => CACHED [ 7/41] RUN wget https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz                                           0.0s
+ => CACHED [ 8/41] RUN tar xf openjdk-14_linux-x64_bin.tar.gz                                                                                                                         0.0s
+ => CACHED [ 9/41] RUN mv jdk-14 /opt/                                                                                                                                                0.0s
+ => CACHED [10/41] RUN tee /etc/profile.d/jdk14.sh << EOF                                                                                                                             0.0s
+ => CACHED [11/41] RUN apt-get install -y python3.10                                                                                                                                  0.0s
+ => CACHED [12/41] RUN apt-get install -y nodejs npm                                                                                                                                  0.0s
+ => CACHED [13/41] RUN wget "https://go.dev/dl/go1.21.4.linux-amd64.tar.gz"                                                                                                           0.0s
+ => CACHED [14/41] RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz                                                                                     0.0s
+ => CACHED [15/41] RUN curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg                                                      0.0s
+ => CACHED [16/41] RUN echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/redi  0.0s
+ => CACHED [17/41] RUN apt-get update                                                                                                                                                 0.0s
+ => CACHED [18/41] RUN apt-get install -y redis                                                                                                                                       0.0s
+ => CACHED [19/41] RUN apt install locales;locale-gen en_US.UTF-8                                                                                                                     0.0s
+ => CACHED [20/41] RUN apt-get install sqlite3 libsqlite3-dev                                                                                                                         0.0s
+ => CACHED [21/41] RUN g++ --version                                                                                                                                                  0.0s
+ => CACHED [22/41] RUN java --version                                                                                                                                                 0.0s
+ => [23/41] RUN python3 --version                                                                                                                                                     0.4s
+ => [24/41] RUN node --version                                                                                                                                                        0.5s
+ => [25/41] RUN go version                                                                                                                                                            0.6s
+ => [26/41] RUN wget "https://github.com/Kitware/CMake/releases/download/v3.28.0-rc5/cmake-3.28.0-rc5.tar.gz"                                                                         1.9s
+ => [27/41] RUN tar -xzvf cmake-3.28.0-rc5.tar.gz                                                                                                                                     3.0s
+ => [28/41] RUN sh cmake-3.28.0-rc5/bootstrap                                                                                                                                       253.1s
+ => [29/41] RUN make -j4                                                                                                                                                            228.7s
+ => [30/41] RUN make install                                                                                                                                                          5.8s
+ => [31/41] RUN git clone https://github.com/google/googletest.git -b v1.14.0                                                                                                         2.3s
+ => [32/41] RUN cd googletest;mkdir build;cd build;cmake ..;make -j4;make install                                                                                                     6.5s
+ => [33/41] RUN apt-get update                                                                                                                                                        2.0s
+ => [34/41] RUN apt-get install -y wget && rm -rf /var/lib/apt/lists/*                                                                                                                1.3s
+ => [35/41] RUN wget     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh     && mkdir /root/.conda     && bash Miniconda3-latest-Linux-x86_64.sh -b     && rm  14.4s
+ => [36/41] RUN conda --version                                                                                                                                                       0.7s
+ => [37/41] RUN conda init bash                                                                                                                                                       0.7s
+ => [38/41] COPY chatdev_requirements.txt /opt/app/requirements.txt                                                                                                                   0.0s
+ => [39/41] RUN conda create -n devbench python=3.10 -y                                                                                                                              15.4s
+ => [40/41] RUN pip install -r /opt/app/requirements.txt                                                                                                                             12.7s
+ => [41/41] RUN conda install -c "nvidia/label/cuda-12.1.0" cuda -y                                                                                                                 233.5s
+ => exporting to image                                                                                                                                                               37.6s
+ => => exporting layers                                                                                                                                                              37.6s
+ => => writing image sha256:6f2022c02b205fb34ee7915da17d776eafb83ace27be1ad2543a26367353dd08                                                                                          0.0s
+ => => naming to docker.io/library/deleteimageafterdone                                                                                                                               0.0s
+
+What's Next?
+  View summary of image vulnerabilities and recommendations → docker scout quickview

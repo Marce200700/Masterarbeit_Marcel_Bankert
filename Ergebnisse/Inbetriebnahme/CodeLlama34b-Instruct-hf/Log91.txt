@@ -1,0 +1,16 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: The error message is pretty clear:
+
+\begin{code}
+CondaValueError: too few arguments, must supply command line package specs or --file
+\end{code}
+
+You are missing the package name to install.
+
+Comment: I have added the package name but still the same error.
+
+Comment: @MarcelKlein: Please update your question with the new Dockerfile and the new error message.

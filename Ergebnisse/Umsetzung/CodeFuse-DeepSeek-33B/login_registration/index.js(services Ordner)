@@ -1,0 +1,11 @@
+import axios from 'axios';
+
+export default {
+  getAllUsers() {
+    return axios.get('/users').then(response => response.data);
+  },
+
+  deleteUser(id) {
+    return axios.delete(`/users/${id}`).then(response => response.data);
+  },
+};

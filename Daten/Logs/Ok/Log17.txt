@@ -1,0 +1,15 @@
+npm start
+
+> listen-now-frontend@1.0.0 start C:\Windows\System32\workspace\masterarbeit\DevBench\benchmark_data\javascript\listen-now-frontend
+> npm run dev
+
+
+> listen-now-frontend@1.0.0 dev C:\Windows\System32\workspace\masterarbeit\DevBench\benchmark_data\javascript\listen-now-frontend
+> webpack-dev-server --inline --progress --config build/webpack.dev.conf.js
+
+ 13% building modules 25/28 modules 3 active ...cript\listen-now-frontend\src\App.vue{ parser: "babylon" } is deprecated; we now treat it as { parser: "babel" }.
+ 95% emitting
+
+ DONE  Compiled successfully in 6201ms                                                                                                                                                                                                                 22:39:11
+
+ I  Your application is running here: http://localhost:8080

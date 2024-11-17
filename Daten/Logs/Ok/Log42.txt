@@ -1,0 +1,17 @@
+rm -f src/archive.o src/miniz.c.o src/tinyxml2.o src/utils.o src/workbook.o src/worksheet.o src/main.o xlsx2csv
+g++ -std=c++17 -Iinclude -c -o src/archive.o src/archive.cpp
+gcc    -Iinclude   -c -o src/miniz.c.o src/miniz.c
+src/miniz.c:3185:9: note: ‘#pragma message: Using fopen, ftello, fseeko, stat() etc. path for file I/O - this path may not support large files.’
+ 3185 | #pragma message("Using fopen, ftello, fseeko, stat() etc. path for file I/O - this path may not support large files.")
+      |         ^~~~~~~
+g++ -std=c++17 -Iinclude -c -o src/tinyxml2.o src/tinyxml2.cpp
+g++ -std=c++17 -Iinclude -c -o src/utils.o src/utils.cpp
+g++ -std=c++17 -Iinclude -c -o src/workbook.o src/workbook.cpp
+g++ -std=c++17 -Iinclude -c -o src/worksheet.o src/worksheet.cpp
+g++ -std=c++17 -Iinclude -c -o src/main.o src/main.cpp
+g++ -std=c++17 -Iinclude -o xlsx2csv src/archive.o src/miniz.c.o src/tinyxml2.o src/utils.o src/workbook.o src/worksheet.o src/main.o
+Test 0: [PASSED]. Details: Test Bad Usage passed
+Test 1: [PASSED]. Details: Test Bad Input File passed
+Test 2: [PASSED].
+Test 3: [PASSED].
+Test 4: [PASSED].

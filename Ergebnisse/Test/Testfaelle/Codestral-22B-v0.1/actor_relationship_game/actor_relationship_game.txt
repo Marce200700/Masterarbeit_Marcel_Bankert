@@ -1,0 +1,81 @@
+
+
+ Sure, here are ten more test cases based on the `testAddActor` function:
+
+1. Test adding an actor with an existing ID
+```java
+@Test
+void testAddActorWithExistingId() {
+    graph.addActor(new Actor("101", "New Name"));
+    assertEquals("John Doe", graph.getActors().get("101").getName());
+}
+```
+2. Test adding an actor with a null ID
+```java
+@Test
+void testAddActorWithNullId() {
+    assertThrows(IllegalArgumentException.class, () -> graph.addActor(new Actor(null, "New Actor")));
+}
+```
+3. Test adding an actor with an empty ID
+```java
+@Test
+void testAddActorWithEmptyId() {
+    assertThrows(IllegalArgumentException.class, () -> graph.addActor(new Actor("", "New Actor")));
+}
+```
+4. Test adding an actor with a null name
+```java
+@Test
+void testAddActorWithNullName() {
+    assertThrows(IllegalArgumentException.class, () -> graph.addActor(new Actor("103", null)));
+}
+```
+5. Test adding an actor with an empty name
+```java
+@Test
+void testAddActorWithEmptyName() {
+    assertThrows(IllegalArgumentException.class, () -> graph.addActor(new Actor("103", "")));
+}
+```
+6. Test adding an actor with a whitespace name
+```java
+@Test
+void testAddActorWithWhitespaceName() {
+    assertThrows(IllegalArgumentException.class, () -> graph.addActor(new Actor("103", " ")));
+}
+```
+7. Test adding multiple actors with unique IDs
+```java
+@Test
+void testAddMultipleActors() {
+    graph.addActor(new Actor("103", "Actor 3"));
+    graph.addActor(new Actor("104", "Actor 4"));
+    assertEquals(4, graph.getActors().size());
+}
+```
+8. Test adding multiple actors with the same ID
+```java
+@Test
+void testAddMultipleActorsWithSameId() {
+    graph.addActor(new Actor("101", "New Name"));
+    assertEquals("John Doe", graph.getActors().get("101").getName());
+    assertEquals(2, graph.getActors().size());
+}
+```
+9. Test adding multiple actors with the same name
+```java
+@Test
+void testAddMultipleActorsWithSameName() {
+    graph.addActor(new Actor("103", "John Doe"));
+    assertEquals(3, graph.getActors().size());
+}
+```
+10. Test adding an actor and checking if it's added to the movie's actor list
+```java
+@Test
+void testAddActorToMovieList() {
+    graph.addActorToMovie("101", "301");
+    assertTrue(graph.getMovies().get("301").getActorIds().contains("101"));
+}
+```

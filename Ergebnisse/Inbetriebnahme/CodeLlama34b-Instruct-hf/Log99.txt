@@ -1,0 +1,20 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: The error message is pretty clear:
+
+\begin{code}
+redis.clients.jedis.exceptions.JedisConnectionException: Failed to connect to any host resolved for DNS name.
+\end{code}
+
+It means that the application is trying to connect to a Redis server, but it cannot find any server to connect to.
+
+The reason is that the application is trying to connect to a Redis server using the hostname `redis`, but there is no such hostname in your network.
+
+You need to either:
+\begin{itemize}
+\item Install a Redis server on your machine and configure it to listen on the `redis` hostname.
+\item Configure the application to connect to a different Redis server.
+\end{itemize}

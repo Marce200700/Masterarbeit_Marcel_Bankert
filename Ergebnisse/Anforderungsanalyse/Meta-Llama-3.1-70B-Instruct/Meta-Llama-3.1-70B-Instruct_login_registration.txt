@@ -1,0 +1,93 @@
+Here is your Software Requirement Specification:
+
+**Introduction**
+
+The Login-Registration program is a user management interface that enables users to register and log in to access a protected page. The program features three pages: user authentication, registration, and a protected page with a user list. This software requirement specification outlines the functional and non-functional requirements for the development of the Login-Registration program.
+
+**Goals**
+
+The primary goal of the Login-Registration program is to provide a user-friendly and secure interface for user registration and login, while also allowing users to manage their accounts and view a list of registered users.
+
+**Features and Functionalities**
+
+1. User Authentication Page:
+        * Two input fields for username and password (password input type)
+        * Two buttons: Login and Register
+2. Registration Page:
+        * Four input fields: first name, last name, username, and password (password input type)
+        * Password constraint: at least six characters long
+        * Cancel button to return to login page
+3. Protected Page:
+        * Greeting message with user's first name
+        * List of registered users with first name, last name, and delete button
+
+**Technical Constraints**
+
+1. Frontend: JavaScript, Vue2.x, Babel6.x, NPM, CSS
+2. Backend: Node.js, Express.js, MongoDB, Passport.js
+3. Deployment: Cloud platform (AWS or Google Cloud)
+4. Database: MongoDB
+5. Browser compatibility: Chrome, Firefox, Safari, Edge
+6. Mobile device compatibility: smartphones, tablets
+
+**Use Cases**
+
+1. User Registration:
+        * User navigates to the registration page
+        * User enters valid registration information (first name, last name, username, password)
+        * User submits registration form
+        * User is redirected to the login page
+2. User Login:
+        * User navigates to the login page
+        * User enters valid login credentials (username, password)
+        * User submits login form
+        * User is redirected to the protected page
+3. User Account Management:
+        * User logs in to the protected page
+        * User views the list of registered users
+        * User deletes a user account
+
+**Requirements**
+
+1. User data must be stored securely in the MongoDB database
+2. Passwords must be hashed and stored securely
+3. User authentication must be implemented using Passport.js
+4. User registration and login forms must be validated for input errors
+5. User interface must be intuitive, user-friendly, and flexible
+
+**Data Requirements**
+
+1. User data: first name, last name, username, password
+2. User account data: user ID, created date, updated date
+
+**Design and User Interface**
+
+1. User interface must be responsive and compatible with common browsers and mobile devices
+2. User interface must be intuitive and easy to use
+3. Error messages must be displayed for invalid input or login credentials
+
+**Acceptance Criteria**
+
+1. User registration and login functionality works as expected
+2. User data is stored securely in the MongoDB database
+3. User interface is intuitive and user-friendly
+4. User account management functionality works as expected
+
+**Dependencies**
+
+1. Vue2.x
+2. Babel6.x
+3. NPM
+4. Node.js
+5. Express.js
+6. MongoDB
+7. Passport.js
+8. AWS or Google Cloud
+
+**Terms/Concepts Explanation**
+
+1. **Frontend**: The client-side of the application, responsible for user interaction and presentation.
+2. **Backend**: The server-side of the application, responsible for data storage, authentication, and business logic.
+3. **Cloud platform**: A remote platform that provides infrastructure and services for deploying and running applications.
+4. **MongoDB**: A NoSQL database used for storing user data.
+5. **Passport.js**: A Node.js library used for user authentication.

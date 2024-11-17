@@ -1,0 +1,165 @@
+
+ Sure, I can help you with that. Here's a basic structure for your unit tests based on the provided software requirements specification, software design, and source code. I'll create separate files for each unit that will be tested.
+
+1. **HomePage.spec.js**
+
+```javascript
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import Vuex from 'vuex'
+import HomePage from '@/home/HomePage.vue'
+import { getAllUsers, deleteUser } from '@/_store/users.module'
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+describe('HomePage.vue', () => {
+  let actions
+  let store
+
+  beforeEach(() => {
+    actions = {
+      getAllUsers: jest.fn(),
+      deleteUser: jest.fn()
+    }
+    store = new Vuex.Store({
+      modules: {
+        users: {
+          namespaced: true,
+          actions
+        }
+      }
+    })
+  })
+
+  it('dispatches getAllUsers action on creation', () => {
+    shallowMount(HomePage, { store, localVue })
+    expect(actions.getAllUsers).toHaveBeenCalled()
+  })
+
+  it('dispatches deleteUser action when delete link is clicked', () => {
+    const wrapper = shallowMount(HomePage, { store, localVue })
+    wrapper.find('.delete-link').trigger('click')
+    expect(actions.deleteUser).toHaveBeenCalled()
+  })
+})
+```
+
+2. **LoginPage.spec.js**
+
+```javascript
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import Vuex from 'vuex'
+import LoginPage from '@/login/LoginPage.vue'
+import { login } from '@/_store/account.module'
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+describe('LoginPage.vue', () => {
+  let actions
+  let store
+
+  beforeEach(() => {
+    actions = {
+      login: jest.fn()
+    }
+    store = new Vuex.Store({
+      modules: {
+        account: {
+          namespaced: true,
+          actions
+        }
+      }
+    })
+  })
+
+  it('dispatches login action when form is valid', () => {
+    const wrapper = shallowMount(LoginPage, { store, localVue })
+    wrapper.setData({
+      user: {
+        username: 'test',
+        password: 'password'
+      },
+      submitted: true
+    })
+    wrapper.find('form').trigger('submit.prevent')
+    expect(actions.login).toHaveBeenCalled()
+  })
+
+  it('does not dispatch login action when form is invalid', () => {
+    const wrapper = shallowMount(LoginPage, { store, localVue })
+    wrapper.setData({
+      user: {
+        username: '',
+        password: ''
+      },
+      submitted: true
+    })
+    wrapper.find('form').trigger('submit.prevent')
+    expect(actions.login).not.toHaveBeenCalled()
+  })
+})
+```
+
+3. **RegisterPage.spec.js**
+
+```javascript
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import Vuex from 'vuex'
+import RegisterPage from '@/register/RegisterPage.vue'
+import { register } from '@/_store/account.module'
+
+const localVue = createLocalVue()
+localVue.use(Vuex)
+
+describe('RegisterPage.vue', () => {
+  let actions
+  let store
+
+  beforeEach(() => {
+    actions = {
+      register: jest.fn()
+    }
+    store = new Vuex.Store({
+      modules: {
+        account: {
+          namespaced: true,
+          actions
+        }
+      }
+    })
+  })
+
+  it('dispatches register action when form is valid', () => {
+    const wrapper = shallowMount(RegisterPage, { store, localVue })
+    wrapper.setData({
+      user: {
+        firstName: 'Test',
+        lastName: 'User',
+        username: 'test',
+        password: 'password'
+      },
+      submitted: true
+    })
+    wrapper.find('form').trigger('submit.prevent')
+    expect(actions.register).toHaveBeenCalled()
+  })
+
+  it('does not dispatch register action when form is invalid', () => {
+    const wrapper = shallowMount(RegisterPage, { store, localVue })
+    wrapper.setData({
+      user: {
+        firstName: '',
+        lastName: '',
+        username: '',
+        password: ''
+      },
+      submitted: true
+    })
+    wrapper.find('form').trigger('submit.prevent')
+    expect(actions.register).not.toHaveBeenCalled()
+  })
+})
+```
+
+These tests cover the basic functionality of your components. They mock the Vuex store and actions, and use Jest to test the component's behavior. They check that the correct actions are dispatched when the form is submitted, and that the actions are not dispatched when the form is invalid.

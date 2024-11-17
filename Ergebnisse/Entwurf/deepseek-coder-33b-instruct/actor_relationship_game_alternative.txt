@@ -1,0 +1,113 @@
+Design Diagrams
+@startuml
+class Actor {
+- id: int
+- name: String
+- movies: Set<Integer>
+}
+
+class Movie {
+- id: int
+- title: String
+- cast: Set<Integer>
+}
+
+class ActorGraph {
+- actors: Map<Integer, Actor>
+- movies: Map<Integer, Movie>
+}
+
+class TMDBApi {
+- fetchActors(int actorId): Actor
+- fetchMovies(int movieId): Movie
+}
+
+class GraphCreation {
+- createGraph(): ActorGraph
+}
+
+class ActorGraphUtil {
+- deserializeGraph(String path): ActorGraph
+- serializeGraph(ActorGraph graph, String path)
+- extractActorNames(ActorGraph graph, String path)
+}
+
+class GameplayInterface {
+- loadGraph(String path): ActorGraph
+- findConnections(ActorGraph graph, String actorPath, String outputPath)
+}
+
+TMDBApi --|> Actor : uses
+TMDBApi --|> Movie : uses
+GraphCreation --> ActorGraph : creates
+ActorGraphUtil --> ActorGraph : handles
+GameplayInterface --> ActorGraph : loads
+@enduml
+
+@startuml
+participant A as ActorGraphUtil
+participant B as GameplayInterface
+participant C as GraphCreation
+participant D as TMDBApi
+
+A -> B: loadGraph(actorGraph)
+B -> A: deserializeGraph(actorGraph)
+A --> B: actorGraph
+B -> C: createGraph()
+C -> D: fetchActors(actorId)
+D --> C: actor
+C -> D: fetchMovies(movieId)
+D --> C: movie
+C --> B: actorGraph
+B -> A: extractActorNames(actorGraph, filePath)
+A -> B: writeActorNamesToFile(actorNames, filePath)
+B -> A: findConnections(actorGraph, actorPath, outputPath)
+A --> B: actorConnections
+B -> A: writeConnectionsToFile(actorConnections, outputPath)
+@enduml
+
+File Tree
+
+- Actor_Relationship_Game
+  - src
+    - main
+      - java
+        - Actor_Relationship_Game
+          - Actor.java
+          - Movie.java
+          - ActorGraph.java
+          - TMDBApi.java
+          - GraphCreation.java
+          - ActorGraphUtil.java
+          - GameplayInterface.java
+          - Main.java
+      - resources
+        - actorGraph.ser
+        - actor_connection_results.txt
+        - actors_list.txt
+    - test
+      - java
+        - Actor_Relationship_Game
+          - ActorTest.java
+          - MovieTest.java
+          - ActorGraphTest.java
+          - TMDBApiTest.java
+          - GraphCreationTest.java
+          - ActorGraphUtilTest.java
+          - GameplayInterfaceTest.java
+  - build.gradle
+  - README.md
+  - acceptanceTest.sh
+  - test.sh
+
+The "src/main/java/Actor_Relationship_Game" directory contains the main source files for the Actor Relationship Game, including the Actor, Movie, ActorGraph, TMDBApi, GraphCreation, ActorGraphUtil, GameplayInterface classes, and a Main class that contains the main method. The "src/test/java/Actor_Relationship_Game" directory contains the test source files for the Actor Relationship Game. The "src/main/resources" directory contains the serialized actor graph file (actorGraph.ser) and the output file for the actor connection results (actor_connection_results.txt). The "src/main/resources" directory also contains the file that lists all the actors (actors_list.txt). The "build.gradle" file is used to define the project's dependencies and tasks. The "README.md" file contains information about the project, including usage instructions and design diagrams. The "acceptanceTest.sh" and "test.sh" files are used to run the acceptance and unit tests, respectively.
+
+Please note: The actual implementation of the classes and methods in the project is not provided in this description. It is assumed that the classes and methods have been correctly implemented according to the requirements and the above design diagrams.
+
+The main class (Main) is the entry point of the application. It uses the GraphCreation, ActorGraphUtil, and GameplayInterface classes to create and use the actor graph. The TMDBApi class is used by GraphCreation to fetch data from the TMDB API.
+
+The acceptanceTest.sh and test.sh scripts are used to run the acceptance and unit tests, respectively. Please ensure that these scripts are properly configured to run the tests with the correct dependencies and environment variables.
+
+Please remember that this is a simplified description of the project. The actual implementation may include additional classes and methods, as well as additional configuration and setup.
+
+Please let me know if you have any questions or need further clarification on this.

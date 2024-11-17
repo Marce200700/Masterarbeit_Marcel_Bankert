@@ -1,0 +1,63 @@
+ For testing purposes, it is allowed to use additional libraries like pytest.
+
+**Software Requirement Specification (SRS) for Hone: CSV-to-Nested-JSON Converter**
+
+### Introduction
+Hone is a Python-based command-line interface (CLI) utility that efficiently converts Comma Separated Values (CSV) files into human-readable, nested JSON files with customizable delimiters and output schema. Leveraging built-in libraries (`csv`, `json`, `argparse`, and `contextlib`), Hone ensures seamless parsing, precise formatting, and user-friendly configuration.
+
+### Goals
+1. **Accurate Conversion**: Faithfully transform CSV data into well-structured, nested JSON files.
+2. **Customizability**: Allow users to specify delimiters (optional) and output schema templates (optional).
+3. **Usability**: Provide an intuitive CLI interface with required CSV and JSON file paths, and optional delimiter and schema parameters.
+
+### Features and Functionalities
+1. **CSV Parsing**:
+	* Support various delimiters (e.g., comma, semicolon, tab).
+	* Robustly handle diverse CSV formats.
+2. **Nested JSON Generation**:
+	* Produce indented, sorted-key JSON files for enhanced readability.
+	* Apply user-defined schema templates (if provided) to shape output structure.
+3. **CLI Interface**:
+	* Mandatory: `--csv` and `--json` file paths.
+	* Optional: `--delimiter` (default: comma) and `--schema` (for custom output templates).
+
+### Supporting Data Description
+* Input: CSV files with varying delimiters.
+* Output: Nested JSON files with precise formatting, adhering to user-specified schema (if provided).
+
+### Technical Constraints
+1. **Implementation**: Exclusively utilize built-in Python libraries (`csv`, `json`, `argparse`, and `contextlib`) for core functionality.
+2. **Testing**: Permitted use of additional libraries (e.g., `pytest`) for comprehensive testing.
+
+### Requirements
+
+**Functional Requirements**
+1. Correctly parse CSV files with user-specified delimiters (or default comma).
+2. Generate nested JSON files with:
+	* Proper indentation and sorted keys.
+	* Optional adherence to user-provided schema templates.
+3. Implement intuitive CLI interface with:
+	* Required `--csv` and `--json` file paths.
+	* Optional `--delimiter` and `--schema` parameters.
+
+**Non-Functional Requirements**
+1. **Performance**: Optimize parsing and generation for efficient processing of large CSV files.
+2. **Readability**: Ensure generated JSON files exhibit clear, human-readable structure and formatting.
+
+### Dependencies
+None (core functionality relies solely on built-in Python libraries).
+
+### Acceptance Criteria
+1. Successful conversion of diverse CSV files (various delimiters) to nested JSON with correct:
+	* Indentation.
+	* Key sorting.
+	* Schema adherence (if specified).
+2. CLI interface correctly handles:
+	* Required `--csv` and `--json` file paths.
+	* Optional `--delimiter` and `--schema` parameters.
+3. Performance: Efficient processing of large CSV files without significant memory or time overhead.
+
+### Terms/Concepts Explanation
+* **Nested JSON**: Hierarchically structured JSON data, enhancing readability by grouping related information.
+* **Schema template**: User-defined blueprint specifying the desired output structure for generated nested JSON files.
+* **Delimiter**: Character separating values within CSV files (e.g., comma, semicolon); customizable via `--delimiter` option.

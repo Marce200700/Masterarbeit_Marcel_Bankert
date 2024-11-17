@@ -1,0 +1,62 @@
+Introduction
+
+The Actor Relationship Game is a Java-based program designed to explore relationships between actors based on the films they have participated in. The program utilizes data from The Movie Database (TMDB) API, adhering to its terms and usage limits. The primary goal of the program is to identify and visually represent the shortest path between actors.
+
+Goals
+
+* Explore relationships between actors based on film participation
+* Identify the shortest path between actors using a breadth-first search algorithm
+* Visually represent the shortest path using GraphStream library
+* Adhere to TMDB API terms and usage limits
+
+Features and Functionalities
+
+* Fetch actor and movie data from TMDB API using a provided API key
+* Search for specific actors and films by their respective IDs
+* Represent actors and movies as objects with unique IDs, names, and sets of movie/actor IDs
+* Traverse the graph of actors and movies using a breadth-first search algorithm
+* Save the shortest path found between actors in a .txt file called "actor_connection_results.txt"
+* Visually represent the shortest path using GraphStream library
+
+Technical Constraints
+
+* Java-based program
+* Utilize Gradle, TMDB API key, java.util, java.io, java.nio, com.google.gson, and org.junit.jupiter.api
+* Java Runtime Environment required
+* Adhere to TMDB API terms and usage limits
+
+Requirements
+
+* Store TMDB API key in an environment variable called "TMDB_API_KEY"
+* Handle API calls to fetch actor and movie data
+* Implement breadth-first search algorithm to find the shortest path between actors
+* Use GraphStream library to visually represent the shortest path
+* Save the shortest path found in a .txt file called "actor_connection_results.txt"
+
+Acceptance Criteria
+
+* The program can successfully fetch actor and movie data from TMDB API
+* The program can search for specific actors and films by their respective IDs
+* The program can identify the shortest path between actors using a breadth-first search algorithm
+* The program can visually represent the shortest path using GraphStream library
+* The program saves the shortest path found in a .txt file called "actor_connection_results.txt"
+
+Dependencies
+
+* Gradle
+* TMDB API key
+* java.util
+* java.io
+* java.nio
+* com.google.gson
+* org.junit.jupiter.api
+* Java Runtime Environment
+* GraphStream library
+
+Terms/Concepts Explanation
+
+* Actor: An object representing an actor with a unique ID, name, and set of movie IDs they participated in.
+* Movie: An object representing a movie with a unique ID, name, and set of unique actor IDs involved in the movie.
+* Breadth-first search algorithm: A graph traversal algorithm used to find the shortest path between actors.
+* GraphStream library: A Java library used to visually represent the shortest path between actors.
+* TMDB API: The Movie Database API, providing data on actors and movies.

@@ -1,0 +1,98 @@
+ It is often used to remove noise and retain large-scale features.
+
+Here is the UML-class diagram:
+```plantuml
+@startuml
+class Image:
+  - data: numpy.ndarray
+  - width: int
+  - height: int
+  + __init__(path: str)
+  + apply_filter(filter: Filter): Image
+  + blur(sigma: float, kernel_size: int): Image
+  + cross_correlate(other: Image): numpy.ndarray
+  + convolve(kernel: numpy.ndarray): Image
+
+class Filter:
+  <<abstract>>
+  + apply(image: Image): Image
+
+class LowPassFilter(Filter):
+  - cutoff_frequency: float
+  + __init__(cutoff_frequency: float)
+  + apply(image: Image): Image
+
+class HighPassFilter(Filter):
+  - cutoff_frequency: float
+  + __init__(cutoff_frequency: float)
+  + apply(image: Image): Image
+
+class HybridImage:
+  - image1: Image
+  - image2: Image
+  - mix_ratio: float
+  - filter1: Filter
+  - filter2: Filter
+  + __init__(image1: Image, image2: Image, mix_ratio: float, filter1: Filter, filter2: Filter)
+  + generate(): Image
+
+class GaussianBlur:
+  - sigma: float
+  - kernel_size: int
+  + __init__(sigma: float, kernel_size: int)
+  + apply(image: Image): Image
+
+Image --> Filter: applies
+HybridImage --> Image: composed of
+HybridImage --> Filter: uses
+@enduml
+```
+
+Here is the UML-sequence diagram:
+```plantuml
+@startuml
+participant Image1 as img1
+participant Image2 as img2
+participant HybridImage as hybrid
+participant Filter1 as filt1
+participant Filter2 as filt2
+
+img1 ->> filt1: apply_filter
+img2 ->> filt2: apply_filter
+filt1 ->> img1: filtered
+filt2 ->> img2: filtered
+hybrid ->> img1: get filtered
+hybrid ->> img2: get filtered
+hybrid ->> hybrid: generate(mix_ratio)
+hybrid ->> hybrid: combine filtered images
+hybrid ->> : return hybrid image
+@enduml
+```
+
+Here is the `requirements.txt` file:
+```
+numpy
+opencv-python
+```
+
+Here is the file tree with a textual description of the files and directories:
+```
+hybrid_image/
+__init__.py  # Package initialization
+image.py  # Implementation of Image class
+filters/
+__init__.py  # Subpackage initialization
+filter.py  # Abstract Filter class and its concrete implementations (LowPassFilter, HighPassFilter)
+gaussian_blur.py  # Implementation of GaussianBlur class
+hybrid_image.py  # Implementation of HybridImage class
+utils.py  # Utility functions for image processing (e.g., convolution, cross-correlation)
+examples/
+demo.py  # Example usage demonstrating hybrid image creation
+tests/
+test_image.py  # Unit tests for Image class
+test_filters.py  # Unit tests for Filter and its subclasses
+test_hybrid_image.py  # Unit tests for HybridImage class
+README.md  # Project documentation and usage guide
+requirements.txt  # Dependency specification
+```
+This design effectively encapsulates the required functionality, adhering to object-oriented principles and leveraging established libraries (NumPy and OpenCV) for efficient image processing. The `Image` class provides a foundation for applying filters, blurring, and correlation operations, while `Filter` and its subclasses (`LowPassFilter`, `HighPassFilter`) enable flexible filtering. The `HybridImage` class orchestrates the combination of filtered images according to specified parameters. A clear separation of concerns, accompanied by comprehensive testing and illustrative examples, facilitates maintainability, extensibility, and user understanding. The provided `requirements.txt` and file structure ensure seamless dependency management and organization. This robust design meets the stipulated requirements, producing visually coherent hybrid images that adapt to varying viewing scales or distances.

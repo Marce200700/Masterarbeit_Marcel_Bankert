@@ -1,0 +1,16 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/readtime/examples$ python3 demo.py
+
+Text: The shortest blog post in the world!
+Text Reading Time (in seconds): 2
+Text Reading Time (in text): 1 min
+
+HTML: This is <strong>HTML</strong>
+HTML Reading Time (in seconds): 1
+HTML Reading Time (in text): 1 min
+
+Markdown: This is **Markdown**
+Markdown Reading Time (in seconds): 1
+Markdown Reading Time (in text): 1 min
+
+Custom WPM: The shortest blog post in the world! (WPM = 5)
+Custom WPM: 5

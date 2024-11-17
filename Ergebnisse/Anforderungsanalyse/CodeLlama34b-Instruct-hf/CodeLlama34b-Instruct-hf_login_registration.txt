@@ -1,0 +1,94 @@
+## Introduction
+The Login-Registration program is a software application with three pages. The first one is for an user authentication which has two input fields for the username and password. The latter input should have the input type password. Additionally this program should provide two buttons for the user authentication page. One should be for the login and the other should allow users to register. If the user klicks on the register button there should be a page which offers four input fields asking the user to type in his first name, last name, username and password. Moreover the password should be constrained to be at least six characters long. Of course the user has to fill all the inputs in order to register. A cancel button should allow the user to return to the previosly described login page. The third and last page this program has to have appears after the user has logged in successfully. On this page the user should be greated with his first name that was set during the registration process. Under the greating message there should be a list with all the users who registrated for the page. The list features both the first- and last -name of the respective users and a delete button which allows the user to delete user-accounts. The user interface has to be intuitive, user-friendly and flexible. In addition to that the user interface has to be both compatible with all common browsers like Chrome, Firefox, Safari and Edge as well as mobile devices such as smartphones or tablets. For the implementation process this program should be implemented with JavaScript and use Vue2.x as the frontend framework, Babel6.x for the compilation process, NPM for third-party libraries and CSS for styling if necessary.
+
+## Goals
+
+- Provide the user with an intuitive interface for an user authentication.
+- Offer the user the possibility to register for the page.
+- Show the user his first name and a list with all the users who registrated for the page.
+- Allow the user to delete user-accounts.
+
+## Features and Functionalities
+
+- User authentication page.
+- Registration page.
+- Login page.
+- First- and last -name of the respective users.
+- Delete user-accounts.
+- Intuitive interface.
+
+## Technical Constraints
+
+- The implementation should be done with JavaScript.
+- Vue2.x should be used for the frontend framework.
+- Babel6.x for the compilation process.
+- NPM for third-party libraries.
+- CSS for styling if necessary.
+- Compatibility with all common browsers like Chrome, Firefox, Safari and Edge as well as mobile devices such as smartphones or tablets.
+
+## Use Cases
+
+### Use Case 1: User authentication
+
+Description: The user should be able to login with his username and password.
+
+Preconditions: The user has to enter his username and password.
+
+Postconditions: The user should be able to view the first- and last -name of the respective users and a delete user-accounts button.
+
+### Use Case 2: User registration
+
+Description: The user should be able to register for the page.
+
+Preconditions: The user has to fill in all the inputs with his first name, last name, username and password.
+
+Postconditions: The user should be able to view the first- and last -name of the respective users and a delete user-accounts button.
+
+### Use Case 3: User deletion
+
+Description: The user should be able to delete user-accounts.
+
+Preconditions: The user has to klick on the delete user-accounts button.
+
+Postconditions: The user account should be deleted.
+
+## Requirements
+
+- User authentication page.
+- Registration page.
+- Login page.
+- First- and last -name of the respective users.
+- Delete user-accounts.
+- Intuitive interface.
+- Compatibility with all common browsers like Chrome, Firefox, Safari and Edge as well as mobile devices such as smartphones or tablets.
+
+## Data Requirements
+
+- Username.
+- Password.
+- First name.
+- Last name.
+
+## Design and User Interface
+
+The user interface has to be intuitive, user-friendly and flexible. In addition to that the user interface has to be both compatible with all common browsers like Chrome, Firefox, Safari and Edge as well as mobile devices such as smartphones or tablets.
+
+## Acceptance Criteria
+
+- The user should be able to login with his username and password.
+- The user should be able to register for the page.
+- The user should be able to delete user-accounts.
+- The user interface has to be intuitive, user-friendly and flexible.
+- The program should be compatible with all common browsers like Chrome, Firefox, Safari and Edge as well as mobile devices such as smartphones or tablets.
+
+## Dependencies
+
+- NPM.
+
+## Terms/Concepts Explanation
+
+- User authentication.
+- User registration.
+- User deletion.
+- Intuitive interface.
+- Compatibility.

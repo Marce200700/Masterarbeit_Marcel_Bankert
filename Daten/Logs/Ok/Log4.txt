@@ -1,0 +1,10 @@
+test@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/java/java_heap$ ./setup_shell_script.sh
+
+> Task :test
+
+FibonacciHeapTest > testHeap() PASSED
+
+LeftistHeapTest > testLeftistHeap() PASSED
+
+BUILD SUCCESSFUL in 1s
+8 actionable tasks: 3 executed, 5 up-to-date

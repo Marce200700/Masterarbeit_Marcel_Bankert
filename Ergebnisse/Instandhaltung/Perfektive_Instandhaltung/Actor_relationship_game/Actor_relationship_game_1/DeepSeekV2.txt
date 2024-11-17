@@ -1,0 +1,109 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+You are a helpful Java programer.
+
+
+> The Actor Relationship Game is a Java-based application that allows users to explore connections between popular actors through their movie collaborations, using data from The Movie Database (TMDB) API. It constructs an actor graph and identifies the shortest path of relationships between any two actors.
+I would like to add a new functionality. So the connections are generated and written down in a generated text file.
+I now want to document the case that no connections between two actors are found. To do so, I want you to tell me which file has to be changed.
+Here is the file tree of this project:
+
+```bash
+├── .gitignore
+├── src
+│   ├── acceptanceTest
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   └── ActorRelationshipAcceptanceTest.java
+│   ├── main
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   ├── Actor.java
+│   │   │   │   ├── Movie.java
+│   │   │   │   ├── ActorGraph.java
+│   │   │   │   ├── ActorGraphUtil.java
+│   │   │   │   ├── GameplayInterface.java
+│   │   │   │   ├── GraphCreation.java
+│   │   │   │   └── TMDBApi.java
+│   ├── test
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   ├── ActorTest.java
+│   │   │   │   ├── MovieTest.java
+│   │   │   │   ├── ActorGraphTest.java
+│   │   │   │   ├── ActorGraphUtilTest.java
+│   │   │   │   ├── GameplayInterfaceTest.java
+│   │   │   │   ├── GraphCreationTest.java
+│   │   │   │   └── TMDBApiTest.java
+├── build.gradle
+└── README.md
+``` To document the case that no connections between two actors are found, you need to update the `ActorGraphUtil.java` file. Specifically, you should add a method or modify an existing method to handle this scenario and write a message to a file indicating that no connections were found between the two actors.
+
+>
+
+Here's how you can proceed:
+
+1. Open the `ActorGraphUtil.java` file in the `src/main/java/Actor_relationship_game` directory.
+2. Add a method to check for no connections and write to a file.
+
+Here is an example of how you can modify the `ActorGraphUtil.java` file:
+
+```java
+package Actor_relationship_game;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class ActorGraphUtil {
+
+    // Existing methods...
+
+    /**
+     * Checks if there are no connections between two actors and writes a message to a file.
+     * @param startActor The starting actor.
+     * @param targetActor The target actor.
+     * @param filePath The path to the file where the message will be written.
+     */
+    public static void writeNoConnectionsMessage(String startActor, String targetActor, String filePath) {
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write("No connections found between " + startActor + " and " + targetActor + ".\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Existing methods...
+}
+```
+
+3. In the `ActorGraph.java` file, where you handle the shortest path logic, you should call this method if no path is found:
+
+```java
+package Actor_relationship_game;
+
+import java.util.List;
+
+public class ActorGraph {
+
+    // Existing methods...
+
+    /**
+     * Finds the shortest path between two actors.
+     * @param startActor The starting actor.
+     * @param targetActor The target actor.
+     * @return The shortest path as a list of actors, or null if no path is found.
+     */
+    public List<Actor> findShortestPath(String startActor, String targetActor) {
+        // Existing shortest path logic...
+
+        // If no path is found, write a message to a file
+        if (shortestPath == null) {
+            ActorGraphUtil.writeNoConnectionsMessage(startActor
+> Thank you

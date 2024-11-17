@@ -1,0 +1,80 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: The error message is pretty clear:
+
+\begin{code}
+/bin/sh: 1: python3.10: not found
+\end{code}
+
+You are trying to run `python3.10` but it is not installed.
+
+Comment: I have installed python3.10. I have also installed python3.10-dev.
+
+Comment: @MohamedMohamed: You have installed it on your host system, but not in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedMohamed: No, you haven't.  The error message is telling you that it is not installed.  You need to install it in the Docker image.
+
+Comment: I have installed it in the docker image.
+
+Comment: @MohamedM

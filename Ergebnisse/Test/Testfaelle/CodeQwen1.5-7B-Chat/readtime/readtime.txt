@@ -1,0 +1,15 @@
+This tests the function to raise an exception when it is given a non-string input for the format parameter. It uses assertRaises and assertEqual from unittest.TestCase to check that the correct exception is raised with the expected error message.
+
+Here are ten more test cases for the same function:
+
+Test case for invalid text type (e.g., list or dictionary).
+Test case for empty string input.
+Test case for non-ASCII characters in the text.
+Test case for very long text (e.g., over one million words).
+Test case for text with no spaces.
+Test case for text with only punctuation marks.
+Test case for text with mixed types of characters (letters, numbers, and symbols).
+Test case for text with a mix of uppercase and lowercase letters.
+Test case for text with multiple sentences separated by different delimiters (e.g., periods, exclamation marks, question marks).
+
+For each test case, you can use assertRaises and assertEqual to check that the correct exception is raised with the expected error message.

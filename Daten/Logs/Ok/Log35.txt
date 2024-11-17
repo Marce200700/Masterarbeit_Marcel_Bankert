@@ -1,0 +1,6 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/cpp/area_calculation$ ./run.sh
+rm -f src/main.o src/Shape.o src/Rectangle.o area_calculation
+g++ -std=c++17 -Iinclude -fprofile-arcs -ftest-coverage -c -o src/main.o src/main.cpp
+g++ -std=c++17 -Iinclude -fprofile-arcs -ftest-coverage -c -o src/Shape.o src/Shape.cpp
+g++ -std=c++17 -Iinclude -fprofile-arcs -ftest-coverage -c -o src/Rectangle.o src/Rectangle.cpp
+g++ -std=c++17 -Iinclude -fprofile-arcs -ftest-coverage -o area_calculation src/main.o src/Shape.o src/Rectangle.o

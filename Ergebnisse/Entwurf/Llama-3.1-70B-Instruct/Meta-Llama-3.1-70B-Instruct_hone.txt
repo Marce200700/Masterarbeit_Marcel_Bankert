@@ -1,0 +1,131 @@
+ This is particularly useful for representing complex data relationships.
+
+Schema is a blueprint or a set of rules that defines the structure of data. In the context of this project, the schema defines how the CSV data should be transformed into a nested JSON structure.
+
+Delimiters are characters used to separate values within a CSV file. The most common delimiter is the comma (","), but other characters can be used depending on the specific requirements of the data.
+
+UML-Class Diagram
+```plantuml
+@startuml
+class CSVParser {
+  - delimiter: str
+  - csv_file: str
+  + __init__(delimiter: str, csv_file: str)
+  + parse_csv(): list
+  + get_column_names(): list
+  + get_data_rows(): list
+}
+
+class JSONGenerator {
+  - schema: dict
+  - data: list
+  + __init__(schema: dict, data: list)
+  + generate_json(): str
+  + write_json_to_file(json_filepath: str)
+}
+
+class CLI {
+  - csv_filepath: str
+  - json_filepath: str
+  - delimiter: str
+  - schema: dict
+  + __init__(csv_filepath: str, json_filepath: str, delimiter: str, schema: dict)
+  + parse_args()
+  + run_conversion()
+}
+
+class FileHelper {
+  + open_file(file_path: str): file
+  + write_to_file(file_path: str, content: str)
+}
+
+CSVParser --* JSONGenerator
+JSONGenerator --* FileHelper
+CLI --* CSVParser
+CLI --* JSONGenerator
+CLI --* FileHelper
+@enduml
+```
+UML-Sequence Diagram
+```plantuml
+@startuml
+participant CLI as "Command Line Interface"
+participant CSVParser as "CSV Parser"
+participant JSONGenerator as "JSON Generator"
+participant FileHelper as "File Helper"
+
+CLI->>CSVParser: create_csv_parser(delimiter, csv_filepath)
+activate CSVParser
+CSVParser->>CSVParser: parse_csv()
+CSVParser->>CSVParser: get_column_names()
+CSVParser->>CSVParser: get_data_rows()
+deactivate CSVParser
+
+CLI->>JSONGenerator: create_json_generator(schema, data)
+activate JSONGenerator
+JSONGenerator->>JSONGenerator: generate_json()
+JSONGenerator->>FileHelper: write_json_to_file(json_filepath)
+activate FileHelper
+FileHelper->>FileHelper: open_file(json_filepath)
+FileHelper->>FileHelper: write_to_file(json_filepath, json_content)
+deactivate FileHelper
+deactivate JSONGenerator
+
+CLI->>CLI: run_conversion()
+@enduml
+```
+File Tree
+```markdown
+hone/
+|---- examples/
+|       |---- demo.py
+|---- hone/
+|       |---- __init__.py
+|       |---- csv_parser.py
+|       |---- json_generator.py
+|       |---- cli.py
+|       |---- file_helper.py
+|---- data_file/
+|       |---- comma_test/
+|       |       |---- column_names.csv
+|       |       |---- data_rows.csv
+|       |       |---- dataset.csv
+|       |       |---- nested_dataset.json
+|       |---- quotes_test/
+|       |       |---- column_names.csv
+|       |       |---- data_rows.csv
+|       |       |---- dataset.csv
+|       |       |---- nested_dataset.json
+|       |---- small_cats_dataset/
+|       |       |---- column_names.csv
+|       |       |---- data_rows.csv
+|       |       |---- dataset.csv
+|       |       |---- nested_dataset.json
+|       |       |---- nested_schema.json
+|---- tests/
+|       |---- test_csv_parser.py
+|       |---- test_json_generator.py
+|       |---- test_cli.py
+|---- README.md
+|---- LICENSE
+```
+Textual Description of Files and Directories
+
+*   `hone/`: The root directory of the project.
+*   `examples/`: A directory containing example usage of the package.
+    *   `demo.py`: A script demonstrating how to use the package to convert a CSV file to JSON.
+*   `hone/`: The package directory.
+    *   `__init__.py`: An empty file indicating that the directory is a package.
+    *   `csv_parser.py`: A module containing the `CSVParser` class, responsible for parsing CSV files.
+    *   `json_generator.py`: A module containing the `JSONGenerator` class, responsible for generating JSON from parsed CSV data.
+    *   `cli.py`: A module containing the `CLI` class, responsible for handling command-line arguments and running the conversion process.
+    *   `file_helper.py`: A module containing the `FileHelper` class, providing utility methods for file operations.
+*   `data_file/`: A directory containing test datasets.
+    *   `comma_test/`, `quotes_test/`, `small_cats_dataset/`: Subdirectories containing test files for different scenarios.
+        *   `column_names.csv`, `data_rows.csv`, `dataset.csv`: CSV files used for testing.
+        *   `nested_dataset.json`: Expected JSON output for the corresponding CSV files.
+        *   `nested_schema.json`: A JSON schema file used for testing the conversion process.
+*   `tests/`: A directory containing unit tests for the package.
+    *   `test_csv_parser.py`, `test_json_generator.py`, `test_cli.py`: Test files for the `CSVParser`, `JSONGenerator`, and `CLI` classes, respectively.
+*   `README.md`: A file containing information about the project, including its purpose, usage, and technical details.
+*   `LICENSE`: A file containing the license under which the project is released.

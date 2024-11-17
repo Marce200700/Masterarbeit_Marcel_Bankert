@@ -1,0 +1,23 @@
+Unit tests:
+
+import unittest
+
+class TestHybridImageAlgorithm(unittest.TestCase): def testcrosscorrelation_2d(self): pass # TODO
+
+def test_convolve_2d(self):
+    pass  # TODO
+
+def test_gaussian_blur_kernel_2d(self):
+    pass  # TODO
+
+def test_low_pass(self):
+    pass  # TODO
+
+def test_high_pass(self):
+    pass  # TODO
+
+def test_create_hybrid_image(self):
+    pass  # TODO
+
+
+if name == 'main': unittest.main()

@@ -1,0 +1,48 @@
+''' Read JSON from given file or standard input if filename is "-". Returns None on failure to read the file. '''
+
+def load_json(filename): if filename and filename == "-": return json.load(stdin) else: try: with open(filename, 'r') as f: return json.load(f) except FileNotFoundError: print("File not found.") return None
+
+''' Check if the given file exists and is a valid JSON file. Returns True on success, False otherwise. '''
+
+def checkjsonfile(filename): if filename and os.path.isfile(filename) and \ os.access(filename, os.R_OK): try: with open(filename, 'r') as f: json.load(f) except ValueError: return False else: return True
+
+This is the utils/csv_utils.py file:"""
+
+Simple methods for processing CSV files """
+
+import csv from sys import stdin, stderr
+
+''' Read given CSV and return a list of lists (rows). If filename is "-", read from standard input instead. Returns None on failure to open the file or parse it as valid CSV data. '''
+
+def load_csv(filename): if filename and filename == "-": reader = csv.reader(stdin) else: try: with open(filename, 'r') as f: reader = csv.reader(f) except FileNotFoundError: print("File not found.") return None
+
+rows = []
+for row in reader:
+    if len(row):
+        rows.append(row)
+    else:
+        continue
+return rows if rows else None
+
+
+''' Write given list of lists (CSV data) to file, or standard output if filename is "-". If the CSV data contains non-ASCII characters, use UTF-8 encoding. Returns True on success, False otherwise. '''
+
+def write_csv(data, filename): if not filename: return False
+
+try:
+    with open(filename, 'w', newline='') as f:
+        writer = csv.writer(f)
+        for row in data:
+            writer.writerow(row)
+    return True
+except Exception as e:
+    print("Error writing to file:", str(e))
+    return False
+
+
+''' Check if the given file exists and is a valid CSV file. Returns True on success, False otherwise. '''
+
+def checkcsvfile(filename): if filename and os.path.isfile(filename) and \ os.access(filename, os.R_OK): try: with open(filename, 'r') as f: reader = csv.reader(f) except ValueError: return False else: for row in reader: if len(row): break else: return False
+
+# If the file doesn't exist or is empty, return True (considered valid)
+return True

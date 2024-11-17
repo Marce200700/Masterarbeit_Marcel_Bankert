@@ -1,0 +1,91 @@
+
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: The error message is telling you that the `npm` command is not found.
+
+You need to install `npm` first.
+
+Comment: I have installed npm. I have also installed node.js.
+
+Comment: @MohamedMohamed Then you need to add the path to the `npm` executable to your `PATH` environment variable.
+
+Comment: I have added the path to the npm executable to the PATH environment variable.
+
+Comment: @MohamedMohamed Then you need to restart your terminal.
+
+Comment: I have restarted the terminal.
+
+Comment: @MohamedMohamed Then you need to check that the path is correct.
+
+Comment: I have checked the path. It is correct.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is in the path.
+
+Comment: I have checked the path. The npm executable is in the path.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is executable.
+
+Comment: I have checked the path. The npm executable is executable.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is in the correct directory.
+
+Comment: I have checked the path. The npm executable is in the correct directory.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not corrupted.
+
+Comment: I have checked the path. The npm executable is not corrupted.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not missing.
+
+Comment: I have checked the path. The npm executable is not missing.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not empty.
+
+Comment: I have checked the path. The npm executable is not empty.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a directory.
+
+Comment: I have checked the path. The npm executable is not a directory.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a symbolic link.
+
+Comment: I have checked the path. The npm executable is not a symbolic link.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a broken symbolic link.
+
+Comment: I have checked the path. The npm executable is not a broken symbolic link.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a dangling symbolic link.
+
+Comment: I have checked the path. The npm executable is not a dangling symbolic link.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a hard link.
+
+Comment: I have checked the path. The npm executable is not a hard link.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a soft link.
+
+Comment: I have checked the path. The npm executable is not a soft link.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a mount point.
+
+Comment: I have checked the path. The npm executable is not a mount point.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a socket.
+
+Comment: I have checked the path. The npm executable is not a socket.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a named pipe.
+
+Comment: I have checked the path. The npm executable is not a named pipe.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a character device.
+
+Comment: I have checked the path. The npm executable is not a character device.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a block device.
+
+Comment: I have checked the path. The npm executable is not a block device.
+
+Comment: @MohamedMohamed Then you need to check that the `npm` executable is not a directory

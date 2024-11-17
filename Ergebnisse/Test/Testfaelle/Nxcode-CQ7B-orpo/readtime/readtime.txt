@@ -1,0 +1,5 @@
+Write ten more similar test cases for the function of_text() and its parameters.
+
+def of_text(self, text): """Return a read-time estimate from an input string.""" return ReadTimeResult(minutes=0)
+
+class TestOfText(BaseTestCase): # Write ten more test cases for the function of_text() and its parameters.

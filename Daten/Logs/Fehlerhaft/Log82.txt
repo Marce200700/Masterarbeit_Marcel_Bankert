@@ -1,0 +1,12 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/TextCNN$ ./setup_shell_script.sh
+Defaulting to user installation because normal site-packages is not writeable
+Collecting evaluate
+  Using cached evaluate-0.4.3-py3-none-any.whl (84 kB)
+Collecting datasets
+  Using cached datasets-3.0.1-py3-none-any.whl (471 kB)
+Collecting scikit-learn
+  Using cached scikit_learn-1.5.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.3 MB)
+Collecting transformers
+  Using cached transformers-4.45.1-py3-none-any.whl (9.9 MB)
+Collecting torch
+Killed

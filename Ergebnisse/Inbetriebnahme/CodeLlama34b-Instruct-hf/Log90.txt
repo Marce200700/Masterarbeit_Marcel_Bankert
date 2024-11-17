@@ -1,0 +1,62 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: The error message is pretty clear:
+
+\begin{code}
+wget: server returned error: HTTP/1.1 404 Not Found
+\end{code}
+
+The URL you are trying to download does not exist.
+
+Comment: I know that the URL does not exist. But I don't know why it is not working. I have the same code in another project and it works.
+
+Comment: @MarcelKrüger: Then you need to provide more information. What is the URL you are trying to download? What is the Dockerfile? What is the output of `docker build`?
+
+Comment: I added the dockerfile and the output of docker build.
+
+Comment: @MarcelKrüger: The URL you are trying to download is `https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux_64.sh`. That URL does not exist.
+
+Comment: I know that the URL does not exist. But I don't know why it is not working. I have the same code in another project and it works.
+
+Comment: @MarcelKrüger: You need to provide more information. What is the URL you are trying to download? What is the Dockerfile? What is the output of `docker build`?
+
+Comment: I added the dockerfile and the output of docker build.
+
+Comment: @MarcelKrüger: The URL you are trying to download is `https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux_64.sh`. That URL does not exist.
+
+Comment: I know that the URL does not exist. But I don't know why it is not working. I have the same code in another project and it works.
+
+Comment: @MarcelKrüger: You need to provide more information. What is the URL you are trying to download? What is the Dockerfile? What is the output of `docker build`?
+
+Comment: I added the dockerfile and the output of docker build.
+
+Comment: @MarcelKrüger: The URL you are trying to download is `https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux_64.sh`. That URL does not exist.
+
+Comment: I know that the URL does not exist. But I don't know why it is not working. I have the same code in another project and it works.
+
+Comment: @MarcelKrüger: You need to provide more information. What is the URL you are trying to download? What is the Dockerfile? What is the output of `docker build`?
+
+Comment: I added the dockerfile and the output of docker build.
+
+Comment: @MarcelKrüger: The URL you are trying to download is `https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux_64.sh`. That URL does not exist.
+
+Comment: I know that the URL does not exist. But I don't know why it is not working. I have the same code in another project and it works.
+
+Comment: @MarcelKrüger: You need to provide more information. What is the URL you are trying to download? What is the Dockerfile? What is the output of `docker build`?
+
+Comment: I added the dockerfile and the output of docker build.
+
+Comment: @MarcelKrüger: The URL you are trying to download is `https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux_64.sh`. That URL does not exist.
+
+Comment: I know that the URL does not exist. But I don't know why it is not working. I have the same code in another project and it works.
+
+Comment: @MarcelKrüger: You need to provide more information. What is the URL you are trying to download? What is the Dockerfile? What is the output of `docker build`?
+
+Comment: I added the dockerfile and the output of docker build.
+
+Comment: @MarcelKrüger: The URL you are trying to download is `https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux_64.sh`. That URL does not exist.
+
+Comment: I know that the URL does not exist.

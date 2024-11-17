@@ -1,0 +1,157 @@
+ (e.g., A-B (Movie X), B-C (Movie Y); the connection path between A and C is A-B (Movie X), B-C (Movie Y))
+
+Here is the requested design:
+
+**UML Class Diagram**
+```plantuml
+@startuml
+class TMDBApi {
+  -apiKey: String
+  +fetchActorData(actorId: int): ActorData
+  +fetchPopularActors(): List<ActorData>
+}
+
+class Actor {
+  -id: int
+  -name: String
+  -movieIds: Set<int>
+}
+
+class Movie {
+  -id: int
+  -title: String
+  -actorIds: Set<int>
+}
+
+class GraphCreation {
+  -tmdbApi: TMDBApi
+  +createGraph(): ActorGraph
+  +serializeGraph(graph: ActorGraph, path: String)
+}
+
+class ActorGraph {
+  -actors: Map<int, Actor>
+  -movies: Map<int, Movie>
+}
+
+class ActorGraphUtil {
+  +deserializeGraph(path: String): ActorGraph
+  +extractActorNames(graph: ActorGraph, path: String)
+}
+
+class GameplayInterface {
+  -actorGraph: ActorGraph
+  +findConnections(actor1: Actor, actor2: Actor): Connection
+  +outputConnections(actor1: Actor, actor2: Actor, path: String)
+}
+
+class Connection {
+  -number: int
+  -path: String
+}
+
+TMDBApi --> ActorData
+GraphCreation --> TMDBApi
+GraphCreation --> ActorGraph
+ActorGraphUtil --> ActorGraph
+GameplayInterface --> ActorGraph
+@enduml
+```
+
+**UML Sequence Diagram**
+```plantuml
+@startuml
+actor User
+participant "Graph Creation" as GC
+participant "TMDB API" as TMDB
+participant "ActorGraph" as AG
+participant "ActorGraphUtil" as AGU
+participant "Gameplay Interface" as GI
+
+User -> GC: runGraphCreation(fileName)
+GC -> TMDB: fetchActorData, fetchPopularActors
+TMDB -> GC: ActorData
+GC -> AG: createGraph
+GC -> AG: serializeGraph(fileName)
+
+User -> AGU: runActorGraphUtil(graphPath, filePath)
+AGU -> AG: deserializeGraph(graphPath)
+AGU -> AG: extractActorNames(filePath)
+
+User -> GI: runGameplayInterface(graphPath, actorPath, filePath)
+GI -> AG: deserializeGraph(graphPath)
+GI -> AG: findConnections(actor1, actor2)
+GI -> AG: outputConnections(filePath)
+@enduml
+```
+
+**Directory Structure and File Descriptions**
+```bash
+ActorRelationshipGame/
+src/
+main/
+java/
+ActorRelationshipGame/
+TMDBApi.java  # TMDB API wrapper
+Actor.java  # Actor model
+Movie.java  # Movie model
+GraphCreation.java  # Graph creation and serialization
+ActorGraphUtil.java  # Graph deserialization and actor name extraction
+GameplayInterface.java  # Gameplay logic and connection output
+resources/
+application.properties  # Environment variable configuration (TMDB_API_KEY)
+test/
+java/
+ActorRelationshipGame/
+TMDBApiTest.java  # TMDB API wrapper tests
+GraphCreationTest.java  # Graph creation and serialization tests
+ActorGraphUtilTest.java  # Graph deserialization and actor name extraction tests
+GameplayInterfaceTest.java  # Gameplay logic and connection output tests
+build.gradle  # Dependency management and task configuration
+```
+
+**build.gradle**
+```groovy
+plugins {
+  id 'java'
+  id 'application'
+}
+
+group 'com.actorrelationshipgame'
+version '1.0'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'com.google.code.gson:gson:2.9.1'
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+}
+
+application {
+  mainClass = 'ActorRelationshipGame.Main'
+}
+
+tasks {
+  runGraphCreation {
+    doFirst {
+      args = ['-PfileName', './src/main/java/Actor_relationship_game/actorGraph.ser']
+    }
+  }
+  runActorGraphUtil {
+    doFirst {
+      args = ['-PgraphPath', './src/main/java/Actor_relationship_game/actorGraph.ser',
+               '-PfilePath', './src/main/java/Actor_relationship_game/actors_list.txt']
+    }
+  }
+  runGameplayInterface {
+    doFirst {
+      args = ['-PgraphPath', './src/main/java/Actor_relationship_game/actorGraph.ser',
+               '-PactorPath', './src/main/java/Actor_relationship_game/actors_list.txt',
+               '-PfilePath', './src/main/java/Actor_relationship_game/actor_connection_results.txt']
+    }
+  }
+}
+```
+This design adheres to the specified requirements, separating concerns into distinct classes and modules. The UML diagrams illustrate the relationships and interactions between these components. The directory structure and file descriptions provide a clear organization for the implementation, while the `build.gradle` file manages dependencies and configures tasks for each module. The implementation meets the acceptance criteria, effectively communicating with the TMDB API, modeling actors and movies, creating and serializing the ActorGraph, and facilitating gameplay with connection finding and output.

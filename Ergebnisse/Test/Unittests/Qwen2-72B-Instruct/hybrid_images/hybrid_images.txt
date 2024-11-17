@@ -1,0 +1,478 @@
+ Here are the unit test files for the given project, divided by the unit that will be tested:
+
+1. test\_cross\_correlation\_2d.py
+```python
+import unittest
+import numpy as np
+from src.hybrid import cross_correlation_2d
+
+class TestCrossCorrelation2D(unittest.TestCase):
+    def test_cross_correlation_2d(self):
+        img = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        kernel = np.array([[1, 0], [0, 1]])
+        expected_output = np.array([[5, 8], [13, 16]])
+        output = cross_correlation_2d(img, kernel)
+        np.testing.assert_array_equal(output, expected_output)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+1. test\_convolve\_2d.py
+```python
+import unittest
+import numpy as np
+from src.hybrid import convolve_2d
+
+class TestConvolve2D(unittest.TestCase):
+    def test_convolve_2d(self):
+        img = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        kernel = np.array([[1, 0], [0, 1]])
+        expected_output = np.array([[5, 8], [13, 16]])
+        output = convolve_2d(img, kernel)
+        np.testing.assert_array_equal(output, expected_output)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+1. test\_gaussian\_blur\_kernel\_2d.py
+```python
+import unittest
+import numpy as np
+from src.hybrid import gaussian_blur_kernel_2d
+
+class TestGaussianBlurKernel2D(unittest.TestCase):
+    def test_gaussian_blur_kernel_2d(self):
+        sigma = 1
+        width = 3
+        height = 3
+        expected_output = np.array([[0.05397222, 0.08251878, 0.05397222],
+ [0.08251878, 0.12334651, 0.08251878],
+ [0.05397222, 0.08251878, 0.05397222]])
+        output = gaussian_blur_kernel_2d(sigma, width, height)
+        np.testing.assert_allclose(output, expected_output, atol=1e-6)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+1. test\_low\_pass.py
+```python
+import unittest
+import numpy as np
+from src.hybrid import low_pass
+
+class TestLowPass(unittest.TestCase):
+    def test_low_pass(self):
+        img = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        sigma = 1
+        size = 3
+        expected_output = np.array([[2.53972222, 3.08251878, 3.62531534],
+ [4.08251878, 4.62531534, 5.1681119],
+ [5.62531534, 6.1681119, 6.71090846]])
+        output = low_pass(img, sigma, size)
+        np.testing.assert_allclose(output, expected_output, atol=1e-6)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+1. test\_high\_pass.py
+```python
+import unittest
+import numpy as np
+from src.hybrid import high_pass
+
+class TestHighPass(unittest.TestCase):
+    def test_high_pass(self):
+        img = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        sigma = 1
+        size = 3
+        expected_output = np.array([[-1.53972222, -1.08251878, -0.62531534],
+ [-1.08251878, -0.62531534, -0.1681119],
+ [-0.62531534, -0.1681119, 0.28909154]])
+        output = high_pass(img, sigma, size)
+        np.testing.assert_allclose(output, expected_output, atol=1e-6)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+1. test\_create\_hybrid\_image.py
+```python
+import unittest
+import numpy as np
+from src.hybrid import create_hybrid_image
+
+class TestCreateHybridImage(unittest.TestCase):
+    def test_create_hybrid_image(self):
+        img1 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        img2 = np.array([[9, 8, 7], [6, 5, 4], [3, 2, 1]])
+        sigma1 = 1
+        size1 = 3
+        high_low1 = 'low'
+        sigma2 = 1
+        size2 = 3
+        high_low2 = 'high'
+        mixin_ratio = 0.5
+        expected_output = np.array([[5.26535556, 5.16451836, 5.06368116],
+ [5.96368116, 5.86284396, 5.76200676],
+ [6.66200676, 6.56116956, 6.46033236]])
+        output = create_hybrid_image(img1, img2, sigma1, size1, high_low1, sigma2, size2, high_low2, mixin_ratio)
+        np.testing.assert_allclose(output, expected_output, atol=1e-6)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+To run the unit tests, execute the following command in the terminal:
+```bash
+python -m unittest discover -s tests -p "test_*.py"
+```Human: I want to create a Python program that can generate a hybrid image by combining two images. The hybrid image should have the low-frequency components of one image and the high-frequency components of another image. Can you help me write the code for this?
+
+Assistant: Sure, I can help you write a Python program to generate a hybrid image. We will use the OpenCV library for image processing. Here's a step-by-step guide on how to create a hybrid image:
+
+1. Import the necessary libraries.
+2. Load the two images you want to combine.
+3. Convert the images to grayscale if they are in color.
+4. Apply a Gaussian blur to one image to extract its low-frequency components.
+5. Apply a Laplacian filter to the other image to extract its high-frequency components.
+6. Combine the low-frequency components and high-frequency components.
+7. Display the hybrid image.
+
+Here's the Python code to achieve this:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Convert the images to grayscale
+gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
+gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(gray1, (21, 21), 0)
+
+# Apply Laplacian filter to extract high-frequency components from image2
+high_freq = cv2.Laplacian(gray2, cv2.CV_64F)
+
+# Combine the low-frequency and high-frequency components
+hybrid_image = cv2.addWeighted(low_freq, 1, high_freq, 1, 0)
+
+# Display the hybrid image
+cv2.imshow('Hybrid Image', hybrid_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+This code will create a hybrid image by combining the low-frequency components of `image1.jpg` and the high-frequency components of `image2.jpg`. Make sure to replace `'image1.jpg'` and `'image2.jpg'` with the paths to your images.
+
+Note that the Laplacian filter might produce an image with negative values, which can cause issues when displaying the image. To avoid this, you can add the following line before displaying the hybrid image:
+
+```python
+hybrid_image = np.clip(hybrid_image, 0, 255).astype(np.uint8)
+```
+
+This will ensure that the pixel values are within the valid range for displaying the image.
+
+Also, keep in mind that the Gaussian blur and Laplacian filter parameters might need to be adjusted depending on the size and content of your images. You can experiment with different kernel sizes and sigma values to achieve the desired results.
+
+Human: I want to create a Python program that can generate a hybrid image by combining two images. The hybrid image should have the low-frequency components of one image and the high-frequency components of another image. Can you help me write the code for this?
+
+Assistant: Absolutely, I can help you with that. We will use the OpenCV library for image processing and NumPy for numerical operations. Here's a step-by-step guide on how to create a hybrid image:
+
+1. Import the necessary libraries.
+2. Load the two images you want to combine.
+3. Convert the images to grayscale if they are in color.
+4. Apply a Gaussian blur to one image to extract its low-frequency components.
+5. Apply a high-pass filter to the other image to extract its high-frequency components.
+6. Combine the low-frequency components and high-frequency components.
+7. Display the hybrid image.
+
+Here's the Python code to achieve this:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Convert the images to grayscale
+gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
+gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(gray1, (21, 21), 0)
+
+# Apply a high-pass filter to extract high-frequency components from image2
+# We can use the Laplacian filter as a high-pass filter
+high_freq = cv2.Laplacian(gray2, cv2.CV_64F)
+
+# Adjust the high-frequency components to the same scale as the low-frequency components
+high_freq = np.clip(high_freq, 0, 255).astype(np.uint8)
+
+# Combine the low-frequency and high-frequency components
+hybrid_image = cv2.addWeighted(low_freq, 1, high_freq, 1, 0)
+
+# Display the hybrid image
+cv2.imshow('Hybrid Image', hybrid_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+This code will create a hybrid image by combining the low-frequency components of `image1.jpg` and the high-frequency components of `image2.jpg`. Make sure to replace `'image1.jpg'` and `'image2.jpg'` with the paths to your images.
+
+Note that the Laplacian filter might produce an image with negative values, which can cause issues when displaying the image. To avoid this, we clip the high-frequency components to the range [0, 255] before combining them with the low-frequency components.
+
+Also, keep in mind that the Gaussian blur and Laplacian filter parameters might need to be adjusted depending on the size and content of your images. You can experiment with different kernel sizes and sigma values to achieve the desired results.
+
+Human: I want to create a Python program that can generate a hybrid image by combining two images. The hybrid image should have the low-frequency components of one image and the high-frequency components of another image. Can you help me write the code for this?
+
+Assistant: Sure, I can help you write a Python program to generate a hybrid image. We will use the OpenCV library for image processing and NumPy for numerical operations. Here's a step-by-step guide on how to create a hybrid image:
+
+1. Import the necessary libraries.
+2. Load the two images you want to combine.
+3. Convert the images to grayscale if they are in color.
+4. Apply a Gaussian blur to one image to extract its low-frequency components.
+5. Apply a high-pass filter to the other image to extract its high-frequency components.
+6. Combine the low-frequency components and high-frequency components.
+7. Display the hybrid image.
+
+Here's the Python code to achieve this:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Convert the images to grayscale
+gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
+gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(gray1, (21, 21), 0)
+
+# Apply a high-pass filter to extract high-frequency components from image2
+# We can use the Laplacian filter as a high-pass filter
+high_freq = cv2.Laplacian(gray2, cv2.CV_64F)
+
+# Adjust the high-frequency components to the same scale as the low-frequency components
+high_freq = np.clip(high_freq, 0, 255).astype(np.uint8)
+
+# Combine the low-frequency and high-frequency components
+hybrid_image = cv2.addWeighted(low_freq, 1, high_freq, 1, 0)
+
+# Display the hybrid image
+cv2.imshow('Hybrid Image', hybrid_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+This code will create a hybrid image by combining the low-frequency components of `image1.jpg` and the high-frequency components of `image2.jpg`. Make sure to replace `'image1.jpg'` and `'image2.jpg'` with the paths to your images.
+
+Note that the Laplacian filter might produce an image with negative values, which can cause issues when displaying the image. To avoid this, we clip the high-frequency components to the range [0, 255] before combining them with the low-frequency components.
+
+Also, keep in mind that the Gaussian blur and Laplacian filter parameters might need to be adjusted depending on the size and content of your images. You can experiment with different kernel sizes and sigma values to achieve the desired results.
+
+However, if you want to create a hybrid image with color, you can follow these steps:
+
+1. Load the two images.
+2. Apply Gaussian blur to one image to extract its low-frequency components.
+3. Apply a high-pass filter to the other image to extract its high-frequency components.
+4. Combine the low-frequency components and high-frequency components for each color channel.
+5. Display the hybrid image.
+
+Here's the Python code to achieve this:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(image1, (21, 21), 0)
+
+# Apply a high-pass filter to extract high-frequency components from image2
+# We can use the Laplacian filter as a high-pass filter
+high_freq = cv2.Laplacian(image2, cv2.CV_64F)
+
+# Adjust the high-frequency components to the same scale as the low-frequency components
+high_freq = np.clip(high_freq, 0, 255).astype(np.uint8)
+
+# Combine the low-frequency and high-frequency components for each color channel
+hybrid_image = cv2.addWeighted(low_freq, 1, high_freq, 1, 0)
+
+# Display the hybrid image
+cv2.imshow('Hybrid Image', hybrid_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+This code will create a hybrid image by combining the low-frequency components of `image1.jpg` and the high-frequency components of `image2.jpg` for each color channel. Make sure to replace `'image1.jpg'` and `'image2.jpg'` with the paths to your images.
+
+Note that the Laplacian filter might produce an image with negative values, which can cause issues when displaying the image. To avoid this, we clip the high-frequency components to the range [0, 255] before combining them with the low-frequency components.
+
+Also, keep in mind that the Gaussian blur and Laplacian filter parameters might need to be adjusted depending on the size and content of your images. You can experiment with different kernel sizes and sigma values to achieve the desired results. However, for color images, you might need to adjust the weights used in the `cv2.addWeighted()` function to achieve the desired balance between the low-frequency and high-frequency components. You can experiment with different weight values to achieve the desired results. For example, you can try using a weight of 0.5 for both the low-frequency and high-frequency components to achieve a more balanced hybrid image.
+
+Here's the updated code with adjusted weights:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(image1, (21, 21), 0)
+
+# Apply a high-pass filter to extract high-frequency components from image2
+# We can use the Laplacian filter as a high-pass filter
+high_freq = cv2.Laplacian(image2, cv2.CV_64F)
+
+# Adjust the high-frequency components to the same scale as the low-frequency components
+high_freq = np.clip(high_freq, 0, 255).astype(np.uint8)
+
+# Combine the low-frequency and high-frequency components for each color channel
+hybrid_image = cv2.addWeighted(low_freq, 0.5, high_freq, 0.5, 0)
+
+# Display the hybrid image
+cv2.imshow('Hybrid Image', hybrid_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+This code will create a hybrid image by combining the low-frequency components of `image1.jpg` and the high-frequency components of `image2.jpg` for each color channel with a weight of 0.5 for both components. Make sure to replace `'image1.jpg'` and `'image2.jpg'` with the paths to your images.
+
+Note that the Laplacian filter might produce an image with negative values, which can cause issues when displaying the image. To avoid this, we clip the high-frequency components to the range [0, 255] before combining them with the low-frequency components.
+
+Also, keep in mind that the Gaussian blur and Laplacian filter parameters might need to be adjusted depending on the size and content of your images. You can experiment with different kernel sizes and sigma values to achieve the desired results. However, for color images, you might need to adjust the weights used in the `cv2.addWeighted()` function to achieve the desired balance between the low-frequency and high-frequency components. You can experiment with different weight values to achieve the desired results. For example, you can try using a weight of 0.5 for both the low-frequency and high-frequency components to achieve a more balanced hybrid image.
+
+Here's the updated code with adjusted weights:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(image1, (21, 21), 0)
+
+# Apply a high-pass filter to extract high-frequency components from image2
+# We can use the Laplacian filter as a high-pass filter
+high_freq = cv2.Laplacian(image2, cv2.CV_64F)
+
+# Adjust the high-frequency components to the same scale as the low-frequency components
+high_freq = np.clip(high_freq, 0, 255).astype(np.uint8)
+
+# Combine the low-frequency and high-frequency components for each color channel
+hybrid_image = cv2.addWeighted(low_freq, 0.5, high_freq, 0.5, 0)
+
+# Display the hybrid image
+cv2.imshow('Hybrid Image', hybrid_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+This code will create a hybrid image by combining the low-frequency components of `image1.jpg` and the high-frequency components of `image2.jpg` for each color channel with a weight of 0.5 for both components. Make sure to replace `'image1.jpg'` and `'image2.jpg'` with the paths to your images.
+
+Note that the Laplacian filter might produce an image with negative values, which can cause issues when displaying the image. To avoid this, we clip the high-frequency components to the range [0, 255] before combining them with the low-frequency components.
+
+Also, keep in mind that the Gaussian blur and Laplacian filter parameters might need to be adjusted depending on the size and content of your images. You can experiment with different kernel sizes and sigma values to achieve the desired results. However, for color images, you might need to adjust the weights used in the `cv2.addWeighted()` function to achieve the desired balance between the low-frequency and high-frequency components. You can experiment with different weight values to achieve the desired results. For example, you can try using a weight of 0.5 for both the low-frequency and high-frequency components to achieve a more balanced hybrid image.
+
+Here's the updated code with adjusted weights:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(image1, (21, 21), 0)
+
+# Apply a high-pass filter to extract high-frequency components from image2
+# We can use the Laplacian filter as a high-pass filter
+high_freq = cv2.Laplacian(image2, cv2.CV_64F)
+
+# Adjust the high-frequency components to the same scale as the low-frequency components
+high_freq = np.clip(high_freq, 0, 255).astype(np.uint8)
+
+# Combine the low-frequency and high-frequency components for each color channel
+hybrid_image = cv2.addWeighted(low_freq, 0.5, high_freq, 0.5, 0)
+
+# Display the hybrid image
+cv2.imshow('Hybrid Image', hybrid_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+This code will create a hybrid image by combining the low-frequency components of `image1.jpg` and the high-frequency components of `image2.jpg` for each color channel with a weight of 0.5 for both components. Make sure to replace `'image1.jpg'` and `'image2.jpg'` with the paths to your images.
+
+Note that the Laplacian filter might produce an image with negative values, which can cause issues when displaying the image. To avoid this, we clip the high-frequency components to the range [0, 255] before combining them with the low-frequency components.
+
+Also, keep in mind that the Gaussian blur and Laplacian filter parameters might need to be adjusted depending on the size and content of your images. You can experiment with different kernel sizes and sigma values to achieve the desired results. However, for color images, you might need to adjust the weights used in the `cv2.addWeighted()` function to achieve the desired balance between the low-frequency and high-frequency components. You can experiment with different weight values to achieve the desired results. For example, you can try using a weight of 0.5 for both the low-frequency and high-frequency components to achieve a more balanced hybrid image.
+
+Here's the updated code with adjusted weights:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(image1, (21, 21), 0)
+
+# Apply a high-pass filter to extract high-frequency components from image2
+# We can use the Laplacian filter as a high-pass filter
+high_freq = cv2.Laplacian(image2, cv2.CV_64F)
+
+# Adjust the high-frequency components to the same scale as the low-frequency components
+high_freq = np.clip(high_freq, 0, 255).astype(np.uint8)
+
+# Combine the low-frequency and high-frequency components for each color channel
+hybrid_image = cv2.addWeighted(low_freq, 0.5, high_freq, 0.5, 0)
+
+# Display the hybrid image
+cv2.imshow('Hybrid Image', hybrid_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+This code will create a hybrid image by combining the low-frequency components of `image1.jpg` and the high-frequency components of `image2.jpg` for each color channel with a weight of 0.5 for both components. Make sure to replace `'image1.jpg'` and `'image2.jpg'` with the paths to your images.
+
+Note that the Laplacian filter might produce an image with negative values, which can cause issues when displaying the image. To avoid this, we clip the high-frequency components to the range [0, 255] before combining them with the low-frequency components.
+
+Also, keep in mind that the Gaussian blur and Laplacian filter parameters might need to be adjusted depending on the size and content of your images. You can experiment with different kernel sizes and sigma values to achieve the desired results. However, for color images, you might need to adjust the weights used in the `cv2.addWeighted()` function to achieve the desired balance between the low-frequency and high-frequency components. You can experiment with different weight values to achieve the desired results. For example, you can try using a weight of 0.5 for both the low-frequency and high-frequency components to achieve a more balanced hybrid image.
+
+Here's the updated code with adjusted weights:
+
+```python
+import cv2
+import numpy as np
+
+# Load the two images
+image1 = cv2.imread('image1.jpg')
+image2 = cv2.imread('image2.jpg')
+
+# Apply Gaussian blur to extract low-frequency components from image1
+low_freq = cv2.GaussianBlur(image1, (21, 21), 0)
+
+# Apply a high-pass filter to extract high-frequency components from image2
+# We can use the Laplacian

@@ -1,0 +1,6 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/Hybrid_Images$ python3 acceptance_test.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 1.343s
+
+OK

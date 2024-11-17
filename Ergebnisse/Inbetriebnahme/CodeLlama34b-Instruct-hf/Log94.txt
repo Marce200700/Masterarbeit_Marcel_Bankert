@@ -1,0 +1,14 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: I had the same problem.
+
+I solved it by installing the latest version of phantomjs-prebuilt.
+
+\begin{code}
+npm install phantomjs-prebuilt@latest
+\end{code}
+
+Comment: I tried this but it didn't work. I'm still getting the same error.

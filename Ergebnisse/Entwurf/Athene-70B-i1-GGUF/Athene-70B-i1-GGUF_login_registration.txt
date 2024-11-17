@@ -1,0 +1,114 @@
+ 
+
+**UML-Class Diagram**
+```plantuml
+@startuml
+class User {
+  - id: number
+  - firstName: string
+  - lastName: string
+  - username: string
+  - password: string
+}
+
+class Store {
+  - users: User[]
+  - login(username: string, password: string): boolean
+  - register(firstName: string, lastName: string, username: string, password: string): User
+  - getAllUsers(): User[]
+  - deleteUser(id: number): void
+}
+
+class HomePage {
+  - store: Store
+  - mounted(): void {
+    store.getAllUsers()
+  }
+  - deleteUser(id: number): void {
+    store.deleteUser(id)
+  }
+  - users: User[] (computed)
+}
+
+class LoginPage {
+  - store: Store
+  - username: string
+  - password: string
+  - isValid: boolean (computed)
+  - submit(): void {
+    if (isValid) store.login(username, password)
+  }
+}
+
+class RegisterPage {
+  - store: Store
+  - firstName: string
+  - lastName: string
+  - username: string
+  - password: string
+  - isValid: boolean (computed)
+  - submit(): void {
+    if (isValid) store.register(firstName, lastName, username, password)
+  }
+}
+
+HomePage ..> Store
+LoginPage ..> Store
+RegisterPage ..> Store
+@enduml
+```
+
+**UML-Sequence Diagram**
+```plantuml
+@startuml
+participant HomePage as HP
+participant Store as S
+participant Backend as B
+
+HP ->> S: getAllUsers()
+S ->> B: GET /users
+B ->> S: User[]
+S ->> HP: User[]
+HP ->> HP: render users
+
+note "Login"
+participant LoginPage as LP
+participant Store as S
+participant Backend as B
+
+LP ->> LP: submit(username, password)
+LP ->> S: login(username, password)
+S ->> B: POST /login {username, password}
+B ->> S: success
+S ->> LP: redirect to HomePage
+
+note "Registration"
+participant RegisterPage as RP
+participant Store as S
+participant Backend as B
+
+RP ->> RP: submit(firstName, lastName, username, password)
+RP ->> S: register(firstName, lastName, username, password)
+S ->> B: POST /register {firstName, lastName, username, password}
+B ->> S: created User
+S ->> RP: redirect to LoginPage
+@enduml
+```
+
+**File Tree with Textual Description**
+```
+src/
+components/
+HomePage.vue: Implements the HomePage, displaying a list of users and handling deletion.
+LoginPage.vue: Handles user login, validating credentials and redirecting to HomePage.
+RegisterPage.vue: Facilitates new user registration, validating input and redirecting to LoginPage.
+store/
+index.js: Defines the Store, encapsulating user data and actions (login, register, getAllUsers, deleteUser).
+actions.js: Contains action implementations (login, register, getAllUsers, deleteUser) making HTTP requests to the backend.
+api.js: Abstracts backend API interactions using Axios (GET /users, POST /login, POST /register).
+main.js: Initializes the Vue application, incorporating Vue Router and the Store.
+App.vue: Serves as the top-level application component, routing to HomePage, LoginPage, or RegisterPage.
+index.html: The entry point, loading the bundled application.
+package.json: Configures development, build, and test scripts, along with dependencies.
+```
+This design meets the specified requirements, providing a clear separation of concerns between components, a centralized Store for managing user data and actions, and a concise API abstraction. The UML diagrams effectively illustrate the relationships and interactions between key entities, while the file structure organizes the implementation into logical, maintainable modules. The chosen technology stack (Vue 2.x, Babel 6.x, and Axios) ensures a modern, efficient, and scalable solution, adhering to performance, scalability, and security constraints.

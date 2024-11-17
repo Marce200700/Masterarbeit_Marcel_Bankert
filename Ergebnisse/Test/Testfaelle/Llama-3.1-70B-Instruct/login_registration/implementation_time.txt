@@ -1,0 +1,1 @@
+It took 255.06486773490906seconds to implement testcases for login_registration.

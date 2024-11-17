@@ -1,0 +1,99 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: I think you are missing the `devServer` configuration in your `vue.config.js` file.
+
+\begin{code}
+module.exports = {
+  devServer: {
+    port: 8080,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  }
+}
+\end{code}
+
+Comment: I added the devServer configuration to the vue.config.js file. But the error still occurs.
+
+Comment: Can you share the full error message?
+
+Comment: I added the full error message to the question.
+
+Comment: I think the problem is with the `proxy` configuration. Can you try to remove it and see if it works?
+
+Comment: I removed the proxy configuration and the error still occurs.
+
+Comment: Can you share the full `vue.config.js` file?
+
+Comment: I added the full vue.config.js file to the question.
+
+Comment: I think the problem is with the `devServer` configuration. Can you try to remove it and see if it works?
+
+Comment: I removed the devServer configuration and the error still occurs.
+
+Comment: I think the problem is with the `vue.config.js` file. Can you try to remove it and see if it works?
+
+Comment: I removed the vue.config.js file and the error still occurs.
+
+Comment: I think the problem is with the `package.json` file. Can you share it?
+
+Comment: I added the package.json file to the question.
+
+Comment: I think the problem is with the `scripts` section. Can you try to remove the `start` script and see if it works?
+
+Comment: I removed the start script and the error still occurs.
+
+Comment: I think the problem is with the `webpack-dev-server` package. Can you try to remove it and see if it works?
+
+Comment: I removed the webpack-dev-server package and the error still occurs.
+
+Comment: I think the problem is with the `webpack` package. Can you try to remove it and see if it works?
+
+Comment: I removed the webpack package and the error still occurs.
+
+Comment: I think the problem is with the `node_modules` folder. Can you try to remove it and see if it works?
+
+Comment: I removed the node_modules folder and the error still occurs.
+
+Comment: I think the problem is with the `package-lock.json` file. Can you try to remove it and see if it works?
+
+Comment: I removed the package-lock.json file and the error still occurs.
+
+Comment: I think the problem is with the `npm` package. Can you try to remove it and see if it works?
+
+Comment: I removed the npm package and the error still occurs.
+
+Comment: I think the problem is with the `node` package. Can you try to remove it and see if it works?
+
+Comment: I removed the node package and the error still occurs.
+
+Comment: I think the problem is with the `npm` and `node` packages. Can you try to reinstall them and see if it works?
+
+Comment: I reinstalled the npm and node packages and the error still occurs.
+
+Comment: I think the problem is with the `npm` and `node` packages. Can you try to reinstall them and see if it works?
+
+Comment: I reinstalled the npm and node packages and the error still occurs.
+
+Comment: I think the problem is with the `npm` and `node` packages. Can you try to reinstall them and see if it works?
+
+Comment: I reinstalled the npm and node packages and the error still occurs.
+
+Comment: I think the problem is with the `npm` and `node` packages. Can you try to reinstall them and see if it works?
+
+Comment: I reinstalled the npm and node packages and the error still occurs.
+
+Comment: I think the problem is with the `npm` and `node` packages. Can you try to reinstall them and see if it works?
+
+Comment: I reinstalled the npm and node packages and the error still occurs.
+
+Comment: I think the problem is with

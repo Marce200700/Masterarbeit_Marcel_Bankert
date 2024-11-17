@@ -1,0 +1,57 @@
+
+Actor Relationship Game
+
+Für das Actor Relationship Game Projekt mussten die Dateien Actor.java, Movie.java ActorGraph.java, ActorGraphUtil.java, 
+GameplayInterface.java, GraphCreation.java und TMDBApi.java implementiert werden.
+
+Eingabesequenz:
+You are a nice Java developer. This is a software requirement specification: ''software requirement specification file''. This is a software design: "software design file".
+Implement the code for the ''filename''.
+
+
+
+
+Login Registration
+
+Für dieses Projekt mussten die Dateien jest.config.js, package.json auth-headers.js, fake-backend.js,
+ index.js(_helpers Ordner), router.js, index.js(_services Ordner), user.service.js, account.module.js,
+  alert.module.js, index.js(_store Ordner), users.module.js, App.vue, HomePage.vue, index.html,
+   index.js, LoginPage.vue, RegisterPage.vue und webpack.config.js implementiert werden.
+
+Eingabesequenz:
+You are a nice JavaScript and Vue developer. This is a software requirement specification: ''software requirement specification file''. This is a software design: "software design file".
+Implement the code for the ''filename''.
+
+
+
+
+Hone
+
+Für dieses Projekt mussten die Dateien demo.py, example_a.csv example_a.json, example_b.csv, example_b.json,
+ example_c.csv, example_c.json, hone.py, csv_utils.py, json_utils.py und test_utils.py implementiert werden.
+
+Eingabesequenz:
+You are a nice Python developer. This is a software requirement specification: ''software requirement specification file''. This is a software design: "software design file".
+Implement the code for the ''filename''.
+
+
+
+
+Hybrid Images
+
+Für dieses Projekt mussten die Dateien demo.py und hybrid.py implementiert werden.
+
+Eingabesequenz:
+You are a nice Python developer. This is a software requirement specification: ''software requirement specification file''. This is a software design: "software design file".
+Implement the code for the ''filename''.
+
+
+
+
+Readtime
+
+Für dieses Projekt mussten die Dateien demo.py, api.py, result.py und utils.py implementiert werden.
+
+Eingabesequenz:
+You are a nice Python developer. This is a software requirement specification: ''software requirement specification file''. This is a software design: "software design file".
+Implement the code for the ''filename''.

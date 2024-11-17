@@ -1,0 +1,71 @@
+## Hone: CSV to Nested JSON Converter
+
+**1. Introduction**
+
+Hone is a command-line interface (CLI) Python program designed to convert Comma Separated Value (CSV) files into structured, nested JSON (JavaScript Object Notation) files. This tool provides a convenient way to transform tabular data into a hierarchical format suitable for various applications, such as data analysis, configuration files, and API interactions.
+
+**2. Goals**
+
+* Convert CSV files into well-formatted, nested JSON files.
+* Handle CSV files with different delimiters.
+* Produce JSON output with proper indentation and sorted keys for readability.
+* Offer CLI functionality for ease of use.
+* Allow customization through optional parameters for delimiter and schema definition.
+
+**3. Features and Functionalities**
+
+* **CSV Parsing:** Hone will parse CSV files, handling various delimiters.
+* **Nested JSON Generation:** It will generate nested JSON structures based on the CSV data, accurately representing relationships between columns.
+* **CLI Interface:** Users will interact with Hone through a command-line interface, providing input CSV and output JSON file paths.
+* **Delimiter Customization:** An optional parameter will allow users to specify a custom delimiter for the CSV file.
+* **Schema Definition:** An optional parameter will enable users to provide a schema (template) to define the structure of the nested JSON output.
+
+**4. Supporting Data Description**
+
+* **CSV Files:** Input data in Comma Separated Value (CSV) format.
+* **JSON Files:** Output data in JavaScript Object Notation (JSON) format, nested according to the CSV structure.
+* **Schema:** An optional template defining the desired structure of the nested JSON output.
+
+**5. Technical Constraints**
+
+* **Programming Language:** Python
+* **Built-in Libraries:** Utilize Python's built-in libraries for CSV parsing (e.g., `csv`) and JSON generation (e.g., `json`).
+* **External Dependencies:** No external dependencies are required for core functionality.
+
+**6. Requirements**
+
+* **Functional Requirements:**
+    *  Hone must successfully parse CSV files with different delimiters (comma, semicolon, tab, etc.).
+    *  Hone must generate nested JSON files with proper indentation and sorted keys.
+    * Hone must accept two required command-line arguments:
+        * Input CSV file path.
+        * Output JSON file path.
+    *  Hone should support optional command-line arguments for:
+        * Custom delimiter.
+        * Schema definition.
+* **Non-Functional Requirements:**
+    * **Usability:** The CLI interface should be intuitive and easy to use.
+    * **Performance:** Hone should process CSV files efficiently.
+    * **Maintainability:** The code should be well-structured and documented for easy maintenance.
+
+**7. Dependencies**
+
+* Python (version 3.6 or higher)
+* No external dependencies are required for core functionality.
+
+**8. Acceptance Criteria**
+
+* Hone successfully converts a CSV file with a default delimiter into a nested JSON file with proper indentation and sorted keys.
+* Hone correctly parses CSV files using a user-specified custom delimiter.
+* Hone generates JSON output according to a user-provided schema.
+* The CLI interface is user-friendly and provides clear instructions.
+
+
+**9. Terms/Concepts Explanation**
+
+
+* **CSV (Comma Separated Value):** A common file format for storing tabular data, where values are separated by commas (or other delimiters).
+* **JSON (JavaScript Object Notation):** A lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate.
+* **Nested JSON:** JSON structures where objects can be nested within other objects, representing hierarchical relationships.
+* **Schema:** A template or blueprint that defines the structure and data types of a JSON document.
+* **CLI (Command-Line Interface):** A text-based interface for interacting with a program, using commands typed into a terminal.

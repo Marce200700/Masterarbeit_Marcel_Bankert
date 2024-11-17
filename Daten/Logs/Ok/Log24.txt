@@ -1,0 +1,92 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/chakin$ ./setup_shell_script.sh
+[sudo] password for marcel:
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+build-essential is already the newest version (12.9ubuntu3).
+build-essential set to manually installed.
+The following additional packages will be installed:
+  libatlas3-base libgfortran5
+Suggested packages:
+  libatlas-doc liblapack-doc
+The following NEW packages will be installed:
+  libatlas-base-dev libatlas3-base libgfortran5
+0 upgraded, 3 newly installed, 0 to remove and 154 not upgraded.
+Need to get 7808 kB of archives.
+After this operation, 38.9 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgfortran5 amd64 12.3.0-1ubuntu1~22.04 [879 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libatlas3-base amd64 3.10.3-12ubuntu1 [3340 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libatlas-base-dev amd64 3.10.3-12ubuntu1 [3590 kB]
+Fetched 7808 kB in 1s (7437 kB/s)
+Selecting previously unselected package libgfortran5:amd64.
+(Reading database ... 33635 files and directories currently installed.)
+Preparing to unpack .../libgfortran5_12.3.0-1ubuntu1~22.04_amd64.deb ...
+Unpacking libgfortran5:amd64 (12.3.0-1ubuntu1~22.04) ...
+Selecting previously unselected package libatlas3-base:amd64.
+Preparing to unpack .../libatlas3-base_3.10.3-12ubuntu1_amd64.deb ...
+Unpacking libatlas3-base:amd64 (3.10.3-12ubuntu1) ...
+Selecting previously unselected package libatlas-base-dev:amd64.
+Preparing to unpack .../libatlas-base-dev_3.10.3-12ubuntu1_amd64.deb ...
+Unpacking libatlas-base-dev:amd64 (3.10.3-12ubuntu1) ...
+Setting up libgfortran5:amd64 (12.3.0-1ubuntu1~22.04) ...
+Setting up libatlas3-base:amd64 (3.10.3-12ubuntu1) ...
+update-alternatives: using /usr/lib/x86_64-linux-gnu/atlas/libblas.so.3 to provide /usr/lib/x86_64-linux-gnu/libblas.so.3 (libblas.so.3-x86_64-linux-gnu) in auto mode
+update-alternatives: using /usr/lib/x86_64-linux-gnu/atlas/liblapack.so.3 to provide /usr/lib/x86_64-linux-gnu/liblapack.so.3 (liblapack.so.3-x86_64-linux-gnu) in auto mode
+Setting up libatlas-base-dev:amd64 (3.10.3-12ubuntu1) ...
+update-alternatives: using /usr/lib/x86_64-linux-gnu/atlas/libblas.so to provide /usr/lib/x86_64-linux-gnu/libblas.so (libblas.so-x86_64-linux-gnu) in auto mode
+update-alternatives: using /usr/lib/x86_64-linux-gnu/atlas/liblapack.so to provide /usr/lib/x86_64-linux-gnu/liblapack.so (liblapack.so-x86_64-linux-gnu) in auto mode
+Processing triggers for libc-bin (2.35-0ubuntu3.1) ...
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pip in /usr/lib/python3/dist-packages (22.0.2)
+Collecting pip
+  Downloading pip-24.2-py3-none-any.whl (1.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 7.6 MB/s eta 0:00:00
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (59.6.0)
+Collecting setuptools
+  Downloading setuptools-75.1.0-py3-none-any.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 15.3 MB/s eta 0:00:00
+Installing collected packages: setuptools, pip
+  WARNING: The scripts pip, pip3 and pip3.10 are installed in '/home/marcel/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed pip-24.2 setuptools-75.1.0
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pip in /home/marcel/.local/lib/python3.10/site-packages (24.2)
+Requirement already satisfied: setuptools in /home/marcel/.local/lib/python3.10/site-packages (75.1.0)
+Requirement already satisfied: wheel in /usr/lib/python3/dist-packages (0.37.1)
+Collecting wheel
+  Downloading wheel-0.44.0-py3-none-any.whl.metadata (2.3 kB)
+Downloading wheel-0.44.0-py3-none-any.whl (67 kB)
+WARNING: Error parsing dependencies of distro-info: Invalid version: '1.1build1'
+Installing collected packages: wheel
+  WARNING: The script wheel is installed in '/home/marcel/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed wheel-0.44.0
+Defaulting to user installation because normal site-packages is not writeable
+Collecting progressbar2 (from -r requirements.txt (line 1))
+  Downloading progressbar2-4.5.0-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: numpy in /home/marcel/.local/lib/python3.10/site-packages (from -r requirements.txt (line 2)) (2.1.1)
+Collecting pandas (from -r requirements.txt (line 3))
+  Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
+Collecting python-utils>=3.8.1 (from progressbar2->-r requirements.txt (line 1))
+  Downloading python_utils-3.9.0-py2.py3-none-any.whl.metadata (9.8 kB)
+Collecting python-dateutil>=2.8.2 (from pandas->-r requirements.txt (line 3))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas->-r requirements.txt (line 3))
+  Downloading pytz-2024.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas->-r requirements.txt (line 3))
+  Downloading tzdata-2024.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 3)) (1.16.0)
+Requirement already satisfied: typing-extensions>3.10.0.2 in /home/marcel/.local/lib/python3.10/site-packages (from python-utils>=3.8.1->progressbar2->-r requirements.txt (line 1)) (4.12.2)
+Downloading progressbar2-4.5.0-py3-none-any.whl (57 kB)
+Downloading pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 7.7 MB/s eta 0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading python_utils-3.9.0-py2.py3-none-any.whl (32 kB)
+Downloading pytz-2024.2-py2.py3-none-any.whl (508 kB)
+Downloading tzdata-2024.2-py2.py3-none-any.whl (346 kB)
+WARNING: Error parsing dependencies of distro-info: Invalid version: '1.1build1'
+Installing collected packages: pytz, tzdata, python-utils, python-dateutil, progressbar2, pandas
+  WARNING: The script progressbar is installed in '/home/marcel/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed pandas-2.2.3 progressbar2-4.5.0 python-dateutil-2.9.0.post0 python-utils-3.9.0 pytz-2024.2 tzdata-2024.2

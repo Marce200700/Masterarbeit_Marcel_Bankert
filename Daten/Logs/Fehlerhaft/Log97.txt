@@ -1,0 +1,42 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/java/redis-cache$ ./unit_test_script.sh
+
+> Task :test
+
+RedisTestCase > shouldFlushAllItemsOnDemand() FAILED
+    redis.clients.jedis.exceptions.JedisConnectionException at RedisTestCase.java:53
+
+RedisTestCase > shouldRemoveItemOnDemand() FAILED
+    redis.clients.jedis.exceptions.JedisConnectionException at RedisTestCase.java:44
+
+RedisTestCase > shouldDeleteExpiredCache() FAILED
+    redis.clients.jedis.exceptions.JedisConnectionException at RedisTestCase.java:83
+
+RedisTestCase > shouldDemonstrateCopiesAreEqual() FAILED
+    redis.clients.jedis.exceptions.JedisConnectionException at RedisTestCase.java:37
+
+17 tests completed, 4 failed
+
+> Task :test FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///home/marcel/masterarbeit/DevBench/benchmark_data/java/redis-cache/build/reports/tests/test/index.html
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD FAILED in 15s
+5 actionable tasks: 5 executed
+./unit_test_script.sh: line 3: redis-cli: command not found

@@ -1,0 +1,14 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/cpp/people_management$ ./run.sh
+g++ -Wall -g -std=c++17 -I include/ -c src/people_management.cpp -o src/people_management.o -lgcov --coverage
+In file included from src/people_management.cpp:1:
+include/people_management.h:5:10: fatal error: sqlite3.h: No such file or directory
+    5 | #include <sqlite3.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+make: *** [makefile:35: src/people_management.o] Error 1
+./run.sh: line 2: ./UMM: No such file or directory
+./run.sh: line 3: ./UMM: No such file or directory
+./run.sh: line 4: ./UMM: No such file or directory
+./run.sh: line 5: ./UMM: No such file or directory
+./run.sh: line 6: ./UMM: No such file or directory
+./run.sh: line 7: ./UMM: No such file or directory

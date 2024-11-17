@@ -1,0 +1,19 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/python/readtime$ ./setup_shell_script.sh
+Defaulting to user installation because normal site-packages is not writeable
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.12.3-py3-none-any.whl (147 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 147.9/147.9 KB 4.3 MB/s eta 0:00:00
+Collecting pyquery
+  Downloading pyquery-2.0.1-py3-none-any.whl (22 kB)
+Collecting markdown2
+  Downloading markdown2-2.5.0-py2.py3-none-any.whl (47 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.2/47.2 KB 7.7 MB/s eta 0:00:00
+Collecting lxml
+  Downloading lxml-5.3.0-cp310-cp310-manylinux_2_28_x86_64.whl (5.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.0/5.0 MB 25.1 MB/s eta 0:00:00
+Collecting soupsieve>1.2
+  Downloading soupsieve-2.6-py3-none-any.whl (36 kB)
+Collecting cssselect>=1.2.0
+  Downloading cssselect-1.2.0-py2.py3-none-any.whl (18 kB)
+Installing collected packages: soupsieve, markdown2, lxml, cssselect, pyquery, beautifulsoup4
+Successfully installed beautifulsoup4-4.12.3 cssselect-1.2.0 lxml-5.3.0 markdown2-2.5.0 pyquery-2.0.1 soupsieve-2.6

@@ -1,0 +1,91 @@
+## Software Requirement Specification: Login-Registration Program
+
+**1. Introduction:**
+
+This document outlines the software requirements for a Login-Registration program, a user management interface designed to provide user authentication and account management functionalities.
+
+**2. Goals:**
+
+* Provide a secure and user-friendly interface for user login and registration.
+* Enable users to manage their own accounts and view a list of registered users.
+* Ensure compatibility across multiple browsers and mobile devices.
+
+**3. Features and Functionalities:**
+
+* **Login Page:**
+    * Two input fields for username and password (password field should be masked).
+    * Login button to authenticate users.
+    * Register button to navigate to the registration page.
+* **Registration Page:**
+    * Four input fields for first name, last name, username, and password.
+    * Password field should enforce a minimum length of six characters.
+    * Cancel button to return to the login page.
+    * Submit button to create a new user account.
+* **User Dashboard:**
+    * Welcome message displaying the logged-in user's first name.
+    * List of all registered users, displaying first and last names.
+    * Delete button for each user entry, allowing administrators to remove accounts.
+
+**4. Technical Constraints:**
+
+* **Frontend:** Vue2.x framework
+* **Compilation:** Babel6.x
+* **Package Manager:** NPM
+* **Styling:** CSS
+* **Compatibility:** Chrome, Firefox, Safari, Edge, mobile devices (smartphones and tablets)
+
+**5. Use Cases:**
+
+* **User Login:** A registered user wants to access the application.
+* **User Registration:** A new user wants to create an account.
+* **Account Deletion:** An administrator wants to remove a user account.
+
+**6. Requirements:**
+
+* **Functional Requirements:**
+    * The system shall allow users to register new accounts with unique usernames and passwords.
+    * The system shall authenticate users with their provided username and password.
+    * The system shall display a welcome message with the logged-in user's first name.
+    * The system shall display a list of all registered users.
+    * The system shall allow administrators to delete user accounts.
+* **Non-Functional Requirements:**
+    * The system shall be responsive and user-friendly.
+    * The system shall be compatible with all major browsers and mobile devices.
+    * The system shall provide appropriate error messages to users.
+    * The system shall be secure and protect user data.
+
+**7. Data Requirements:**
+
+* User data will be stored in a suitable database (details to be determined).
+* Data fields include:
+    * First name
+    * Last name
+    * Username
+    * Password (hashed for security)
+
+**8. Design and User Interface:**
+
+* The user interface will be designed using Vue2.x and CSS, prioritizing clarity, usability, and responsiveness.
+* The design will adhere to accessibility standards to ensure usability for all users.
+
+**9. Acceptance Criteria:**
+
+* All functional requirements are met and verified through testing.
+* The system is free from major bugs and usability issues.
+* The system meets the specified performance and security requirements.
+
+**10. Dependencies:**
+
+* NPM
+* Node.js
+* A suitable database system
+
+**11. Terms/Concepts Explanation:**
+
+* **Vue2.x:** A JavaScript framework for building user interfaces.
+* **Babel6.x:** A JavaScript compiler that transpiles modern JavaScript code for compatibility with older browsers.
+* **NPM:** Node Package Manager, used for installing and managing third-party libraries.
+* **CSS:** Cascading Style Sheets, used for styling the user interface.
+* **Hashing:** A one-way cryptographic function used to securely store passwords.
+
+This Software Requirement Specification provides a detailed overview of the Login-Registration program, outlining its features, functionalities, technical constraints, and requirements. It serves as a guide for the development team to ensure the successful creation of a robust and user-friendly application.

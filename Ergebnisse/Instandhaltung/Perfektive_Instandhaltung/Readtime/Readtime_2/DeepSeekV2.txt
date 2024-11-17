@@ -1,0 +1,110 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+You are a helpful Python programer.
+
+
+> The purpose of this project is to develop a Python-based tool that can estimate the reading time for various formats of content. This tool will be able to process HTML and plain text, providing users with an approximate reading time based on a standard or user-defined words-per-minute (WPM) rate.
+I want to add a new functionality. The user should be able to use markdown as an input as well. Please tell me which file I need to change to implement this function.
+Here is the filetree:
+
+```bash
+├── examples
+│   ├── demo.py
+│   └── demo.sh
+├── readtime
+│   ├── __about__.py
+│   ├── api.py
+│   ├── __init__.py
+│   ├── result.py
+│   └── utils.py
+``` To add support for markdown input in your Python-based tool, you need to modify the `utils.py` file. Specifically, you will need to add functionality to parse markdown content and extract the text for calculating the reading time.
+
+Here's a step-by-step guide on how to implement this:
+
+1. **Install Required Packages**: Ensure you have the necessary packages installed. You will need `markdown` to parse markdown content. You can install it using pip if it's not already installed:
+
+    ```bash
+    pip install markdown
+    ```
+
+2. **Modify `utils.py`**: Update the `utils.py` file to include a function that can parse markdown content and extract plain text.
+
+    ```python
+    # readtime/utils.py
+
+    import markdown
+
+    def extract_text_from_markdown(markdown_content):
+        """
+        Extracts plain text from markdown content.
+
+        Args:
+            markdown_content (str): The markdown content as a string.
+
+        Returns:
+            str: The extracted plain text.
+        """
+        # Convert markdown to HTML
+        html_content = markdown.markdown(markdown_content)
+
+        # Extract text from HTML (simplified approach)
+        # This assumes that the HTML structure is straightforward and does not contain complex tags.
+        import re
+        text = re.sub('<.*?>', '', html_content)
+        return text
+
+    def calculate_reading_time(content, wpm=200
+>
+):
+        """
+        Calculates the reading time for the given content.
+
+        Args:
+            content (str): The content to calculate reading time for.
+            wpm (int): The words per minute reading rate.
+
+        Returns:
+            int: The approximate reading time in minutes.
+        """
+        text = extract_text_from_markdown(content)
+        word_count = len(text.split())
+        return max(word_count // wpm, 1)
+    ```
+
+3. **Update API to Accept Markdown**: Ensure that the API can accept markdown content and pass it through the `extract_text_from_markdown` function.
+
+    ```python
+    # readtime/api.py
+
+    from .utils import calculate_reading_time, extract_text_from_markdown
+
+    def estimate_reading_time(content, format='plain', wpm=200):
+        """
+        Estimates the reading time for the given content.
+
+        Args:
+            content (str): The content to estimate reading time for.
+            format (str): The format of the content ('plain' or 'markdown').
+            wpm (int): The words per minute reading rate.
+
+        Returns:
+            dict: A dictionary containing the estimated reading time.
+        """
+        if format == 'markdown':
+            content = extract_text_from_markdown(content)
+        return {
+            'reading_time': calculate_reading_time(content, wpm)
+        }
+    ```
+
+4. **Update Tests**: Ensure that your tests cover the new functionality. Add tests to verify that markdown content is correctly parsed and reading time is calculated accurately.
+
+5. **Update Documentation**: Update the documentation to reflect the new functionality.
+
+With these changes, your tool will now be able to estimate reading time for both plain text and markdown content.
+
+> Thank you

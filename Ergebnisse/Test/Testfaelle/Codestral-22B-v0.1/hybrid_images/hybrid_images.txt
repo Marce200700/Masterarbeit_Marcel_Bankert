@@ -1,0 +1,65 @@
+
+
+ Sure, here are ten more test cases based on the `.test_mean_filter_RGB` function:
+
+1. Test with a larger RGB image and a larger mean filter.
+```python
+def test_large_mean_filter_RGB(self):
+    self.large_img_rgb = np.random.rand(100, 100, 3)
+    mean = np.ones((7, 7))
+    student = hybrid.convolve_2d(self.large_img_rgb, mean)
+    solution = cv2.filter2D(self.large_img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08),
+                    msg="Incorrect result convolving large RGB image using mean filter")
+```
+2. Test with an RGB image and a mean filter of odd size.
+```python
+def test_odd_mean_filter_RGB(self):
+    mean = np.ones((5, 5))
+    student = hybrid.convolve_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08),
+                    msg="Incorrect result convolving RGB image using odd-sized mean filter")
+```
+3. Test with an RGB image and a mean filter of even size.
+```python
+def test_even_mean_filter_RGB(self):
+    mean = np.ones((4, 6))
+    student = hybrid.convolve_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08),
+                    msg="Incorrect result convolving RGB image using even-sized mean filter")
+```
+4. Test with an RGB image and a mean filter of size 1x1.
+```python
+def test_small_mean_filter_RGB(self):
+    mean = np.ones((1, 1))
+    student = hybrid.convolve_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08),
+                    msg="Incorrect result convolving RGB image using 1x1 mean filter")
+```
+5. Test with an RGB image and a mean filter of size 1xN.
+```python
+def test_horizontal_mean_filter_RGB(self):
+    mean = np.ones((1, 7))
+    student = hybrid.convolve_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08),
+                    msg="Incorrect result convolving RGB image using horizontal mean filter")
+```
+6. Test with an RGB image and a mean filter of size Nx1.
+```python
+def test_vertical_mean_filter_RGB(self):
+    mean = np.ones((7, 1))
+    student = hybrid.convolve_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, borderType=cv2.BORDER_CONSTANT)
+    self.assertTrue(np.allclose(student, solution, atol=1e-08),
+                    msg="Incorrect result convolving RGB image using vertical mean filter")
+```
+7. Test with an RGB image and a mean filter of size NxM where N != M.
+```python
+def test_rectangular_mean_filter_RGB(self):
+    mean = np.ones((5, 7))
+    student = hybrid.convolve_2d(self.img_rgb, mean)
+    solution = cv2.filter2D(self.img_rgb, -1, mean, border

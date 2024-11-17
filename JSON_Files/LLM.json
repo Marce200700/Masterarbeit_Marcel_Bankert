@@ -1,0 +1,183 @@
+{
+    "LLM": [
+        {
+            "Anforderungsanalyse": [
+
+
+                {
+                    "name": "CodeLlama34b-Instruct-hf",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/codellama-34b-instruct.Q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "TheBloke/CodeLlama-34B-Instruct-GGUF",
+                    "model_call": "AutoModel"
+                },
+
+                {
+                    "name": "Llama-3.1-70B-Instruct",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/Meta-Llama-3.1-70B-Instruct-Q4_K_L.gguf",
+                    "adapter_link": "",
+                    "model": "bartowski/Meta-Llama-3.1-70B-Instruct-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                }
+
+            ],
+            "Entwurf": [
+
+
+                {
+                    "name": "deepseek-coder-33b-instruct",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/deepseek-coder-33b-instruct.Q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "TheBloke/deepseek-coder-33B-instruct-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                }
+
+                
+            ],
+            "Umsetzung": [
+                {
+                    "name": "Phind-Codellama-34b-v2.0",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/phind-codellama-34b-v2.Q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "TheBloke/Phind-CodeLlama-34B-v2-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                }
+            ],
+            "Test": [
+
+                {
+                    "name": "CodeQwen1.5-7B-Chat",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/codeqwen-1_5-7b-chat-q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "Qwen/CodeQwen1.5-7B-Chat",
+                    "model_call": "AutoModelForSeq2SeqLM"
+                },
+
+                {
+                    "name": "Llama-3.1-70B-Instruct",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/Meta-Llama-3.1-70B-Instruct-Q4_K_L.gguf",
+                    "adapter_link": "",
+                    "model": "bartowski/Meta-Llama-3.1-70B-Instruct-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                },
+
+                {
+                    "name": "Qwen2-72B-Instruct",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/qwen2-72b-instruct-q3_k_m.gguf",
+                    "adapter_link": "",
+                    "model": "Qwen/Qwen2-72B-Instruct-GGUF",
+                    "model_call": "AutoModelForSeq2SeqLM"
+                },
+
+                {
+                    "name": "Nxcode-CQ7B-orpo",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/Nxcode-CQ-7B-orpo-f32.gguf",
+                    "adapter_link": "",
+                    "model": "NTQAI/Nxcode-CQ-7B-orpo",
+                    "model_call": "AutoModelForCausalLM"
+                },
+                {
+                    "name": "Codestral-22B-v0.1",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/Codestral-22B-v0.1-Q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "bartowski/Codestral-22B-v0.1-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                }
+            ],
+            "Inbetriebnahme": [
+
+
+                {
+                    "name": "Qwen2.5-72B-Instruct-GGUF",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/qwen2-72b-instruct-q3_k_m.gguf",
+                    "adapter_link": "",
+                    "model": "Qwen/Qwen2.5-72B-Instruct-GGUF",
+                    "model_call": "AutoModelForSeq2SeqLM"
+                },
+
+                {
+                    "name": "Mistral-7B-Instruct-v0.2",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/mistral-7b-instruct-v0.2.Q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "TheBloke/Mistral-7B-Instruct-v0.2-GGUF",
+                    "model_call": "AutoModelForSeq2SeqLM"
+                }
+
+
+
+            ],
+            "Instandhaltung": [
+
+                {
+                    "name": "OpenCodeInterpreterDS-33B",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/OpenCodeInterpreter-DS-33B-Q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "LoneStriker/OpenCodeInterpreter-DS-33B-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                },
+                
+                {
+                    "name": "Codestral-22B-v0.1",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/Codestral-22B-v0.1-Q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "bartowski/Codestral-22B-v0.1-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                },
+                
+                {
+                    "name": "DeepSeek-V2-Lite",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/DeepSeek-Coder-V2-Lite-Instruct-Q8_0.gguf",
+                    "adapter_link": "",
+                    "model": "LoneStriker/DeepSeek-Coder-V2-Lite-Instruct-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                },
+                {
+                    "name": "Llama-3.1-70B-Instruct",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/Meta-Llama-3.1-70B-Instruct-Q4_K_L.gguf",
+                    "adapter_link": "",
+                    "model": "bartowski/Meta-Llama-3.1-70B-Instruct-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                },
+                {
+                    "name": "Starcoder-Q5",
+                    "adapter": false,
+                    "GGUF": true,
+                    "file": "../../models/starcoder-q5_k_m.gguf",
+                    "adapter_link": "",
+                    "model": "osukhoroslov-hw/starcoder-Q5_K_M-GGUF",
+                    "model_call": "AutoModelForCausalLM"
+                }
+            ]
+        }
+    ]
+}

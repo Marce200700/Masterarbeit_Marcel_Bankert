@@ -1,0 +1,32 @@
+Test cases:
+
+You can create test scripts in a separate directory called test with the following content.
+
+import hybrid as hd
+
+def test_cross_correlation():
+    # Given an image and kernel, check if cross correlation returns correct output.
+    pass
+
+def test_convolve():
+    # Given an image and kernel, check if convolve returns correct output.
+    pass
+
+def test_gaussian_blur():
+    # Given a sigma value and size of the kernel, check if gaussian blur is correctly applied.
+    pass
+
+def test_low_pass():
+    # Check low pass filter implementation with different parameters.
+    pass
+
+def test_high_pass():
+    # Check high pass filter implementation with different parameters.
+    pass
+
+def test_create_hybrid_image():
+    # Test hybrid image creation using create_hybrid_image function with various inputs and outputs.
+    pass
+
+if __name__ == '__main__':
+    test_cross_correlation()

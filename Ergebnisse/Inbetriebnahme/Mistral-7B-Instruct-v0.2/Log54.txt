@@ -1,0 +1,5 @@
+
+
+Class: Ok
+
+Reason: The log indicates that the script was executed successfully and it was installed in the default location (user installation) because the normal site-packages was not writeable. This is a normal behavior and does not indicate any errors.

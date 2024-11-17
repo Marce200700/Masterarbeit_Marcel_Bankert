@@ -1,0 +1,37 @@
+
+
+Here are the unit tests for the json_utils.py file:
+
+```python
+# test_json_utils.py
+
+import unittest
+import json
+from io import StringIO
+from unittest.mock import patch
+from utils.json_utils import output_json
+
+class TestJsonUtils(unittest.TestCase):
+    def test_output_json_to_file(self):
+        json_struct = {"key": "value"}
+        json_filepath = "test.json"
+        output_json(json_struct, json_filepath)
+        with open(json_filepath, 'r') as f:
+            result = json.load(f)
+        self.assertEqual(result, json_struct)
+
+    def test_output_json_to_stdout(self):
+        json_struct = {"key": "value"}
+        json_filepath = "-"
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            output_json(json_struct, json_filepath)
+            self.assertEqual(fake_out.getvalue(), str(json_struct))
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+This test suite includes two test cases:
+
+1. `test_output_json_to_file`: This test case checks if the `output_json` function correctly writes the given JSON structure to a file. It creates a temporary JSON file, writes the JSON structure to it using the `output_json` function, and then reads the file to compare the written JSON structure with the expected one.
+2. `test_output_json_to_stdout`: This test case checks if the `output_json` function correctly writes the given JSON structure to standard output when the file path is "-". It uses the `unittest.mock.patch` function to replace the `sys.stdout` object with a `StringIO` object, which allows us to capture the output of the `output_json` function. It then compares the captured output with the expected output.

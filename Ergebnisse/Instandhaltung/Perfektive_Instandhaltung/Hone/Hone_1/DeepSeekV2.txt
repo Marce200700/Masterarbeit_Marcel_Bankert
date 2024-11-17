@@ -1,0 +1,97 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+You are a helpful Python programer.
+
+
+> The Hone project is designed to facilitate the conversion of CSV files into nested JSON formats. It aims to provide a robust and flexible solution for transforming flat CSV data structures into hierarchical JSON objects that are more suitable for various applications and data needs.
+I would now like to add a new functionality. I need to have a function which parses a csv file and returns the first row and therefore the columns of the input-csv.
+To do so, I need to know which file needs to be changed to implement this new functionality. Here is the filetree:
+```bash
+├── examples
+│   ├── demo.py
+│   ├── demo.sh
+│   ├── example_a.csv
+│   ├── example_a.json
+│   ├── example_b.csv
+│   ├── example_b.json
+│   ├── example_c.csv
+│   └── example_c.json
+├── hone
+│   ├── __init__.py
+│   ├── hone.py
+│   ├── __main__.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── csv_utils.py
+│   │   ├── json_utils.py
+│   │   └── test_utils.py
+├── LICENSE
+└── README.md
+``` To add a new functionality that parses a CSV file and returns the first row and therefore the columns of the input CSV, you need to modify the `csv_utils.py` file. This file is located in the `utils` directory within the `hone` project.
+
+Here's a step-by-step guide to implement this functionality:
+
+1. **Navigate to the `csv_utils.py` file**: Open the `csv_utils.py` file located in the `utils` directory of the `hone` project.
+
+2. **Add the new function**: Add a new function that reads the first row of the CSV file and returns it.
+
+Here's an example of how you can implement this:
+
+```python
+# hone/utils/csv_utils.py
+
+import csv
+
+def get_csv_columns(csv_file_path):
+    """
+    Reads the first row of the CSV file and returns it as a list of column names.
+
+    Args:
+        csv_file_path (str): The path to the CSV file
+>
+.
+
+    Returns:
+        list: The first row of the CSV file as a list of column names.
+    """
+    with open(csv_file_path, mode='r', newline='') as csvfile:
+        csvreader = csv.reader(csvfile)
+        first_row = next(csvreader)
+        return first_row
+
+```
+
+3. **Update the `__init__.py` file**: Ensure that the `__init__.py` file in the `utils` directory is properly configured to allow importing from `csv_utils.py`.
+
+```python
+# hone/utils/__init__.py
+
+from .csv_utils import get_csv_columns
+```
+
+4. **Use the new function**: Now you can use the `get_csv_columns` function in your project. For example, you can call it from `demo.py` to test the functionality.
+
+```python
+# examples/demo.py
+
+from hone.utils.csv_utils import get_csv_columns
+
+# Example usage
+csv_file_path = 'examples/example_a.csv'
+columns = get_csv_columns(csv_file_path)
+print(columns)
+```
+
+5. **Run the script**: Execute the script to verify that the function works as expected.
+
+```bash
+./examples/demo.sh
+```
+
+By following these steps, you will have added a new functionality to your project that reads the first row of a CSV file and returns the column names.
+
+> Thank you

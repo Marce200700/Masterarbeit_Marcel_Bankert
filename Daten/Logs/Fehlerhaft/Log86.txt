@@ -1,0 +1,16 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/cpp/people_management$ ./run.sh
+g++ -Wall -g -std=c++17 -I include/ -c src/people_management.cpp -o src/people_management.o -lgcov --coverage
+g++ -Wall -g -std=c++17 -I include/ -c src/utils.cpp -o src/utils.o -lgcov --coverage
+g++ -Wall -g -std=c++17 -I include/ -c src/main.cpp -o src/main.o -lgcov --coverage
+g++ -Wall -g -std=c++17 -I include/ -o UMM src/people_management.o src/utils.o src/main.o -L/usr/lib -lsqlite3 -lgcov --coverage
+Program has been compiled
+School with ID 1 does not exist
+Failed. Check the error message above.
+School with ID 1 does not exist
+Failed. Check the error message above.
+id              name            age             school          type
+Record updated to the database.
+Student with ID 1 does not exist
+Mentorship operation failed. Check the error message above.
+Student with ID 1 does not exist
+Mentorship operation failed. Check the error message above.

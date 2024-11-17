@@ -1,0 +1,14 @@
+Initiating server activation
+Request to kill LSP server.
+Cannot kill: current process is None
+Launching Oracle Java SE Language Server with default system JDK and userdir c:\Users\marce\AppData\Roaming\Code\User\workspaceStorage\f5eaeecb6ca0002a5b50e00bc77baf5a\Oracle.oracle-java
+LSP server launching: 28192
+LSP server user directory: c:\Users\marce\AppData\Roaming\Code\User\workspaceStorage\f5eaeecb6ca0002a5b50e00bc77baf5a\Oracle.oracle-java
+Cannot run on older versions of Java than Java 17.
+Please install Java 17 or newer or use --jdkhome
+switch to point to its installation directory.
+Cannot find org.netbeans.modules.java.lsp.server in the log!
+Please refer to troubleshooting section for more info: https://github.com/oracle/javavscode/blob/main/README.md#troubleshooting
+Request to kill LSP server.
+Cannot kill: Requested kill on 28192, current process is None
+Oracle Java SE Language Server not enabled!

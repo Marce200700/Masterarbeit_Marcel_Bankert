@@ -1,0 +1,57 @@
+ The estimated readtime should be displayed in minutes and seconds (e.g., 5:45). 
+
+**Software Requirement Specification: ReadTime**
+
+### Introduction
+ReadTime is a Python-based application that accurately estimates the reading time of various content formats, considering both text length and complexity. It supports plain text, HTML, and Markdown inputs, providing user-friendly error handling for unsupported formats.
+
+### Goals
+1. **Accurate estimation**: Provide reliable reading time estimates based on words-per-minute rate, incorporating text complexity and length.
+2. **Multi-format support**: Seamlessly process plain text, HTML, and Markdown inputs using efficient libraries (BeautifulSoup4, lxml, markdown2, pyquery).
+3. **Robust error handling**: Gracefully handle unsupported formats (e.g., TeX-Code, AsciiDoc) with informative error messages for users.
+4. **Intuitive output**: Display estimated reading time in minutes and seconds (e.g., 5:45).
+
+### Features and Functionalities
+1. **Format-agnostic parsing**: Efficiently parse plain text, HTML, and Markdown inputs using specialized libraries.
+2. **Complexity-aware estimation**: Integrate a sophisticated algorithm considering both text length and complexity to generate accurate reading time estimates.
+3. **Error handling and feedback**: Catch unsupported formats, providing concise, informative error messages for users.
+
+### Supporting Data Description
+* **Input formats**: Plain text, HTML, Markdown
+* **Output format**: Estimated reading time (minutes:seconds, e.g., 5:45)
+* **Algorithmic considerations**:
+	+ Words-per-minute rate
+	+ Text complexity metrics (e.g., Flesch-Kincaid Grade Level, Gunning-Fog Index)
+
+### Technical Constraints
+1. **Implementation language**: Python 3.x
+2. **Dependent libraries**: BeautifulSoup4, lxml, markdown2, pyquery
+3. **Testing framework**: Pytest
+
+### Requirements
+**Functional Requirements**
+1. The application shall accurately estimate reading time for plain text, HTML, and Markdown inputs.
+2. The estimation algorithm shall incorporate both text length and complexity.
+3. The application shall display estimated reading time in minutes and seconds (e.g., 5:45).
+4. When encountering unsupported formats (e.g., TeX-Code, AsciiDoc), the application shall raise informative error messages.
+
+**Non-Functional Requirements**
+1. **Performance**: Efficient parsing and estimation for inputs of varying sizes.
+2. **Robustness**: Comprehensive error handling with descriptive messages for unsupported formats.
+
+### Usage
+Users provide input content in supported formats (plain text, HTML, Markdown). ReadTime processes the input, applying its complexity-aware algorithm to generate an accurate estimated reading time, displayed in minutes and seconds. If an unsupported format is detected, a concise, informative error message is presented.
+
+### Acceptance Criteria
+1. **Accuracy**:
+	* Estimated reading times for diverse inputs (plain text, HTML, Markdown) closely match human-annotated benchmarks.
+	* Complexity metrics effectively influence estimation, reflecting varying text difficulties.
+2. **Format support and error handling**:
+	* Successful processing of supported formats (plain text, HTML, Markdown).
+	* Informative error messages for unsupported formats (e.g., TeX-Code, AsciiDoc), with clear format identification.
+3. **Output and usability**:
+	* Consistent, intuitive output format (minutes:seconds, e.g., 5:45).
+	* Error messages are concise, descriptive, and user-friendly.
+4. **Performance and robustness**:
+	* Efficient handling of large inputs, with reasonable response times (< 5 seconds for 10,000-word documents).
+	* Comprehensive error handling maintains application stability under diverse, invalid, or malformed inputs.

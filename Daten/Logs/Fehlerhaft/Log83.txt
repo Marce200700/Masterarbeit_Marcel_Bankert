@@ -1,0 +1,14 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/geotext/unit_tests$ python3 test_geotext.py
+..F.
+======================================================================
+FAIL: test_country_mentions (__main__.TestGeotext)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/geotext/unit_tests/test_geotext.py", line 120, in test_country_mentions
+    self.assertEqual(result, expected)
+AssertionError: OrderedDict([('US', 3), ('RU', 1)]) != {'PE': 1, 'IE': 1, 'RU': 2}
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.005s
+
+FAILED (failures=1)

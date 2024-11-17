@@ -1,0 +1,71 @@
+## ReadTime Software Requirement Specification
+
+**1. Introduction**
+
+This document outlines the software requirements for ReadTime, a program designed to estimate the reading time for various types of digital content.
+
+**2. Goals**
+
+The primary goal of ReadTime is to provide accurate reading time estimations for users based on the length and complexity of the input text. The program aims to be versatile, supporting multiple common text formats and offering user-friendly error handling for unsupported inputs.
+
+**3. Features and Functionalities**
+
+* **Input Formats:**
+    * Plain Text (.txt)
+    * HTML (.html, .htm)
+    * Markdown (.md)
+* **Reading Time Calculation:**
+    * Estimation based on words-per-minute (WPM) rate.
+    * Consideration of text complexity and length for accurate estimations.
+* **Error Handling:**
+    * Proper handling of unsupported input formats (e.g., TeX, AsciiDoc) with informative error messages.
+* **User Interface:**
+    * Command-line interface (CLI) for input and output.
+
+**4. Supporting Data Description**
+
+ReadTime will not require external databases or data files for its core functionality.
+
+**5. Technical Constraints**
+
+* **Programming Language:** Python 3.x
+* **Libraries:**
+    * Beautiful Soup 4 (for HTML parsing)
+    * lxml (for XML and HTML parsing)
+    * Markdown2 (for Markdown parsing)
+    * PyQuery (for HTML manipulation)
+    * Pytest (for unit testing)
+
+**6. Requirements**
+
+* **Functional Requirements:**
+    * The program shall accept plain text, HTML, and Markdown files as input.
+    * The program shall calculate the estimated reading time based on user-defined WPM.
+    * The program shall provide clear and informative error messages for unsupported input formats.
+    * The program shall be implemented using Python 3.x and the specified libraries.
+* **Non-Functional Requirements:**
+    * **Performance:** The program should provide reading time estimations within a reasonable timeframe (e.g., less than 5 seconds for typical document lengths).
+    * **Reliability:** The program should consistently produce accurate reading time estimations.
+    * **Usability:** The CLI should be intuitive and easy to use.
+* **Security Requirements:**
+    * No sensitive user data is processed, so specific security measures are not required.
+
+**7. Usage**
+
+Users will interact with ReadTime through a command-line interface. They will specify the input file path and their desired WPM rate. The program will then output the estimated reading time.
+
+Example Usage:
+
+```bash
+readtime.py input.txt 250
+```
+
+This command will estimate the reading time for the file "input.txt" assuming a WPM rate of 250.
+
+**8. Acceptance Criteria**
+
+* The program successfully processes plain text, HTML, and Markdown files.
+* Reading time estimations are within a 5% margin of error compared to manual calculation.
+* The program handles unsupported input formats gracefully, displaying informative error messages.
+* The CLI is user-friendly and easy to understand.
+* Unit tests cover all core functionalities of the program.

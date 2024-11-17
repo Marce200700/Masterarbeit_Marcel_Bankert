@@ -1,0 +1,1 @@
+It took 72.28658533096313seconds to implement testcases for hybrid_images.

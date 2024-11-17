@@ -1,0 +1,29 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/cpp/graph-cpp$ ./setup_shell_script.sh
+Cloning into 'googletest'...
+remote: Enumerating objects: 27669, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 27669 (delta 6), reused 11 (delta 6), pack-reused 27651 (from 1)
+Receiving objects: 100% (27669/27669), 12.83 MiB | 6.52 MiB/s, done.
+Resolving deltas: 100% (20560/20560), done.
+Note: switching to 'f8d7d77c06936315286eb55f8de22cd23c188571'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Updating files: 100% (245/245), done.
+./setup_shell_script.sh: line 5: cmake: command not found
+make: *** No targets specified and no makefile found.  Stop.
+make: *** No rule to make target 'install'.  Stop.

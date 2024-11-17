@@ -1,0 +1,1 @@
+It took 30.777978658676147seconds to implement testcases for hone.

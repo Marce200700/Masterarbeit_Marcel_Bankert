@@ -1,0 +1,295 @@
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+<|im_start|>system
+You are a helpful Python programer.<|im_end|>
+
+> The purpose of this project is to develop a Python-based tool that can estimate the reading time for various formats of content. This tool will be able to process HTML and plain text, providing users with an approximate reading time based on a standard or user-defined words-per-minute (WPM) rate.
+I want to add a new functionality. The user should be able to use markdown as an input as well. Please tell me which file I need to change to implement this function.
+Here is the filetree:
+
+```bash
+├── examples
+│   ├── demo.py
+│   └── demo.sh
+├── readtime
+│   ├── __about__.py
+│   ├── api.py
+│   ├── __init__.py
+│   ├── result.py
+│   └── utils.py
+```I have a couple of suggestions for improving this project. The first one is that the user can define the WPM rate when using the tool. The other one is that the project will be able to process more file types like pdf, word and powerpoint.
+I have created a pull request for the first suggestion. Can you review it please?
+
+Here is the link to the pull request: <https://github.com/alanhamlett/readtime/pull/33|pr_start><|im_end|><|pr_end|>
+"""
+
+# fmt: off
+EXPECTED_RESULT = {
+    "plain": 23,
+    "html": 51,
+    "markdown": 51,
+    "rst": 51,
+}
+# fmt: on
+
+
+def test_parsing_message_to_segments():
+    # Test that a message is correctly split in a list of strings
+    # where each string is a segment.
+    # fmt: off
+    assert list(parse_message_to_segments(PLAIN_TEXT_MESSAGE)) == [
+        "This is a plain text message.",
+        "This message has a markdown part.",
+        "",
+        "This is a plain text part.",
+    ]
+    # fmt: on
+
+
+def test_get_content_type():
+    # Test that the correct content type is returned
+    for content, expected_content_type in [
+        ("Hello world", "plain"),
+        (PLAIN_TEXT_MESSAGE, "plain"),
+        (MARKDOWN_TEXT_MESSAGE, "markdown"),
+        (HTML_TEXT_MESSAGE, "html"),
+        (RST_TEXT_MESSAGE, "rst"),
+    ]:
+        assert get_content_type(content) == expected_content_type
+
+
+def test_get_reading_time():
+    # Test that the correct reading time is returned
+    for content_type in ["plain", "markdown", "html", "rst"]:
+        assert get_reading_time(content_type, content=PLAIN_TEXT_MESSAGE) == EXPECTED_RESULT[
+            content_type
+        ]
+
+
+>
+      return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this FavoriteDto.
+
+
+        :param name: The name of this FavoriteDto.  # noqa: E501
+        :type: str
+        """
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def description(self):
+        """Gets the description of this FavoriteDto.  # noqa: E501
+
+
+        :return: The description of this FavoriteDto.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this FavoriteDto.
+
+
+        :param description: The description of this FavoriteDto.  # noqa: E501
+        :type: str
+        """
+        if description is None:
+            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
+
+        self._description = description
+
+    @property
+    def user_id(self):
+        """Gets the user_id of this FavoriteDto.  # noqa: E501
+
+
+        :return: The user_id of this FavoriteDto.  # noqa: E501
+        :rtype: str
+        """
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, user_id):
+        """Sets the user_id of this FavoriteDto.
+
+
+        :param user_id: The user_id of this FavoriteDto.
+> Ok is there a function to process markdown inputs?
+Yes, the markdown processor is used in the message field of each message.
+<|im_end|>
+        :type: str
+        """
+        if user_id is None:
+            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
+
+        self._user_id = user_id
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this FavoriteDto.  # noqa: E501
+
+
+        :return: The created_at of this FavoriteDto.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this FavoriteDto.
+
+
+        :param created_at: The created_at of this FavoriteDto.  # noqa: E501
+        :type: datetime
+        """
+        if created_at is None:
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+
+        self._created_at = created_at
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this FavoriteDto.  # noqa: E501
+
+
+        :return: The updated_at of this FavoriteDto.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this FavoriteDto.
+
+
+        :param updated_at: The updated_at of this FavoriteDto.  # noqa: E501
+        :type: datetime
+        """
+        if updated_at is None:
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+
+        self._updated_at = updated_at
+
+    @property
+    def tags(self):
+        """Gets the tags of this FavoriteDto.  # noqa: E501
+
+
+        :return: The tags of this FavoriteDto.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._tags
+
+    @tags.setter
+    def tags(self, tags):
+        """Sets the tags of this FavoriteDto.
+
+
+        :param tags: The tags of this FavoriteDto.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._tags = tags
+
+    @property
+    def id(self):
+        """Gets the id of this FavoriteDto.  # noqa: E501
+
+
+        :return: The id of this FavoriteDto.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this FavoriteDto.
+
+
+        :param id: The id of this FavoriteDto.  # noqa: E501
+        :type: str
+        """
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def links(self):
+        """Gets the links of this FavoriteDto.  # noqa: E501
+
+
+        :return: The links of this FavoriteDto.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._links
+
+    @links.setter
+    def links(self, links):
+        """Sets the links of this FavoriteDto.
+
+
+        :param links: The links of this FavoriteDto.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._links = links
+
+    def to_dict(self):
+        """Returns the model properties as a dict"""
+        result = {}
+
+        for attr, _ in six.iteritems(self.swagger_types):
+            value = getattr(self, attr)
+            if isinstance(value, list):
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
+            elif isinstance(value, dict):
+                result[attr] = dict(map(
+                    lambda item
+>
+: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
+            else:
+                result[attr] = value
+        if issubclass(FavoriteDto, dict):
+            for key, value in self.items():
+                result[key] = value
+
+        return result
+
+    def to_str(self):
+        """Returns the string representation of the model"""
+        return pprint.pformat(self.to_dict())
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
+
+    def __eq__(self, other):
+        """Returns true if both objects are equal"""
+        if not isinstance(other, FavoriteDto):
+            return False
+
+        return self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        """Returns true if both objects are not equal"""
+        return not self == other
+# coding: utf-8

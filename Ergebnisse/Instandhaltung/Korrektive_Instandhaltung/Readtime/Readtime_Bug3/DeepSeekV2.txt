@@ -1,0 +1,70 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+You are a helpful a Pythoon programer.
+
+
+> I get the following errors trying to run unit- and acceptance-tests for a program:
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/readtime/examples$ python3 demo.py
+
+Text: The shortest blog post in the world!
+Text Reading Time (in seconds): 2
+Text Reading Time (in text): 1 min
+
+HTML: This is <strong>HTML</strong>
+HTML Reading Time (in seconds): 1
+HTML Reading Time (in text): 1 min
+
+Markdown: This is **Markdown**
+Markdown Reading Time (in seconds): 1
+Markdown Reading Time (in text): 1 min
+
+Custom WPM: The shortest blog post in the world! (WPM = 5)
+Traceback (most recent call last):
+  File "/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/readtime/examples/demo.py", line 19, in <module>
+    reading_time_wpm = oftext("The shortest blog post in the world!", wpm=5) # Zuvor reading_time_wpm = of_text("The shortest blog post in the world!", wpm=5);
+NameError: name 'oftext' is not defined. Did you mean: 'of_text'?
+Please provide code and an explanation to fix the bug which causes the aforementioned errors. It looks like you're encountering a `NameError` because the function `oftext` is not defined in your script. The correct function to use is `of_text`. The error message suggests that you have a typo in the function name.
+
+Here's the corrected version of your script:
+
+```python
+from readtime import of_text
+
+# Text reading time
+reading_time_text = of_text("The shortest blog post in the world!")
+print(f"Text: The shortest blog post in the world!")
+print(f"Text Reading Time (in seconds): {reading_time_text}")
+print(f"Text Reading Time (in text): {reading_time_text // 60} min")
+
+# HTML reading time
+reading_
+>
+time_html = of_text("This is <strong>HTML</strong>", html=True)
+print(f"\nHTML: This is <strong>HTML</strong>")
+print(f"HTML Reading Time (in seconds): {reading_time_html}")
+print(f"HTML Reading Time (in text): {reading_time_html // 60} min")
+
+# Markdown reading time
+reading_time_markdown = of_text("This is **Markdown**", markdown=True)
+print(f"\nMarkdown: This is **Markdown**")
+print(f"Markdown Reading Time (in seconds): {reading_time_markdown}")
+print(f"Markdown Reading Time (in text): {reading_time_markdown // 60} min")
+
+# Custom WPM reading time
+reading_time_wpm = of_text("The shortest blog post in the world!", wpm=5)
+print(f"\nCustom WPM: The shortest blog post in the world! (WPM = 5)")
+print(f"Reading Time (in seconds): {reading_time_wpm}")
+print(f"Reading Time (in text): {reading_time_wpm // 60} min")
+```
+
+Make sure you have the `readtime` package installed. If not, you can install it using pip:
+
+```sh
+pip install readtime
+```
+
+This script uses the `of_text` function from the `readtime` package to calculate the reading time for different types of text (plain text, HTML, and Markdown) and for a custom words per minute (WPM) value. The corrected function name should resolve the `NameError` you encountered.

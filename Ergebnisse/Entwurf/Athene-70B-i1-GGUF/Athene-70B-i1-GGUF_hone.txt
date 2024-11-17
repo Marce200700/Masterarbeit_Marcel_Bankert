@@ -1,0 +1,87 @@
+ This structure is particularly useful when representing complex, interrelated data.
+
+Schema refers to the predefined structure or organization of data, defining how it should be arranged, related, and formatted. In the context of JSON, a schema specifies the expected composition and relationships of JSON objects, including their properties, data types, and nesting.
+
+Design
+**UML Class Diagram**
+```plantuml
+@startuml
+class CSVParser {
+  - delimiter: str
+  - column_names: List[str]
+  - data_rows: List[List[str]]
+
+  + __init__(delimiter: str)
+  + parse(file_path: str): (List[str], List[List[str]])
+}
+
+class JSONGenerator {
+  - schema: Dict[str, Any]
+  - nested_json: List[Dict[str, Any]]
+
+  + __init__(schema: Dict[str, Any] = None)
+  + generate(column_names: List[str], data_rows: List[List[str]]): List[Dict[str, Any]]
+}
+
+class CLI {
+  - csv_file_path: str
+  - json_file_path: str
+  - delimiter: str = ","
+  - schema: Dict[str, Any] = None
+
+  + __init__(csv_file_path: str, json_file_path: str, delimiter: str = ",", schema: Dict[str, Any] = None)
+  + convert(): None
+}
+
+CSVParser --> JSONGenerator: uses
+CLI --> CSVParser: uses
+CLI --> JSONGenerator: uses
+@enduml
+```
+**UML Sequence Diagram**
+```plantuml
+@startuml
+participant CLI as cli
+participant CSVParser as parser
+participant JSONGenerator as generator
+
+note "Initialization"
+  cli -> cli: __init__(csv_file_path, json_file_path, delimiter, schema)
+end note
+
+cli -> parser: parse(csv_file_path)
+parser -> parser: extract column names and data rows
+parser -> cli: (column_names, data_rows)
+
+cli -> generator: generate(column_names, data_rows)
+generator -> generator: transform data using schema (if provided)
+generator -> cli: nested_json
+
+note "Output"
+  cli -> cli: write nested_json to json_file_path (or stdout)
+end note
+@enduml
+```
+**File Tree and Description**
+```
+hone/
+__init__.py  # Package initialization
+csv_parser.py  # Implements CSVParser class
+json_generator.py  # Implements JSONGenerator class
+cli.py  # Implements CLI class, argument parsing, and conversion logic
+utils.py  # Helper functions for file management and JSON output
+examples/
+demo.py  # Demonstration script for command-line usage
+data_file/
+comma_test/
+column_names.csv
+data_rows.csv
+dataset.csv
+nested_dataset.json
+quotes_test/  # Similar structure to comma_test
+small_cats_dataset/  # Similar structure to comma_test, with nested_schema.json
+setup.py  # Package installation script
+README.md  # Project documentation and usage guide
+```
+**Explanation**
+The `hone` package consists of four key modules: `csv_parser`, `json_generator`, `cli`, and `utils`. The `CSVParser` class, defined in `csv_parser.py`, handles CSV file parsing with customizable delimiters. The `JSONGenerator` class, in `json_generator.py`, transforms parsed CSV data into nested JSON using an optional schema. The `CLI` class, implemented in `cli.py`, orchestrates the conversion process, parsing arguments, and managing file interactions. Utility functions for file handling and JSON output reside in `utils.py`. The `examples` directory contains a demonstration script, and `data_file` holds test datasets. The `setup.py` script facilitates package installation, while `README.md` provides documentation and usage guidance. This structured design ensures a modular, maintainable, and efficient implementation of the CSV-to-JSON conversion functionality with robust CLI support.

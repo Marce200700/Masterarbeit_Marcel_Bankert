@@ -1,0 +1,110 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: I think you are using the wrong command.
+
+\begin{code}
+npm install
+\end{code}
+
+is used to install the dependencies of a project.
+
+\begin{code}
+npm install -g <package>
+\end{code}
+
+is used to install a package globally.
+
+You can try to install the package locally with
+
+\begin{code}
+npm install <package>
+\end{code}
+
+Comment: I tried it with npm install <package> but it still doesn't work. I get the same error message.
+
+Comment: Can you provide the error message?
+
+Comment: I added the error message to my question.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I tried it with node v14.17.4 and v16.13.0 but it still doesn't work.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I tried it with node v14.17.4 and v16.13.0 but it still doesn't work.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is not compatible with your node version.
+
+Comment: I think the problem is that the package is

@@ -1,0 +1,16 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend$ ./test.sh
+rm: cannot remove 'chromedriver_linux64.zip': No such file or directory
+--2024-10-02 19:51:48--  https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip
+Resolving chromedriver.storage.googleapis.com (chromedriver.storage.googleapis.com)... 142.250.181.219, 172.217.16.91, 142.251.209.155, ...
+Connecting to chromedriver.storage.googleapis.com (chromedriver.storage.googleapis.com)|142.250.181.219|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5404417 (5.2M) [application/zip]
+Saving to: ‘chromedriver_linux64.zip’
+
+chromedriver_linux64.zip                   100%[========================================================================================>]   5.15M  5.54MB/s    in 0.9s
+
+2024-10-02 19:51:50 (5.54 MB/s) - ‘chromedriver_linux64.zip’ saved [5404417/5404417]
+
+./test.sh: /mnt/c/Program Files/nodejs/npm: /bin/sh^M: bad interpreter: No such file or directory
+./test.sh: /mnt/c/Program Files/nodejs/npm: /bin/sh^M: bad interpreter: No such file or directory
+./test.sh: /mnt/c/Program Files/nodejs/npm: /bin/sh^M: bad interpreter: No such file or directory

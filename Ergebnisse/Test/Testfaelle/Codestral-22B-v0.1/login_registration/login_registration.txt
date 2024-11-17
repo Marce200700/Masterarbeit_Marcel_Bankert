@@ -1,0 +1,204 @@
+
+
+1. Test case for invalid first name (less than 2 characters)
+```javascript
+it('shows error message for invalid first name', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'T',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The first name must be at least 2 characters.');
+});
+```
+
+2. Test case for invalid last name (less than 2 characters)
+```javascript
+it('shows error message for invalid last name', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'U',
+            username: 'testuser',
+            password: 'password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The last name must be at least 2 characters.');
+});
+```
+
+3. Test case for invalid username (less than 3 characters)
+```javascript
+it('shows error message for invalid username', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'tu',
+            password: 'password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The username must be at least 3 characters.');
+});
+```
+
+4. Test case for invalid password (less than 6 characters)
+```javascript
+it('shows error message for invalid password', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'pass'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The password must be at least 6 characters.');
+});
+```
+
+5. Test case for invalid password (does not contain a number)
+```javascript
+it('shows error message for invalid password (no number)', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The password must contain at least one number.');
+});
+```
+
+6. Test case for invalid password (does not contain a lowercase letter)
+```javascript
+it('shows error message for invalid password (no lowercase letter)', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'PASSWORD1'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The password must contain at least one lowercase letter.');
+});
+```
+
+7. Test case for invalid password (does not contain an uppercase letter)
+```javascript
+it('shows error message for invalid password (no uppercase letter)', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'password1'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The password must contain at least one uppercase letter.');
+});
+```
+
+8. Test case for invalid password (does not contain a special character)
+```javascript
+it('shows error message for invalid password (no special character)', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'Password1'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The password must contain at least one special character.');
+});
+```
+
+9. Test case for invalid password (does not match the confirm password)
+```javascript
+it('shows error message for invalid password (does not match confirm password)', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'Password1!',
+            confirmPassword: 'Password2!'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+    expect(wrapper.find('.invalid-feedback').text()).toContain('The passwords do not match.');
+});
+```
+
+10. Test case for successful registration
+```javascript
+it('registers user successfully', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'Password1!',
+            confirmPassword: 'Password1!'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+
+    expect(actions.register).toHaveBeenCalledWith(expect.any(Object), wrapper.vm.user);
+    expect(wrapper.find('.alert-success').exists()).toBe(true);
+    expect(wrapper.find('.alert-success').text()).toContain('Registration successful');
+});
+```

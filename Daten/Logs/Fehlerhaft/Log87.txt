@@ -1,0 +1,31 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/docker/complete$ docker build -t testimage .
+[+] Building 4.3s (12/45)                                                                                                                                    docker:default
+ => [internal] load build definition from dockerfile                                                                                                                   0.3s
+ => => transferring dockerfile: 3.04kB                                                                                                                                 0.1s
+ => [internal] load .dockerignore                                                                                                                                      0.2s
+ => => transferring context: 2B                                                                                                                                        0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                                       2.4s
+ => [ 1/41] FROM docker.io/library/ubuntu:latest@sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5dc1ef9006b                                               0.0s
+ => [internal] load build context                                                                                                                                      0.1s
+ => => transferring context: 570B                                                                                                                                      0.0s
+ => CACHED [ 2/41] RUN apt-get update                                                                                                                                  0.0s
+ => CACHED [ 3/41] RUN mkdir ~/libraries                                                                                                                               0.0s
+ => CACHED [ 4/41] RUN apt-get install -y g++-11 gcc-11 git build-essential wget libtool autoconf unzip libssl-dev libnss3 xvfb lsb-release curl gpg libatlas-base-de  0.0s
+ => CACHED [ 5/41] RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11                                      0.0s
+ => CACHED [ 6/41] WORKDIR /root/libraries                                                                                                                             0.0s
+ => CACHED [ 7/41] RUN wget https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz                            0.0s
+ => ERROR [ 8/41] RUN tar openjdk-14_linux-x64_bin.tar.gz                                                                                                              1.4s
+------
+ > [ 8/41] RUN tar openjdk-14_linux-x64_bin.tar.gz:
+1.334 tar: Old option 'b' requires an argument.
+1.335 Try 'tar --help' or 'tar --usage' for more information.
+------
+dockerfile:21
+--------------------
+  19 |     # Install Java 14
+  20 |     RUN wget https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz
+  21 | >>> RUN tar openjdk-14_linux-x64_bin.tar.gz
+  22 |     # Das darüber war eigentlich RUN tar xf openjdk-14_linux-x64_bin.tar.gz
+  23 |     RUN mv jdk-14 /opt/
+--------------------
+ERROR: failed to solve: process "/bin/sh -c tar openjdk-14_linux-x64_bin.tar.gz" did not complete successfully: exit code: 2

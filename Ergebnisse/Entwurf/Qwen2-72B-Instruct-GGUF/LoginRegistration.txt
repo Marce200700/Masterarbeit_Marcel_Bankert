@@ -1,0 +1,101 @@
+ UML Class Diagram:
+```plantuml
+@startuml
+title UML Class Diagram
+
+class User {
+  +string firstName
+  +string lastName
+  +string username
+  +string password
+  +User()
+  +register()
+  +login()
+}
+
+class HomePage {
+  +string title
+  +array users
+  +HomePage()
+  +getAllUsers()
+  +deleteUser(user)
+}
+
+class LoginPage {
+  +string title
+  +LoginPage()
+  +login()
+}
+
+class RegisterPage {
+  +string title
+  +RegisterPage()
+  +register()
+}
+
+User "1" * "many" HomePage
+User "1" * "many" LoginPage
+User "1" * "many" RegisterPage
+
+@enduml
+```
+UML Sequence Diagram:
+```plantuml
+@startuml
+title UML Sequence Diagram
+
+participant User
+participant RegisterPage
+participant HomePage
+participant LoginPage
+
+User -> RegisterPage: register()
+RegisterPage -> User: createUser()
+User -> RegisterPage: redirect to LoginPage
+RegisterPage -> LoginPage: redirect()
+User -> LoginPage: login()
+LoginPage -> HomePage: redirect()
+User -> HomePage: viewUsers()
+HomePage -> User: displayUsers()
+@enduml
+```
+File Tree:
+```javascript
+.
+├── src/
+│   ├── assets/
+│   │   └── styles.css
+│   ├── components/
+│   │   ├── HomePage.vue
+│   │   ├── LoginPage.vue
+│   │   └── RegisterPage.vue
+│   ├── App.vue
+│   ├── main.js
+│   └── router.js
+├── tests/
+│   └── unit/
+│       ├── HomePage.spec.js
+│       ├── LoginPage.spec.js
+│       └── RegisterPage.spec.js
+├── package.json
+└── webpack.config.js
+```
+File Descriptions:
+
+* `src/`: Contains the source code for the application.
+	+ `assets/`: Stores static assets such as stylesheets.
+		- `styles.css`: Contains the global styles for the application.
+	+ `components/`: Stores the Vue components for the application.
+		- `HomePage.vue`: Implements the HomePage component.
+		- `LoginPage.vue`: Implements the LoginPage component.
+		- `RegisterPage.vue`: Implements the RegisterPage component.
+	+ `App.vue`: The main Vue component that wraps all other components.
+	+ `main.js`: The entry point for the application.
+	+ `router.js`: Configures the Vue Router for the application.
+* `tests/`: Stores the unit tests for the application.
+	+ `unit/`: Stores the unit tests for the components.
+		- `HomePage.spec.js`: Tests the HomePage component.
+		- `LoginPage.spec.js`: Tests the LoginPage component.
+		- `RegisterPage.spec.js`: Tests the RegisterPage component.
+* `package.json`: Contains the project metadata and dependencies.
+* `webpack.config.js`: Configures the Webpack build process.

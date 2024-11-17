@@ -1,0 +1,1 @@
+It took 1.3821847438812256seconds to implement unittests for the entire hybrid_images.

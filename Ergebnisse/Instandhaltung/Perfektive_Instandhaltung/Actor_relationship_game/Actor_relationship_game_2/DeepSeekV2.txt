@@ -1,0 +1,440 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+You are a helpful Java programer.
+
+
+> The Actor Relationship Game is a Java-based application that allows users to explore connections between popular actors through their movie collaborations, using data from The Movie Database (TMDB) API. It constructs an actor graph and identifies the shortest path of relationships between any two actors.
+I would like to add a new functionality. So the connections are generated and written down in a generated text file.
+I now want to document amount of connection between two actors. To do so, I want you to tell me which file has to be changed.
+Here is the file tree of this project:
+
+```bash
+├── .gitignore
+├── src
+│   ├── acceptanceTest
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   └── ActorRelationshipAcceptanceTest.java
+│   ├── main
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   ├── Actor.java
+│   │   │   │   ├── Movie.java
+│   │   │   │   ├── ActorGraph.java
+│   │   │   │   ├── ActorGraphUtil.java
+│   │   │   │   ├── GameplayInterface.java
+│   │   │   │   ├── GraphCreation.java
+│   │   │   │   └── TMDBApi.java
+│   ├── test
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   ├── ActorTest.java
+│   │   │   │   ├── MovieTest.java
+│   │   │   │   ├── ActorGraphTest.java
+│   │   │   │   ├── ActorGraphUtilTest.java
+│   │   │   │   ├── GameplayInterfaceTest.java
+│   │   │   │   ├── GraphCreationTest.java
+│   │   │   │   └── TMDBApiTest.java
+├── build.gradle
+└── README.md
+``` To add the functionality of documenting the amount of connections between two actors, you need to modify the `ActorGraphUtil.java` file. This file is responsible for handling the graph operations and calculations related to the actor relationships.
+
+Here is the file that needs to be changed:
+
+```bash
+├── src
+│
+>
+   ├── main
+│   │   ├── java
+│   │   │   ├── Actor_relationship_game
+│   │   │   │   ├── ActorGraphUtil.java
+```
+
+### Steps to Modify `ActorGraphUtil.java`
+
+1. **Identify the Method to Add the Functionality:**
+   - You need to add a method that calculates the number of connections between two actors. This method should traverse the graph and count the number of edges between the two actors.
+
+2. **Implement the Method:**
+   - Create a method that takes two actor names as parameters and returns the number of connections between them.
+
+Here is an example of how you can implement this:
+
+```java
+import java.util.*;
+
+public class ActorGraphUtil {
+
+    // Method to calculate the number of connections between two actors
+    public static int getConnectionCount(ActorGraph graph, String actor1, String actor2) {
+        if (!graph.getActors().containsKey(actor1) || !graph.getActors().containsKey(actor2)) {
+            return -1; // Return -1 if either actor is not in the graph
+        }
+
+        Set<String> visited = new HashSet<>();
+        Queue<ActorNode> queue = new LinkedList<>();
+        queue.add(graph.getActors().get(actor1));
+        visited.add(actor1);
+
+        int connectionCount = 0;
+
+        while (!queue.isEmpty()) {
+            ActorNode current = queue.poll();
+
+            for (ActorNode neighbor : current.getNeighbors()) {
+                String neighborName = neighbor.getName();
+                if (!visited.contains(neighborName)) {
+                    visited.add(neighborName);
+                    queue.add(neighbor);
+                    if (neighborName.equals(actor2)) {
+                        connectionCount++;
+                    }
+                }
+            }
+        }
+
+        return connectionCount;
+    }
+}
+```
+
+### Explanation:
+- **Method Signature:** `public static int getConnectionCount(ActorGraph graph, String actor1, String actor2)`
+  - `graph`: The `ActorGraph` object representing the graph of actors and their relationships.
+  - `actor1` and `actor2`: The names of the actors whose connection count is to be calculated.
+- **Logic:**
+
+> Ok, but I would like to add this functionality to the "GameplayInterface.java" file. How would I do that?
+ To add the functionality of documenting the amount of connections between two actors to the `GameplayInterface.java` file, you need to modify the interface to include a method that allows users to query the connection count between two actors. You will also need to implement this method in a class that implements the `GameplayInterface`.
+
+Here is how you can modify and implement the functionality:
+
+### Step 1: Modify `GameplayInterface.java`
+
+Add a method declaration to the `GameplayInterface` interface:
+
+```java
+public interface GameplayInterface {
+    // Other method declarations...
+
+    // Method to get the connection count between two actors
+    int getConnectionCountBetweenActors(String actor1, String actor2);
+}
+```
+
+### Step 2: Implement the Method in a Class
+
+Create a class that implements the `GameplayInterface` and override the `getConnectionCountBetweenActors` method:
+
+```java
+public class Gameplay implements GameplayInterface {
+    private ActorGraph graph;
+
+    public Gameplay(ActorGraph graph) {
+        this.graph = graph;
+    }
+
+    @Override
+    public int getConnectionCountBetweenActors(String actor1, String actor2) {
+        return ActorGraphUtil.getConnectionCount(graph, actor1, actor2);
+    }
+}
+```
+
+### Step 3: Update `GraphCreation.java` to Initialize the Gameplay Class
+
+Ensure that the `GraphCreation` class initializes the `Gameplay` class with the `ActorGraph` instance:
+
+```java
+public class GraphCreation {
+    public static void main(String[] args) {
+        // Assuming you have already created the graph
+        ActorGraph graph = createActorGraph();
+
+        // Initialize the Gameplay class
+        GameplayInterface gameplay = new Gameplay(graph);
+
+        // You can now use the gameplay instance to get the connection count
+        int connectionCount = gameplay.getConnectionCountBetweenActors("Actor1", "Actor2");
+        System.out.println("Connection count between Actor1 and Actor2: " + connectionCount);
+    }
+
+    private static ActorGraph createActorGraph() {
+        // Implementation
+> Ok here is the current implementation of the "GameplayInterface.java": package Actor_relationship_game;
+
+import java.io.*;
+import java.util.*;
+import java.util.List;
+
+public class GameplayInterface {
+    private ActorGraph actorGraph;
+
+    public void setActorGraph(ActorGraph actorGraph) {
+        this.actorGraph = actorGraph;
+    }
+
+
+    public void loadGraph(String fileName) {
+        try (FileInputStream fileIn = new FileInputStream(fileName);
+             ObjectInputStream in = new ObjectInputStream(fileIn)) {
+            actorGraph = (ActorGraph) in.readObject();
+            System.out.println("Graph successfully loaded.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void findConnections(List<String[]> actorPairs, String outputFilePath) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(outputFilePath))) {
+            for (String[] pair : actorPairs) {
+                if (pair.length != 2) {
+                    System.out.println("Invalid actor pair. Skipping.");
+                    continue;
+                }
+
+                String actor1Name = pair[0];
+                String actor2Name = pair[1];
+
+                // Assuming getActorIdByName is a method in ActorGraph that returns the actor's ID given a name
+                String actor1Id = actorGraph.getActorIdByName(actor1Name);
+                String actor2Id = actorGraph.getActorIdByName(actor2Name);
+
+                if (actor1Id == null || actor2Id == null) {
+                    writer.println("One or both actors not found in the graph.");
+                    continue;
+                }
+
+                List<Map.Entry<String, String>> connectionPath = actorGraph.findConnectionWithPath(actor1Id, actor2Id);
+
+                if (connectionPath.isEmpty()) {
+                    writer.println("===================================================");
+                    writer.println("No connection found between " + actor1Name + " and " + actor2Name + ".");
+                    writer.println("===================================================");
+                    writer.println();
+                } else {
+                    writer.println("===================================================");
+                    writer.println("Connection path between " + actor1Name + " and " + actor2Name + ":");
+                    for (int i = 0; i < connectionPath.size(); i++) {
+                        Map.Entry<String, String> step = connectionPath.get(i);
+                        writer.println((i + 1) + ". " + step.getKey() + ": " + step.getValue());
+                    }
+                    writer.println("===================================================");
+                    writer.println();
+                }
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    private static List<String> readActorsFromFile(String fileName) {
+        List<String> actors = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                actors.add(line.trim());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return actors;
+    }
+
+    private static List<String[]> generateAllActorPairs(String fileName) {
+        List<String> actors = readActorsFromFile(fileName);
+        List<String[]> pairs = new ArrayList<>();
+
+        for (int i = 0; i < actors.size(); i++) {
+            for (int j = i + 1; j < actors.size(); j++) {
+                pairs.add(new String[]{actors.get(i), actors.get(j)});
+            }
+        }
+
+        return pairs;
+    }
+
+    public static void main(String[] args) {
+        String graphPath = args[0];
+        String actorPath = args[1];
+        String filePath = args[2];
+
+        GameplayInterface gameplay = new GameplayInterface();
+        gameplay.loadGraph(graphPath);
+
+        List<String[]> actorPairs = generateAllActorPairs(actorPath);
+        gameplay.findConnections(actorPairs,filePath);
+    }
+}
+
+
+Please add your implementation of this functionality.
+
+>
+ To add the functionality of documenting the amount of connections between two actors to the `GameplayInterface.java` file, you can follow these steps:
+
+1. **Add a new method in `GameplayInterface` to get the connection count between two actors.**
+2. **Update the `findConnections` method to use this new method.**
+
+Here is the updated code for `GameplayInterface.java`:
+
+```java
+package Actor_relationship_game;
+
+import java.io.*;
+import java.util.*;
+
+public class GameplayInterface {
+    private ActorGraph actorGraph;
+
+    public void setActorGraph(ActorGraph actorGraph) {
+        this.actorGraph = actorGraph;
+    }
+
+    public void loadGraph(String fileName) {
+        try (FileInputStream fileIn = new FileInputStream(fileName);
+             ObjectInputStream in = new ObjectInputStream(fileIn)) {
+            actorGraph = (ActorGraph) in.readObject();
+            System.out.println("Graph successfully loaded.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void findConnections(List<String[]> actorPairs, String outputFilePath) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(outputFilePath))) {
+            for (String[] pair : actorPairs) {
+                if (pair.length != 2) {
+                    System.out.println("Invalid actor pair. Skipping.");
+                    continue;
+                }
+
+                String actor1Name = pair[0];
+                String actor2Name = pair[1];
+
+                // Assuming getActorIdByName is a method in ActorGraph that returns the actor's ID given a name
+                String actor1Id = actorGraph.getActorIdByName(actor1Name);
+                String actor2Id = actorGraph.getActorIdByName(actor2Name);
+
+                if (actor1Id == null || actor2Id == null) {
+                    writer.println("One or both actors not found in the graph.");
+                    continue;
+                }
+
+                int connectionCount = getConnectionCountBetweenActors(actor1Name, actor2Name);
+
+                if (connectionCount == -1) {
+                    writer.println("One or both actors not found in the graph.");
+                } else {
+> Continue
+ ```java
+                    writer.println("Connection count between " + actor1Name + " and " + actor2Name + ": " + connectionCount);
+                }
+                writer.println();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static List<String> readActorsFromFile(String fileName) {
+        List<String> actors = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                actors.add(line.trim());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return actors;
+    }
+
+    private static List<String[]> generateAllActorPairs(String fileName) {
+        List<String> actors = readActorsFromFile(fileName);
+        List<String[]> pairs = new ArrayList<>();
+
+        for (int i = 0; i < actors.size(); i++) {
+            for (int j = i + 1; j < actors.size(); j++) {
+                pairs.add(new String[]{actors.get(i), actors.get(j)});
+            }
+        }
+
+        return pairs;
+    }
+
+    public int getConnectionCountBetweenActors(String actor1Name, String actor2Name) {
+        return ActorGraphUtil.getConnectionCount(actorGraph, actor1Name, actor2Name);
+    }
+
+    public static void main(String[] args) {
+        String graphPath = args[0];
+        String actorPath = args[1];
+        String filePath = args[2];
+
+        GameplayInterface gameplay = new GameplayInterface();
+        gameplay.loadGraph(graphPath);
+
+        List<String[]> actorPairs = generateAllActorPairs(actorPath);
+        gameplay.findConnections(actorPairs, filePath);
+    }
+}
+```
+
+In this updated code, the `getConnectionCountBetweenActors` method in `GameplayInterface` calls the `getConnectionCount` method from `ActorGraphUtil` to get the connection count between two actors. The `findConnections` method then uses this new method to write the connection count to the output file.
+
+> OK but how would the "getConnectionCount" inside the "ActorGraphUtil" file be implemented?
+>
+ To implement the `getConnectionCount` method in the `ActorGraphUtil` class, you need to traverse the graph and count the number of edges between the two actors. Here's how you can implement it:
+
+```java
+import java.util.*;
+
+public class ActorGraphUtil {
+
+    public static int getConnectionCount(ActorGraph graph, String actor1, String actor2) {
+        if (!graph.getActors().containsKey(actor1) || !graph.getActors().containsKey(actor2)) {
+            return -1; // Return -1 if either actor is not in the graph
+        }
+
+        Set<String> visited = new HashSet<>();
+        Queue<ActorNode> queue = new LinkedList<>();
+        queue.add(graph.getActors().get(actor1));
+        visited.add(actor1);
+
+        int connectionCount = 0;
+        int currentLevel = 0;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                ActorNode current = queue.poll();
+                for (ActorNode neighbor : current.getNeighbors()) {
+                    String neighborName = neighbor.getName();
+                    if (!visited.contains(neighborName)) {
+                        visited.add(neighborName);
+                        queue.add(neighbor);
+                        if (neighborName.equals(actor2)) {
+                            connectionCount = currentLevel + 1;
+                            return connectionCount;
+                        }
+                    }
+                }
+            }
+            currentLevel++;
+        }
+
+        return -1; // Return -1 if there is no connection between the two actors
+    }
+}
+```
+
+This implementation uses a breadth-first search (BFS) algorithm to traverse the graph and count the number of edges between the two actors. It keeps track of the current level of the graph and increments the connection count each time it moves to a new level. If it finds the target actor, it returns the current level as the connection count. If the queue is empty and the target actor is not found, it returns -1 to indicate that there is no connection between the two actors.
+
+> Ok thank you

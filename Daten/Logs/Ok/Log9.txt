@@ -1,0 +1,6 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/python/geotext/unit_tests$ python3 test_geotext.py
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

@@ -1,0 +1,216 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/javascript/login-registration/examples$ ./run.sh
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'abbrev@2.0.0',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'editorconfig@1.0.4',
+npm WARN EBADENGINE   required: { node: '>=14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'commander@10.0.1',
+npm WARN EBADENGINE   required: { node: '>=14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'minimatch@9.0.1',
+npm WARN EBADENGINE   required: { node: '>=16 || 14 >=14.17' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'foreground-child@3.1.1',
+npm WARN EBADENGINE   required: { node: '>=14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'signal-exit@4.1.0',
+npm WARN EBADENGINE   required: { node: '>=14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'jackspeak@2.3.6',
+npm WARN EBADENGINE   required: { node: '>=14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'js-beautify@1.15.1',
+npm WARN EBADENGINE   required: { node: '>=14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'glob@10.3.10',
+npm WARN EBADENGINE   required: { node: '>=16 || 14 >=14.17' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'minimatch@9.0.3',
+npm WARN EBADENGINE   required: { node: '>=16 || 14 >=14.17' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'js-cookie@3.0.5',
+npm WARN EBADENGINE   required: { node: '>=14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'minipass@7.0.4',
+npm WARN EBADENGINE   required: { node: '>=16 || 14 >=14.17' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'nopt@7.2.0',
+npm WARN EBADENGINE   required: { node: '^14.17.0 || ^16.13.0 || >=18.0.0' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'path-scurry@1.10.1',
+npm WARN EBADENGINE   required: { node: '>=16 || 14 >=14.17' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'lru-cache@10.2.0',
+npm WARN EBADENGINE   required: { node: '14 || >=16.14' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+
+up to date, audited 1367 packages in 8s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+113 vulnerabilities (3 low, 38 moderate, 24 high, 48 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+
+> vue-vuex-registration-login-example@1.0.0 coverage
+> npx jest --coverage
+
+ PASS  test/HomePage.spec.js
+  ● Console
+
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+
+ PASS  test/LoginPage.spec.js
+  ● Console
+
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+
+ PASS  test/RegisterPage.spec.js
+  ● Console
+
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+    console.error node_modules/vue/dist/vue.runtime.common.dev.js:4564
+      [Vue warn]: Unknown custom element: <router-link> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+
+      found in
+
+      ---> <Anonymous>
+             <Root>
+
+-------------------|----------|----------|----------|----------|-------------------|
+File               |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+-------------------|----------|----------|----------|----------|-------------------|
+All files          |      100 |      100 |      100 |      100 |                   |
+ home              |      100 |      100 |      100 |      100 |                   |
+  HomePage.vue     |      100 |      100 |      100 |      100 |                   |
+ login             |      100 |      100 |      100 |      100 |                   |
+  LoginPage.vue    |      100 |      100 |      100 |      100 |                   |
+ register          |      100 |      100 |      100 |      100 |                   |
+  RegisterPage.vue |      100 |      100 |      100 |      100 |                   |
+-------------------|----------|----------|----------|----------|-------------------|
+Handlebars: Access has been denied to resolve the property "statements" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+Handlebars: Access has been denied to resolve the property "branches" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+Handlebars: Access has been denied to resolve the property "functions" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+Handlebars: Access has been denied to resolve the property "lines" because it is not an "own property" of its parent.
+You can add a runtime option to disable the check or this warning:
+See https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access for details
+
+Test Suites: 3 passed, 3 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        1.959s
+Ran all test suites.

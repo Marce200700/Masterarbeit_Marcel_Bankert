@@ -1,0 +1,1 @@
+ The log contains the following error: 'rm: cannot remove 'obj': Is a directory'. This error occurs because the script tries to remove the directory 'obj' which is not possible because it is not empty. The script should first remove the content of the directory and then remove the directory itself. The log is classified as 'Defective'.

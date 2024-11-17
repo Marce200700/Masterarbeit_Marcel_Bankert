@@ -1,0 +1,135 @@
+This is the TMDBApiTest.java file:package Actorrelationshipgame;
+
+import org.junit.jupiter.api.BeforeEach; import org.junit.jupiter.api.Test; import static org.junit.jupiter.api.Assertions.*;
+
+public class TMDBApiTest { private TMDBApi tmdbApi;
+
+@BeforeEach
+void setUp() {
+    tmdbApi = new TMDBApi();
+}
+
+@Test
+void testGetMoviesByActorIdSuccessfulResponse() throws IOException {
+    String actorId = "123"; // Replace with a valid actor ID for testing
+    String responseBody = tmdbApi.getMoviesByActorId(actorId);
+    assertNotNull(responseBody, "The API response should not be null");
+}
+
+@Test
+void testGetMoviesByActorIdInvalidResponse() throws IOException {
+    String actorId = ""; // Invalid ID for testing
+    try {
+        tmdbApi.getMoviesByActorId(actorId);
+        fail("Expected an exception to be thrown");
+    } catch (IOException e) {
+        assertEquals("Unexpected code ", e.getMessage(), "The API response should indicate an error");
+    }
+}
+
+@Test
+void testSearchPopularActorsSuccessfulResponse() throws IOException {
+    String responseBody = tmdbApi.searchPopularActors();
+    assertNotNull(responseBody, "The API response should not be null");
+}
+
+@Test
+void testSearchPopularActorsInvalidResponse() throws IOException {
+    try {
+        tmdbApi.searchPopularActors();
+        fail("Expected an exception to be thrown");
+    } catch (IOException e) {
+        assertEquals("Unexpected code ", e.getMessage(), "The API response should indicate an error");
+    }
+}
+
+
+}
+
+
+This is the ActorTest.java file:package Actorrelationshipgame;
+
+import org.junit.jupiter.api.BeforeEach; import org.junit.jupiter.api.Test;
+
+class ActorTest { private Actor actor;
+
+@BeforeEach
+void setUp() {
+    actor = new Actor(1, "John Doe");
+}
+
+@Test
+void getId() {
+    assert actor.getId() == 1 : "The ID of the actor should be 1.";
+}
+
+@Test
+void setId() {
+    actor.setId(2);
+    assert actor.getId() == 2 : "After setting a new ID, it should reflect accurately in the getter method.";
+}
+
+@Test
+void getName() {
+    assert actor.getName().equals("John Doe") : "The name of the actor should be 'John Doe'.";
+}
+
+@Test
+void setName() {
+    actor.setName("Jane Smith");
+    assert actor.getName().equals("Jane Smith") : "After setting a new name, it should reflect accurately in the getter method.";
+}
+
+
+}
+
+This is the GraphCreation.java file:package Actorrelationshipgame;
+
+import com.google.gson.Gson; import java.io.*; import java.util.ArrayList; import java.util.HashMap; import java.util.Map;
+
+public class GraphCreation { private static final String GRAPHPATH = "./src/main/java/Actorrelationship_game/actorGraph.ser"; // path to save serialized graph private TMDBApi tmdbApi = new TMDBApi(); private Gson gson = new Gson();
+
+public void createAndSave() throws IOException {
+    Map<String, Actor> actorMap = new HashMap<>();
+    ArrayList<Movie> movieList = fetchMoviesFromAPI(actorMap); // Fetch movies from API and populate the map of actors.
+
+    ActorGraph graph = new ActorGraph();
+    for (Movie movie : movieList) {
+        graph.addEdge(movie.getActors(), movie.getTitle()); // Add edges to represent actor collaborations in a movie.
+    }
+
+    saveGraphToFile(graph); // Save the graph to a file for later use.
+}
+
+private ArrayList<Movie> fetchMoviesFromAPI(Map<String, Actor> actorMap) throws IOException {
+    ArrayList<Movie> movieList = new ArrayList<>();
+    // Fetch popular actors from API and populate the map of actors.
+    for (Actor actor : tmdbApi.searchPopularActors()) {
+        actorMap.put(actor.getId(), actor);
+    }
+
+    // Fetch movies for each actor from API, update the map of actors with their movie information, and add edges to the graph.
+    for (Actor actor : tmdbApi.searchPopularActors()) {
+        String response = tmdbApi.getMoviesByActorId(actor.getId());
+        ArrayList<Movie> moviesForActor = gson.fromJson(response, ArrayList.class); // Convert JSON to Movie objects.
+
+        for (Movie movie : moviesForActor) {
+            if (!movieList.contains(movie)) {
+                movieList.add(movie);
+            }
+        }
+    }
+
+    return movieList;
+}
+
+private void saveGraphToFile(ActorGraph graph) throws IOException {
+    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(GRAPH_PATH))) {
+        oos.writeObject(graph); // Serialize the ActorGraph to a file for later use.
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+
+}

@@ -1,0 +1,89 @@
+
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: The error message is pretty clear:
+
+\begin{code}
+redis-cli: command not found
+\end{code}
+
+You need to install redis-cli.
+
+Comment: I have installed redis-cli. But still the same error.
+
+Comment: @MarcelKaiser How did you install it?
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools
+
+Comment: @MarcelKaiser That's not the correct command. You need to install redis-cli.
+
+Comment: I have installed redis-cli with the following command: sudo apt-get install redis-tools

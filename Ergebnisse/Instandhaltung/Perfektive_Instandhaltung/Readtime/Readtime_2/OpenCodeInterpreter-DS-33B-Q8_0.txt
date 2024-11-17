@@ -1,0 +1,82 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+<|im_start|>system
+You are a helpful Python programer.<|im_end|>
+
+> The purpose of this project is to develop a Python-based tool that can estimate the reading time for various formats of content. This tool will be able to process HTML and plain text, providing users with an approximate reading time based on a standard or user-defined words-per-minute (WPM) rate.
+I want to add a new functionality. The user should be able to use markdown as an input as well. Please tell me which file I need to change to implement this function.
+Here is the filetree:
+
+```bash
+├── examples
+│   ├── demo.py
+│   └── demo.sh
+├── readtime
+│   ├── __about__.py
+│   ├── api.py
+│   ├── __init__.py
+│   ├── result.py
+│   └── utils.py
+```The file you need to modify to add this functionality is `utils.py`. This file contains the core functionality of the package, including the function `get_text_from_html(html)` that extracts text from HTML. To incorporate markdown functionality, you need to add a new function to `utils.py` that processes markdown.
+
+Here is a simple implementation that uses the `markdown` library:
+
+```python
+import markdown
+
+def get_text_from_markdown(markdown_content):
+    html = markdown.markdown(markdown_content)
+    return get_text_from_html(html)
+```
+
+Remember to install the `markdown` library using pip:
+
+```bash
+pip install markdown
+```
+
+You would then call this function in `api.py` where you handle the different input types:
+
+```python
+from .utils import get_text_from_html, get_text_from_markdown
+
+def estimate_reading_time(text, words_per_minute=265):
+    # ...
+    # Check the input format and call the corresponding function
+    if format == 'html':
+        text = get_text_from_html(input_content)
+    elif format == 'markdown':
+        text = get_text_from_markdown(input_content)
+    # ...
+```
+
+This is a very basic implementation. Depending on the complexity of your markdown content, you might need a more complex approach.<|im_end|>
+
+>
+```python
+import markdown
+
+def get_text_from_markdown(markdown_content):
+    html = markdown.markdown(markdown_content)
+    return get_text_from_html(html)
+```
+
+>
+```python
+from .utils import get_text_from_html, get_text_from_markdown
+
+def estimate_reading_time(text, words_per_minute=265):
+    # ...
+    # Check the input format and call the corresponding function
+    if format == 'html':
+        text = get_text_from_html(input_content)
+    elif format == 'markdown':
+        text = get_text_from_markdown(input_content)
+    # ...
+```
+
+>

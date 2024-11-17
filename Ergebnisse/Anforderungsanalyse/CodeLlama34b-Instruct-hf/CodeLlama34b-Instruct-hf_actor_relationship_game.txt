@@ -1,0 +1,44 @@
+
+
+### Introduction
+The Actor Relationship Game is a program which allows users to explore relationships between actors. These relationships are established by the films in which actors took part in. The data for the informations about actors and the respective films they took part in comes from the The Movie Database (TMDB) API. Interactions with TMDB API must adhere to its terms and usage limits. With the given data the Actor Relationship Game has to be able to identify the shortest path between actors. Thus this Java-based programm has to be able to represent the shortest path visually.
+
+### Goals
+The goal of this project is to create a program that allows users to explore relationships between actors and find the shortest path between two actors. The program should use the TMDB API to retrieve data about movies and actors, and then use this data to generate a visual representation of the shortest path between two actors.
+
+### Features and Functionalities
+The Actor Relationship Game has to be able to:
+* Retrieve actor and movie data from TMDB API
+* Search for specific actors and films by their respective IDs
+* Identify the shortest path between actors
+* Represent the shortest path visually
+* Save the results in a .txt file called "actor_connection_results.txt"
+
+### Technical Constraints
+The program has to be written in Java, and use Gradle as its build tool. It should also utilize the TMDB API key, java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api and the Java Runtime Environment.
+
+### Requirements
+The program has to be able to:
+* Retrieve actor and movie data from TMDB API
+* Search for specific actors and films by their respective IDs
+* Identify the shortest path between actors
+* Represent the shortest path visually
+* Save the results in a .txt file called "actor_connection_results.txt"
+
+### Acceptance Criteria
+The program has to be able to:
+* Retrieve actor and movie data from TMDB API
+* Search for specific actors and films by their respective IDs
+* Identify the shortest path between actors
+* Represent the shortest path visually
+* Save the results in a .txt file called "actor_connection_results.txt"
+
+### Dependencies
+The program has to use Gradle, a TMDB API key, java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api and the Java Runtime Environment.
+
+### Terms/Concepts Explanation
+* Actor: An actor is a person who plays a role in a movie or other form of media. In this program, an actor has to have an unique ID, a name and a set of movie IDs they participated in.
+* Movie: A movie is a film that is produced for entertainment, education or informational purposes. In this program, a movie has to have an unique ID, a name, and a set of unique actor IDs involved in the movie.
+* TMDB API key: The TMDB API key is a unique code that allows the program to access data from the TMDB database.
+* Gradle: Gradle is a build tool that automates the process of compiling, testing, and packaging software. It is used in this project to manage dependencies and run tasks.
+* Java Runtime Environment (JRE): The JRE is a software framework for running Java applications. It includes tools and libraries for developing and running Java applications.

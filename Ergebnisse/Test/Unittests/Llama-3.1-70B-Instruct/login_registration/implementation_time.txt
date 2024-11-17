@@ -1,0 +1,1 @@
+It took 269.575434923172seconds to implement unittests for the entire login_registration.

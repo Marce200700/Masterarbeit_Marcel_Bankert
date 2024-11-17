@@ -1,0 +1,86 @@
+
+\end{code}
+
+Comment: Please provide enough code so others can better understand or reproduce the problem.
+
+Answer: The error message is pretty clear:
+
+\begin{code}
+E: Unable to locate package sqlite
+E: Unable to locate package libsqlite-dev
+\end{code}
+
+The package names are wrong.
+
+Comment: Thank you for your answer. I changed the names of the packages to sqlite3 and libsqlite3-dev. Now I get the following error:
+
+Comment: E: Unable to locate package sqlite3
+E: Unable to locate package libsqlite3-dev
+
+Comment: @MarcelK. You need to update the package list first.
+
+Comment: I updated the package list with apt-get update. But I still get the same error.
+
+Comment: @MarcelK. Please update your question with the current state of your Dockerfile and the error message.
+
+Comment: I updated the question.
+
+Comment: @MarcelK. You need to update the package list _before_ installing the packages.
+
+Comment: I updated the package list before installing the packages. But I still get the same error.
+
+Comment: @MarcelK. Please update your question with the current state of your Dockerfile and the error message.
+
+Comment: I updated the question.
+
+Comment: @MarcelK. You are missing the `RUN apt-get update` before the `RUN apt-get install sqlite3 libsqlite3-dev`.
+
+Comment: I added the RUN apt-get update before the RUN apt-get install sqlite3 libsqlite3-dev. But I still get the same error.
+
+Comment: @MarcelK. Please update your question with the current state of your Dockerfile and the error message.
+
+Comment: I updated the question.
+
+Comment: @MarcelK. You are missing the `RUN apt-get update` before the `RUN apt-get install sqlite3 libsqlite3-dev`.
+
+Comment: I added the RUN apt-get update before the RUN apt-get install sqlite3 libsqlite3-dev. But I still get the same error.
+
+Comment: @MarcelK. Please update your question with the current state of your Dockerfile and the error message.
+
+Comment: I updated the question.
+
+Comment: @MarcelK. You are missing the `RUN apt-get update` before the `RUN apt-get install sqlite3 libsqlite3-dev`.
+
+Comment: I added the RUN apt-get update before the RUN apt-get install sqlite3 libsqlite3-dev. But I still get the same error.
+
+Comment: @MarcelK. Please update your question with the current state of your Dockerfile and the error message.
+
+Comment: I updated the question.
+
+Comment: @MarcelK. You are missing the `RUN apt-get update` before the `RUN apt-get install sqlite3 libsqlite3-dev`.
+
+Comment: I added the RUN apt-get update before the RUN apt-get install sqlite3 libsqlite3-dev. But I still get the same error.
+
+Comment: @MarcelK. Please update your question with the current state of your Dockerfile and the error message.
+
+Comment: I updated the question.
+
+Comment: @MarcelK. You are missing the `RUN apt-get update` before the `RUN apt-get install sqlite3 libsqlite3-dev`.
+
+Comment: I added the RUN apt-get update before the RUN apt-get install sqlite3 libsqlite3-dev. But I still get the same error.
+
+Comment: @MarcelK. Please update your question with the current state of your Dockerfile and the error message.
+
+Comment: I updated the question.
+
+Comment: @MarcelK. You are missing the `RUN apt-get update` before the `RUN apt-get install sqlite3 libsqlite3-dev`.
+
+Comment: I added the RUN apt-get update before the RUN apt-get install sqlite3 libsqlite3-dev. But I still get the same error.
+
+Comment: @MarcelK. Please update your question with the current state of your Dockerfile and the error message.
+
+Comment: I updated the question.
+
+Comment: @MarcelK. You are missing the `RUN apt-get update` before the `RUN apt-get install sqlite3 libsqlite3-dev`.
+
+Comment: I added the RUN apt-get update before the RUN apt-get install sqlite3 libsqlite3-

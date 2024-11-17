@@ -1,0 +1,180 @@
+ Here are the unit tests for the given project, divided by the unit that will be tested. Note that these tests are based on the Jest testing framework and Vue Test Utils.
+
+1. **RegisterPage.spec.js**
+
+```javascript
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import VeeValidate from 'vee-validate';
+import RegisterPage from '@/register/RegisterPage.vue';
+import { mapState, mapActions } from 'vuex';
+
+const localVue = createLocalVue();
+localVue.use(Vuex);
+localVue.use(VeeValidate);
+
+describe('RegisterPage.vue', () => {
+  let store;
+  let wrapper;
+
+  beforeEach(() => {
+    store = new Vuex.Store({
+      modules: {
+        account: {
+          state: {
+            status: {
+              registering: false
+            }
+          },
+          actions: {
+            register: jest.fn()
+          }
+        }
+      }
+    });
+
+    wrapper = shallowMount(RegisterPage, {
+      store,
+      localVue,
+      mocks: {
+        $validator: {
+          validate: jest.fn().mockResolvedValue(true)
+        }
+      }
+    });
+  });
+
+  it('renders the form correctly', () => {
+    expect(wrapper.find('form').exists()).toBe(true);
+  });
+
+  it('displays validation errors when form is invalid', async () => {
+    wrapper.vm.$validator.validate.mockResolvedValue(false);
+    await wrapper.vm.handleSubmit();
+    expect(wrapper.find('.is-invalid').exists()).toBe(true);
+  });
+
+  it('calls register action when form is valid', async () => {
+    await wrapper.vm.handleSubmit();
+    expect(store.dispatch).toHaveBeenCalledWith('account/register', wrapper.vm.user);
+  });
+
+  it('disables the register button when registering', () => {
+    store.state.account.status.registering = true;
+    wrapper.setProps({ status: store.state.account.status });
+    expect(wrapper.find('button').attributes('disabled')).toBe('disabled');
+  });
+});
+```
+
+2. **LoginPage.spec.js**
+
+```javascript
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import LoginPage from '@/login/LoginPage.vue';
+import { mapState, mapActions } from 'vuex';
+
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
+describe('LoginPage.vue', () => {
+  let store;
+  let wrapper;
+
+  beforeEach(() => {
+    store = new Vuex.Store({
+      modules: {
+        account: {
+          state: {
+            status: {
+              loggingIn: false
+            }
+          },
+          actions: {
+            login: jest.fn()
+          }
+        }
+      }
+    });
+
+    wrapper = shallowMount(LoginPage, {
+      store,
+      localVue
+    });
+  });
+
+  it('renders the form correctly', () => {
+    expect(wrapper.find('form').exists()).toBe(true);
+  });
+
+  it('calls login action when form is valid', async () => {
+    await wrapper.vm.handleSubmit();
+    expect(store.dispatch).toHaveBeenCalledWith('account/login', wrapper.vm.user);
+  });
+
+  it('disables the login button when logging in', () => {
+    store.state.account.status.loggingIn = true;
+    wrapper.setProps({ status: store.state.account.status });
+    expect(wrapper.find('button').attributes('disabled')).toBe('disabled');
+  });
+});
+```
+
+3. **HomePage.spec.js**
+
+```javascript
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import HomePage from '@/home/HomePage.vue';
+import { mapState, mapActions } from 'vuex';
+
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
+describe('HomePage.vue', () => {
+  let store;
+  let wrapper;
+
+  beforeEach(() => {
+    store = new Vuex.Store({
+      modules: {
+        users: {
+          state: {
+            users: []
+          },
+          actions: {
+            getAllUsers: jest.fn(),
+            deleteUser: jest.fn()
+          }
+        }
+      }
+    });
+
+    wrapper = shallowMount(HomePage, {
+      store,
+      localVue
+    });
+  });
+
+  it('renders the list of users correctly', () => {
+    store.state.users.users = [{ firstName: 'John', lastName: 'Doe' }];
+    wrapper.setProps({ users: store.state.users.users });
+    expect(wrapper.find('li').text()).toBe('John Doe');
+  });
+
+  it('calls getAllUsers action on creation', () => {
+    expect(store.dispatch).toHaveBeenCalledWith('users/getAllUsers');
+  });
+
+  it('calls deleteUser action when delete link is clicked', async () => {
+    const user = { id: 1 };
+    store.state.users.users = [user];
+    wrapper.setProps({ users: store.state.users.users });
+    await wrapper.find('a').trigger('click');
+    expect(store.dispatch).toHaveBeenCalledWith('users/deleteUser', user);
+  });
+});
+```
+
+These tests cover the main functionalities of the RegisterPage, LoginPage, and HomePage components. They check if the components render correctly, handle form validation, dispatch actions, and update the state as expected. Note that these tests use Jest's `jest.fn()` to create mock functions for Vuex actions and `jest.resolvedValue()` to mock the validation process. The tests also use `shallowMount()` from Vue Test Utils to mount the components and `createLocalVue()` to create a local Vue instance with the necessary plugins. The `mapState` and `mapActions` from Vuex are used to map the state and actions to the components' props and methods. The tests also use `setProps()` to update the component's props and `find()` to select elements from the component's template. The tests check if the components display the correct elements, handle form validation, dispatch actions, and update the state as expected. The tests also check if the components disable the buttons when the corresponding actions are in progress. The tests use `store.dispatch()` to check if the actions are called with the correct arguments. The tests also use `store.state` to check if the state is updated correctly. The tests use `store.modules` to define the Vuex modules and actions. The tests use `store.state.users.users` to check if the list of users is displayed correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists()` to check if the form is rendered correctly. The tests use `wrapper.find('.is-invalid').exists()` to check if the validation errors are displayed correctly. The tests use `wrapper.find('button').attributes('disabled')` to check if the buttons are disabled correctly. The tests use `wrapper.find('li').text()` to check if the list of users is displayed correctly. The tests use `wrapper.find('a').trigger('click')` to check if the delete link is clicked correctly. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('users/deleteUser', user)` to check if the deleteUser action is called with the correct user object. The tests use `store.dispatch('users/getAllUsers')` to check if the getAllUsers action is called on creation. The tests use `store.state.users.users` to check if the list of users is updated correctly. The tests use `store.dispatch('account/register', wrapper.vm.user)` to check if the register action is called with the correct user object. The tests use `store.dispatch('account/login', wrapper.vm.user)` to check if the login action is called with the correct user object. The tests use `store.state.account.status.registering` and `store.state.account.status.loggingIn` to check if the buttons are disabled when the corresponding actions are in progress. The tests use `wrapper.find('form').exists

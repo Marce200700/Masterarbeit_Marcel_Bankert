@@ -1,0 +1,17 @@
+
+
+Answer: The log is not from the Oracle Java Language Server, but from the NetBeans Java Language Server.
+
+The NetBeans Java Language Server is not enabled by default in Visual Studio Code.
+
+You can enable it by adding the following to your `settings.json` file:
+
+\begin{code}
+"java.server.launchMode": "NetBeans",
+\end{code}
+
+See also:
+\begin{itemize}
+\item [NetBeans Java Language Server](https://github.com/microsoft/vscode-java-lsp/tree/main/server)
+\item [NetBeans Java Language Server - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=asf.java-language-server)
+\end{itemize}

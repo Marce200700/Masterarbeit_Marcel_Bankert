@@ -1,0 +1,9 @@
+The test case should check if the CSV file is correctly converted to JSON according to a given schema, or without any schema. For example: def testconvertcsvtojson(self): # create two equal equivalent CSV and JSON files in some directory csvpath = 'some/directory/dataset.csv' jsonschemapath = 'some/directory/nestedschema.json' jsonoutputpath = 'some/directory/converted_dataset.json'
+
+# create a Hone object and call the convert method on csv_path with json_schema_path as schema argument 
+h = hone.Hone()
+actual_result = h.convert(csv_path, json_schema_path)
+
+# parse the JSON file at json_output_path using a function like test_utils.parse_json_file and compare it with actual_result 
+expected_result = test_utils.parse_json_file(json_output_path)
+self.assertListEqual(actual_result, expected_result)

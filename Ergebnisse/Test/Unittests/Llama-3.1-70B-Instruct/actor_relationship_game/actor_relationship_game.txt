@@ -1,0 +1,460 @@
+ 
+
+Here is the unit test for the TMDBApi class:
+```java
+package Actor_relationship_game;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TMDBApiTest {
+
+    private TMDBApi tmdbApi;
+
+    @BeforeEach
+    public void setup() {
+        tmdbApi = new TMDBApi();
+    }
+
+    @Test
+    public void testGetMoviesByActorId() throws IOException {
+        // Arrange
+        String actorId = "12345";
+        String expectedResponse = "{\"results\":[{\"id\":12345,\"title\":\"Movie Title\"}]}";
+
+        // Act
+        String response = tmdbApi.getMoviesByActorId(actorId);
+
+        // Assert
+        assertNotNull(response);
+        assertTrue(response.contains("results"));
+        assertTrue(response.contains("id"));
+        assertTrue(response.contains("title"));
+    }
+
+    @Test
+    public void testSearchPopularActors() throws IOException {
+        // Arrange
+        String expectedResponse = "{\"results\":[{\"id\":12345,\"name\":\"Actor Name\"}]}";
+
+        // Act
+        String response = tmdbApi.searchPopularActors();
+
+        // Assert
+        assertNotNull(response);
+        assertTrue(response.contains("results"));
+        assertTrue(response.contains("id"));
+        assertTrue(response.contains("name"));
+    }
+
+    @Test
+    public void testGetMoviesByActorId_InvalidActorId() throws IOException {
+        // Arrange
+        String actorId = "invalid";
+
+        // Act and Assert
+        assertThrows(IOException.class, () -> tmdbApi.getMoviesByActorId(actorId));
+    }
+
+    @Test
+    public void testSearchPopularActors_InvalidApiKey() throws IOException {
+        // Arrange
+        System.setProperty("TMDB_API_KEY", "invalid");
+
+        // Act and Assert
+        assertThrows(IOException.class, () -> tmdbApi.searchPopularActors());
+    }
+}
+```
+Here is the unit test for the Actor class:
+```java
+package Actor_relationship_game;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ActorTest {
+
+    @Test
+    public void testActorConstructor() {
+        // Arrange
+        String id = "12345";
+        String name = "Actor Name";
+
+        // Act
+        Actor actor = new Actor(id, name);
+
+        // Assert
+        assertEquals(id, actor.getId());
+        assertEquals(name, actor.getName());
+    }
+
+    @Test
+    public void testActorGetters() {
+        // Arrange
+        String id = "12345";
+        String name = "Actor Name";
+        Actor actor = new Actor(id, name);
+
+        // Act and Assert
+        assertEquals(id, actor.getId());
+        assertEquals(name, actor.getName());
+    }
+
+    @Test
+    public void testActorSetters() {
+        // Arrange
+        String id = "12345";
+        String name = "Actor Name";
+        Actor actor = new Actor(id, name);
+
+        // Act
+        actor.setId("newId");
+        actor.setName("newName");
+
+        // Assert
+        assertEquals("newId", actor.getId());
+        assertEquals("newName", actor.getName());
+    }
+}
+```
+Here is the unit test for the Movie class:
+```java
+package Actor_relationship_game;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MovieTest {
+
+    @Test
+    public void testMovieConstructor() {
+        // Arrange
+        String id = "12345";
+        String title = "Movie Title";
+
+        // Act
+        Movie movie = new Movie(id, title);
+
+        // Assert
+        assertEquals(id, movie.getId());
+        assertEquals(title, movie.getTitle());
+    }
+
+    @Test
+    public void testMovieGetters() {
+        // Arrange
+        String id = "12345";
+        String title = "Movie Title";
+        Movie movie = new Movie(id, title);
+
+        // Act and Assert
+        assertEquals(id, movie.getId());
+        assertEquals(title, movie.getTitle());
+    }
+
+    @Test
+    public void testMovieSetters() {
+        // Arrange
+        String id = "12345";
+        String title = "Movie Title";
+        Movie movie = new Movie(id, title);
+
+        // Act
+        movie.setId("newId");
+        movie.setTitle("newTitle");
+
+        // Assert
+        assertEquals("newId", movie.getId());
+        assertEquals("newTitle", movie.getTitle());
+    }
+}
+```
+Here is the unit test for the ActorGraph class:
+```java
+package Actor_relationship_game;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ActorGraphTest {
+
+    @Test
+    public void testActorGraphConstructor() {
+        // Arrange
+
+        // Act
+        ActorGraph actorGraph = new ActorGraph();
+
+        // Assert
+        assertNotNull(actorGraph);
+    }
+
+    @Test
+    public void testActorGraphAddActor() {
+        // Arrange
+        ActorGraph actorGraph = new ActorGraph();
+        Actor actor = new Actor("12345", "Actor Name");
+
+        // Act
+        actorGraph.addActor(actor);
+
+        // Assert
+        assertTrue(actorGraph.containsActor(actor));
+    }
+
+    @Test
+    public void testActorGraphAddMovie() {
+        // Arrange
+        ActorGraph actorGraph = new ActorGraph();
+        Movie movie = new Movie("12345", "Movie Title");
+
+        // Act
+        actorGraph.addMovie(movie);
+
+        // Assert
+        assertTrue(actorGraph.containsMovie(movie));
+    }
+
+    @Test
+    public void testActorGraphGetActors() {
+        // Arrange
+        ActorGraph actorGraph = new ActorGraph();
+        Actor actor1 = new Actor("12345", "Actor Name");
+        Actor actor2 = new Actor("67890", "Actor Name 2");
+
+        // Act
+        actorGraph.addActor(actor1);
+        actorGraph.addActor(actor2);
+
+        // Assert
+        assertEquals(2, actorGraph.getActors().size());
+    }
+
+    @Test
+    public void testActorGraphGetMovies() {
+        // Arrange
+        ActorGraph actorGraph = new ActorGraph();
+        Movie movie1 = new Movie("12345", "Movie Title");
+        Movie movie2 = new Movie("67890", "Movie Title 2");
+
+        // Act
+        actorGraph.addMovie(movie1);
+        actorGraph.addMovie(movie2);
+
+        // Assert
+        assertEquals(2, actorGraph.getMovies().size());
+    }
+}
+```
+Here is the unit test for the ActorGraphUtil class:
+```java
+package Actor_relationship_game;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ActorGraphUtilTest {
+
+    @Test
+    public void testActorGraphUtilConstructor() {
+        // Arrange
+
+        // Act
+        ActorGraphUtil actorGraphUtil = new ActorGraphUtil();
+
+        // Assert
+        assertNotNull(actorGraphUtil);
+    }
+
+    @Test
+    public void testActorGraphUtilLoadActorGraph() {
+        // Arrange
+        ActorGraphUtil actorGraphUtil = new ActorGraphUtil();
+        ActorGraph actorGraph = new ActorGraph();
+
+        // Act
+        actorGraphUtil.loadActorGraph(actorGraph);
+
+        // Assert
+        assertNotNull(actorGraphUtil.getActorGraph());
+    }
+
+    @Test
+    public void testActorGraphUtilSaveActorGraph() {
+        // Arrange
+        ActorGraphUtil actorGraphUtil = new ActorGraphUtil();
+        ActorGraph actorGraph = new ActorGraph();
+
+        // Act
+        actorGraphUtil.saveActorGraph(actorGraph);
+
+        // Assert
+        assertNotNull(actorGraphUtil.getActorGraph());
+    }
+
+    @Test
+    public void testActorGraphUtilGetActorNames() {
+        // Arrange
+        ActorGraphUtil actorGraphUtil = new ActorGraphUtil();
+        ActorGraph actorGraph = new ActorGraph();
+        Actor actor1 = new Actor("12345", "Actor Name");
+        Actor actor2 = new Actor("67890", "Actor Name 2");
+
+        // Act
+        actorGraph.addActor(actor1);
+        actorGraph.addActor(actor2);
+        actorGraphUtil.loadActorGraph(actorGraph);
+
+        // Assert
+        assertEquals(2, actorGraphUtil.getActorNames().size());
+    }
+}
+```
+Here is the unit test for the GameplayInterface class:
+```java
+package Actor_relationship_game;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class GameplayInterfaceTest {
+
+    @Test
+    public void testGameplayInterfaceConstructor() {
+        // Arrange
+
+        // Act
+        GameplayInterface gameplayInterface = new GameplayInterface();
+
+        // Assert
+        assertNotNull(gameplayInterface);
+    }
+
+    @Test
+    public void testGameplayInterfaceLoadActorGraph() {
+        // Arrange
+        GameplayInterface gameplayInterface = new GameplayInterface();
+        ActorGraph actorGraph = new ActorGraph();
+
+        // Act
+        gameplayInterface.loadActorGraph(actorGraph);
+
+        // Assert
+        assertNotNull(gameplayInterface.getActorGraph());
+    }
+
+    @Test
+    public void testGameplayInterfaceFindConnections() {
+        // Arrange
+        GameplayInterface gameplayInterface = new GameplayInterface();
+        ActorGraph actorGraph = new ActorGraph();
+        Actor actor1 = new Actor("12345", "Actor Name");
+        Actor actor2 = new Actor("67890", "Actor Name 2");
+
+        // Act
+        actorGraph.addActor(actor1);
+        actorGraph.addActor(actor2);
+        gameplayInterface.loadActorGraph(actorGraph);
+
+        // Assert
+        assertNotNull(gameplayInterface.findConnections(actor1, actor2));
+    }
+
+    @Test
+    public void testGameplayInterfaceGetConnectionPath() {
+        // Arrange
+        GameplayInterface gameplayInterface = new GameplayInterface();
+        ActorGraph actorGraph = new ActorGraph();
+        Actor actor1 = new Actor("12345", "Actor Name");
+        Actor actor2 = new Actor("67890", "Actor Name 2");
+
+        // Act
+        actorGraph.addActor(actor1);
+        actorGraph.addActor(actor2);
+        gameplayInterface.loadActorGraph(actorGraph);
+
+        // Assert
+        assertNotNull(gameplayInterface.getConnectionPath(actor1, actor2));
+    }
+}
+```
+Here is the unit test for the GraphCreation class:
+```java
+package Actor_relationship_game;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class GraphCreationTest {
+
+    @Test
+    public void testGraphCreationConstructor() {
+        // Arrange
+
+        // Act
+        GraphCreation graphCreation = new GraphCreation();
+
+        // Assert
+        assertNotNull(graphCreation);
+    }
+
+    @Test
+    public void testGraphCreationCreateActorGraph() {
+        // Arrange
+        GraphCreation graphCreation = new GraphCreation();
+
+        // Act
+        ActorGraph actorGraph = graphCreation.createActorGraph();
+
+        // Assert
+        assertNotNull(actorGraph);
+    }
+
+    @Test
+    public void testGraphCreationAddActorsToGraph() {
+        // Arrange
+        GraphCreation graphCreation = new GraphCreation();
+        ActorGraph actorGraph = new ActorGraph();
+        Actor actor1 = new Actor("12345", "Actor Name");
+        Actor actor2 = new Actor("67890", "Actor Name 2");
+
+        // Act
+        graphCreation.addActorsToGraph(actorGraph, actor1, actor2);
+
+        // Assert
+        assertTrue(actorGraph.containsActor(actor1));
+        assertTrue(actorGraph.containsActor(actor2));
+    }
+
+    @Test
+    public void testGraphCreationAddMoviesToGraph() {
+        // Arrange
+        GraphCreation graphCreation = new GraphCreation();
+        ActorGraph actorGraph = new ActorGraph();
+        Movie movie1 = new Movie("12345", "Movie Title");
+        Movie movie2 = new Movie("67890", "Movie Title 2");
+
+        // Act
+        graphCreation.addMoviesToGraph(actorGraph, movie1, movie2);
+
+        // Assert
+        assertTrue(actorGraph.containsMovie(movie1));
+        assertTrue(actorGraph.containsMovie(movie2));
+    }
+}
+```
+Note that these tests are just examples and may need to be modified to fit the actual implementation of the classes. Additionally, these tests do not cover all possible scenarios and edge cases, and you may need to add more tests to ensure the classes are thoroughly tested.

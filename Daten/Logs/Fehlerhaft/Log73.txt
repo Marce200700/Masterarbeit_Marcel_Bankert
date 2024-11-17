@@ -1,0 +1,56 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/java/image-similarity$ ./run.sh
+Downloading https://services.gradle.org/distributions/gradle-7.5.1-bin.zip
+...........10%............20%...........30%............40%...........50%............60%...........70%............80%...........90%............100%
+
+Welcome to Gradle 7.5.1!
+
+Here are the highlights of this release:
+ - Support for Java 18
+ - Support for building with Groovy 4
+ - Much more responsive continuous builds
+ - Improved diagnostics for dependency resolution
+
+For more details see https://docs.gradle.org/7.5.1/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 1m 13s
+4 actionable tasks: 4 executed
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 17s
+4 actionable tasks: 2 executed, 2 up-to-date
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 2s
+2 actionable tasks: 1 executed, 1 up-to-date
+java.io.FileNotFoundException: http://oarfc773f.bkt.clouddn.com/100000094nzslsdnswbb_1_1_r.jpg
+        at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1941)
+        at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1541)
+        at java.base/java.net.URL.openStream(URL.java:1165)
+        at image.similarity.ImageHistogram.match(ImageHistogram.java:94)
+        at image.similarity.Main.hMatch(Main.java:24)
+        at image.similarity.Main.main(Main.java:49)
+java.io.FileNotFoundException: http://oarfc773f.bkt.clouddn.com/100000094nzslsdnswbb_1_1_r.jpg
+        at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1941)
+        at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1541)
+        at java.base/java.net.URL.openStream(URL.java:1165)
+        at image.similarity.ImagePHash.distance(ImagePHash.java:185)
+        at image.similarity.Main.pMatch(Main.java:14)
+        at image.similarity.Main.main(Main.java:51)

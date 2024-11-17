@@ -1,0 +1,16 @@
+2024-10-01 23:49:57 (base) root@7f9a8a234670:~# git clone git@github.com:open-compass/DevBench.git
+Cloning into 'DevBench'...
+2024-10-01 23:49:57 git@github.com: Permission denied (publickey).
+2024-10-01 23:49:57 fatal: Could not read from remote repository.
+2024-10-01 23:49:57 
+2024-10-01 23:49:57 Please make sure you have the correct access rights
+2024-10-01 23:49:57 and the repository exists.
+2024-10-01 23:50:55 (base) root@7f9a8a234670:~# git clone https://github.com/open-compass/DevBench.git
+Cloning into 'DevBench'...
+2024-10-01 23:50:55 remote: Enumerating objects: 23110, done.
+remote: Counting objects: 100% (772/772), done.
+remote: Compressing objects: 100% (616/616), done.
+remote: Total 23110 (delta 125), reused 728 (delta 95), pack-reused 22338 (from 1)
+Receiving objects: 100% (23110/23110), 85.01 MiB | 22.52 MiB/s, done.| 22.44 MiB/s
+Resolving deltas: 100% (4607/4607), done.% (0/4607)
+Updating files: 100% (27529/27529), done.(8380/27529)

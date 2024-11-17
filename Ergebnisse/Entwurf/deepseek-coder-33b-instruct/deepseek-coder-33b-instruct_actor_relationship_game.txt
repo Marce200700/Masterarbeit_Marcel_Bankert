@@ -1,0 +1,49 @@
+The structure of the project could be represented by a tree:
+
+```
+.
+└── Actor_relationship_game
+    ├── .gradle
+    │   └── wrapper
+    ├── build
+    │   ├── classes
+    │   │   └── java
+    │   │       └── Actor_relationship_game
+    │   ├── dists
+    │   ├── libs
+    │   └── tmp
+    │       └── main
+    │           └── classes
+    │               └── Actor_relationship_game
+    ├── build.gradle
+    ├── gradle
+    │   └── wrapper
+    ├── gradlew
+    ├── gradlew.bat
+    └── src
+        └── main
+            └── java
+                └── Actor_relationship_game
+                    ├── Actor.java
+                    ├── ActorGraph.java
+                    ├── ActorGraphUtil.java
+                    ├── GameplayInterface.java
+                    ├── GraphCreation.java
+                    ├── Movie.java
+                    └── TMDBApi.java
+```
+
+Here is a short explanation of each file or directory:
+
+- `.gradle`: A directory used by Gradle to store configuration files.
+- `build`: A directory where the compiled Java files are stored.
+- `gradle`: A directory used by Gradle to store configuration files.
+- `gradlew`: A script used to run Gradle tasks on Unix-based systems.
+- `gradlew.bat`: A script used to run Gradle tasks on Windows-based systems.
+- `src`: A directory that contains all the source code files.
+- `build.gradle`: A configuration file used by Gradle to define the project settings and dependencies.
+- `Actor.java`, `ActorGraph.java`, `ActorGraphUtil.java`, `GameplayInterface.java`, `GraphCreation.java`, `Movie.java`, and `TMDBApi.java`: Java source files that contain the classes for the Actor Relationship Game.
+
+This is a simple explanation of the file tree structure of the project. In reality, it could be much more complex depending on the size and complexity of the project.
+
+Please note: This is a general guideline and the actual structure of the project may vary based on the specific requirements and structure of your project.

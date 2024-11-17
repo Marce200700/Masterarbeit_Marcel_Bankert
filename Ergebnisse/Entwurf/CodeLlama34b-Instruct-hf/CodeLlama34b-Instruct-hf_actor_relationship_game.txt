@@ -1,0 +1,260 @@
+UML
+UML-class diagram
+@startuml
+hide empty members
+
+title UML Diagram for Actor Relationship Game
+
+class TMDBApi <<Facade>> {
+    -String apiKey
+    -Map<Integer, Movie> movieMap
+    -Map<Integer, Actor> actorMap
+
+    +TMDBApi(String apiKey)
+    +String getMovieUrl(int actorId)
+    +String getPopularMovieUrl()
+    +String getMovieCreditsUrl(int movieId)
+    +void fetchMovieData(int actorId)
+    +void fetchPopularActorData()
+    +Map<Integer, Movie> getMovieMap()
+    +Map<Integer, Actor> getActorMap()
+}
+
+class Actor {
+    -int id
+    -String name
+    -HashSet<Integer> movieIds
+
+    +Actor(int id, String name, HashSet<Integer> movieIds)
+    +void addMovieId(int movieId)
+    +int getId()
+    +String getName()
+    +HashSet<Integer> getMovieIds()
+}
+
+class Movie {
+    -int id
+    -String title
+    -HashSet<Integer> actorIds
+
+    +Movie(int id, String title, HashSet<Integer> actorIds)
+    +void addActorId(int actorId)
+    +int getId()
+    +String getTitle()
+    +HashSet<Integer> getActorIds()
+}
+
+class GraphCreation {
+    -TMDBApi tmdbApi
+
+    +GraphCreation(String apiKey)
+    +ActorGraph constructGraph()
+    +void saveActorGraph(String fileName)
+}
+
+class ActorGraph {
+    -Map<Integer, Actor> actorMap
+    -Map<Integer, HashSet<Integer>> movieMap
+    -HashSet<Edge> edges
+
+    +ActorGraph(Map<Integer, Actor> actorMap, Map<Integer, HashSet<Integer>> movieMap, HashSet<Edge> edges)
+    +Map<Integer, Actor> getActorMap()
+    +Map<Integer, HashSet<Integer>> getMovieMap()
+    +HashSet<Edge> getEdges()
+}
+
+class Edge {
+    -int actorId1
+    -int actorId2
+    -int movieId
+
+    +Edge(int actorId1, int actorId2, int movieId)
+    +int getActorId1()
+    +int getActorId2()
+    +int getMovieId()
+}
+
+class ActorGraphUtil {
+    -ActorGraph actorGraph
+
+    +ActorGraphUtil(String graphPath)
+    +ActorGraph getActorGraph()
+    +void saveActorNames(String filePath)
+    +Map<Integer, Actor> getActorMap()
+    +Map<Integer, HashSet<Integer>> getMovieMap()
+}
+
+class GameplayInterface {
+    -ActorGraphUtil actorGraphUtil
+
+    +GameplayInterface(String graphPath, String actorPath)
+    +void findActorConnections(String filePath)
+}
+
+TMDBApi .> ActorGraph : creates, fetches, and populates
+TMDBApi .> Movie : fetches, parses, and creates
+TMDBApi .> Actor : fetches, parses, and creates
+ActorGraph .> Actor : contains
+ActorGraph .> Movie : contains
+ActorGraph .> Edge : contains
+ActorGraphUtil .> ActorGraph : loads, gets
+ActorGraphUtil .> Actor : gets
+ActorGraphUtil .> Movie : gets
+GameplayInterface .> ActorGraphUtil : loads
+@enduml
+
+UML-sequence diagram
+@startuml
+hide empty members
+title UML Sequence Diagram for Actor Relationship Game
+
+Actor -> TMDBApi : fetchMovieData(int actorId)
+TMDBApi -> TMDBApi : getMovieUrl(int actorId)
+TMDBApi -> TMDBApi : fetchMovieData(int actorId)
+TMDBApi -> API : fetch request
+API -> TMDBApi : fetch response
+TMDBApi -> TMDBApi : parseMovieCredits(String json)
+TMDBApi -> Movie : create(int id, String title)
+TMDBApi -> Actor : addMovieId(int movieId)
+TMDBApi -> TMDBApi : fetchPopularActorData()
+TMDBApi -> TMDBApi : getPopularMovieUrl()
+TMDBApi -> API : fetch request
+API -> TMDBApi : fetch response
+TMDBApi -> TMDBApi : parsePopularActors(String json)
+TMDBApi -> Actor : create(int id, String name)
+TMDBApi -> TMDBApi : saveMovieData(Movie movie)
+TMDBApi -> TMDBApi : saveActorData(Actor actor)
+TMDBApi -> GraphCreation : constructGraph()
+GraphCreation -> TMDBApi : getMovieMap()
+GraphCreation -> TMDBApi : getActorMap()
+GraphCreation -> ActorGraph : create(Map<Integer, Actor> actorMap, Map<Integer, HashSet<Integer>> movieMap, HashSet<Edge> edges)
+GraphCreation -> ActorGraph : saveActorGraph(String fileName)
+GraphCreation -> ActorGraphUtil : saveActorNames(String filePath)
+GraphCreation -> GameplayInterface : findActorConnections(String filePath)
+ActorGraphUtil -> ActorGraph : getActorGraph()
+ActorGraphUtil -> ActorGraph : getActorMap()
+ActorGraphUtil -> ActorGraph : getMovieMap()
+GameplayInterface -> ActorGraphUtil : load(String graphPath, String actorPath)
+GameplayInterface -> GameplayInterface : findActorConnections(String filePath)
+
+@enduml
+
+Directory Tree
+src
+├── main
+│   ├── java
+│   │   └── Actor_relationship_game
+│   │       ├── Edge.java
+│   │       ├── Actor.java
+│   │       ├── ActorGraph.java
+│   │       ├── ActorGraphUtil.java
+│   │       ├── GameplayInterface.java
+│   │       ├── GraphCreation.java
+│   │       ├── Movie.java
+│   │       ├── TMDBApi.java
+│   │       └── UML.java
+│   └── resources
+│       └── config.properties
+├── test
+│   └── java
+│       └── Actor_relationship_game
+│           ├── TMDBApiTest.java
+│           ├── ActorTest.java
+│           ├── MovieTest.java
+│           ├── GraphCreationTest.java
+│           └── ActorGraphTest.java
+├── acceptanceTest
+│   └── java
+│       └── Actor_relationship_game
+│           └── GameplayInterfaceTest.java
+└── main.cpp
+
+File Structure
+src
+├── main
+│   ├── java
+│   │   └── Actor_relationship_game
+│   │       ├── Edge.java
+│   │       ├── Actor.java
+│   │       ├── ActorGraph.java
+│   │       ├── ActorGraphUtil.java
+│   │       ├── GameplayInterface.java
+│   │       ├── GraphCreation.java
+│   │       ├── Movie.java
+│   │       ├── TMDBApi.java
+│   │       └── UML.java
+│   └── resources
+│       └── config.properties
+├── test
+│   └── java
+│       └── Actor_relationship_game
+│           ├── TMDBApiTest.java
+│           ├── ActorTest.java
+│           ├── MovieTest.java
+│           ├── GraphCreationTest.java
+│           └── ActorGraphTest.java
+├── acceptanceTest
+│   └── java
+│       └── Actor_relationship_game
+│           └── GameplayInterfaceTest.java
+└── main.cpp
+
+Description
+This directory tree consists of source code for the Actor Relationship Game, test cases, and an acceptance test case.
+
+src/main/java/Actor_relationship_game
+This directory contains the source code for the Actor Relationship Game.
+
+src/main/java/Actor_relationship_game/Edge.java
+This file contains the Edge class that models the edges in the ActorGraph.
+
+src/main/java/Actor_relationship_game/Actor.java
+This file contains the Actor class that models the actors in the ActorGraph.
+
+src/main/java/Actor_relationship_game/ActorGraph.java
+This file contains the ActorGraph class that represents the graph data structure of actors and their movie collaborations.
+
+src/main/java/Actor_relationship_game/ActorGraphUtil.java
+This file contains the ActorGraphUtil class that manages the serialization and deserialization of the ActorGraph and extracts actors names.
+
+src/main/java/Actor_relationship_game/GameplayInterface.java
+This file contains the GameplayInterface class that provides user interaction for exploring actor relationships and outputs the results.
+
+src/main/java/Actor_relationship_game/GraphCreation.java
+This file contains the GraphCreation class that constructs and populates the ActorGraph using data fetched from the TMDB API.
+
+src/main/java/Actor_relationship_game/Movie.java
+This file contains the Movie class that models the movies in the ActorGraph.
+
+src/main/java/Actor_relationship_game/TMDBApi.java
+This file contains the TMDBApi class that handles API calls to TMDB to fetch actor and movie data, facilitating the retrieval of information based on actor IDs and popularity.
+
+src/main/java/Actor_relationship_game/UML.java
+This file contains UML diagrams.
+
+src/main/resources/config.properties
+This file contains API key for TMDB API.
+
+src/test/java/Actor_relationship_game
+This directory contains test cases.
+
+src/test/java/Actor_relationship_game/TMDBApiTest.java
+This file contains test cases for TMDBApi.
+
+src/test/java/Actor_relationship_game/ActorTest.java
+This file contains test cases for Actor.
+
+src/test/java/Actor_relationship_game/MovieTest.java
+This file contains test cases for Movie.
+
+src/test/java/Actor_relationship_game/GraphCreationTest.java
+This file contains test cases for GraphCreation.
+
+src/test/java/Actor_relationship_game/ActorGraphTest.java
+This file contains test cases for ActorGraph.
+
+src/acceptanceTest/java/Actor_relationship_game/GameplayInterfaceTest.java
+This file contains acceptance test cases for GameplayInterface.
+
+main.cpp
+This file contains the main method that runs the application.

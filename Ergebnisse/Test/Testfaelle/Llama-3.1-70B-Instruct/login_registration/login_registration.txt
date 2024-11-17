@@ -1,0 +1,310 @@
+ Here are the test cases:
+
+1.  **Test Case: Empty First Name**
+
+    *   **Description:** Test that the registration form displays an error message when the first name field is empty.
+    *   **Steps:**
+
+        *   Set the `user` data with an empty `firstName` field.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the first name field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for empty first name', async () => {
+    wrapper.setData({
+        user: {
+            firstName: '',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+2.  **Test Case: Empty Last Name**
+
+    *   **Description:** Test that the registration form displays an error message when the last name field is empty.
+    *   **Steps:**
+
+        *   Set the `user` data with an empty `lastName` field.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the last name field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for empty last name', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: '',
+            username: 'testuser',
+            password: 'password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+3.  **Test Case: Empty Username**
+
+    *   **Description:** Test that the registration form displays an error message when the username field is empty.
+    *   **Steps:**
+
+        *   Set the `user` data with an empty `username` field.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the username field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for empty username', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: '',
+            password: 'password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+4.  **Test Case: Empty Password**
+
+    *   **Description:** Test that the registration form displays an error message when the password field is empty.
+    *   **Steps:**
+
+        *   Set the `user` data with an empty `password` field.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the password field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for empty password', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: ''
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+5.  **Test Case: Invalid Email**
+
+    *   **Description:** Test that the registration form displays an error message when the email field contains an invalid email address.
+    *   **Steps:**
+
+        *   Set the `user` data with an invalid email address.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the email field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for invalid email', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            email: 'invalid-email'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+6.  **Test Case: Password and Confirm Password Mismatch**
+
+    *   **Description:** Test that the registration form displays an error message when the password and confirm password fields do not match.
+    *   **Steps:**
+
+        *   Set the `user` data with mismatched password and confirm password fields.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the confirm password field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for password and confirm password mismatch', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'password',
+            confirmPassword: 'mismatched-password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+7.  **Test Case: Password Length**
+
+    *   **Description:** Test that the registration form displays an error message when the password field is too short.
+    *   **Steps:**
+
+        *   Set the `user` data with a short password.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the password field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for short password', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'short'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+8.  **Test Case: Password Strength**
+
+    *   **Description:** Test that the registration form displays an error message when the password field does not meet the required strength.
+    *   **Steps:**
+
+        *   Set the `user` data with a weak password.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the password field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for weak password', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'weakpassword'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+9.  **Test Case: Duplicate Username**
+
+    *   **Description:** Test that the registration form displays an error message when the username field contains a duplicate username.
+    *   **Steps:**
+
+        *   Set the `user` data with a duplicate username.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the username field.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for duplicate username', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'duplicate-username',
+            password: 'password'
+        }
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+10. **Test Case: Server-Side Validation Error**
+
+    *   **Description:** Test that the registration form displays an error message when the server-side validation fails.
+    *   **Steps:**
+
+        *   Set the `user` data with valid registration data.
+        *   Mock the server-side validation to return an error.
+        *   Trigger the form submission.
+        *   Wait for Vue's nextTick to allow all async updates to finish.
+        *   Check for the existence of the error feedback for the server-side validation error.
+    *   **Code:**
+
+        ```javascript
+it('shows error message for server-side validation error', async () => {
+    wrapper.setData({
+        user: {
+            firstName: 'Test',
+            lastName: 'User',
+            username: 'testuser',
+            password: 'password'
+        }
+    });
+
+    // Mock the server-side validation to return an error
+    wrapper.vm.$validator.validate = jest.fn().mockRejectedValue({
+        errors: ['Server-side validation error']
+    });
+
+    wrapper.find('form').trigger('submit.prevent');
+    await wrapper.vm.$nextTick();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.invalid-feedback').exists()).toBe(true);
+});
+```
+
+These test cases cover various scenarios for invalid registration parameters, including empty fields, invalid email addresses, password and confirm password mismatch, password length and strength, duplicate usernames, and server-side validation errors. By writing these test cases, you can ensure that your registration form is thoroughly tested and provides a good user experience.

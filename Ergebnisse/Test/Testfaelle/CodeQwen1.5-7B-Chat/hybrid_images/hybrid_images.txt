@@ -1,0 +1,54 @@
+Test cases to generate: 10 more test cases based on the .testmeanfilter_RGB function
+
+def testmeanfilterRGB(self): ''' Tests cross-correlation of RGB image using a rectangular filter with different kernel sizes and shapes ''' kernel = np.ones((3,5)) # Different shape and size student = hybrid.crosscorrelation2d(self.imgrgb, kernel) solution = cv2.filter2D(self.imgrgb, -1, kernel, borderType=cv2.BORDERCONSTANT)
+
+self.assertTrue(np.allclose(student, solution, atol=1e-08), \
+    msg="Incorrect cross-correlation of RGB image using mean filter with different kernel")
+
+
+def testmeanfilterRGB(self): ''' Tests cross-correlation of RGB image using a rectangular filter with negative and positive values in the kernel ''' kernel = np.array([[-1, -2], [-3, 0]]) # Negative and positive values student = hybrid.crosscorrelation2d(self.imgrgb, kernel) solution = cv2.filter2D(self.imgrgb, -1, kernel, borderType=cv2.BORDERCONSTANT)
+
+self.assertTrue(np.allclose(student, solution, atol=1e-08), \
+    msg="Incorrect cross-correlation of RGB image using mean filter with negative and positive values in the kernel")
+
+
+def testmeanfilterRGB(self): ''' Tests cross-correlation of RGB image using a rectangular filter with zeros in the kernel ''' kernel = np.zeros((3,5)) # All zeroes student = hybrid.crosscorrelation2d(self.imgrgb, kernel) solution = cv2.filter2D(self.imgrgb, -1, kernel, borderType=cv2.BORDERCONSTANT)
+
+self.assertTrue(np.allclose(student, solution, atol=1e-08), \
+    msg="Incorrect cross-correlation of RGB image using mean filter with zeros in the kernel")
+
+
+def testmeanfilterRGB(self): ''' Tests cross-correlation of RGB image using a rectangular filter with different border types (e.g., REFLECT, WRAP) ''' kernel = np.ones((3,5)) # Different shape and size for bordertype in [cv2.BORDERREFLECT, cv2.BORDERWRAP]: student = hybrid.crosscorrelation2d(self.imgrgb, kernel, borderType=bordertype) solution = cv2.filter2D(self.imgrgb, -1, kernel, borderType=bordertype)
+
+    self.assertTrue(np.allclose(student, solution, atol=1e-08), \
+        msg="Incorrect cross-correlation of RGB image using mean filter with different border types")
+
+
+def testmeanfilterRGB(self): ''' Tests cross-correlation of RGB image using a rectangular filter with different data types (e.g., uint8, float32) ''' kernel = np.ones((3,5), dtype=np.float32) # Different shape and size and type studentuint8 = hybrid.crosscorrelation2d(self.imgrgb.astype(np.uint8), kernel) solutionuint8 = cv2.filter2D(self.imgrgb, -1, kernel, borderType=cv2.BORDERCONSTANT).astype(np.uint8)
+
+student_float32 = hybrid.cross_correlation_2d(self.img_rgb, kernel)
+solution_float32 = cv2.filter2D(self.img_rgb, -1, kernel, borderType=cv2.BORDER_CONSTANT).astype(np.float32)
+
+self.assertTrue(np.allclose(student_uint8, solution_uint8, atol=1e-08), \
+    msg="Incorrect cross-correlation of RGB image using mean filter with different data types (uint8)")
+
+self.assertTrue(np.allclose(student_float32, solution_float32, atol=1e-08), \
+    msg="Incorrect cross-correlation of RGB image using mean filter with different data types (float32)")
+
+
+def testmeanfilterRGB(self): ''' Tests cross-correlation of RGB image using a rectangular filter with non-square kernel size and shape ''' kernel = np.ones((5,3)) # Different shape and size student = hybrid.crosscorrelation2d(self.imgrgb, kernel) solution = cv2.filter2D(self.imgrgb, -1, kernel, borderType=cv2.BORDERCONSTANT)
+
+self.assertTrue(np.allclose(student, solution, atol=1e-08), \
+    msg="Incorrect cross-correlation of RGB image using mean filter with non-square kernel size and shape")
+
+
+def testmeanfilterRGB(self): ''' Tests cross-correlation of RGB image using a rectangular filter with different padding modes (e.g., VALID, SAME) ''' kernel = np.ones((3,5)) # Different shape and size for padmode in ['VALID', 'SAME']: student = hybrid.crosscorrelation2d(self.imgrgb, kernel, padmode=padmode) solution = cv2.filter2D(self.imgrgb, -1, kernel, borderType=cv2.BORDER_CONSTANT)
+
+    if pad_mode == 'VALID':
+        expected_height = self.big_height - 3 + 1  # Height of the resulting image after cropping
+        expected_width = self.big_width - 5 + 1   # Width of the resulting image after cropping
+    else:
+        expected_height, expected_width = self.img_rgb.shape[:2]
+
+    self.assertTrue(np.allclose(student[0:expected_height, 0:expected_width], solution), \
+        msg="Incorrect cross-correlation of RGB image using mean filter with different padding modes")

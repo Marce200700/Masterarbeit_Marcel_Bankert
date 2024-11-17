@@ -1,0 +1,50 @@
+
+
+Unit Test for TMDBApi.java:
+
+```java
+package Actor_relationship_game;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TMDBApiTest {
+    private TMDBApi tmdbApi;
+
+    @BeforeEach
+    public void setUp() {
+        tmdbApi = new TMDBApi();
+    }
+
+    @Test
+    public void testGetMoviesByActorId() throws IOException {
+        String actorId = "1100"; // replace with a valid actor ID
+        String response = tmdbApi.getMoviesByActorId(actorId);
+        assertNotNull(response);
+        assertFalse(response.isEmpty());
+    }
+
+    @Test
+    public void testSearchPopularActors() throws IOException {
+        String response = tmdbApi.searchPopularActors();
+        assertNotNull(response);
+        assertFalse(response.isEmpty());
+    }
+
+    @Test
+    public void testGetMoviesByActorIdInvalidId() {
+        String actorId = "invalid";
+        assertThrows(IOException.class, () -> tmdbApi.getMoviesByActorId(actorId));
+    }
+}
+```
+
+This test class includes three test methods:
+
+- `testGetMoviesByActorId()`: Tests the `getMoviesByActorId()` method by making a call with a valid actor ID and verifying that the response is not null and not empty.
+- `testSearchPopularActors()`: Tests the `searchPopularActors()` method by making a call and verifying that the response is not null and not empty.
+- `testGetMoviesByActorIdInvalidId()`: Tests the `getMoviesByActorId()` method by making a call with an invalid actor ID and verifying that an `IOException` is thrown.
+
+These tests ensure that the `TMDBApi` class can successfully make API calls to TMDB and retrieve data.

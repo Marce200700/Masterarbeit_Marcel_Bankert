@@ -1,0 +1,76 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/cpp/logistic_system$ ./setup_shell_script.sh
+fatal: destination path 'googletest' already exists and is not an empty directory.
+mkdir: cannot create directory ‘build’: File exists
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/marcel/masterarbeit/DevBench/benchmark_data/cpp/logistic_system/googletest/build
+[ 25%] Built target gtest
+[ 50%] Built target gmock
+[ 75%] Built target gmock_main
+[100%] Built target gtest_main
+[ 25%] Built target gtest
+[ 50%] Built target gmock
+[ 75%] Built target gmock_main
+[100%] Built target gtest_main
+Install the project...
+-- Install configuration: ""
+-- Up-to-date: /usr/local/include
+-- Up-to-date: /usr/local/include/gmock
+-- Up-to-date: /usr/local/include/gmock/gmock-spec-builders.h
+-- Up-to-date: /usr/local/include/gmock/gmock-matchers.h
+-- Up-to-date: /usr/local/include/gmock/gmock-more-matchers.h
+-- Up-to-date: /usr/local/include/gmock/gmock.h
+-- Up-to-date: /usr/local/include/gmock/gmock-more-actions.h
+-- Up-to-date: /usr/local/include/gmock/gmock-function-mocker.h
+-- Up-to-date: /usr/local/include/gmock/internal
+-- Up-to-date: /usr/local/include/gmock/internal/gmock-pp.h
+-- Up-to-date: /usr/local/include/gmock/internal/gmock-port.h
+-- Up-to-date: /usr/local/include/gmock/internal/gmock-internal-utils.h
+-- Up-to-date: /usr/local/include/gmock/internal/custom
+-- Up-to-date: /usr/local/include/gmock/internal/custom/gmock-matchers.h
+-- Up-to-date: /usr/local/include/gmock/internal/custom/gmock-generated-actions.h
+-- Up-to-date: /usr/local/include/gmock/internal/custom/gmock-port.h
+-- Up-to-date: /usr/local/include/gmock/internal/custom/README.md
+-- Up-to-date: /usr/local/include/gmock/gmock-actions.h
+-- Up-to-date: /usr/local/include/gmock/gmock-cardinalities.h
+-- Up-to-date: /usr/local/include/gmock/gmock-nice-strict.h
+-- Up-to-date: /usr/local/lib/libgmock.a
+-- Up-to-date: /usr/local/lib/libgmock_main.a
+-- Up-to-date: /usr/local/lib/pkgconfig/gmock.pc
+-- Up-to-date: /usr/local/lib/pkgconfig/gmock_main.pc
+-- Up-to-date: /usr/local/lib/cmake/GTest/GTestTargets.cmake
+-- Up-to-date: /usr/local/lib/cmake/GTest/GTestTargets-noconfig.cmake
+-- Up-to-date: /usr/local/lib/cmake/GTest/GTestConfigVersion.cmake
+-- Up-to-date: /usr/local/lib/cmake/GTest/GTestConfig.cmake
+-- Up-to-date: /usr/local/include
+-- Up-to-date: /usr/local/include/gtest
+-- Up-to-date: /usr/local/include/gtest/gtest.h
+-- Up-to-date: /usr/local/include/gtest/gtest-typed-test.h
+-- Up-to-date: /usr/local/include/gtest/gtest_pred_impl.h
+-- Up-to-date: /usr/local/include/gtest/gtest_prod.h
+-- Up-to-date: /usr/local/include/gtest/gtest-printers.h
+-- Up-to-date: /usr/local/include/gtest/gtest-assertion-result.h
+-- Up-to-date: /usr/local/include/gtest/gtest-spi.h
+-- Up-to-date: /usr/local/include/gtest/gtest-death-test.h
+-- Up-to-date: /usr/local/include/gtest/gtest-param-test.h
+-- Up-to-date: /usr/local/include/gtest/internal
+-- Up-to-date: /usr/local/include/gtest/internal/gtest-type-util.h
+-- Up-to-date: /usr/local/include/gtest/internal/gtest-internal.h
+-- Up-to-date: /usr/local/include/gtest/internal/gtest-port.h
+-- Up-to-date: /usr/local/include/gtest/internal/gtest-filepath.h
+-- Up-to-date: /usr/local/include/gtest/internal/gtest-death-test-internal.h
+-- Up-to-date: /usr/local/include/gtest/internal/gtest-param-util.h
+-- Up-to-date: /usr/local/include/gtest/internal/custom
+-- Up-to-date: /usr/local/include/gtest/internal/custom/gtest.h
+-- Up-to-date: /usr/local/include/gtest/internal/custom/gtest-port.h
+-- Up-to-date: /usr/local/include/gtest/internal/custom/gtest-printers.h
+-- Up-to-date: /usr/local/include/gtest/internal/custom/README.md
+-- Up-to-date: /usr/local/include/gtest/internal/gtest-port-arch.h
+-- Up-to-date: /usr/local/include/gtest/internal/gtest-string.h
+-- Up-to-date: /usr/local/include/gtest/gtest-matchers.h
+-- Up-to-date: /usr/local/include/gtest/gtest-test-part.h
+-- Up-to-date: /usr/local/include/gtest/gtest-message.h
+-- Up-to-date: /usr/local/lib/libgtest.a
+-- Up-to-date: /usr/local/lib/libgtest_main.a
+-- Up-to-date: /usr/local/lib/pkgconfig/gtest.pc
+-- Up-to-date: /usr/local/lib/pkgconfig/gtest_main.pc

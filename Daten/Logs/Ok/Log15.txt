@@ -1,0 +1,42 @@
+npm start 
+
+> vue-vuex-registration-login-example@1.0.0 start C:\Windows\System32\workspace\masterarbeit\DevBench\benchmark_data\javascript\login-registration
+> webpack-dev-server --open
+
+i ｢wds｣: Project is running at http://localhost:8080/
+i ｢wds｣: webpack output is served from /
+i ｢wds｣: Content not from webpack is served from C:\Windows\System32\workspace\masterarbeit\DevBench\benchmark_data\javascript\login-registration
+i ｢wds｣: 404s will fallback to /index.html
+i ｢wdm｣: wait until bundle finished: /
+i ｢wdm｣: Hash: c7e8dbcc3bbe38c9f3e6
+Version: webpack 4.47.0
+Time: 3187ms
+Built at: 02.10.2024 22:27:21
+     Asset       Size  Chunks             Chunk Names
+index.html  800 bytes          [emitted]
+   main.js   1.25 MiB    main  [emitted]  main
+Entrypoint main = main.js
+[0] multi (webpack)-dev-server/client?http://localhost:8080 ./src 40 bytes {main} [built]
+[./node_modules/strip-ansi/index.js] 161 bytes {main} [built]
+[./node_modules/vee-validate/dist/vee-validate.esm.js] 326 KiB {main} [built]
+[./node_modules/vue/dist/vue.runtime.esm.js] 298 KiB {main} [built]
+[./node_modules/webpack-dev-server/client/index.js?http://localhost:8080] (webpack)-dev-server/client?http://localhost:8080 4.29 KiB {main} [built]
+[./node_modules/webpack-dev-server/client/overlay.js] (webpack)-dev-server/client/overlay.js 3.52 KiB {main} [built]
+[./node_modules/webpack-dev-server/client/socket.js] (webpack)-dev-server/client/socket.js 1.53 KiB {main} [built]
+[./node_modules/webpack-dev-server/client/utils/createSocketUrl.js] (webpack)-dev-server/client/utils/createSocketUrl.js 2.91 KiB {main} [built]
+[./node_modules/webpack-dev-server/client/utils/log.js] (webpack)-dev-server/client/utils/log.js 964 bytes {main} [built]
+[./node_modules/webpack-dev-server/client/utils/reloadApp.js] (webpack)-dev-server/client/utils/reloadApp.js 1.59 KiB {main} [built]
+[./node_modules/webpack-dev-server/client/utils/sendMessage.js] (webpack)-dev-server/client/utils/sendMessage.js 402 bytes {main} [built]
+[./node_modules/webpack/hot sync ^\.\/log$] (webpack)/hot sync nonrecursive ^\.\/log$ 170 bytes {main} [built]
+[./src/_helpers/index.js] 934 bytes {main} [built]
+[./src/_store/index.js] 687 bytes {main} [built]
+[./src/index.js] 708 bytes {main} [built]
+    + 75 hidden modules
+Child html-webpack-plugin for "index.html":
+     1 asset
+    Entrypoint undefined = index.html
+    [./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html] 963 bytes {0} [built]
+    [./node_modules/lodash/lodash.js] 531 KiB {0} [built]
+    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {0} [built]
+    [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {0} [built]
+i ｢wdm｣: Compiled successfully.

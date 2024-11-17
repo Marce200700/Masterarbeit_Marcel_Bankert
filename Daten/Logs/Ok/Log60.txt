@@ -1,0 +1,2 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/python/lice$ python3 test_acceptance.py
+All acceptance tests passed!

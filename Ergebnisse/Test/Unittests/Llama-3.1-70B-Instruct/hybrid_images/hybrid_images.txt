@@ -1,0 +1,229 @@
+ 
+
+Here is the unit test for the cross_correlation_2d function:
+```python
+import unittest
+import numpy as np
+from src.hybrid import cross_correlation_2d
+
+class TestCrossCorrelation2D(unittest.TestCase):
+
+    def test_cross_correlation_2d(self):
+        # Create a test image
+        img = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+        # Create a test kernel
+        kernel = np.array([[0, 1, 0], [1, -4, 1], [0, 1, 0]])
+
+        # Calculate the expected output
+        expected_output = np.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+
+        # Calculate the actual output
+        actual_output = cross_correlation_2d(img, kernel)
+
+        # Compare the expected and actual outputs
+        np.testing.assert_array_equal(expected_output, actual_output)
+
+    def test_cross_correlation_2d_rgb(self):
+        # Create a test RGB image
+        img = np.array([[[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+                        [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
+                        [[19, 20, 21], [22, 23, 24], [25, 26, 27]]])
+
+        # Create a test kernel
+        kernel = np.array([[0, 1, 0], [1, -4, 1], [0, 1, 0]])
+
+        # Calculate the expected output
+        expected_output = np.array([[[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+ [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+ [[0, 0, 0], [0, 0, 0], [0, 0, 0]]])
+
+        # Calculate the actual output
+        actual_output = cross_correlation_2d(img, kernel)
+
+        # Compare the expected and actual outputs
+        np.testing.assert_array_equal(expected_output, actual_output)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+Here is the unit test for the convolve_2d function:
+```python
+import unittest
+import numpy as np
+from src.hybrid import convolve_2d
+
+class TestConvolve2D(unittest.TestCase):
+
+    def test_convolve_2d(self):
+        # Create a test image
+        img = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+        # Create a test kernel
+        kernel = np.array([[0, 1, 0], [1, -4, 1], [0, 1, 0]])
+
+        # Calculate the expected output
+        expected_output = np.array([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+
+        # Calculate the actual output
+        actual_output = convolve_2d(img, kernel)
+
+        # Compare the expected and actual outputs
+        np.testing.assert_array_equal(expected_output, actual_output)
+
+    def test_convolve_2d_rgb(self):
+        # Create a test RGB image
+        img = np.array([[[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+                        [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
+                        [[19, 20, 21], [22, 23, 24], [25, 26, 27]]])
+
+        # Create a test kernel
+        kernel = np.array([[0, 1, 0], [1, -4, 1], [0, 1, 0]])
+
+        # Calculate the expected output
+        expected_output = np.array([[[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+ [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+ [[0, 0, 0], [0, 0, 0], [0, 0, 0]]])
+
+        # Calculate the actual output
+        actual_output = convolve_2d(img, kernel)
+
+        # Compare the expected and actual outputs
+        np.testing.assert_array_equal(expected_output, actual_output)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+Here is the unit test for the gaussian_blur_kernel_2d function:
+```python
+import unittest
+import numpy as np
+from src.hybrid import gaussian_blur_kernel_2d
+
+class TestGaussianBlurKernel2D(unittest.TestCase):
+
+    def test_gaussian_blur_kernel_2d(self):
+        # Create a test sigma value
+        sigma = 1.0
+
+        # Create a test kernel size
+        width = 3
+        height = 3
+
+        # Calculate the expected output
+        expected_output = np.array([[0.0625, 0.125, 0.0625],
+ [0.125, 0.25, 0.125],
+ [0.0625, 0.125, 0.0625]])
+
+        # Calculate the actual output
+        actual_output = gaussian_blur_kernel_2d(sigma, width, height)
+
+        # Compare the expected and actual outputs
+        np.testing.assert_array_almost_equal(expected_output, actual_output)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+Here is the unit test for the low_pass function:
+```python
+import unittest
+import numpy as np
+from src.hybrid import low_pass
+
+class TestLowPass(unittest.TestCase):
+
+    def test_low_pass(self):
+        # Create a test image
+        img = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+        # Create a test sigma value
+        sigma = 1.0
+
+        # Create a test kernel size
+        size = 3
+
+        # Calculate the expected output
+        expected_output = np.array([[2, 3, 4], [5, 6, 7], [8, 9, 10]])
+
+        # Calculate the actual output
+        actual_output = low_pass(img, sigma, size)
+
+        # Compare the expected and actual outputs
+        np.testing.assert_array_almost_equal(expected_output, actual_output)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+Here is the unit test for the high_pass function:
+```python
+import unittest
+import numpy as np
+from src.hybrid import high_pass
+
+class TestHighPass(unittest.TestCase):
+
+    def test_high_pass(self):
+        # Create a test image
+        img = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+        # Create a test sigma value
+        sigma = 1.0
+
+        # Create a test kernel size
+        size = 3
+
+        # Calculate the expected output
+        expected_output = np.array([[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]])
+
+        # Calculate the actual output
+        actual_output = high_pass(img, sigma, size)
+
+        # Compare the expected and actual outputs
+        np.testing.assert_array_almost_equal(expected_output, actual_output)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+Here is the unit test for the create_hybrid_image function:
+```python
+import unittest
+import numpy as np
+from src.hybrid import create_hybrid_image
+
+class TestCreateHybridImage(unittest.TestCase):
+
+    def test_create_hybrid_image(self):
+        # Create a test image 1
+        img1 = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+        # Create a test image 2
+        img2 = np.array([[10, 11, 12], [13, 14, 15], [16, 17, 18]])
+
+        # Create a test sigma value 1
+        sigma1 = 1.0
+
+        # Create a test kernel size 1
+        size1 = 3
+
+        # Create a test sigma value 2
+        sigma2 = 1.0
+
+        # Create a test kernel size 2
+        size2 = 3
+
+        # Create a test mixin ratio
+        mixin_ratio = 0.5
+
+        # Calculate the expected output
+        expected_output = np.array([[5, 6, 7], [8, 9, 10], [11, 12, 13]])
+
+        # Calculate the actual output
+        actual_output = create_hybrid_image(img1, img2, sigma1, size1, 'low', sigma2, size2, 'low', mixin_ratio)
+
+        # Compare the expected and actual outputs
+        np.testing.assert_array_almost_equal(expected_output, actual_output)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+Note that these unit tests are just examples and may need to be modified to fit the specific requirements of your project. Additionally, you may want to add more test cases to ensure that your functions are working correctly in all scenarios.

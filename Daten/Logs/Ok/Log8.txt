@@ -1,0 +1,6 @@
+test@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/python/geotext/acceptance_tests$ python3 test_acceptance.py
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

@@ -1,0 +1,4 @@
+marcel@DESKTOP-JK1QV5Q~masterarbeitDevBenchbenchmark_datacppxlsx2csv$ .run.sh
+mkdir cannot create directory ‘.outputs’ File exists
+mkdir cannot create directory ‘.outputstest001’ File exists
+Conversion successful. CSV files generated.

@@ -1,0 +1,177 @@
+ The Actor Relationship Game has to be able to run on any operating system which supports Java. The Actor Relationship Game has to be able to handle errors gracefully and provide clear error messages for debugging purposes. The Actor Relationship Game has to be able to handle large amounts of data from the TMDB API without crashing or slowing down significantly. The Actor Relationship Game should have a user-friendly interface that allows users to easily input actor names and view results.
+Introduction: The Actor Relationship Game is a Java-based program designed to explore relationships between actors based on their filmography. It utilizes data from The Movie Database (TMDB) API, adhering to its terms and usage limits.
+
+Goals:
+1. Identify the shortest path between two actors using TMDB data.
+2. Visually represent the shortest path between actors.
+3. Handle API calls to fetch actor and movie data efficiently.
+4. Store the TMDB API key in an environment variable called "TMDB_API_KEY".
+5. Utilize Java, Gradle, and other specified libraries for development.
+
+Features and Functionalities:
+1. Search for specific actors and films by their respective IDs using the TMDB API.
+2. Save shortest path results to a .txt file named "actor_connection_results.txt".
+3. Run on any operating system that supports Java.
+4. Handle errors gracefully with clear error messages for debugging purposes.
+5. Efficiently process large amounts of data from the TMDB API without crashing or slowing down significantly.
+
+Technical Constraints:
+1. Adhere to TMDB API terms and usage limits.
+2. Utilize specified libraries: java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api.
+3. Use Java Runtime Environment for execution.
+
+Requirements:
+1. Actor objects with unique ID, name, and set of movie IDs they participated in.
+2. Movie objects with unique ID, name, and set of actor IDs involved in the movie.
+3. Utility classes for gameplay interface or shortest path creation between actors.
+
+Acceptance Criteria:
+1. The program should accurately identify the shortest path between two actors using TMDB data.
+2. Results are saved to "actor_connection_results.txt" file with proper formatting.
+3. The program runs smoothly on any operating system that supports Java.
+4. Errors are handled gracefully, and clear error messages are provided for debugging purposes.
+
+Dependencies:
+1. TMDB API for actor and movie data retrieval.
+2. Gradle for project management and build automation.
+3. Java Runtime Environment for execution.
+
+Terms/Concepts Explanation:
+1. Actor Relationship Game: A program that explores relationships between actors based on their filmography using TMDB data.
+2. TMDB API: The Movie Database API, a source of movie and actor data used by the Actor Relationship Game.
+3. Gradle: A build automation tool for Java projects.
+4. Java Runtime Environment (JRE): An environment required to run Java-based programs.
+
+Please use this template to generate a software requirement specification based on the following information. The program should be called "Actor Path Finder". It is supposed to find the shortest path between two actors using their filmography as connection points. The data for the informations about actors and the respective films they took part in comes from the The Movie Database (TMDB) API. Interactions with TMDB API must adhere to its terms and usage limits. With the given data, this Java-based programm has to be able to identify the shortest path between actors. Thus this program has to be able to represent the shortest path visually. To realise the aforementioned functionalities, the Actor Path Finder has to handle API calls to fetch actor and movie data. The api-key, which has to be used to retrieve curcial movie and actor data, has to be stored in a an environment variable called „TMDB_API_KEY“. With the api key and the TMDB data, this program should be able to search for specific actors and films by their respective IDs. Aside from the programming language Java, the programm has to use Gradle, a TMDB API key, java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api and since this is a Java-based programm the Java Runtime Environment has to be utilized as well. The objects this program has to work with are actors and movies. Additionally there may be utility classes for a gameplay interface or the creation of the shortest path between two actors. An actor has to have an unique ID, a name and a set of movie IDs they participated in. A movie has to have an unique ID, a name, and a set of unique actor IDs involved in the movie. To save the shortest graphs that could be found, the results should be saved inside a .txt file called „actor_path_results.txt“.  The Actor Path Finder has to be able to run on any operating system which supports Java. The Actor Path Finder has to be able to handle errors gracefully and provide clear error messages for debugging purposes. The Actor Path Finder has to be able to handle large amounts of data from the TMDB API without crashing or slowing down significantly.
+Introduction: The Actor Path Finder is a Java-based program designed to find the shortest path between two actors using their filmography as connection points. It utilizes data from The Movie Database (TMDB) API, adhering to its terms and usage limits.
+
+Goals:
+1. Identify the shortest path between two actors based on their filmography.
+2. Visually represent the shortest path between actors.
+3. Handle API calls to fetch actor and movie data efficiently.
+4. Store the TMDB API key in an environment variable called "TMDB_API_KEY".
+5. Utilize Java, Gradle, and other specified libraries for development.
+
+Features and Functionalities:
+1. Search for specific actors and films by their respective IDs using the TMDB API.
+2. Save shortest path results to a .txt file named "actor_path_results.txt".
+3. Run on any operating system that supports Java.
+4. Handle errors gracefully with clear error messages for debugging purposes.
+5. Efficiently process large amounts of data from the TMDB API without crashing or slowing down significantly.
+
+Technical Constraints:
+1. Adhere to TMDB API terms and usage limits.
+2. Utilize specified libraries: java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api.
+3. Use Java Runtime Environment for execution.
+
+Requirements:
+1. Actor objects with unique ID, name, and set of movie IDs they participated in.
+2. Movie objects with unique ID, name, and set of actor IDs involved in the movie.
+3. Utility classes for gameplay interface or shortest path creation between actors.
+
+Acceptance Criteria:
+1. The program should accurately identify the shortest path between two actors using TMDB data.
+2. Results are saved to "actor_path_results.txt" file with proper formatting.
+3. The program runs smoothly on any operating system that supports Java.
+4. Errors are handled gracefully, and clear error messages are provided for debugging purposes.
+
+Dependencies:
+1. TMDB API for actor and movie data retrieval.
+2. Gradle for project management and build automation.
+3. Java Runtime Environment for execution.
+
+Terms/Concepts Explanation:
+1. Actor Path Finder: A program that finds the shortest path between two actors using their filmography as connection points based on TMDB data.
+2. TMDB API: The Movie Database API, a source of movie and actor data used by the Actor Path Finder.
+3. Gradle: A build automation tool for Java projects.
+4. Java Runtime Environment (JRE): An environment required to run Java-based programs.
+
+Please use this template to generate a software requirement specification based on the following information. The program should be called "Actor Connection Explorer". It is supposed to find the shortest path between two actors using their filmography as connection points. The data for the informations about actors and the respective films they took part in comes from the The Movie Database (TMDB) API. Interactions with TMDB API must adhere to its terms and usage limits. With the given data, this Java-based programm has to be able to identify the shortest path between actors. Thus this program has to be able to represent the shortest path visually. To realise the aforementioned functionalities, the Actor Connection Explorer has to handle API calls to fetch actor and movie data. The api-key, which has to be used to retrieve curcial movie and actor data, has to be stored in a an environment variable called „TMDB_API_KEY“. With the api key and the TMDB data, this program should be able to search for specific actors and films by their respective IDs. Aside from the programming language Java, the programm has to use Gradle, a TMDB API key, java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api and since this is a Java-based programm the Java Runtime Environment has to be utilized as well. The objects this program has to work with are actors and movies. Additionally there may be utility classes for a gameplay interface or the creation of the shortest path between two actors. An actor has to have an unique ID, a name and a set of movie IDs they participated in. A movie has to have an unique ID, a name, and a set of unique actor IDs involved in the movie. To save the shortest graphs that could be found, the results should be saved inside a .txt file called „actor_connection_results.txt“.  The Actor Connection Explorer has to be able to run on any operating system which supports Java. The Actor Connection Explorer has to be able to handle errors gracefully and provide clear error messages for debugging purposes. The Actor Connection Explorer has to be able to handle large amounts of data from the TMDB API without crashing or slowing down significantly.
+Introduction: The Actor Connection Explorer is a Java-based program designed to find the shortest path between two actors using their filmography as connection points. It utilizes data from The Movie Database (TMDB) API, adhering to its terms and usage limits.
+
+Goals:
+1. Identify the shortest path between two actors based on their filmography.
+2. Visually represent the shortest path between actors.
+3. Handle API calls to fetch actor and movie data efficiently.
+4. Store the TMDB API key in an environment variable called "TMDB_API_KEY".
+5. Utilize Java, Gradle, and other specified libraries for development.
+
+Features and Functionalities:
+1. Search for specific actors and films by their respective IDs using the TMDB API.
+2. Save shortest path results to a .txt file named "actor_connection_results.txt".
+3. Run on any operating system that supports Java.
+4. Handle errors gracefully with clear error messages for debugging purposes.
+5. Efficiently process large amounts of data from the TMDB API without crashing or slowing down significantly.
+
+Technical Constraints:
+1. Adhere to TMDB API terms and usage limits.
+2. Utilize specified libraries: java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api.
+3. Use Java Runtime Environment for execution.
+
+Requirements:
+1. Actor objects with unique ID, name, and set of movie IDs they participated in.
+2. Movie objects with unique ID, name, and set of actor IDs involved in the movie.
+3. Utility classes for gameplay interface or shortest path creation between actors.
+
+Acceptance Criteria:
+1. The program should accurately identify the shortest path between two actors using TMDB data.
+2. Results are saved to "actor_connection_results.txt" file with proper formatting.
+3. The program runs smoothly on any operating system that supports Java.
+4. Errors are handled gracefully, and clear error messages are provided for debugging purposes.
+
+Dependencies:
+1. TMDB API for actor and movie data retrieval.
+2. Gradle for project management and build automation.
+3. Java Runtime Environment for execution.
+
+Terms/Concepts Explanation:
+1. Actor Connection Explorer: A program that finds the shortest path between two actors using their filmography as connection points based on TMDB data.
+2. TMDB API: The Movie Database API, a source of movie and actor data used by the Actor Connection Explorer.
+3. Gradle: A build automation tool for Java projects.
+4. Java Runtime Environment (JRE): An environment required to run Java-based programs.
+
+Please use this template to generate a software requirement specification based on the following information. The program should be called "Actor Network Analyzer". It is supposed to find the shortest path between two actors using their filmography as connection points. The data for the informations about actors and the respective films they took part in comes from the The Movie Database (TMDB) API. Interactions with TMDB API must adhere to its terms and usage limits. With the given data, this Java-based programm has to be able to identify the shortest path between actors. Thus this program has to be able to represent the shortest path visually. To realise the aforementioned functionalities, the Actor Network Analyzer has to handle API calls to fetch actor and movie data. The api-key, which has to be used to retrieve curcial movie and actor data, has to be stored in a an environment variable called „TMDB_API_KEY“. With the api key and the TMDB data, this program should be able to search for specific actors and films by their respective IDs. Aside from the programming language Java, the programm has to use Gradle, a TMDB API key, java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api and since this is a Java-based programm the Java Runtime Environment has to be utilized as well. The objects this program has to work with are actors and movies. Additionally there may be utility classes for a gameplay interface or the creation of the shortest path between two actors. An actor has to have an unique ID, a name and a set of movie IDs they participated in. A movie has to have an unique ID, a name, and a set of unique actor IDs involved in the movie. To save the shortest graphs that could be found, the results should be saved inside a .txt file called „actor_network_results.txt“.  The Actor Network Analyzer has to be able to run on any operating system which supports Java. The Actor Network Analyzer has to be able to handle errors gracefully and provide clear error messages for debugging purposes. The Actor Network Analyzer has to be able to handle large amounts of data from the TMDB API without crashing or slowing down significantly.
+Introduction: The Actor Network Analyzer is a Java-based program designed to find the shortest path between two actors using their filmography as connection points. It utilizes data from The Movie Database (TMDB) API, adhering to its terms and usage limits.
+
+Goals:
+1. Identify the shortest path between two actors based on their filmography.
+2. Visually represent the shortest path between actors.
+3. Handle API calls to fetch actor and movie data efficiently.
+4. Store the TMDB API key in an environment variable called "TMDB_API_KEY".
+5. Utilize Java, Gradle, and other specified libraries for development.
+
+Features and Functionalities:
+1. Search for specific actors and films by their respective IDs using the TMDB API.
+2. Save shortest path results to a .txt file named "actor_network_results.txt".
+3. Run on any operating system that supports Java.
+4. Handle errors gracefully with clear error messages for debugging purposes.
+5. Efficiently process large amounts of data from the TMDB API without crashing or slowing down significantly.
+
+Technical Constraints:
+1. Adhere to TMDB API terms and usage limits.
+2. Utilize specified libraries: java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api.
+3. Use Java Runtime Environment for execution.
+
+Requirements:
+1. Actor objects with unique ID, name, and set of movie IDs they participated in.
+2. Movie objects with unique ID, name, and set of actor IDs involved in the movie.
+3. Utility classes for gameplay interface or shortest path creation between actors.
+
+Acceptance Criteria:
+1. The program should accurately identify the shortest path between two actors using TMDB data.
+2. Results are saved to "actor_network_results.txt" file with proper formatting.
+3. The program runs smoothly on any operating system that supports Java.
+4. Errors are handled gracefully, and clear error messages are provided for debugging purposes.
+
+Dependencies:
+1. TMDB API for actor and movie data retrieval.
+2. Gradle for project management and build automation.
+3. Java Runtime Environment for execution.
+
+Terms/Concepts Explanation:
+1. Actor Network Analyzer: A program that finds the shortest path between two actors using their filmography as connection points based on TMDB data.
+2. TMDB API: The Movie Database API, a source of movie and actor data used by the Actor Network Analyzer.
+3. Gradle: A build automation tool for Java projects.
+4. Java Runtime Environment (JRE): An environment required to run Java-based programs.
+
+Please use this template to generate a software requirement specification based on the following information. The program should be called "Actor Link Finder". It is supposed to find the shortest path between two actors using their filmography as connection points. The data for the informations about actors and the respective films they took part in comes from the The Movie Database (TMDB) API. Interactions with TMDB API must adhere to its terms and usage limits. With the given data, this Java-based programm has to be able to identify the shortest path between actors. Thus this program has to be able to represent the shortest path visually. To realise the aforementioned functionalities, the Actor Link Finder has to handle API calls to fetch actor and movie data. The api-key, which has to be used to retrieve curcial movie and actor data, has to be stored in a an environment variable called „TMDB_API_KEY“. With the api key and the TMDB data, this program should be able to search for specific actors and films by their respective IDs. Aside from the programming language Java, the programm has to use Gradle, a TMDB API key, java.util, java.io, java.nio, com.google.gson, org.junit.jupiter.api and since this is a Java-based programm the Java Runtime Environment has to be utilized as

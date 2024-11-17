@@ -1,0 +1,57 @@
+ The Actor Relationship Game must adhere to the SOLID principles.
+
+**Software Requirement Specification (SRS)**
+
+### Introduction
+The Actor Relationship Game is a Java-based application that explores relationships between actors based on their filmographies, leveraging data from The Movie Database (TMDB) API. It identifies and visually represents the shortest path between actors, adhering to TMDB's terms and usage limits.
+
+### Goals
+1. **Efficiently fetch and process actor and movie data** from TMDB API, respecting usage limits.
+2. **Accurately compute and visualize** the shortest path between actors based on shared film appearances.
+3. **Provide intuitive search functionality** by actor or movie ID, utilizing environment-stored `TMDB_API_KEY`.
+
+### Features and Functionalities
+1. **API Interaction**: Handle TMDB API calls to retrieve actor and movie data, using `TMDB_API_KEY` from an environment variable.
+2. **Actor and Movie Representation**: Define `Actor` (ID, name, participating movie IDs) and `Movie` (ID, name, involved actor IDs) objects.
+3. **Shortest Path Computation**: Identify the shortest path between two actors based on shared film appearances.
+4. **Visual Representation**: Graphically display computed shortest paths.
+5. **Search Functionality**: Allow searching by actor or movie ID, leveraging TMDB data.
+6. **Result Persistence**: Save discovered shortest graphs to `actor_connection_results.txt`.
+
+### Technical Constraints
+1. **Programming Language**: Java (with Gradle build tool).
+2. **Dependencies**:
+	* java.util, java.io, java.nio
+	* com.google.gson (JSON processing)
+	* org.junit.jupiter.api (unit testing)
+3. **Environment Variable**: `TMDB_API_KEY` for secure API key storage.
+4. **API Adherence**: Respect TMDB's terms and usage limits in API interactions.
+
+### Requirements
+
+**Functional Requirements**
+1. Correctly fetch actor and movie data from TMDB API using the environment-stored `TMDB_API_KEY`.
+2. Compute the shortest path between two actors based on shared film appearances.
+3. Visually represent computed shortest paths.
+4. Implement search functionality by actor or movie ID, returning relevant results.
+5. Persist discovered shortest graphs to `actor_connection_results.txt`.
+
+**Non-Functional Requirements**
+1. **Performance**: Optimize API calls and graph computation to ensure responsive user interaction.
+2. **SOLID Principles Adherence**: Ensure maintainable, modular code adhering to SOLID principles (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion).
+
+### Acceptance Criteria
+1. The application correctly retrieves data from TMDB API using the `TMDB_API_KEY` environment variable.
+2. Given two actors, the shortest path computation and visualization are accurate and efficient.
+3. Search functionality by actor or movie ID returns correct results, leveraging TMDB data.
+4. Shortest graphs are persisted to `actor_connection_results.txt` without errors.
+5. Codebase adheres to SOLID principles, ensuring maintainability and modularity.
+
+### Dependencies
+* **TMDB API**: Reliable data source for actor and movie information.
+* **Gradle**: Build tool managing dependencies and project structure.
+* **Java Runtime Environment (JRE)**: Execution environment for the Java-based application.
+
+### Terms/Concepts Explanation
+* **Shortest Path**: The minimum sequence of film connections linking two actors, computed using graph algorithms.
+* **Actor/Movie Representation**: Object-oriented models encapsulating relevant data (IDs, names, participating movies/actors) for efficient processing and querying.

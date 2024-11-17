@@ -1,0 +1,79 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+You are a helpful Python programer.
+
+
+> The purpose of this project is to develop a Python-based tool that can estimate the reading time for various formats of content. This tool will be able to process plain text and markdown formats, providing users with an approximate reading time based on a standard or user-defined words-per-minute (WPM) rate.
+I want to add a new functionality. The user should be able to use HTML as an input as well. Please tell me which file I need to change to implement this function.
+Here is the filetree:
+
+```bash
+├── examples
+│   ├── demo.py
+│   └── demo.sh
+├── readtime
+│   ├── __about__.py
+│   ├── api.py
+│   ├── __init__.py
+│   ├── result.py
+│   └── utils.py
+``` To add the functionality of processing HTML content, you will need to modify the `utils.py` file. Specifically, you will need to add a function that can parse HTML content and extract the text for estimation. Here's how you can do it:
+
+1. Open the `utils.py` file.
+2. Add a new function to parse HTML content and extract plain text.
+
+Here's an example of how you might implement this:
+
+```python
+import re
+from bs4 import BeautifulSoup
+
+def extract_text_from_html(html_content):
+    """
+    Extracts plain text from HTML content.
+
+    Args:
+        html_content (str): The HTML content as a string.
+
+    Returns:
+        str: The extracted plain text.
+    """
+    soup = BeautifulSoup(html_content, 'html.parser')
+    # Remove script and style tags
+    for script_or_style in soup(['script', 'style']):
+        script_or_style.decompose()
+    # Extract text
+    text = soup.get_text()
+    # Normalize whitespace
+    text = re.sub(r'\s+', ' ', text)
+    return text.strip()
+
+def estimate_reading_time(content, wpm=200):
+    """
+    Estimates the reading time for the given content.
+
+    Args:
+        content (str): The content to estimate the reading time for.
+        wpm
+
+>  (int): The words per minute rate to use for estimation.
+
+    Returns:
+        float: The estimated reading time in minutes.
+    """
+    text = extract_text_from_html(content) if content.strip().startswith('<html') else content
+    word_count = len(text.split())
+    return word_count / wpm
+```
+
+In this implementation:
+- The `extract_text_from_html` function uses BeautifulSoup to parse the HTML content and remove script and style tags. It then extracts the text and normalizes whitespace.
+- The `estimate_reading_time` function checks if the content is HTML by looking for the `<html>` tag at the beginning. If it is HTML, it extracts the text using `extract_text_from_html`. It then calculates the reading time based on the word count and the words per minute rate.
+
+With these changes, your tool will be able to process HTML content and provide an approximate reading time.
+
+> Thank you

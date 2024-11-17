@@ -1,0 +1,13 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/stocktrends$ pip install stocktrends
+Defaulting to user installation because normal site-packages is not writeable
+Collecting stocktrends
+  Downloading stocktrends-0.1.5.tar.gz (4.8 kB)
+  Preparing metadata (setup.py) ... done
+Building wheels for collected packages: stocktrends
+  Building wheel for stocktrends (setup.py) ... done
+  Created wheel for stocktrends: filename=stocktrends-0.1.5-py3-none-any.whl size=5246 sha256=6c48d2a1396a3395675544790322f471053863da215cca79169518c9ee79e5c2
+  Stored in directory: /home/marcel/.cache/pip/wheels/95/eb/8e/e9209074104baa9471a9afdea19989fbc76d7276522f3dbca1
+Successfully built stocktrends
+WARNING: Error parsing dependencies of distro-info: Invalid version: '1.1build1'
+Installing collected packages: stocktrends
+Successfully installed stocktrends-0.1.5

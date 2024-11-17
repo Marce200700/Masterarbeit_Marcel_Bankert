@@ -1,0 +1,161 @@
+This is the TMDBApiTest.java file:package Actorrelationshipgame;
+
+import org.junit.jupiter.api.*; import java.io.IOException;
+
+public class TMDBApiTest { private final TMDBApi tmdbApi = new TMDBApi();
+
+@Test
+void testGetMoviesByActorId() throws IOException {
+    String actorId = "123"; // Example Actor ID, replace with valid one for testing
+    String responseJson = tmdbApi.getMoviesByActorId(actorId);
+    Assertions.assertTrue(!responseJson.isEmpty()); // Ensure the response is not empty
+}
+
+@Test
+void testSearchPopularActors() throws IOException {
+    String responseJson = tmdbApi.searchPopularActors();
+    Assertions.assertTrue(!responseJson.isEmpty()); // Ensure the response is not empty
+}
+
+
+}
+
+This is the ActorTest.java file:package Actorrelationshipgame;
+
+import org.junit.jupiter.api.Assertions; import org.junit.jupiter.api.BeforeEach; import org.junit.jupiter.api.DisplayName; import org.junit.jupiter.api.Test;
+
+public class ActorTest { private Actor actor1, actor2, actor3;
+
+@BeforeEach
+void setUp() {
+    actor1 = new Actor(101, "Actor 1");
+    actor2 = new Actor(202, "Actor 2");
+    actor3 = new Actor(303, "Actor 3");
+}
+
+@Test
+@DisplayName("Check if actor ID is correctly set")
+void testSetId() {
+    Assertions.assertEquals(101, actor1.getId());
+    Assertions.assertEquals(202, actor2.getId());
+    Assertions.assertEquals(303, actor3.getId());
+}
+
+@Test
+@DisplayName("Check if actor name is correctly set")
+void testSetName() {
+    Assertions.assertEquals("Actor 1", actor1.getName());
+    Assertions.assertEquals("Actor 2", actor2.getName());
+    Assertions.assertEquals("Actor 3", actor3.getName());
+}
+
+@Test
+@DisplayName("Check if the movie IDs are correctly added")
+void testAddMovieId() {
+    actor1.addMovie(301);
+    actor2.addMovie(302);
+    Assertions.assertTrue(actor1.getMovies().contains(301));
+    Assertions.assertTrue(actor2.getMovies().contains(302));
+}
+
+@Test
+@DisplayName("Check if the actor IDs are correctly added")
+void testAddActorId() {
+    actor1.addFriend(201);
+    actor2.addFriend(202);
+    Assertions.assertTrue(actor1.getFriends().contains(201));
+    Assertions.assertTrue(actor2.getFriends().contains(202));
+}
+
+@Test
+@DisplayName("Check if the actor's friends are correctly returned")
+void testGetFriends() {
+    actor1.addFriend(201);
+    actor2.addFriend(202);
+    Assertions.assertEquals(1, actor1.getFriends().size());
+    Assertions.assertEquals(1, actor2.getFriends().size());
+}
+
+@Test
+@DisplayName("Check if the actor's movies are correctly returned")
+void testGetMovies() {
+    actor1.addMovie(301);
+    actor2.addMovie(302);
+    Assertions.assertEquals(1, actor1.getMovies().size());
+    Assertions.assertEquals(1, actor2.getMovies().size());
+}
+
+
+}
+
+
+
+java This is the GameplayInterfaceTest.java file:package Actorrelationshipgame;
+
+import org.junit.jupiter.api.BeforeEach; import org.junit.jupiter.api.DisplayName; import org.junit.jupiter.api.Test;
+
+public class GameplayInterfaceTest { private GameplayInterface gameplayInterface;
+
+@BeforeEach
+void setUp() throws Exception{
+    gameplayInterface = new GameplayInterface();
+}
+
+//TODO: Add more tests for GameplayInterface methods
+
+
+}
+
+This is the ActorGraphTest.java file:package Actor_relationship_game;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class ActorGraphTest {
+    private ActorGraph actorGraph;
+
+    @BeforeEach
+    void setUp() throws Exception{
+        actorGraph = new ActorGraph();
+    }
+
+    //TODO: Add more tests for ActorGraph methods
+
+}
+
+
+java This is the GraphCreationTest.java file:package Actorrelationshipgame;
+
+import org.junit.jupiter.api.BeforeEach; import org.junit.jupiter.api.DisplayName; import org.junit.jupiter.api.Test;
+
+public class GraphCreationTest { private GraphCreation graphCreation;
+
+@BeforeEach
+void setUp() throws Exception{
+    graphCreation = new GraphCreation();
+}
+
+//TODO: Add more tests for GraphCreation methods
+
+
+}
+
+This is the ActorGraphUtilTest.java file:package Actor_relationship_game;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class ActorGraphUtilTest {
+    private ActorGraphUtil actorGraphUtil;
+
+    @BeforeEach
+    void setUp() throws Exception{
+        actorGraphUtil = new ActorGraphUtil();
+    }
+
+    //TODO: Add more tests for ActorGraphUtil methods
+
+}
+

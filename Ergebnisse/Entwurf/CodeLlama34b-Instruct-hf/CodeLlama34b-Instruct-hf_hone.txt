@@ -1,0 +1,105 @@
+
+
+Schema is a set of rules that define the structure of a JSON object. It specifies the types of data that can be included in the JSON object, as well as the structure of the data.
+
+Context Manager is a Python construct that allows you to define a block of code that can be used to manage resources. It ensures that the resources are properly handled, even if an exception occurs.
+
+CLI (Command-Line Interface) is a text-based interface for interacting with a computer program. It allows users to interact with the program by typing commands and receiving output in a text format.
+
+UML (Unified Modeling Language) is a standardized modeling language used to visualize design and implementation of software systems. It is used to create diagrams that represent the different aspects of a system, such as its structure, behavior, and interactions.
+
+Class Diagram
+@startuml
+
+class CSVParser {
+  + __init__(self, delimiters: list)
+  + parse_column_names(self, csv_filepath: str) -> list
+  + parse_data_rows(self, csv_filepath: str) -> list
+  + parse_csv(self, csv_filepath: str) -> tuple
+}
+
+class JSONConverter {
+  + __init__(self, schema: dict)
+  + convert_to_json(self, csv_data: tuple) -> str
+}
+
+class CLI {
+  + __init__(self, args: list)
+  + run(self) -> None
+}
+
+class FileManager {
+  + __init__(self, csv_filepath: str, json_filepath: str)
+  + open_csv(self) -> None
+  + open_json(self) -> None
+  + write_json(self, json_data: str) -> None
+  + close_csv(self) -> None
+  + close_json(self) -> None
+}
+
+CSVParser -- CSVParser
+JSONConverter -- JSONConverter
+CLI -- CLI
+FileManager -- FileManager
+
+@enduml
+
+Sequence Diagram
+@startuml
+
+participant "CLI" as c
+participant "CSVParser" as p
+participant "JSONConverter" as j
+participant "FileManager" as f
+
+c -> p: parse_csv(csv_filepath)
+p -> p: parse_column_names(csv_filepath)
+p -> p: parse_data_rows(csv_filepath)
+p -> j: convert_to_json(csv_data)
+j -> j: convert_to_json(csv_data)
+j -> f: write_json(json_data)
+f -> f: write_json(json_data)
+
+@enduml
+
+File Tree
+.
+├── hone
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── csv_parser.py
+│   ├── file_manager.py
+│   ├── json_converter.py
+│   └── utils.py
+├── examples
+│   ├── demo.py
+│   └── README.md
+├── tests
+│   ├── __init__.py
+│   ├── test_csv_parser.py
+│   ├── test_json_converter.py
+│   └── test_file_manager.py
+├── README.md
+├── LICENSE
+├── setup.py
+└── .gitignore
+
+1 directory, 14 files
+
+Explanation
+The hone package contains the following modules:
+
+cli.py: Implements the command-line interface for the package.
+csv_parser.py: Contains the CSVParser class, which parses CSV files and extracts column names and data rows.
+file_manager.py: Contains the FileManager class, which manages the opening, reading, writing, and closing of CSV and JSON files.
+json_converter.py: Contains the JSONConverter class, which converts CSV data into a nested JSON structure.
+utils.py: Contains helper methods for opening and managing CSV and JSON files, as well as writing JSON to standard output.
+examples/demo.py: Provides a simple demonstration of the package's functionality.
+tests/test_csv_parser.py: Contains unit tests for the CSVParser class.
+tests/test_json_converter.py: Contains unit tests for the JSONConverter class.
+tests/test_file_manager.py: Contains unit tests for the FileManager class.
+README.md: Provides an overview of the package and its functionality.
+LICENSE: Specifies the license under which the package is released.
+setup.py: Contains instructions for installing the package.
+.gitignore: Specifies files and directories to be ignored by Git.
+

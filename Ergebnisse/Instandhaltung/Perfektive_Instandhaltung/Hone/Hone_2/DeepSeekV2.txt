@@ -1,0 +1,98 @@
+== Running in interactive mode. ==
+ - Press Ctrl+C to interject at any time.
+ - Press Return to return control to the AI.
+ - To return control without starting a new line, end your input with '/'.
+ - If you want to submit another line, end your input with '\'.
+
+You are a helpful Python programer.
+
+
+> The Hone project is designed to facilitate the conversion of CSV files into nested JSON formats. It aims to provide a robust and flexible solution for transforming flat CSV data structures into hierarchical JSON objects that are more suitable for various applications and data needs.
+I would now like to add a new functionality. I need to have a function which parses a csv file and just returns the data of the input-csv without the first row.
+To do so, I need to know which file needs to be changed to implement this new functionality. Here is the filetree:
+```bash
+├── examples
+│   ├── demo.py
+│   ├── demo.sh
+│   ├── example_a.csv
+│   ├── example_a.json
+│   ├── example_b.csv
+│   ├── example_b.json
+│   ├── example_c.csv
+│   └── example_c.json
+├── hone
+│   ├── __init__.py
+│   ├── hone.py
+│   ├── __main__.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── csv_utils.py
+│   │   ├── json_utils.py
+│   │   └── test_utils.py
+├── LICENSE
+└── README.md
+``` To add a new functionality that parses a CSV file and returns the data without the first row, you need to modify the `csv_utils.py` file in the `utils` directory of the `hone` module. Here's how you can do it:
+
+1. **Navigate to the `utils` directory:**
+   ```bash
+   cd hone/utils
+   ```
+
+2. **Open the `csv_utils.py` file for editing:**
+   ```bash
+   nano csv_utils.py
+   ```
+
+3. **Add the new function to `csv_utils.py`:**
+
+   Here's an example of how you can add a function called `parse_csv_without_header` that reads a CSV file and returns the data without the first row:
+
+   ```python
+   import csv
+   import json
+
+   def parse_csv_without_header(file_path):
+       """
+       Parses a CSV file and returns the data without the first row.
+
+       Args:
+           file_path (str): The path
+>
+ to the CSV file.
+
+       Returns:
+           list: A list of dictionaries representing the rows in the CSV file, excluding the first row.
+       """
+       data = []
+       with open(file_path, mode='r', newline='') as csvfile:
+           csvreader = csv.DictReader(csvfile)
+           for row in csvreader:
+               data.append(row)
+       return data
+   ```
+
+4. **Save the changes and exit the editor (if using `nano`, you can do this by pressing `Ctrl+X`, then `Y` to confirm, and `Enter` to save).**
+
+5. **Test the new function using the provided examples:**
+
+   You can create a script in the `examples` directory to test this new functionality. For example, you can create a script named `demo.py` in the `examples` directory to test the `parse_csv_without_header` function:
+
+   ```python
+   from hone.utils import csv_utils
+
+   csv_file_path = 'examples/example_a.csv'
+   data = csv_utils.parse_csv_without_header(csv_file_path)
+   print(json.dumps(data, indent=4))
+   ```
+
+   Then, you can run this script using:
+
+   ```bash
+   python examples/demo.py
+   ```
+
+This will output the JSON representation of the CSV data without the first row, which you can verify against the expected JSON files in the `examples` directory.
+
+By following these steps, you will have added the new functionality to parse a CSV file and return the data without the first row.
+
+> Thank you

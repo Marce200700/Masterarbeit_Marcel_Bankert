@@ -1,0 +1,89 @@
+├── HomePage.spec.js
+├── LoginPage.spec.js
+└── RegisterPage.spec.js
+
+
+The following is an example of how you can write a test file in Jest:
+
+import { shallowMount } from '@vue/test-utils'
+import HomePage from './HomePage.vue'
+
+describe('HomePage', () => {
+  it('renders correctly', () => {
+    const wrapper = shallowMount(HomePage)
+    expect(wrapper).toMatchSnapshot()
+  })
+})
+
+
+based on the following requirements:
+
+Requirements for HomePage.spec.js:
+
+Write a test suite using Jest to ensure that the HomePage component renders without errors and displays expected elements such as an h1 title, a list of users (li), and navigation links.
+Test the functionality of fetching user data from the backend by mocking Axios requests. Verify that the displayed list matches the fetched data.
+Include tests for deleting a user using the delete link in the list. Ensure that upon clicking, it dispatches the appropriate action and updates the UI accordingly.
+
+This is an example of HomePage.spec.js:
+
+import { shallowMount } from '@vue/test-utils'
+import HomePage from '@/home/HomePage.vue'
+import axios from 'axios';
+
+jest.mock('axios'); // Mock Axios for testing purposes
+
+describe('HomePage', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallowMount(HomePage);
+  });
+
+  it('renders without errors and displays expected elements', async () => {
+    // Simulate axios response with sample data
+    axios.get.mockResolvedValue({
+      data: [
+        { id: 1, firstName: 'John', lastName: 'Doe' },
+        { id: 2, firstName: 'Jane', lastName: 'Smith' }
+      ]
+    });
+
+    // Trigger a component update to render the list of users
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('h1').text()).toBe('Hi John Doe!'); // Assuming user is logged in with username 'John'
+    const liElements = wrapper.findAll('li');
+    expect(liElements).toHaveLength(2);
+  });
+
+  it('fetches and displays users from the backend', async () => {
+    // Mock axios response with sample data
+    axios.get.mockResolvedValue({
+      data: [
+        { id: 1, firstName: 'John', lastName: 'Doe' },
+        { id: 2, firstName: 'Jane', lastName: 'Smith' }
+      ]
+    });
+
+    // Trigger a component update to render the list of users
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.findAll('li')).toHaveLength(2); // Check if 2 li elements are rendered
+  });
+
+  it('deletes user when delete link is clicked', async () => {
+    // Mock axios response for deleting a user
+    axios.delete.mockResolvedValue({ data: {} });
+
+    // Find the first 'li' element and simulate clicking on the delete button
+    const liElement = wrapper.find('li');
+    await liElement.trigger('click', { target: { dataset: { id: 1 } } }); // Assuming we want to delete user with ID 1
+
+    // Check if the 'deleteUser' action was dispatched and that it resolved successfully
+    expect(wrapper.vm.$store.dispatch).toHaveBeenCalledWith('account/deleteUser', 1);
+  });
+});
+
+
+
+

@@ -1,0 +1,1 @@
+It took 0.14962172508239746seconds to implement testcases for readtime.

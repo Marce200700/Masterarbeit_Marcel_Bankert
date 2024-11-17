@@ -1,0 +1,73 @@
+## Software Requirement Specification: Hybrid-Images
+
+### Introduction
+
+This document outlines the software requirements for the Hybrid-Images program, a Python application designed to generate hybrid images using various image processing and filtering techniques.
+
+### Goals
+
+The primary goal of the Hybrid-Images program is to provide a user-friendly tool for creating visually coherent hybrid images from two distinct input images. This will be achieved through the implementation of several image processing techniques, ensuring a seamless blend of features from both source images.
+
+### Features and Functionalities
+
+The Hybrid-Images program will offer the following features and functionalities:
+
+* **Hybrid Image Generation:** The core functionality is generating hybrid images by combining two input images.
+
+* **Image Input:** The program will accept two images as input, allowing users to select the images they wish to combine.
+
+* **Image Processing Techniques:** The program will employ the following image processing techniques for hybrid image generation:
+    * **Cross-Correlation:** To identify and align similar features between the two input images.
+    * **Convolution:** To apply filters and modify image features for seamless blending.
+    * **Gaussian Blur:** To smooth out edges and create a natural transition between image components.
+    * **High-Pass and Low-Pass Filters:** To isolate and manipulate specific frequency components of the images, allowing for the emphasis of different features in the hybrid image.
+
+* **Parameter Adjustment:**
+
+Users will be able to adjust parameters related to the image processing techniques, allowing for fine-tuning of the hybrid image's appearance.
+
+* **Image Output:** The program will generate and display the resulting hybrid image, allowing users to save it in a desired format.
+
+### Technical Requirements
+
+* **Programming Language:** Python
+* **Libraries:** NumPy and OpenCV
+
+### Requirements
+
+* **Functional Requirements:**
+
+    1. The program must accept two images as input.
+    2. The program must implement cross-correlation, convolution, Gaussian blur, high-pass, and low-pass filtering techniques.
+    3. The program must generate a hybrid image that visually combines features from both input images.
+    4. The program must allow users to adjust parameters related to the image processing techniques.
+    5. The program must display and allow saving of the generated hybrid image.
+
+* **Non-Functional Requirements:**
+
+    1. The program must be user-friendly and intuitive.
+
+    2. The program should be efficient and generate hybrid images in a reasonable amount of time.
+    3. The program should be well-documented and maintainable.
+
+### Usage
+
+The Hybrid-Images program will be a command-line application. Users will provide the paths to the two input images as arguments.
+
+```
+python hybrid_images.py image1.jpg image2.jpg
+```
+
+The program will then process the images, generate the hybrid image, and display it on the screen. Users will be prompted to save the generated image.
+
+### Acceptance Criteria
+
+The Hybrid-Images program will be considered successful if it meets the following acceptance criteria:
+
+* **Functionality:** All functional requirements are met and the program generates visually coherent hybrid images.
+
+* **Performance:** The program generates hybrid images within a reasonable timeframe.
+* **Usability:** The program is easy to use and understand, with clear instructions and intuitive controls.
+* **Documentation:** The program is well-documented, including user instructions and code comments.
+
+* **Maintainability:** The program code is well-structured and easy to modify.

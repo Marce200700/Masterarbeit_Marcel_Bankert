@@ -1,0 +1,1 @@
+It took 37.593369007110596seconds to implement the entire hybrid_images.

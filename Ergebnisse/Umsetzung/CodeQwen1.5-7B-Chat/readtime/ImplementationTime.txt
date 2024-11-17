@@ -1,0 +1,1 @@
+It took 1645.9101810455322seconds to implement the entire readtime.

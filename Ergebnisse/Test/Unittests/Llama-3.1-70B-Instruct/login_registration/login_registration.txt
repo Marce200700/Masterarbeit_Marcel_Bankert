@@ -1,0 +1,379 @@
+ 
+
+Here is the unit test for the RegisterPage.vue file:
+
+```javascript
+import { shallowMount } from '@vue/test-utils';
+import RegisterPage from './RegisterPage.vue';
+import { createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import Vuelidate from 'vuelidate';
+
+describe('RegisterPage.vue', () => {
+    let localVue;
+    let store;
+    let wrapper;
+
+    beforeEach(() => {
+        localVue = createLocalVue();
+        localVue.use(Vuex);
+        localVue.use(Vuelidate);
+
+        store = new Vuex.Store({
+            modules: {
+                account: {
+                    namespaced: true,
+                    state: {
+                        status: {
+                            registering: false
+                        }
+                    },
+                    actions: {
+                        register: jest.fn()
+                    }
+                }
+            }
+        });
+
+        wrapper = shallowMount(RegisterPage, {
+            localVue,
+            store
+        });
+    });
+
+    it('renders the register form', () => {
+        expect(wrapper.find('form').exists()).toBe(true);
+    });
+
+    it('renders the first name input field', () => {
+        expect(wrapper.find('input[name="firstName"]').exists()).toBe(true);
+    });
+
+    it('renders the last name input field', () => {
+        expect(wrapper.find('input[name="lastName"]').exists()).toBe(true);
+    });
+
+    it('renders the username input field', () => {
+        expect(wrapper.find('input[name="username"]').exists()).toBe(true);
+    });
+
+    it('renders the password input field', () => {
+        expect(wrapper.find('input[name="password"]').exists()).toBe(true);
+    });
+
+    it('renders the register button', () => {
+        expect(wrapper.find('button[type="submit"]').exists()).toBe(true);
+    });
+
+    it('renders the cancel link', () => {
+        expect(wrapper.find('router-link[to="/login"]').exists()).toBe(true);
+    });
+
+    it('calls the register action when the form is submitted', async () => {
+        await wrapper.find('form').trigger('submit.prevent');
+        expect(store.state.account.register).toHaveBeenCalledTimes(1);
+    });
+
+    it('disables the register button when registering', async () => {
+        store.state.account.status.registering = true;
+        await wrapper.vm.$forceUpdate();
+        expect(wrapper.find('button[type="submit"]').attributes().disabled).toBe('disabled');
+    });
+});
+```
+
+Here is the unit test for the LoginPage.vue file:
+
+```javascript
+import { shallowMount } from '@vue/test-utils';
+import LoginPage from './LoginPage.vue';
+import { createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import Vuelidate from 'vuelidate';
+
+describe('LoginPage.vue', () => {
+    let localVue;
+    let store;
+    let wrapper;
+
+    beforeEach(() => {
+        localVue = createLocalVue();
+        localVue.use(Vuex);
+        localVue.use(Vuelidate);
+
+        store = new Vuex.Store({
+            modules: {
+                account: {
+                    namespaced: true,
+                    state: {
+                        status: {
+                            loggingIn: false
+                        }
+                    },
+                    actions: {
+                        login: jest.fn()
+                    }
+                }
+            }
+        });
+
+        wrapper = shallowMount(LoginPage, {
+            localVue,
+            store
+        });
+    });
+
+    it('renders the login form', () => {
+        expect(wrapper.find('form').exists()).toBe(true);
+    });
+
+    it('renders the username input field', () => {
+        expect(wrapper.find('input[name="username"]').exists()).toBe(true);
+    });
+
+    it('renders the password input field', () => {
+        expect(wrapper.find('input[name="password"]').exists()).toBe(true);
+    });
+
+    it('renders the login button', () => {
+        expect(wrapper.find('button[type="submit"]').exists()).toBe(true);
+    });
+
+    it('renders the register link', () => {
+        expect(wrapper.find('router-link[to="/register"]').exists()).toBe(true);
+    });
+
+    it('calls the login action when the form is submitted', async () => {
+        await wrapper.find('form').trigger('submit.prevent');
+        expect(store.state.account.login).toHaveBeenCalledTimes(1);
+    });
+
+    it('disables the login button when logging in', async () => {
+        store.state.account.status.loggingIn = true;
+        await wrapper.vm.$forceUpdate();
+        expect(wrapper.find('button[type="submit"]').attributes().disabled).toBe('disabled');
+    });
+});
+```
+
+Here is the unit test for the HomePage.vue file:
+
+```javascript
+import { shallowMount } from '@vue/test-utils';
+import HomePage from './HomePage.vue';
+import { createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+
+describe('HomePage.vue', () => {
+    let localVue;
+    let store;
+    let wrapper;
+
+    beforeEach(() => {
+        localVue = createLocalVue();
+        localVue.use(Vuex);
+
+        store = new Vuex.Store({
+            modules: {
+                users: {
+                    namespaced: true,
+                    state: {
+                        users: []
+                    },
+                    actions: {
+                        getAllUsers: jest.fn()
+                    }
+                }
+            }
+        });
+
+        wrapper = shallowMount(HomePage, {
+            localVue,
+            store
+        });
+    });
+
+    it('renders the users list', () => {
+        expect(wrapper.find('ul').exists()).toBe(true);
+    });
+
+    it('renders the user list items', () => {
+        store.state.users.users = [
+            { id: 1, firstName: 'John', lastName: 'Doe' },
+            { id: 2, firstName: 'Jane', lastName: 'Doe' }
+        ];
+        await wrapper.vm.$forceUpdate();
+        expect(wrapper.findAll('li').length).toBe(2);
+    });
+
+    it('calls the getAllUsers action when the component is mounted', async () => {
+        await wrapper.vm.$mount();
+        expect(store.state.users.getAllUsers).toHaveBeenCalledTimes(1);
+    });
+});
+```
+
+Here is the unit test for the user.service.js file:
+
+```javascript
+import axios from 'axios';
+import UserService from './user.service';
+
+jest.mock('axios');
+
+describe('UserService', () => {
+    it('getAllUsers returns a list of users', async () => {
+        axios.get.mockResolvedValue({
+            data: [
+                { id: 1, firstName: 'John', lastName: 'Doe' },
+                { id: 2, firstName: 'Jane', lastName: 'Doe' }
+            ]
+        });
+        const users = await UserService.getAllUsers();
+        expect(users).toEqual([
+            { id: 1, firstName: 'John', lastName: 'Doe' },
+            { id: 2, firstName: 'Jane', lastName: 'Doe' }
+        ]);
+    });
+
+    it('registerUser returns the registered user', async () => {
+        axios.post.mockResolvedValue({
+            data: { id: 1, firstName: 'John', lastName: 'Doe' }
+        });
+        const user = await UserService.registerUser({ firstName: 'John', lastName: 'Doe' });
+        expect(user).toEqual({ id: 1, firstName: 'John', lastName: 'Doe' });
+    });
+
+    it('loginUser returns the logged in user', async () => {
+        axios.post.mockResolvedValue({
+            data: { id: 1, firstName: 'John', lastName: 'Doe' }
+        });
+        const user = await UserService.loginUser({ username: 'john', password: 'password' });
+        expect(user).toEqual({ id: 1, firstName: 'John', lastName: 'Doe' });
+    });
+});
+```
+
+Here is the unit test for the auth-header.js file:
+
+```javascript
+import { authHeader } from './auth-header';
+
+describe('authHeader', () => {
+    it('returns the authorization header with the token', () => {
+        localStorage.setItem('user', JSON.stringify({ token: 'token' }));
+        const headers = authHeader();
+        expect(headers.Authorization).toBe('Bearer token');
+    });
+
+    it('returns an empty object if there is no token', () => {
+        localStorage.removeItem('user');
+        const headers = authHeader();
+        expect(headers).toEqual({});
+    });
+});
+```
+
+Here is the unit test for the fake-backend.js file:
+
+```javascript
+import { fakeBackend } from './fake-backend';
+
+describe('fakeBackend', () => {
+    it('intercepts GET requests to /users', async () => {
+        const response = await fakeBackend.get('/users');
+        expect(response.status).toBe(200);
+        expect(response.data).toEqual([
+            { id: 1, firstName: 'John', lastName: 'Doe' },
+            { id: 2, firstName: 'Jane', lastName: 'Doe' }
+        ]);
+    });
+
+    it('intercepts POST requests to /users', async () => {
+        const response = await fakeBackend.post('/users', { firstName: 'John', lastName: 'Doe' });
+        expect(response.status).toBe(201);
+        expect(response.data).toEqual({ id: 1, firstName: 'John', lastName: 'Doe' });
+    });
+
+    it('intercepts POST requests to /users/login', async () => {
+        const response = await fakeBackend.post('/users/login', { username: 'john', password: 'password' });
+        expect(response.status).toBe(200);
+        expect(response.data).toEqual({ id: 1, firstName: 'John', lastName: 'Doe' });
+    });
+});
+```
+
+Here is the unit test for the router.js file:
+
+```javascript
+import { router } from './router';
+
+describe('router', () => {
+    it('has the correct routes', () => {
+        expect(router.options.routes).toEqual([
+            { path: '/', component: HomePage },
+            { path: '/login', component: LoginPage },
+            { path: '/register', component: RegisterPage }
+        ]);
+    });
+});
+```
+
+Here is the unit test for the account.module.js file:
+
+```javascript
+import { accountModule } from './account.module';
+
+describe('accountModule', () => {
+    it('has the correct state', () => {
+        expect(accountModule.state).toEqual({
+            status: {
+                loggingIn: false,
+                registering: false
+            }
+        });
+    });
+
+    it('has the correct actions', () => {
+        expect(accountModule.actions).toEqual({
+            login: expect.any(Function),
+            register: expect.any(Function)
+        });
+    });
+});
+```
+
+Here is the unit test for the users.module.js file:
+
+```javascript
+import { usersModule } from './users.module';
+
+describe('usersModule', () => {
+    it('has the correct state', () => {
+        expect(usersModule.state).toEqual({
+            users: []
+        });
+    });
+
+    it('has the correct actions', () => {
+        expect(usersModule.actions).toEqual({
+            getAllUsers: expect.any(Function)
+        });
+    });
+});
+```
+
+Here is the unit test for the index.js file:
+
+```javascript
+import { store } from './index';
+
+describe('store', () => {
+    it('has the correct modules', () => {
+        expect(store.modules).toEqual({
+            account: expect.any(Object),
+            users: expect.any(Object)
+        });
+    });
+});
+```

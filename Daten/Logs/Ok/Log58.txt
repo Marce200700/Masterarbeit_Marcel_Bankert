@@ -1,0 +1,13 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/python/lice$ pip install lice
+Defaulting to user installation because normal site-packages is not writeable
+Collecting lice
+  Downloading lice-0.6.tar.gz (73 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 KB 2.9 MB/s eta 0:00:00
+  Preparing metadata (setup.py) ... done
+Building wheels for collected packages: lice
+  Building wheel for lice (setup.py) ... done
+  Created wheel for lice: filename=lice-0.6-py3-none-any.whl size=120538 sha256=4ee1c5664260bc0dcb381d2c7cdcfcaa16b28fd4b4ae138e2f8231170af7f6ff
+  Stored in directory: /home/marcel/.cache/pip/wheels/bf/3c/a8/210fbd1c1b9f28ac03a827da14cdf5ee63e5c3f9a55c0eb1cd
+Successfully built lice
+Installing collected packages: lice
+Successfully installed lice-0.6

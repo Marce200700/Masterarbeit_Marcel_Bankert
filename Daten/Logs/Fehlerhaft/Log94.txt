@@ -1,0 +1,96 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/examples$ ./test.sh
+--2024-10-05 20:35:13--  https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip
+Resolving chromedriver.storage.googleapis.com (chromedriver.storage.googleapis.com)... 142.250.185.187, 142.250.181.251, 142.250.186.59, ...
+Connecting to chromedriver.storage.googleapis.com (chromedriver.storage.googleapis.com)|142.250.185.187|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5404417 (5.2M) [application/zip]
+Saving to: ‘chromedriver_linux64.zip’
+
+chromedriver_linux64.zip                       100%[===================================================================================================>]   5.15M  18.6MB/s    in 0.3s
+
+2024-10-05 20:35:13 (18.6 MB/s) - ‘chromedriver_linux64.zip’ saved [5404417/5404417]
+
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'karma@1.7.1',
+npm WARN EBADENGINE   required: { node: '0.10 || 0.12 || 4 || 5 || 6 || 7 || 8' },
+npm WARN EBADENGINE   current: { node: 'v12.22.9', npm: '8.5.1' }
+npm WARN EBADENGINE }
+
+up to date, audited 1846 packages in 12s
+
+96 packages are looking for funding
+  run `npm fund` for details
+
+192 vulnerabilities (5 low, 78 moderate, 52 high, 57 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+> listen-now-frontend@1.0.0 build
+> node build/build.js
+
+⠏ building for production...Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Hash: c7c887b5f716b87d0283
+Version: webpack 3.12.0
+Time: 4659ms
+                                                  Asset       Size  Chunks             Chunk Names
+               static/js/vendor.5757ca66c9a222917873.js     131 kB       0  [emitted]  vendor
+                  static/js/app.cda9eea43bd2acedfa05.js    11.6 kB       1  [emitted]  app
+             static/js/manifest.2ae2e69a05c33dfc65f8.js  857 bytes       2  [emitted]  manifest
+    static/css/app.032ab04a0a9486c313d9884150bee592.css  432 bytes       1  [emitted]  app
+static/css/app.032ab04a0a9486c313d9884150bee592.css.map  797 bytes          [emitted]
+           static/js/vendor.5757ca66c9a222917873.js.map     729 kB       0  [emitted]  vendor
+              static/js/app.cda9eea43bd2acedfa05.js.map    22.2 kB       1  [emitted]  app
+         static/js/manifest.2ae2e69a05c33dfc65f8.js.map    4.97 kB       2  [emitted]  manifest
+                                             index.html  521 bytes          [emitted]
+
+  Build complete.
+
+  Tip: built files are meant to be served over an HTTP server.
+  Opening index.html over file:// won't work.
+
+
+> listen-now-frontend@1.0.0 unit
+> cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run
+
+{ parser: "babylon" } is deprecated; we now treat it as { parser: "babel" }.
+05 10 2024 20:35:35.498:INFO [karma]: Karma v1.7.1 server started at http://0.0.0.0:9876/
+05 10 2024 20:35:35.499:INFO [launcher]: Launching browser PhantomJS with unlimited concurrency
+05 10 2024 20:35:35.508:INFO [launcher]: Starting browser PhantomJS
+05 10 2024 20:35:35.558:ERROR [phantomjs.launcher]: /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.558:ERROR [launcher]: Cannot start PhantomJS
+        /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.558:ERROR [launcher]: PhantomJS stdout:
+05 10 2024 20:35:35.558:ERROR [launcher]: PhantomJS stderr: /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.576:INFO [launcher]: Trying to start PhantomJS again (1/2).
+05 10 2024 20:35:35.590:ERROR [phantomjs.launcher]: /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.590:ERROR [launcher]: Cannot start PhantomJS
+        /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.590:ERROR [launcher]: PhantomJS stdout:
+05 10 2024 20:35:35.590:ERROR [launcher]: PhantomJS stderr: /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.592:INFO [launcher]: Trying to start PhantomJS again (2/2).
+05 10 2024 20:35:35.604:ERROR [phantomjs.launcher]: /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.604:ERROR [launcher]: Cannot start PhantomJS
+        /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.604:ERROR [launcher]: PhantomJS stdout:
+05 10 2024 20:35:35.604:ERROR [launcher]: PhantomJS stderr: /home/marcel/masterarbeit/DevBench/benchmark_data/javascript/listen-now-frontend/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: 1: Syntax error: Unterminated quoted string
+
+05 10 2024 20:35:35.605:ERROR [launcher]: PhantomJS failed 2 times (cannot start). Giving up.

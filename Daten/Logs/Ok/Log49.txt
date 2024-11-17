@@ -1,0 +1,11 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/cpp/graph-cpp$ ./test.sh
+rm -rf obj graph run_tests *.gcda *.gcno *.gcov obj
+mkdir -p obj
+g++ -std=c++17 -Wall -g -fprofile-arcs -ftest-coverage -c -o obj/main.o src/main.cpp
+g++ -std=c++17 -Wall -g -fprofile-arcs -ftest-coverage -o graph obj/main.o
+Test passed: Test Bad Input File passed
+Test passed: Test Bad Input File passed
+Test passed: Output for 'directed_graph.txt' matches expected output
+Test passed: Output for 'sample.txt' matches expected output
+Test passed: Output for 'undirected_graph.txt' matches expected output
+Testing completed. Check the test_outputs directory for results.

@@ -1,0 +1,51 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/docker/base$ docker build -t devbench .
+[+] Building 485.9s (27/45)                                                                                                                                  docker:default
+ => [internal] load .dockerignore                                                                                                                                      0.1s
+ => => transferring context: 2B                                                                                                                                        0.0s
+ => [internal] load build definition from dockerfile                                                                                                                   0.1s
+ => => transferring dockerfile: 2.93kB                                                                                                                                 0.1s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                                                       3.5s
+ => [internal] load build context                                                                                                                                      0.1s
+ => => transferring context: 46B                                                                                                                                       0.0s
+ => [ 1/41] FROM docker.io/library/ubuntu:latest@sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5dc1ef9006b                                              17.1s
+ => => resolve docker.io/library/ubuntu:latest@sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5dc1ef9006b                                                 0.1s
+ => => sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5dc1ef9006b 1.34kB / 1.34kB                                                                         0.0s
+ => => sha256:74f92a6b3589aa5cac6028719aaac83de4037bad4371ae79ba362834389035aa 424B / 424B                                                                             0.0s
+ => => sha256:61b2756d6fa9d6242fafd5b29f674404779be561db2d0bd932aa3640ae67b9e1 2.30kB / 2.30kB                                                                         0.0s
+ => => sha256:eda6120e237e0bdd328bc3e0f610854590400d4f96d9678dfcf781edb2f541d0 29.75MB / 29.75MB                                                                      12.9s
+ => => extracting sha256:eda6120e237e0bdd328bc3e0f610854590400d4f96d9678dfcf781edb2f541d0                                                                              3.4s
+ => [ 2/41] RUN apt-get update                                                                                                                                        10.1s
+ => [ 3/41] RUN mkdir ~/libraries                                                                                                                                      0.8s
+ => [ 4/41] RUN apt-get install -y g++-11 gcc-11 git build-essential wget libtool autoconf unzip libssl-dev libnss3 xvfb lsb-release curl gpg libatlas-base-dev      160.2s
+ => [ 5/41] RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11                                             1.8s
+ => [ 6/41] WORKDIR /root/libraries                                                                                                                                    0.2s
+ => [ 7/41] RUN wget https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz                                  23.9s
+ => [ 8/41] RUN tar xf openjdk-14_linux-x64_bin.tar.gz                                                                                                                 5.5s
+ => [ 9/41] RUN mv jdk-14 /opt/                                                                                                                                        3.9s
+ => [10/41] RUN tee /etc/profile.d/jdk14.sh << EOF                                                                                                                     0.6s
+ => [11/41] RUN apt-get install -y python3.10                                                                                                                          3.8s
+ => [12/41] RUN apt-get install -y nodejs npm                                                                                                                        204.5s
+ => [13/41] RUN wget "https://go.dev/dl/go1.21.4.linux-amd64.tar.gz"                                                                                                   8.0s
+ => [14/41] RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz                                                                             8.6s
+ => [15/41] RUN curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg                                              2.1s
+ => [16/41] RUN echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | tee /etc/apt/sources.lis  0.8s
+ => [17/41] RUN apt-get update                                                                                                                                         5.3s
+ => [18/41] RUN apt-get install -y redis                                                                                                                               7.9s
+ => [19/41] RUN apt install locales;locale-gen en_US.UTF-8                                                                                                             8.4s
+ => [20/41] RUN apt-get install sqlite3 libsqlite3-dev                                                                                                                 5.4s
+ => [21/41] RUN g++ --version                                                                                                                                          0.7s
+ => [22/41] RUN java --version                                                                                                                                         1.3s
+ => ERROR [23/41] RUN python3.10 --version                                                                                                                             0.6s
+------
+ > [23/41] RUN python3.10 --version:
+0.578 /bin/sh: 1: python3.10: not found
+------
+dockerfile:51
+--------------------
+  49 |     RUN g++ --version
+  50 |     RUN java --version
+  51 | >>> RUN python3.10 --version
+  52 |     RUN node --version
+  53 |     RUN go version
+--------------------
+ERROR: failed to solve: process "/bin/sh -c python3.10 --version" did not complete successfully: exit code: 127

@@ -1,0 +1,58 @@
+Introduction:
+The Hone program is designed to convert CSV files into nested JSON files. This program will utilize built-in Python libraries such as csv, json, argparse, and contextlib to parse CSV files and generate respective nested JSON files. The program aims to provide a user-friendly interface through the Command Line Interface (CLI) and offer flexibility in terms of customization.
+
+Goals:
+The primary goal of the Hone program is to convert CSV files into nested JSON files with proper indentations and sorted keys for better readability. Additionally, the program aims to provide options for customizing the delimiter and schema for the output JSON file.
+
+Features and Functionalities:
+
+*   Parse CSV files using built-in Python libraries
+*   Generate nested JSON files with proper indentations and sorted keys
+*   Support for different delimiters in CSV files
+*   Option to set custom delimiters for CSV files
+*   Option to set a schema template for the output JSON file
+*   Usable via Command Line Interface (CLI)
+*   Two required variables: CSV file path and JSON file path
+*   Optional variables: custom delimiter and schema template
+
+Supporting Data Description:
+The program will handle CSV files as input and generate nested JSON files as output. The CSV files can have different delimiters, and the user can specify a custom delimiter if needed. The output JSON file will have proper indentations and sorted keys for better readability. The program will also allow the user to set a schema template for the output JSON file.
+
+Technical Constraints:
+
+*   The program should be written in Python
+*   The program should utilize built-in Python libraries such as csv, json, argparse, and contextlib
+*   No external dependencies are required for the core functionality
+*   The program should run in any Python environment
+
+Requirements:
+
+1.  The program should be able to parse CSV files with different delimiters
+2.  The program should generate nested JSON files with proper indentations and sorted keys
+3.  The program should allow the user to set a custom delimiter for CSV files
+4.  The program should allow the user to set a schema template for the output JSON file
+5.  The program should be usable via Command Line Interface (CLI)
+6.  The program should require two inputs: CSV file path and JSON file path
+7.  The program should allow the user to set custom delimiter and schema template as optional inputs
+8.  The program should not require any external dependencies for the core functionality
+
+Dependencies:
+
+*   Python environment
+*   Built-in Python libraries: csv, json, argparse, and contextlib
+
+Acceptance Criteria:
+
+1.  The program successfully parses a CSV file with a default delimiter and generates a nested JSON file with proper indentations and sorted keys
+2.  The program successfully parses a CSV file with a custom delimiter and generates a nested JSON file with proper indentations and sorted keys
+3.  The program successfully generates a nested JSON file with a specified schema template
+4.  The program is usable via Command Line Interface (CLI) with required and optional inputs
+5.  The program does not require any external dependencies for the core functionality
+
+Terms/Concepts Explanation:
+
+*   **Nested JSON file**: A JSON file with a hierarchical structure, where each key-value pair is indented and sorted for better readability.
+*   **Custom delimiter**: A user-specified delimiter used to separate values in a CSV file.
+*   **Schema template**: A user-specified template used to structure the output JSON file.
+*   **Command Line Interface (CLI)**: A user interface where users interact with the program using commands and options.
+*   **External dependencies**: Libraries or modules that are not built-in to the Python environment and are required for the program to function.

@@ -1,0 +1,8 @@
+marcel@DESKTOP-JK1QV5Q:~/masterarbeit/DevBench/benchmark_data/python/Hybrid_Images$ python3 unit_test.py
+/home/marcel/masterarbeit/DevBench/benchmark_data/python/Hybrid_Images/src/hybrid.py:52: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  output[j, i] = np.dot(kernel, cross_image)
+...................
+----------------------------------------------------------------------
+Ran 19 tests in 0.025s
+
+OK

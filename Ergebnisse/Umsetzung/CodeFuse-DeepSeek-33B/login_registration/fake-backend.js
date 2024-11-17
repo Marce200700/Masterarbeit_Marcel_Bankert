@@ -1,0 +1,1 @@
+This file should contain a mock implementation of a backend server in JavaScript, used when the actual backend is not yet available or for testing purposes.

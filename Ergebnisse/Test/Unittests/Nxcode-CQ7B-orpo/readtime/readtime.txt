@@ -1,0 +1,20 @@
+:
+
+import pytest
+from readtime import api
+
+def test_of_text():
+    result = api.of_text('Hello World!')
+    assert result.minutes() == 0.5
+
+def test_of_html():
+    html = '<h1>Test</h1><p>This is a test</p>'
+    result = api.of_html(html)
+    assert result.minutes() == 1.25
+
+def test_of_markdown():
+    md = '# Test\n## This is a test'
+    result = api.of_markdown(md)
+    assert result.minutes() == 0.75
+
+# Add more tests for different scenarios and edge cases

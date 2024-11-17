@@ -1,0 +1,190 @@
+UML
+UML class diagram
+
+@startuml
+
+class Reader {
+
+    + __init__(self, content)
+    + __call__(self, wpm)
+    + plain_text(self, content)
+    + html(self, content)
+    + markdown(self, content)
+
+}
+
+class Estimator {
+
+    + __init__(self, reader)
+    + estimate_reading_time(self, wpm)
+
+}
+
+class Content {
+
+    + __init__(self, content)
+    + get_content(self)
+    + set_content(self, content)
+
+}
+
+Content --> Reader
+Content --> Estimator
+
+@enduml
+
+UML sequence diagram
+
+@startuml
+
+participant Client
+participant Estimator
+participant Reader
+participant Content
+
+Client -> Estimator: estimate_reading_time(wpm)
+Estimator -> Reader: __call__(wpm)
+Reader -> Content: get_content()
+Content -> Reader: content
+Reader -> Estimator: __call__(wpm)
+Estimator -> Content: __call__(wpm)
+Content -> Estimator: __call__(wpm)
+Estimator -> Client: result
+
+@enduml
+
+Requirements
+The requirements.txt file should contain all needed dependencies.
+
+The file tree with textual descriptions
+
+The file tree, with a textual description of the files and directories, should be similar to the following structure:
+
+.
+├── .vscode
+│   └── launch.json
+├── .gitignore
+├── LICENSE
+├── Makefile
+├── README.md
+├── test
+│   ├── __init__.py
+│   └── test_read_time.py
+├── requirements.txt
+├── setup.py
+├── examples
+│   └── demo.py
+└── read_time
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-38.pyc
+    │   ├── content.cpython-38.pyc
+    │   ├── estimator.cpython-38.pyc
+    │   ├── reader.cpython-38.pyc
+    │   └── __init__.cpython-38.pyc
+    ├── content.py
+    ├── estimator.py
+    ├── reader.py
+    └── __main__.py
+
+    1 directory, 18 files
+
+Explanation
+.vscode: contains the configuration for the Visual Studio Code editor.
+
+.gitignore: contains a list of ignored files by Git.
+
+LICENSE: contains the license information for the project.
+
+Makefile: contains the build automation script.
+
+README.md: contains the documentation for the project.
+
+test: contains the test folder.
+
+requirements.txt: contains the list of needed dependencies.
+
+setup.py: contains the project setup file.
+
+examples: contains the demo script.
+
+read_time: contains the source code folder.
+
+\__init__.py: contains the package initialization file.
+
+\__pycache__: contains the byte-compiled python files.
+
+content.py: contains the content module.
+
+estimator.py: contains the estimator module.
+
+reader.py: contains the reader module.
+
+\__main__.py: contains the entry point of the program.
+
+Folder Structure
+.vscode
+├── launch.json
+
+.gitignore
+├── .vscode
+├── .gitignore
+├── LICENSE
+├── Makefile
+├── README.md
+├── test
+├── requirements.txt
+├── setup.py
+├── examples
+├── read_time
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── content.py
+│   ├── estimator.py
+│   ├── reader.py
+│   └── __main__.py
+
+Conclusion
+This project focused on developing a Python-based tool to estimate the reading time for various formats of content. The tool, named ReadTime, was developed based on the provided testing scripts, with a focus on accuracy, error handling, and user-friendliness. The tool's features and functionalities, including the test cases based on the provided testing scripts, are as follows:
+
+The tool should accurately estimate the reading time for different formats of content, including plain text, HTML, and markdown.
+The tool should support different WPM rates, including the default rate.
+Error handling and validation should be implemented to ensure proper handling of invalid inputs or unsupported content formats.
+The tool should provide a user-friendly interface for users to input their content and get an accurate reading time estimate.
+
+To estimate the reading time, the tool should be executed as follows:
+
+python examples/demo.py
+
+The requirements.txt file should contain all needed dependencies.
+
+The file tree, with a textual description of the files and directories, should be similar to the following structure:
+
+.
+├── .vscode
+│   └── launch.json
+├── .gitignore
+├── LICENSE
+├── Makefile
+├── README.md
+├── test
+│   ├── __init__.py
+│   └── test_read_time.py
+├── requirements.txt
+├── setup.py
+├── examples
+│   └── demo.py
+└── read_time
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-38.pyc
+    │   ├── content.cpython-38.pyc
+    │   ├── estimator.cpython-38.pyc
+    │   ├── reader.cpython-38.pyc
+    │   └── __init__.cpython-38.pyc
+    ├── content.py
+    ├── estimator.py
+    ├── reader.py
+    └── __main__.py
+
+    1 directory, 18 files

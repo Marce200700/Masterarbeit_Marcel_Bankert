@@ -1,0 +1,15 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/python/hone$ pip install hone
+Defaulting to user installation because normal site-packages is not writeable
+Collecting hone
+  Downloading hone-0.2.2.tar.gz (7.0 kB)
+  Preparing metadata (setup.py) ... done
+Building wheels for collected packages: hone
+  Building wheel for hone (setup.py) ... done
+  Created wheel for hone: filename=hone-0.2.2-py3-none-any.whl size=7834 sha256=97fc19748eccdd7a91d7b0f198083ecbf51c8b8e15a25dbda9f91e25b4e8cb52
+  Stored in directory: /home/marcel/.cache/pip/wheels/f7/b1/3c/f4754287ea0b3f9aed7247834b13a9b449da92ee70ef92f17f
+Successfully built hone
+WARNING: Error parsing dependencies of distro-info: Invalid version: '1.1build1'
+Installing collected packages: hone
+  WARNING: The script hone is installed in '/home/marcel/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed hone-0.2.2

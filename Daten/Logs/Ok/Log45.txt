@@ -1,0 +1,16 @@
+marcel@LAPTOP-3IIA7HT1:/mnt/c/WINDOWS/system32/workspace/masterarbeit/DevBench/benchmark_data/cpp/logistic_system$ ./test.sh
+mkdir: cannot create directory ‘./data’: File exists
+mkdir: cannot create directory ‘./outputs’: File exists
+rm -f src/main.o src/account.o  src/expressage.o src/logistics.o logistics
+g++ -std=c++17 -Iinclude -c -o src/main.o src/main.cpp
+g++ -std=c++17 -Iinclude -c -o src/account.o src/account.cpp
+g++ -std=c++17 -Iinclude -c -o src/expressage.o src/expressage.cpp
+g++ -std=c++17 -Iinclude -c -o src/logistics.o src/logistics.cpp
+g++ -std=c++17 -Iinclude -o logistics src/main.o src/account.o src/expressage.o src/logistics.o
+Test 0: [PASSED].
+Test 1: [PASSED].
+Test 2: [PASSED].
+Test 3: [PASSED].
+Test 4: [PASSED].
+Test 5: [PASSED].
+Test 6: [PASSED].
