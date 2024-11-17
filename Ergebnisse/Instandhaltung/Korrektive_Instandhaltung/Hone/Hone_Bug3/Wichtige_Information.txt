@@ -1,0 +1,4 @@
+In diesem Bug wurde in der hone.py Datei in der Line 65 der folgende Bug eingebunden.
+
+
+ column_names = column_names[:-1] #Zuvor: column_names = column_names[::-1]

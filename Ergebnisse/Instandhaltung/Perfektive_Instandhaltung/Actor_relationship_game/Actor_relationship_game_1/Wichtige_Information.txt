@@ -1,0 +1,1 @@
+Es soll in der GameplayInterface.java Datei die Funktion findConnections so angepasst werden, dass auch keine vorhandenen Verbindungen zwischen Schauspielern erkannt werden.

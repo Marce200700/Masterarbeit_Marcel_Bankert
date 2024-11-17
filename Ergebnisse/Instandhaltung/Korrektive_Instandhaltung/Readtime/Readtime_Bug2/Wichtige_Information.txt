@@ -1,0 +1,6 @@
+In diesem Bug wurde in der demo.py Datei in der Line vier der folgende Bug eingebunden.
+
+
+ reading_timetext = of_text("The shortest blog post in the world!")# Variablename zuvor: reading_time_text
+  print("Text Reading Time (in seconds):", reading_time_text.seconds)
+  print("Text Reading Time (in text):", reading_time_text.text)

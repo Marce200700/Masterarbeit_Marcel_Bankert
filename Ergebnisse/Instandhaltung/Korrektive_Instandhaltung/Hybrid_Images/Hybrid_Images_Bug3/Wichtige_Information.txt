@@ -1,0 +1,9 @@
+In diesem Bug wurde in der hybrid.py Datei in der Line 96 der folgende Bug eingebunden.
+
+
+  X = np.exp(-X / (2 * sigma * sigma))
+    Y = np.exp(-Y / (2 * sigma * sigma)) / (2 * sigma * sigma * np.pi)
+    output = np.outer(X, Y)
+
+    normalize = np.sum(Y) * np.sum(X)
+        return output / normalize #Indentation Error

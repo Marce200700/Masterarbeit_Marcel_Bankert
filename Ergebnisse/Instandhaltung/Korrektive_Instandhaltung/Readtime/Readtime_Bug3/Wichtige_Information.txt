@@ -1,0 +1,4 @@
+In diesem Bug wurde in der demo.py Datei in der Line 19 der folgende Bug eingebunden.
+
+
+reading_time_wpm = oftext("The shortest blog post in the world!", wpm=5) #Zuvor Methodenaufruf: of_text

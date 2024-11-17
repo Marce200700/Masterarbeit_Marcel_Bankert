@@ -1,0 +1,6 @@
+In diesem Bug wurden in der Movie.java Datei in der Line 36 der folgende Bug eingebunden.
+
+
+ public void setTitle(String title;) {// Zuvor: public void setTitle(String title)
+        this.title = title;
+    }

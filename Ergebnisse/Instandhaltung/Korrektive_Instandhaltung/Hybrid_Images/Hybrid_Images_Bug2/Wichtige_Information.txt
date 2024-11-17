@@ -1,0 +1,4 @@
+In diesem Bug wurde in der hybrid.py Datei in der Line 39 der folgende Bug eingebunden.
+
+
+   m1 = int((m - 1) & 2) #Zuvor: m1 = int((m - 1) / 2)

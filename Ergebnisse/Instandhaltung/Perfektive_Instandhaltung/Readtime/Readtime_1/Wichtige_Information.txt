@@ -1,0 +1,1 @@
+Es soll in der api.py Datei eine Funktion implementiert werden, um auch HTML als Eingabe zu nutzen.

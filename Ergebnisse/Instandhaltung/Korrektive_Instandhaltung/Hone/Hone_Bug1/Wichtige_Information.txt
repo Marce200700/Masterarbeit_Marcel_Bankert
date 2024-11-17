@@ -1,0 +1,4 @@
+In diesem Bug wurde in der hone.py Datei in der Line 15 der folgende Bug eingebunden.
+
+
+ def convert(self, csv_filepath, schema = "None"): # Zuvor None

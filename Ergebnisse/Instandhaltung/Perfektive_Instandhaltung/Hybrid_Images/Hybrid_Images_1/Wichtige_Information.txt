@@ -1,0 +1,1 @@
+Es soll in der hybrid.py Datei eine Funktion implementiert werden, um bei einem Bild einen low_pass Filter anzuwenden.

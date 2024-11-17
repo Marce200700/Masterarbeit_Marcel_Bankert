@@ -1,0 +1,1 @@
+Es soll in der csv_utils.py Datei eine Funktion implementiert werden, um aus einer CSV-Datei nur die Daten zu erhalten.

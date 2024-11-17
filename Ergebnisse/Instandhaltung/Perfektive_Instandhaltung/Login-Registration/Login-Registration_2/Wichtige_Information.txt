@@ -1,0 +1,1 @@
+Es soll in der LoginPage.vue Datei ein Input für das Passwort implementiert werden.

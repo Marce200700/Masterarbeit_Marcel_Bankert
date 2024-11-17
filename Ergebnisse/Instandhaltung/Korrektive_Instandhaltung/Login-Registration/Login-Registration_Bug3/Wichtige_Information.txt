@@ -1,0 +1,6 @@
+In diesem Bug wurde in der LoginPage.vue Datei in der Line 36 der folgende Bug eingebunden.
+
+
+computed: {
+        ..mapState('account', ['status']) //es wurde ein Punkt entfernt
+    },

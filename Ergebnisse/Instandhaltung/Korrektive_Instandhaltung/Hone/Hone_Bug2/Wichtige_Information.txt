@@ -1,0 +1,9 @@
+In diesem Bug wurde in der hone.py Datei in der Line 51 der folgende Bug eingebunden.
+
+
+ def get_schema(self, csv_filepath):
+            self.set_csv_filepath(csv_filepath) #Indentation Error
+        column_names = self.csv.get_column_names()
+        data = self.csv.get_data_rows()
+        column_struct = self.generate_full_structure(column_names)
+        return column_struct

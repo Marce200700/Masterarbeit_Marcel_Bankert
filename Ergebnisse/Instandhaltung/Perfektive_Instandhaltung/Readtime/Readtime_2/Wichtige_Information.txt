@@ -1,0 +1,1 @@
+Es soll in der api.py Datei eine Funktion implementiert werden, um auch Markdown als Eingabe zu nutzen.

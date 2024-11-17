@@ -1,0 +1,4 @@
+In diesem Bug wurden in der ActorGraph.java Datei in der Line 93 der folgende Bug eingebunden.
+
+
+Actor actor = Movie.get(actors) //Zuvor: Movie movie = movies.get(movieId);

@@ -1,0 +1,4 @@
+In diesem Bug wurde in der hybrid.py Datei in der Line 29 der folgende Bug eingebunden.
+
+
+  if len(img.shape) == 2: #Zuvor: if len(img.shape) == 3:

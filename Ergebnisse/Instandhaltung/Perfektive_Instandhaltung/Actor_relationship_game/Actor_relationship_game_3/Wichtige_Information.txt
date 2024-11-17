@@ -1,0 +1,1 @@
+Es soll in der GameplayInterface.java Datei die Funktion findConnections so angepasst werden, dass ein passendes Error-Handling implementiert wird.

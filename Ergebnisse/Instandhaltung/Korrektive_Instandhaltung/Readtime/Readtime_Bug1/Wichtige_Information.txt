@@ -1,0 +1,4 @@
+In diesem Bug wurde in der demo.py Datei in der Line 14 der folgende Bug eingebunden.
+
+
+  reading_time_markdown = of_markdow("This is **Markdown**") # Zuvor: reading_time_markdown = of_markdown("This is **Markdown**")

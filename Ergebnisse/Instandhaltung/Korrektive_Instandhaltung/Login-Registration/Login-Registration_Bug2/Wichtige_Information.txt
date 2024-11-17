@@ -1,0 +1,8 @@
+In diesem Bug wurde in der LoginPage.vue Datei in der Line sieben der folgende Bug eingebunden.
+
+
+<div class="form-group">
+                <label for="username">Username</label>
+                <!--Hier wurde ein Input entfernt-->
+                <div v-show="submitted && !username" class="invalid-feedback">Username is required</div>
+            </div>

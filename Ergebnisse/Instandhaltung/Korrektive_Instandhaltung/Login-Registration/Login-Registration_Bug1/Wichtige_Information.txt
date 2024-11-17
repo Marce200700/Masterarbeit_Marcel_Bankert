@@ -1,0 +1,8 @@
+In diesem Bug wurde in der LoginPage.vue Datei in der Line zwölf der folgende Bug eingebunden.
+
+
+ p <div class="form-group">
+                <label htmlFor="password">Password</label>
+                <!--Hier wurde ein Input entfernt-->
+                <div v-show="submitted && !password" class="invalid-feedback">Password is required</div>
+            </div>
