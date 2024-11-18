@@ -1,2 +1,2 @@
 # Masterarbeit_Marcel_Bankert
-Potenzialanalyse zu dem Einsatz von Open Source Large Language Models in der Softwareentwicklung
+In diesem Git-Hub Repository sind alle Ergebnisse zu der Masterarbeit mit dem Titel ''Potenzialanalyse zu dem Einsatz von Open Source Large Language Models in der Softwareentwicklung.'', zu finden. Es gilt zu beachten, dass diesen Ergebnisdaten den Projekten ''Actor Relationship Game'', ''Login Registration'', ''Hone'', ''Hybrid Images'' und ''Readtime'' asu dem [DevBench-Datensatz](https://github.com/open-compass/DevBench/tree/main) zugrunde liegen. 
