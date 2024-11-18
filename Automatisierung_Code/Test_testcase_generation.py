@@ -1,5 +1,5 @@
 '''
-Automatisierung für Testläufe des Anwendungsfalls der Testfall-Generierung
+Automatisierung für Testläufe des Anwendungsfalls: Testfall-Generierung
 Von:Marcel Bankert
 Am: 16.11.2024
 '''

@@ -1,5 +1,5 @@
 '''
-Automatisierung für Testläufe des Anwendungsfalls des Entwurfs
+Automatisierung für Testläufe des Anwendungsfalls: Entwurfs
 Von:Marcel Bankert
 Am: 16.11.2024
 '''

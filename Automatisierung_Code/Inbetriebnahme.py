@@ -1,5 +1,5 @@
 '''
-Automatisierung für Testläufe des Anwendungsfalls der Inbetriebnahme
+Automatisierung für Testläufe des Anwendungsfalls: Inbetriebnahme
 Von:Marcel Bankert
 Am: 16.11.2024
 '''

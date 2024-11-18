@@ -1,5 +1,5 @@
 '''
-Automatisierung für Testläufe des Anwendungsfalls der Tests (Unittests)
+Automatisierung für Testläufe des Anwendungsfalls: Tests (Unittests)
 Von:Marcel Bankert
 Am: 16.11.2024
 '''

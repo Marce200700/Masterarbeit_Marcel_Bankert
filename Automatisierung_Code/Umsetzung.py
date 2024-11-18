@@ -1,5 +1,5 @@
 '''
-Automatisierung für Testläufe des Anwendungsfalls der Umsetzung
+Automatisierung für Testläufe des Anwendungsfalls: Umsetzung
 Von:Marcel Bankert
 Am: 16.11.2024
 '''
