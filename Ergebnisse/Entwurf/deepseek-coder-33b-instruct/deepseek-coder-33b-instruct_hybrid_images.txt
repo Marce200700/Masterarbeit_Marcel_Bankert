@@ -1,25 +1,146 @@
-File Tree
+Hybrid Image: An image that is created by combining two images, typically with different frequency content, resulting in an image that changes in appearance at different viewing scales.
+Gaussian Blur: A smoothing technique applied to images, characterized by the sigma parameter, which defines the spread of the blur.
+High-Pass Filter: An image processing technique that amplifies the high-frequency components of the image, often highlighting edges and fine details.
+Low-Pass Filter: An image processing technique that suppresses high-frequency components, resulting in a blurrier image.
+Cross-Correlation: A mathematical operation that compares two sets of data and measures the similarity between them.
+Convolution: A mathematical operation that involves sliding one function over another and calculating the integral of the product of the two functions for each point.
 
-/
-├── README.md
-├── requirements.txt
-├── demo.py
-├── examples
-│   ├── example1.jpg
-│   └── example2.jpg
-├── UML
-│   ├── class_diagram.puml
-│   └── sequence_diagram.puml
-└── src
-    └── hybrid_image.py
+Please note this is a complex project and the task can be subdivided into several smaller tasks such as creating the hybrid image, creating the low-pass and high-pass filters, implementing the cross-correlation and convolution functions, etc.
 
-Each file and directory in the tree has a specific role:
+In the end, you will have a Python program that combines images into a hybrid image using various image processing techniques.
 
-README.md: Provides an overview of the project and instructions for usage.
-requirements.txt: Lists all the dependencies of the program.
-demo.py: A demonstration script showing the usage of the program.
-examples: A directory containing sample images for demonstration purposes.
-UML: A directory containing UML diagrams showing the class structure and sequence of operations.
-src: A directory containing the source code of the program.
-hybrid_image.py: The main Python module implementing the hybrid image creation functionality.
-The structure of the program is designed to be modular, with different modules handling different aspects of the image processing and hybrid image creation.
+
+A: UML diagrams
+UML class diagram
+@startuml
+class Image {
+    - path: str
+    + __init__(path: str)
+    + get_image(): np.ndarray
+    + get_gray_image(): np.ndarray
+}
+
+class Filter {
+    <<interface>>
+    + apply_filter(image: np.ndarray): np.ndarray
+}
+
+class LowPassFilter {
+    - size: int
+    + __init__(size: int)
+    + apply_filter(image: np.ndarray): np.ndarray
+}
+
+class HighPassFilter {
+    - size: int
+    + __init__(size: int)
+    + apply_filter(image: np.ndarray): np.ndarray
+}
+
+class GaussianBlurFilter {
+    - size: int
+    - sigma: float
+    + __init__(size: int, sigma: float)
+    + apply_filter(image: np.ndarray): np.ndarray
+}
+
+class CrossCorrelation {
+    + apply_correlation(image1: np.ndarray, image2: np.ndarray): np.ndarray
+}
+
+class Convolution {
+    + apply_convolution(image1: np.ndarray, image2: np.ndarray): np.ndarray
+}
+
+class HybridImage {
+    - image1: Image
+    - image2: Image
+    - low_pass_filter: LowPassFilter
+    - high_pass_filter: HighPassFilter
+    - gaussian_blur_filter: GaussianBlurFilter
+    - correlation: CrossCorrelation
+    - convolution: Convolution
+    - mix_ratio: float
+    + __init__(image1: Image, image2: Image, low_pass_filter: LowPassFilter, high_pass_filter: HighPassFilter, gaussian_blur_filter: GaussianBlurFilter, correlation: CrossCorrelation, convolution: Convolution, mix_ratio: float)
+    + create_hybrid_image(): np.ndarray
+}
+
+Image "1" -- "many" Filter: applies
+Image "1" -- "1" HybridImage: is used by
+LowPassFilter --|> Filter
+HighPassFilter --|> Filter
+GaussianBlurFilter --|> Filter
+HybridImage "1" -- "1" CrossCorrelation: uses
+HybridImage "1" -- "1" Convolution: uses
+@enduml
+
+UML sequence diagram
+@startuml
+participant "main.py" as main
+participant "Image" as image
+participant "LowPassFilter" as lpf
+participant "HighPassFilter" as hpf
+participant "GaussianBlurFilter" as gbf
+participant "CrossCorrelation" as cc
+participant "Convolution" as conv
+participant "HybridImage" as hi
+
+main -> image: create Image instance
+main -> lpf: create LowPassFilter instance
+main -> hpf: create HighPassFilter instance
+main -> gbf: create GaussianBlurFilter instance
+main -> cc: create CrossCorrelation instance
+main -> conv: create Convolution instance
+main -> hi: create HybridImage instance
+main -> hi: call create_hybrid_image()
+hi -> lpf: apply_filter()
+hi -> hpf: apply_filter()
+hi -> gbf: apply_filter()
+hi -> cc: apply_correlation()
+hi -> conv: apply_convolution()
+hi -> image: get_image()
+hi -> image: get_gray_image()
+@enduml
+
+File tree
+.
+├── main.py
+├── hybrid_image.py
+├── image.py
+├── low_pass_filter.py
+├── high_pass_filter.py
+├── gaussian_blur_filter.py
+├── cross_correlation.py
+├── convolution.py
+└── requirements.txt
+
+File descriptions
+main.py: This is the entry point of the application. It creates instances of the Image, LowPassFilter, HighPassFilter, GaussianBlurFilter, CrossCorrelation, Convolution, and HybridImage classes and calls the create_hybrid_image() method of the HybridImage class.
+image.py: This file contains the Image class. It takes an image path as input and provides methods to return the image as a numpy array and a grayscale version of the image.
+low_pass_filter.py: This file contains the LowPassFilter class, which applies a low-pass filter to an image.
+high_pass_filter.py: This file contains the HighPassFilter class, which applies a high-pass filter to an image.
+gaussian_blur_filter.py: This file contains the GaussianBlurFilter class, which applies a Gaussian blur filter to an image.
+cross_correlation.py: This file contains the CrossCorrelation class, which calculates the cross-correlation between two images.
+convolution.py: This file contains the Convolution class, which calculates the convolution between two images.
+hybrid_image.py: This file contains the HybridImage class. It applies filters to two images, calculates the cross-correlation and convolution, and then combines the two images into a hybrid image.
+requirements.txt: This file lists the dependencies of the application. It includes the opencv-python and numpy libraries.
+
+Requirements
+opencv-python==4.5.4.60
+numpy==1.21.4
+
+Execution
+The application can be run by executing the following command in the terminal:
+
+python main.py
+
+Acceptance criteria
+The program should successfully create a hybrid image given two source images. The hybrid image should visibly combine features from both images in a coherent manner.
+
+References
+
+*
+
+*OpenCV: https://opencv.org/
+
+*NumPy: https://numpy.org/

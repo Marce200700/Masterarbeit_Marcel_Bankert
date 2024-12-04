@@ -1,34 +1,48 @@
-
-The goal of this project is to create a software which estimates the reading time of different types of content. The estimated readtime should be based on the words-per-minute rate. This program has to be able to process plain text, HTML and markdown formats. In order to give realistic estimates this program should take both complexity and length of the input texts into account. If the user tries to use an unsupported input such as TeX-Code or AsciiDoc there has to be a proper exception handling with error-messages for the user.
-The following features are required:
-The program should be able to process plain text, HTML and markdown formats.
-The estimated readtime should be based on the words-per-minute rate.
-The program should take both complexity and length of the input texts into account.
-If the user tries to use an unsupported input such as TeX-Code or AsciiDoc there has to be a proper exception handling with error-messages for the user.
-The following data description is required:
-The program should be able to process plain text, HTML and markdown formats. This means that the program should be able to read in different types of files. The program should also be able to handle different encodings.
-The estimated readtime should be based on the words-per-minute rate. This means that the program should have a default value for the words-per-minute rate and should be able to change this value if needed.
-The program should take both complexity and length of the input texts into account. This means that the program should be able to calculate the readtime based on the number of words in the text, but also based on the complexity of the text. The program should also be able to handle different types of content such as articles, blog posts or books.
-If the user tries to use an unsupported input such as TeX-Code or AsciiDoc there has to be a proper exception handling with error-messages for the user. This means that the program should be able to handle different types of inputs and should be able to give feedback if the input is not supported.
-The following technical constraints are required:
-The program should be implemented with Python 3.x.
-The program should use libraries like beautifulsoup4, lxml, markdown2, pyquery and pytest.
-The program should be able to handle different types of inputs such as plain text, HTML and markdown formats.
-The program should be able to calculate the readtime based on the number of words in the text, but also based on the complexity of the text.
-The program should be able to handle different encodings.
-The program should be able to give feedback if the input is not supported.
-The following requirements are required:
-The program should be able to process plain text, HTML and markdown formats. This means that the program should be able to read in different types of files. The program should also be able to handle different encodings.
-The estimated readtime should be based on the words-per-minute rate. This means that the program should have a default value for the words-per-minute rate and should be able to change this value if needed. The program should also be able to calculate the readtime based on the number of words in the text, but also based on the complexity of the text.
-If the user tries to use an unsupported input such as TeX-Code or AsciiDoc there has to be a proper exception handling with error-messages for the user. This means that the program should be able to handle different types of inputs and should be able to give feedback if the input is not supported.
-The following usage is required:
-The program should be able to process plain text, HTML and markdown formats. This means that the program should be able to read in different types of files. The program should also be able to handle different encodings. The program should be able to calculate the readtime based on the number of words in the text, but also based on the complexity of the text.
-The program should be able to give feedback if the input is not supported. This means that the program should be able to handle different types of inputs and should be able to give feedback if the input is not supported.
-The following acceptance criteria are required:
-The program should be able to process plain text, HTML and markdown formats. This means that the program should be able to read in different types of files. The program should also be able to handle different encodings.
-The estimated readtime should be based on the words-per-minute rate. This means that the program should have a default value for the words-per-minute rate and should be able to change this value if needed. The program should also be able to calculate the readtime based on the number of words in the text, but also based on the complexity of the text.
-If the user tries to use an unsupported input such as TeX-Code or AsciiDoc there has to be a proper exception handling with error-messages for the user. This means that the program should be able to handle different types of inputs and should be able to give feedback if the input is not supported. The program should also be able to handle different encodings.
-The program should be implemented with Python 3.x.
-The program should use libraries like beautifulsoup4, lxml, markdown2, pyquery and pytest. This means that the program should be able to read in different types of files. The program should also be able to handle different encodings.
-The program should be able to calculate the readtime based on the number of words in the text, but also based on the complexity of the text.
-The program should be able to give feedback if the input is not supported. This means that the program should be able to handle different types of inputs and should be able to give feedback if the input is not supported. The program should also be able to handle different encodings.
+For the input handler, the following functionalities have to be implemented:
+Parsing and processing of HTML and markdown formats
+Removing of boilerplate code (e.g. HTML head and meta tags)
+Removing of inline and block code
+Removing of images and other multimedia content
+Removing of comments
+Removing of links and references
+Removing of tables and other tabular content
+Removing of lists
+Converting of the input texts into plain text
+For the estimator, the following functionalities have to be implemented:
+Calculation of the estimated readtime based on the words-per-minute rate and the length of the input texts
+Estimation of the reading level based on the complexity of the input texts
+Proper exception handling for unsupported input formats
+For the usage, the following functionalities have to be implemented:
+Providing a command line interface for the user to input the path to the file and the words-per-minute rate
+Reading the input file and converting it into plain text if necessary
+Calculating the estimated readtime and displaying it to the user
+Displaying an error message if an exception occurred during the input file processing
+Please do not use any external libraries like NLTK or spaCy for the implementation of the estimator.
+You can assume that the user will always provide a valid input file and the words-per-minute rate.
+A plain text file is provided as input. Please write a Python program to estimate the read time of a text in a file.
+The program should estimate the read time of the text in the file in minutes.
+Use the following assumptions:
+100 words per minute.
+The input file contains 250 words per page.
+A page is 3.5 inches by 5 inches, with 1 inch margins on all sides (1 inch = 72 points).
+The font is 12 points.
+The program should display the total pages, total words, words per minute, and estimated read time.
+Use a standard font of 12 points.
+Use the following as an input file.
+Input File:
+1. A quick brown fox jumps over a lazy dog.
+2. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+3. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+4. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+5. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+6. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+7. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+8. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+9. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+10. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog. A quick brown fox jumps over a lazy dog.
+The output should be as follows:
+Total pages: 2
+Total words: 200
+Words per minute: 100
+Estimated read time: 2 minutes
+Write a Python program to calculate the read time of a text.
